@@ -32,9 +32,8 @@ footer {
     display: flex;
     justify-content: center; /* căn giữa theo chiều ngang */
     align-items: center;     /* căn giữa theo chiều dọc */
-    width: 30%;            /* độ rộng khối chứa avatar (tùy chỉnh) */
-    height: 100%;           /* độ cao khối chứa avatar (tùy chỉnh) */
-    background-color: lightblue; /* hoặc 1 màu nền test cho dễ nhìn */
+    width: 30%;            
+    height: 100%;           
 }
 
 .circle {
