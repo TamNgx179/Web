@@ -1,0 +1,75 @@
+body {
+    margin: 0; /* loại bỏ margin mặc định */
+    background-color: #ffffff; /* màu mặc định ngoài wrapper */
+}
+
+.wrapper {
+    margin-top: 1%;              /* đẩy toàn bộ khối xuống */
+    background-color: #A0A8A4;   /* màu nền chính */
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;             /* khoảng cách giữa div và form */
+}
+
+form {
+    background-color: white;
+    border-radius: 30px;
+    height: 70vh;
+    width: 50vh;
+
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+#inline {
+    display: flex;
+    flex-direction: row;
+}
+
+#inline > div {
+    flex: 1;                    /* mỗi input chia đều */
+}
+
+#email, #phonenumber, #usname, #usmessage {
+    display: flex;
+    flex-direction: column;
+}
+
+#Message {
+    height: 30vh;
+}
+
+form input {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 10px;
+}
+
+#send_message {
+    background-color: #D9D9D9;
+    height: 3vh;
+    width: 20vh;
+    border-radius: 10px;
+    padding: 2px    
+}
+
+#send_message:hover {
+    background-color: #a9a9a9;  
+    color: white;               
+    transform: scale(1.05);     
+}
+
+form button {
+    align-self: center;
+}
+
+
+
+form p {
+    font-size: 20px;
+}
