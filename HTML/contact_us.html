@@ -10,20 +10,26 @@
 </head>
 <body>
     <nav>
-        <ul id="nav_block1">
+        <div id="LOGO">LOGO</div> 
+
+        <ul id="nav_block2">
             <li><a href="../HTML/Home.html">Home</a></li>
             <li><a href="../HTML/About_us.html">About us</a></li>
             <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
             <li><a href="../HTML/contact_us.html">Contact</a></li>
         </ul>
+        
+        <a id="Trolley" href="#"><img src="../Image_icon/trolley.png" alt="Trolley icon"></a>
 
-        <ul id="nav_block2">
-            <li id="LOGO">LOGO</li>
-        </ul>  
+        <div id="popup-login">
+            <img src="../Image_icon/Signin.png" alt="Popup image">
+        </div>
+         
     </nav>
 
+
     <div class="wrapper">
-        <div>
+        <div id="text-left">
             <h1>Contact with us</h1>
 
             <p>Not sure what you’re looking for? <br>
@@ -54,7 +60,7 @@
 
             <div id="usmessage">
                 <label for="Message">Your message</label>
-                <input id="Message" type="text" name="message" placeholder="Your message">
+                <textarea id="Message" name="message" placeholder="Your message"></textarea>
             </div>
     
             <button id="send_message">Send message</button>

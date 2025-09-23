@@ -76,3 +76,42 @@ hr {
     object-fit: contain; /* giữ nguyên tỉ lệ icon */
 }
 
+.span {
+    display: none;
+    margin-right: 0;
+}
+
+.footer-list {
+    display: block;
+}
+
+
+@media (max-width: 600px) {
+
+    .span {
+        display: inline; /* hiển thị mũi tên */
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .avata {
+        display: none; /* ẩn avatar trên mobile */
+    }
+
+    .footer-section ul {
+        display: none;
+    }
+
+    .footer-section{
+        flex-direction: column;
+    }
+
+    .footer-section h2 {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+

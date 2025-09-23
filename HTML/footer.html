@@ -15,8 +15,8 @@
             
             <div class="footer-section">
                 <div>
-                    <h2>Infomation</h2>
-                    <ul>
+                    <h2 class="footer-toggle">Infomation <span class="span">▼</span></h2>
+                    <ul class="footer-list">
                         <li><a href="../HTML/Home.html">Home</a></li>
                         <li><a href="../HTML/About_us.html">About</a></li>
                         <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
@@ -24,8 +24,8 @@
                 </div>
 
                 <div>
-                    <h2>Helpful Links</h2>
-                    <ul>
+                    <h2 class="footer-toggle">Helpful Links <span class="span">▼</span></h2>
+                    <ul class="footer-list">
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Supports</a></li>
                         <li><a href="#">Terms & Condition</a></li>
@@ -34,8 +34,8 @@
                 </div>
 
                 <div>
-                    <h2>Contact us</h2>
-                    <ul>
+                    <h2 class="footer-toggle">Contact us <span class="span">▼</span></h2>
+                    <ul class="footer-list">
                         <li>💬 Chat with sale</li>
                         <li>☎️ (84) 000000000</li>
                         <li>✉️ email</li>
@@ -46,6 +46,7 @@
                         <a href="#"><img src="../Image_icon/instagram.png" alt="Instagram"></a>
                     </div>
                 </div>
+
             </div>
         </div>
 
@@ -56,4 +57,24 @@
         </div>
     </footer>
 </body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggles = document.querySelectorAll('.footer-toggle');
+
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const list = toggle.nextElementSibling;
+                if(list.style.display === 'block') {
+                    list.style.display = 'none';
+                    toggle.querySelector('span').textContent = '▼';
+                } else {
+                    list.style.display = 'block';
+                    toggle.querySelector('span').textContent = '▲';
+                }
+            });
+        });
+    });
+</script>
+
 </html>
