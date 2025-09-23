@@ -1,12 +1,15 @@
-body {
+html, body {
     margin: 0; /* loại bỏ margin mặc định */
-    background-color: #ffffff; /* màu mặc định ngoài wrapper */
+    background-color: white; /* màu mặc định ngoài wrapper */
+    width: 100%;
+    height: 100%;
 }
 
 .wrapper {
     margin-top: 1%;              /* đẩy toàn bộ khối xuống */
     background-color: #A0A8A4;   /* màu nền chính */
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -17,8 +20,11 @@ body {
 form {
     background-color: white;
     border-radius: 30px;
-    height: 70vh;
-    width: 50vh;
+    height: 70%;
+    width: 30%;
+
+    margin-top: 5%;
+    margin-bottom: 5%;
 
     padding: 30px;
     display: flex;
@@ -34,6 +40,10 @@ form {
 
 #inline > div {
     flex: 1;                    /* mỗi input chia đều */
+}
+
+#inline input {
+    width: 95%;
 }
 
 #email, #phonenumber, #usname, #usmessage {
