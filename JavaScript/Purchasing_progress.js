@@ -116,6 +116,7 @@ function purchasingstep(index) {
             break;
         }
     }
+
 }
 
 
@@ -130,6 +131,22 @@ function setstep3() {
     document.getElementById('item-label').innerHTML = "";
 
     document.getElementById('confirmation').style.display = 'flex';
+}
+
+function totalinfomation() {
+    let delivery = document.getElementById('delivery-label-sum').innerHTML.trim(); // loại bỏ khoảng trắng
+
+    let deliveryFee = 0;
+    if(delivery === "Home") {
+        deliveryFee = 499;
+    }
+    // Showroom mặc định = 0
+
+    // Hiển thị giá delivery
+    document.getElementById('delivery-fee').innerHTML = "$" + deliveryFee;
+
+    // Tổng = deliveryFee
+    document.getElementById('total-fee').innerHTML = "$" + deliveryFee;
 }
 
 
@@ -165,11 +182,15 @@ function setinfomation(stepindex) {
             indexdata = index
             if(stepindex == 1){
                 info = infodata[index];
-                document.getElementById('payment-label').innerHTML = index == 0 ? "Card" : "Cash";
+                document.getElementById('payment-label-sum').innerHTML = document.getElementById('payment-label').innerHTML = index == 0 ? "Card" : "Cash";
+
+                
             }
             if(stepindex == 2){
                 info = infodata[index + 2];
-                document.getElementById('delivery-label').innerHTML = index == 0 ? "Home" : "Showroom";
+                document.getElementById('delivery-label-sum').innerHTML =  document.getElementById('delivery-label').innerHTML = index == 0 ? "Home" : "Showroom";
+
+                totalinfomation();
             }
             if(info) {
                 document.getElementById('label1').innerHTML = info[0].label;
