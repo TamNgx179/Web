@@ -29,8 +29,7 @@ nav ul {
     margin-right: 20px;   
 }
 
-#popup-login img,
-#Trolley img {
+#popup-login img, #Trolley img {
     width: 24px;   
     height: 24px;
     object-fit: contain;
