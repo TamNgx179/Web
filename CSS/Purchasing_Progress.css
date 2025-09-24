@@ -90,15 +90,8 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 14px;
-    width: 100%;             /* full chiều rộng khối cha */
+    width: 95%;             /* full chiều rộng khối cha */
 }
-
-.infomation input:focus {
-    border-color: #007bff;   /* đổi màu khi focus */
-    outline: none;
-    box-shadow: 0 0 4px rgba(0,123,255,0.5);
-}
-
 
 #button-block {
     display: flex;
@@ -122,8 +115,31 @@
 }
 
 #confirmation {
+    display: flex;
     flex-direction: column;
+    gap: 10px;              
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 95%;
 }
+
+#confirmation label#item-label,
+#confirmation label#payment-label,
+#confirmation label#delivery-label {
+    font-weight: 400;
+    color: #555;
+    margin-left: 10px;
+}
+
+/* Dùng flex row cho từng dòng item để label và giá trị nằm cạnh nhau */
+#confirmation label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
 
 @media (max-width: 600px) {
     #purchasing-progress {

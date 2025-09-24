@@ -1,6 +1,4 @@
 let currentStep = 0; // bước hiện tại, bắt đầu từ 0
-let stepdata;
-let indexdata;
 
 function initEvent() {
     const nextbtn = document.getElementById("next-step"); 
@@ -62,7 +60,7 @@ function purchasingstep(index) {
         }
         case 1:{
             document.getElementById("method").style.display = "flex";
-            document.querySelector(".infomation").style.display = "none";
+            document.getElementById("info").style.display = "none";
             document.getElementById('confirmation').style.display = "none"
             
             setinfomation(index);
@@ -88,7 +86,7 @@ function purchasingstep(index) {
         }
         case 2:{
             document.getElementById("method").style.display = "flex";
-            document.querySelector(".infomation").style.display = "none";
+            document.getElementById("info").style.display = "none";
             document.getElementById('confirmation').style.display = "none"
 
             setinfomation(index);
@@ -114,7 +112,7 @@ function purchasingstep(index) {
             break;
         }
         case 3: {
-            setstep3(stepdata, indexdata);
+            setstep3();
             break;
         }
     }
@@ -122,23 +120,14 @@ function purchasingstep(index) {
 
 
 
-function setstep3(stepDataValue, indexDataValue) {
+function setstep3() {
     document.getElementById("header").innerHTML = "Order confirmation";
     document.getElementById("paragraph").innerHTML = "Review your order details. You can still go back to change anything. When you're ready, click Place order to complete your purchase.";
 
     document.getElementById("method").style.display = "none";
     document.getElementById("info").style.display = "none"
 
-    document.getElementById('item-label').innerHTML = ""; // thông tin sản phẩm nếu có
-
-    // Payment label
-    if(stepDataValue == 1){
-        document.getElementById('payment-label').innerHTML = indexDataValue == 0 ? "Card" : "Cash";
-    }
-    // Delivery label
-    if(stepDataValue == 2){
-        document.getElementById('delivery-label').innerHTML = indexDataValue == 0 ? "Home" : "Showroom";
-    }
+    document.getElementById('item-label').innerHTML = "";
 
     document.getElementById('confirmation').style.display = 'flex';
 }
@@ -176,9 +165,11 @@ function setinfomation(stepindex) {
             indexdata = index
             if(stepindex == 1){
                 info = infodata[index];
+                document.getElementById('payment-label').innerHTML = index == 0 ? "Card" : "Cash";
             }
             if(stepindex == 2){
                 info = infodata[index + 2];
+                document.getElementById('delivery-label').innerHTML = index == 0 ? "Home" : "Showroom";
             }
             if(info) {
                 document.getElementById('label1').innerHTML = info[0].label;
@@ -186,7 +177,7 @@ function setinfomation(stepindex) {
                 document.getElementById('label2').innerHTML = info[1].label;
                 document.getElementById('info2').placeholder = info[1].placeholder;
             }
-            document.querySelector(".infomation").style.display = "block";
+            document.getElementById("info").style.display = "block";
         }
     });
 }
