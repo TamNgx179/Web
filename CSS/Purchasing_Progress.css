@@ -1,0 +1,191 @@
+#main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#step-purchasing {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 50px;
+}
+
+#Choosing-method {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+    padding: 30px;
+    width: 40%;
+    height: max-content;
+
+    border-radius: 20px;
+    border: 1px solid #ccc;
+}
+
+
+
+.Option {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.Option div {
+    width: auto;
+}
+
+.Option img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+#method {
+    display: flex;
+    flex-direction: row;
+    gap: 10px
+}
+
+#choosing1, #choosing2, #content1, #content2 {
+    font-size: 10px;
+}
+
+.infomation {
+    display: flex;
+    flex-direction: column;  
+    gap: 15px;               
+    margin-top: 20px;
+}
+
+.infomation label {
+    font-weight: 600;
+}
+
+.infomation input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 95%;             /* full chiều rộng khối cha */
+}
+
+#button-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#button-block button {
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#confirmation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;              
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 95%;
+}
+
+#confirmation label#item-label,
+#confirmation label#payment-label,
+#confirmation label#delivery-label {
+    font-weight: 400;
+    color: #555;
+    margin-left: 10px;
+}
+
+/* Dùng flex row cho từng dòng item để label và giá trị nằm cạnh nhau */
+#confirmation label {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#Order-summary {
+    width: 20%; /* hoặc 30% nếu trong flex row */
+    height: max-content;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background-color: #f9f9f9;
+
+    position: sticky;
+    top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    font-size: 14px;
+}
+
+#summary {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.fee {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+
+    justify-content: space-between;
+}
+
+
+@media (max-width: 600px) {
+    #purchasing-progress {
+        font-size: 8px;
+    }
+
+    #main-content {
+        flex-direction: column;
+
+        width: 100%;
+    }
+
+    #Choosing-method {
+        width: 80%;
+    }
+
+    #paragraph {
+        display: none;
+    }
+
+    #method {
+        flex-direction: column;
+    }
+    #Order-summary {
+        width: 80%;
+        margin-top: 20px;
+    }
+}
