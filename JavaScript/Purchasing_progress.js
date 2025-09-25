@@ -21,8 +21,12 @@ function initEvent() {
     nextbtn.onclick = (event) => {
         event.preventDefault(); // ngăn form submit
         if (currentStep < steps.length - 1) {
-            currentStep++;
-            updateSteps();
+            if(checkinputinfomation(currentStep)){
+                currentStep++;
+                updateSteps();
+            }
+            else document.alert("Please fill in all the information");
+            
         }
     };
 
@@ -132,6 +136,32 @@ function setstep3() {
 
     document.getElementById('confirmation').style.display = 'flex';
 }
+
+function checkinputinfomation(stepindex){
+    const info1 = document.getElementById('info1');
+    const info2 = document.getElementById('info2');
+
+    if(stepindex == 0){
+        document.getElementById('next-step').innerText = "Next step";
+        return true;
+    }
+    if(stepindex == 1 || stepindex == 2){
+        if(info1.value.trim() === "" || info2.value.trim() === ""){
+            alert("Please choose an option and fill in all the information");
+            return false;
+        } else {
+            // reset input
+            info1.value = "";
+            info2.value = "";
+            return true;
+        }
+    }
+    else if(stepindex == 3){
+        return true;
+    }
+    return false;
+}
+
 
 function totalinfomation() {
     let delivery = document.getElementById('delivery-label-sum').innerHTML.trim(); // loại bỏ khoảng trắng
