@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="Home.css">
-    <link rel="stylesheet" href="nav_bar.css">
+    <link rel="stylesheet" href="../CSS/Home.css">
+    <link rel="stylesheet" href="../CSS/nav_bar.css">
 </head>
 <body>
     <nav>
@@ -21,9 +21,9 @@
         </ul>  
     </nav>
     <div class="slideshow">
-        <img src="img1.avif" class="slide active">
-        <img src="img2.avif" class="slide">
-        <img src="img3.avif" class="slide">
+        <img src="../Image/img1.avif" class="slide active">
+        <img src="../Image/img2.avif" class="slide">
+        <img src="../Image/img3.avif" class="slide">
     </div>
 
     <h1>Popular Categories</h1>
@@ -41,6 +41,70 @@
     
     <div class="car-list"></div>
     
-    <script src="Home.js"></script>
+    <div class = "browse">
+        <div class ="blackbox">
+            <img src="../Image/lambo.png">
+        </div>
+
+        <div class ="content">
+            <h2>Browse new cars by brand</h2>
+            <p>Pick your car by brand</p>
+            <div class="brands">
+                <a href="https://vinfastauto.com">Vinfast</a>
+                <a href="https://www.mercedes-benz.com">Mercedes</a>
+                <a href="https://www.porsche.com">Porsche</a>
+                <a href="https://www.toyota.com">Toyota</a>
+                <a href="https://www.honda.com">Honda</a>
+                <a href="https://www.bmw.com">BMW</a>
+            </div>
+            <button class="see-all">See all</button>
+        </div>
+    </div>
+
+    <div class="best-offer">
+        <h3>Get our <span>BestOffer</span></h3>
+        <p id="lead">Premium picks with perks included for a worry-free purchase.</p>
+        <div class="offer-content">
+            <div class="left-features">
+                <div class="feature">
+                    <div class="text">
+                        <h4>Featured Luxury Car</h4>
+                        <p>Hand-selected models with full technical checks and verified mileage</p>
+                    </div>
+                    <div class="icon"></div>
+                </div>
+                <div class="feature">
+                    <div class="text">
+                        <h4>Insurance Included</h4>
+                        <p>First-year basic coverage bundled; upgrade options at checkout</p>
+                    </div>
+                    <div class="icon"></div>
+                </div>
+            </div>
+
+            <div class="car-box">
+                <img src="../Image/car.png" alt="Top view car" class="car" />
+            </div>
+
+            <div class="right-features">
+                <div class="feature">
+                    <div class="icon"></div>
+                    <div class="text">
+                        <h4>Cleaning Included</h4>
+                        <p>Enjoy complimentary cleaning services—available 
+                        before delivery and whenever you need a refresh</p>
+                    </div>
+                </div>
+                <div class="feature">
+                    <div class="icon"></div>
+                    <div class="text">
+                        <h4>Online 24/7 Support</h4>
+                        <p>Chat anytime for financing, delivery, or returns</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../JavaScript/Home.js"></script>
 </body>
 </html>

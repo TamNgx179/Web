@@ -24,52 +24,208 @@
   opacity: 1;
 }
 
+
+/* Popular Categories */
 h1{
   padding-top: 50px;
   padding-left: 50px;
 }
 
 .popular{
-    display: flex;
-    gap: 12px;
-    padding: 15px;
-    padding-left: 50px;    
+  display: flex;
+  gap: 12px;
+  padding: 15px;
+  padding-left: 50px;    
 }
 
 .category{
-    background-color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 999px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s;
+  background-color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s;
 }
 
 .category:hover{
-    color: white;
-    background-color: #29302f;
+  color: white;
+  background-color: #29302f;
 }
 
 .category.active {
   background: #111;       
   color: white;           
 }
+.car-list{
+  background:grey;
+  width: 100%;
+  height:300px;
+  margin-bottom: 150px;
+}
 
+/*Browse cars by brand */
 .browse{
-    display: flex;
-}
-.blackbox{
-    background-color: black;
-    width: 400px;
-    height: 500px;
+  background-color: #fcecec;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.content{
-    background-color: pink;
-    width: 1280px;
-    height:500px;
-}
     
+.blackbox {
+  background-color: #000;
+  width: 600px;
+  height: 400px;
+  position: relative; /* để ảnh bám vào */
+  overflow: visible;  /* cho phép ảnh vượt ra */
+}
+
+.blackbox img {
+  position: absolute;
+  right: -180px; /* đẩy xe lấn sang phần hồng */
+  top: 50%;
+  transform: translateY(-30%);
+}
+
+.content {
+  width: 50%;
+  padding: 0 150px 40px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 25px; /* tạo khoảng cách đều giữa h3, p, brands, button */
+  transform: translateX(-20%);
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+}
+
+p {
+  font-size: 20px;
+  margin: 0;
+  color: #333;
+}
+
+.brands {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  gap: 15px 40px;
+  list-style: none;
+}
+.brands a {
+  font-weight: bold;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 10; /*do ảnh đang che lên nút */
+  text-decoration: none;
+  color: #000;      
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.brands a:hover {
+  color: blue;   /* hover đổi sang đỏ */
+}
+.see-all {
+  background-color: #d60000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  width: fit-content;
+  transition: 0.3s;
+  z-index: 10;
+}
+
+.see-all:hover {
+  background: #b30000;
+}
+
+/*Best offer*/
+.best-offer {
+  background: #f6eee9;             
+  padding: 40px 20px;
+  margin-top: 150px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.best-offer h3 {
+  font-size: 32px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.best-offer h3 span {
+  font-weight: bold;
+}
+
+/* Khối content: chia 3 cột (trái - xe - phải) */
+.offer-content {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;   /* khoảng cách giữa các cột */
+}
+
+/* Hai cột trái và phải */
+.left-features, 
+.right-features {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;   /* khoảng cách giữa các feature */
+  max-width: 350px;
+}
+
+
+.feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+/* Icon vuông đen */
+.feature .icon {
+  width: 18px;
+  height: 18px;
+  background: #000;
+  display: inline-block; 
+  flex-shrink: 0;
+}
+
+
+.feature h4 {
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0 0 8px;
+}
+
+.feature p {
+  font-size: 20px;
+  line-height: 1.5;
+  color: #333;
+}
+
+
+
+.car-box {
+  flex: 0 0 260px;  /* chiều rộng box cố định */
+  display: flex;
+  justify-content: center;
+}
+
+.car {
+  width: 100%;
+  max-width: 260px;
+  display: block;
+}
