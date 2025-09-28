@@ -1,17 +1,10 @@
-body {
-    display: flex;
-    justify-content: center;
-    min-height: 100vh;
-    margin: 0;
-    background-color: #f4f4f4;
-    font-family: Arial, sans-serif;
-}
-
 .review-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 95%;
+
+    margin: 0 auto; /* tự động canh giữa */
 
     height: max-content;
     background-color: wh;
@@ -140,6 +133,10 @@ body {
 
 }
 
+#see-all-reviews {
+    margin-bottom: 20px;
+}
+
 #submit-review {
     background-color: #28a745;
     color: white;
@@ -155,3 +152,44 @@ body {
 #close-review:hover {
     background-color: #c82333;
 }
+
+@media (max-width: 600px) {
+    .review-container {
+        width: 95%; 
+        padding: 10px; 
+    }
+
+    #review-main {
+        margin: 10px 0; 
+    }
+
+    #droplist-sort {
+        max-width: 95%;
+        padding: 5px;
+    }
+
+    #review-form {
+        width: 95%; 
+        padding: 15px;
+    }
+
+    #submit-review, #close-review {
+        width: 20%; 
+        margin-top: 10px;
+    }
+
+    .review {
+        margin: 10px 0; /* giảm khoảng cách giữa các review */
+        padding: 10px;
+    }
+
+    .button-container button {
+        width: 20%;
+    }
+
+    .button-container {
+        flex-direction: row; /* nút xếp dọc */
+        gap: 8px;
+    }
+}
+
