@@ -1,0 +1,157 @@
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.review-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+
+    height: max-content;
+    background-color: wh;
+    border-radius: 12px;
+
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.review-container h2 {
+    align-self: flex-start;
+}
+
+#droplist-sort {
+    align-self: flex-start;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+    padding: 10px;
+    min-width: 150px;
+    max-width: 200px;
+    background-color: white;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+#droplist-sort label {
+    font-weight: bold;
+}
+
+#droplist-sort select {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#sort-review option {
+    background-color: white;
+    color: black;
+}
+
+#review-main {
+    border: 1px solid black;
+    border-radius: 10px;
+
+    width: 100%;
+    margin: 20px
+
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+#see-all-reviews {
+    display: block;
+    margin: 0 auto;
+    border-radius: 8px;
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+/* Form review */
+#review-form {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    width: 100%;
+    max-width: 400px;
+    align-self: center;
+}
+
+#review-form:hover {
+    transform: scale(1.01);
+}
+
+#name-container, #email-container, #review-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+#review-input textarea {
+    height: 150px;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 8px;
+    resize: none;
+}
+
+#submit-review, #close-review {
+    width: 40%;
+    align-self: center;
+    border-radius: 15px;
+    padding: 8px;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.review {
+    border-radius: 10px;
+
+    border: 1px solid #ccc;
+
+    padding: 12px;
+
+    margin: 20px;
+
+    height: max-content;
+
+    background-color: lightblue;
+
+    box-sizing: border-box;
+
+}
+
+#submit-review {
+    background-color: #28a745;
+    color: white;
+}
+#submit-review:hover {
+    background-color: #218838;
+}
+
+#close-review {
+    background-color: #dc3545;
+    color: white;
+}
+#close-review:hover {
+    background-color: #c82333;
+}
