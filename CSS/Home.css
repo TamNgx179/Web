@@ -2,12 +2,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
 .slideshow {
   position: relative;
   width: 100%;
-  height: 900px;
+  height: 600px;
   overflow: hidden;
 }
 
@@ -27,7 +28,7 @@
 
 /* Popular Categories */
 h1{
-  font-size: 55px;
+  font-size: 40px;
   padding-top: 50px;
   padding-left: 50px;
 }
@@ -45,7 +46,7 @@ h1{
   margin-top: 10px;
   padding: 10px 20px;
   border-radius: 999px;
-  font-size: 30px;
+  font-size: 23px;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -79,7 +80,7 @@ h1{
     
 .blackbox {
   background-color: #000;
-  width: 800px;
+  width: 30%;
   height: 500px;
   position: relative; /* để ảnh bám vào */
   overflow: visible;  /* cho phép ảnh vượt ra */
@@ -87,7 +88,7 @@ h1{
 
 .blackbox img {
   position: absolute;
-  right: -200px; /* đẩy xe lấn sang phần hồng */
+  right: -40%; /* đẩy xe lấn sang phần hồng */
   top: 50%;
   transform: translateY(-20%);
 }
@@ -98,16 +99,16 @@ h1{
   display: flex;
   flex-direction: column;
   gap: 25px; /* tạo khoảng cách đều giữa h3, p, brands, button */
-  transform: translateX(-20%);
+  transform: translateX(-10%);
 }
 
 h2 {
-  font-size: 55px;
+  font-size: 40px;
   font-weight: bold;
 }
 
 #pick {
-  font-size: 32px;
+  font-size: 30px;
   margin: 0;
   color: #333;
 }
@@ -156,11 +157,10 @@ h2 {
   padding: 40px 20px;
   margin-top: 150px;
   text-align: center;
-  font-family: Arial, sans-serif;
 }
 
 .best-offer h3 {
-  font-size: 55px;
+  font-size: 40px;
   font-weight: normal;
   margin: 0;
 }
@@ -170,7 +170,7 @@ h2 {
 }
 
 #lead{
-  font-size: 32px;
+  font-size: 30px;
   padding-top: 15px;
 }
 /* Khối content: chia 3 cột (trái - xe - phải) */
@@ -211,7 +211,7 @@ h2 {
 
 
 .feature h4 {
-  font-size: 38px;
+  font-size: 30px;
   font-weight: bold;
   margin: 0 0 8px;
 }
