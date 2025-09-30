@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/Review_from_client.css">
+    <script src="../JavaScript/Review_from_client.js" defer></script>
+    
+</head>
+<body>
+    <div class="review-container">
+        <h2>Review from our clients</h2>
+        <div id="droplist-sort">
+            <label for="sort-review">Select Client</label>
+            <select id="sort-review">
+                <option value="recent">Most recent</option>
+                <option value="newest">Newest</option>
+                <option value="oldest">Oldest</option>
+            </select>
+        </div>
+
+        <div id="review-main">
+            <div class="review">
+                <h3 id="name">By John Doe</h3>
+                <h3 id="date-time">september 16, 2025</h3>
+                <p id="review-message">this car is great</p>
+
+                <button>Show full review</button>
+            </div>
+
+            <div class="button-container">
+                <button id="prev">Previous</button>
+                <button id="next">Next</button>
+            </div>
+
+            <button id="see-all-reviews">See all reviews</button>
+        </div>
+
+        <form id="review-form" style="display: none;">
+            <div id="name-container">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div id="email-container">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div id="review-input">
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" required></textarea>
+            </div>
+
+            <button id="submit-review" type="submit">Submit Review</button>
+            <button id="close-review" type="close">Close</button>
+        </form>
+    </div>
+    
+
+</body>
+</html>

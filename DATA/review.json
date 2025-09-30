@@ -1,0 +1,22 @@
+[
+  {
+    "name": "John Doe",
+    "date": "September 16, 2025",
+    "message": "This car is great, very smooth to drive and comfortable."
+  },
+  {
+    "name": "Alice Smith",
+    "date": "September 20, 2025",
+    "message": "Excellent customer service. Highly recommended!"
+  },
+  {
+    "name": "David Johnson",
+    "date": "September 22, 2025",
+    "message": "Good performance, but fuel consumption is a bit high."
+  },
+  {
+    "name": "Emma Brown",
+    "date": "September 25, 2025",
+    "message": "The best purchase I’ve made this year."
+  }
+]
