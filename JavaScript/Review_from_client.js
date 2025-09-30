@@ -1,5 +1,8 @@
+localStorage.clear()
 // Lấy danh sách reviews từ localStorage hoặc tạo mới
 const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+
+
 
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
@@ -48,8 +51,14 @@ function gettingdata_saving() {
         messageInput.value = "";
 
         reviewForm.style.display = 'none';
-        create_review_block(data)
-    }
+        if (reviews.length <= 2) {
+            create_review_block(data);
+        }
+        if(reviews.length > 2){
+        showmore.style.display = 'inline-block'
+        }
+        else showmore.style.display = 'none'
+        }
 
     close.onclick = (e) => {
         e.preventDefault();
@@ -86,11 +95,8 @@ function create_review_block(object){
         review_block.classList.toggle("full");
         showfull.textContent = review_block.classList.contains("full") ? "Show less" : "Show full review";
     }
-
     
 }
-
-
 
 // Hiển thị một số review từ start -> end
 function initreview(startnum, endnum) {
@@ -104,17 +110,29 @@ function showmorereview() {
     // Xử lý nút See more
     reviewblock_count = 2; // số review đã hiển thị ban đầu
     showmore.onclick = () => {
-        initreview(reviewblock_count, reviewblock_count + 3);
-        reviewblock_count += 3;
-        if(reviewblock_count >= reviews.length) {
-            showmore.style.display = 'none';
+        if(showmore.textContent === 'Show less'){
+            //reset viewmain và khởi tạo lại 2 review đầu tiên
+            reviewMain.innerHTML = '';
+            reviewblock_count = 2;
+            showmore.textContent = 'Show more'
+            initreview(0, reviewblock_count)
+            
         }
+        else {
+            initreview(reviewblock_count, reviewblock_count + 3);
+            reviewblock_count += 3;
+            if(reviewblock_count >= reviews.length) {
+                showmore.textContent = 'Show less';
+            }
+        }
+        
     }
 }
 
 
 select.addEventListener('change', () => {
     const value = select.value;
+
     if(value === 'newest'){
         reviews.sort((a, b) => new Date(b.date) - new Date(a.date));
     } else {
@@ -130,7 +148,6 @@ select.addEventListener('change', () => {
 
 // Khi load trang
 window.onload = () => {
-
     initreview(0, 2); // hiển thị 2 review đầu tiên
     showmorereview(); // kích hoạt nút "See more"
     gettingdata_saving(); // kích hoạt submit & close
