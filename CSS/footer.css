@@ -112,6 +112,11 @@ hr {
     .footer-section h2 {
         display: flex;
         justify-content: space-between;
+        margin-left: 10px;
+    }
+
+    .footer-section .social-icons {
+        margin-left: 10px;
     }
 }
 

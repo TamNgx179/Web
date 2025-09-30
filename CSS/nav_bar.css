@@ -1,15 +1,14 @@
 nav {
     width: 100%;
-    background-color: #d9d9dd;
+    background-color: white;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: nowrap;
     min-width: 0;
 
     padding-bottom: 10px;
     padding-top: 10px;
-    margin-top: 1%;
 }
 
 nav ul {
@@ -21,12 +20,17 @@ nav ul {
     list-style: none;
 }
 
-#LOGO, #nav_block2, #trolley {
+#LOGO, #Trolley {
    margin-left: 10%;
+}
+
+#nav_block2 {
+    margin-left: 5%;
 }
 
 #popup-login{
     margin-right: 20px;   
+    margin-left: 5%;
 }
 
 #popup-login img, #Trolley img {

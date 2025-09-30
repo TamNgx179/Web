@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/Review_from_client.css">
     <script src="../JavaScript/Review_from_client.js" defer></script>
+    <link rel="stylesheet" href="../CSS/footer.css">
     
 </head>
 <body>
@@ -13,7 +14,6 @@
         <div id="droplist-sort">
             <label for="sort-review">Select Client</label>
             <select id="sort-review">
-                <option value="recent">Most recent</option>
                 <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
             </select>
@@ -21,9 +21,9 @@
 
         <div id="review-main">
             <div class="review">
-                <h3 id="name">By John Doe</h3>
-                <h3 id="date-time">september 16, 2025</h3>
-                <p id="review-message">this car is great</p>
+                <h3 id="name"></h3>
+                <h3 id="date-time"></h3>
+                <p id="review-message"></p>
 
                 <button>Show full review</button>
             </div>
@@ -57,6 +57,55 @@
         </form>
     </div>
     
+    <footer>
+        <div class="container">
+            <div class="avata">
+                <img class="circle" src="none">
+            </div>
+            
+            <div class="footer-section">
+                <div>
+                    <h2 class="footer-toggle">Infomation <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li><a href="../HTML/Home.html">Home</a></li>
+                        <li><a href="../HTML/About_us.html">About</a></li>
+                        <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="footer-toggle">Helpful Links <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Supports</a></li>
+                        <li><a href="#">Terms & Condition</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="footer-toggle">Contact us <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li>💬 Chat with sale</li>
+                        <li>☎️ (84) 000000000</li>
+                        <li>✉️ email</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><img src="../Image_icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="../Image_icon/X.png" alt="X"></a>
+                        <a href="#"><img src="../Image_icon/instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <hr> <!-- Đường kẻ ngang -->
+
+        <div id="under">
+            <p>Group ... 2025 | All Rights Reserved</p>
+        </div>
+    </footer>
 
 </body>
 </html>
