@@ -111,8 +111,6 @@ function purchasingstep(index) {
                     }
                 ],
             });
-
-
             break;
         }
         case 3: {

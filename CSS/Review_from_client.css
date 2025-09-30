@@ -59,37 +59,61 @@
 
 }
 
-.button-container {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin: 10px 0;
+.review-message {
+    display: -webkit-box;         /* Biến đoạn văn bản thành "hộp ảo" theo WebKit, cho phép cắt dòng */
+    -webkit-box-orient: vertical; /* Đặt hướng hộp ảo theo chiều dọc (bắt buộc khi dùng -webkit-line-clamp) */
+    -webkit-line-clamp: 2;        /* Giới hạn số dòng hiển thị tối đa là 2 */
+    overflow: hidden;              /* Ẩn phần nội dung vượt quá 2 dòng */
+    text-overflow: ellipsis;       /* Thêm dấu "..." khi nội dung bị cắt (chỉ hiệu quả trong WebKit) */
 }
 
-#see-all-reviews {
-    display: block;
-    margin: 0 auto;
+.review.full .review-message {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+}
+
+#see-all-reviews, #write-review {
     border-radius: 8px;
     padding: 8px 15px;
     cursor: pointer;
 }
 
+#see-all-reviews:hover,
+#write-review:hover {
+    transform: scale(1.02);
+}
+
+
 /* Form review */
 #review-form {
-    display: flex;
+    display: none; /* mặc định ẩn, bật bằng JS */
     flex-direction: column;
+    position: fixed; /* cố định trên màn hình */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* căn giữa cả chiều ngang và dọc */
     background-color: white;
-    border: 1px solid black;
     border-radius: 20px;
     padding: 20px;
-    margin-top: 20px;
-    width: 100%;
+    width: 90%;
     max-width: 400px;
-    align-self: center;
+    z-index: 1000; /* đảm bảo trên các nội dung khác */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
 #review-form:hover {
-    transform: scale(1.01);
+    transform: translate(-50%, -50%) scale(1.01);
 }
 
 #name-container, #email-container, #review-input {

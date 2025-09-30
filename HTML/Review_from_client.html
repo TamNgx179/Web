@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/Review_from_client.css">
     <script src="../JavaScript/Review_from_client.js" defer></script>
-    <link rel="stylesheet" href="../CSS/footer.css">
+    <link rel="stylesheet" href="../CSS/footer.css">    
     
 </head>
 <body>
@@ -14,26 +14,22 @@
         <div id="droplist-sort">
             <label for="sort-review">Select Client</label>
             <select id="sort-review">
-                <option value="newest">Newest</option>
                 <option value="oldest">Oldest</option>
+                <option value="newest">Newest</option>
             </select>
         </div>
 
         <div id="review-main">
-            <div class="review">
-                <h3 id="name"></h3>
-                <h3 id="date-time"></h3>
-                <p id="review-message"></p>
-
-                <button>Show full review</button>
+            <div class="review" style="display: none;">
+                <h3 class="name-input"></h3>
+                <h3 class="date-time"></h3>
+                <p class="review-message"></p>
+                <button class="show-full" style="display: none;">Show full review</button>
             </div>
-
-            <div class="button-container">
-                <button id="prev">Previous</button>
-                <button id="next">Next</button>
-            </div>
-
-            <button id="see-all-reviews">See all reviews</button>
+        </div>
+        <div class="button-container">
+            <button id="write-review">Write a review</button>
+            <button id="see-all-reviews" style="display: none;">See more</button>
         </div>
 
         <form id="review-form" style="display: none;">
