@@ -51,6 +51,7 @@ function gettingdata_saving() {
         messageInput.value = "";
 
         reviewForm.style.display = 'none';
+
         if (reviews.length <= 2) {
             create_review_block(data);
         }
@@ -86,10 +87,15 @@ function create_review_block(object){
     const showfull = review_block.querySelector('.show-full');
 
     
-    // Kiểm tra nếu p tràn
-    if(p.scrollHeight > p.clientHeight){
+    // p.scrollHeight: chiều cao toàn bộ nội dung bên trong thẻ p (kể cả phần bị ẩn vì overflow)
+    // p.clientHeight: chiều cao vùng hiển thị thực tế của thẻ p (chỉ phần nhìn thấy)
+
+    // Nếu nội dung dài hơn vùng hiển thị => text bị cắt
+    if (p.scrollHeight > p.clientHeight) {
+        // Khi đó hiện nút "Show full" (inline-block giúp nút nằm gọn, không chiếm nguyên dòng)
         showfull.style.display = 'inline-block';
     }
+
 
     showfull.onclick = () => {
         review_block.classList.toggle("full");
@@ -106,21 +112,22 @@ function initreview(startnum, endnum) {
 
 // Xử lý nút "See more"
 function showmorereview() {
-
     // Xử lý nút See more
     reviewblock_count = 2; // số review đã hiển thị ban đầu
+
     showmore.onclick = () => {
         if(showmore.textContent === 'Show less'){
             //reset viewmain và khởi tạo lại 2 review đầu tiên
             reviewMain.innerHTML = '';
             reviewblock_count = 2;
             showmore.textContent = 'Show more'
-            initreview(0, reviewblock_count)
-            
+            initreview(0, reviewblock_count)        
         }
         else {
             initreview(reviewblock_count, reviewblock_count + 3);
             reviewblock_count += 3;
+
+            //hiển thị hết danh sách chuyển showmore thành showless 
             if(reviewblock_count >= reviews.length) {
                 showmore.textContent = 'Show less';
             }
@@ -141,6 +148,7 @@ select.addEventListener('change', () => {
 
     reviewMain.innerHTML = '';
     reviewblock_count = 2; // reset số review đã hiển thị
+
     initreview(0, reviewblock_count);
     showmore.style.display = reviewblock_count < reviews.length ? 'inline-block' : 'none';
 });
