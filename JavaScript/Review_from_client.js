@@ -25,10 +25,7 @@ writeReviewBtn.onclick = () => {
 
 // Lấy dữ liệu từ form và lưu
 function gettingdata_saving() {
-    //khi mới chạy trang lần đầu nếu số lượng review lớn hơn 2 thì hiện nút showmore
-    if(reviews.length > 2){
-        showmore.style.display = 'inline-block'
-    }
+    
 
     submit.onclick = (e) => {
         e.preventDefault(); // Ngăn form reload trang
@@ -116,6 +113,11 @@ function initreview(startnum, endnum) {
 function showmorereview() {
     // Xử lý nút See more
     reviewblock_count = 2; // số review đã hiển thị ban đầu
+    
+    //khi mới chạy trang lần đầu nếu số lượng review lớn hơn 2 thì hiện nút showmore
+    if(reviews.length > 2){
+        showmore.style.display = 'inline-block'
+    }
 
     showmore.onclick = () => {
         if(showmore.textContent === 'Show less'){
