@@ -1,8 +1,5 @@
-localStorage.clear()
 // Lấy danh sách reviews từ localStorage hoặc tạo mới
 const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
-
-
 
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
@@ -28,6 +25,11 @@ writeReviewBtn.onclick = () => {
 
 // Lấy dữ liệu từ form và lưu
 function gettingdata_saving() {
+    //khi mới chạy trang lần đầu nếu số lượng review lớn hơn 2 thì hiện nút showmore
+    if(reviews.length > 2){
+        showmore.style.display = 'inline-block'
+    }
+
     submit.onclick = (e) => {
         e.preventDefault(); // Ngăn form reload trang
 

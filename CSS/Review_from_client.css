@@ -68,8 +68,8 @@
 }
 
 .review.full .review-message {
-    -webkit-line-clamp: unset;
-    overflow: visible;
+    -webkit-line-clamp: unset; /* Hủy bỏ giới hạn số dòng, hiển thị toàn bộ nội dung */
+    overflow: visible;          /*không bị ẩn */
 }
 
 
@@ -208,11 +208,11 @@
     }
 
     .button-container button {
-        width: 20%;
+        width: 80%;
     }
 
     .button-container {
-        flex-direction: row; /* nút xếp dọc */
+        flex-direction: column; /* nút xếp dọc */
         gap: 8px;
     }
 }
