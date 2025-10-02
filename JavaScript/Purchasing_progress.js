@@ -1,4 +1,5 @@
 let currentStep = 0; // bước hiện tại, bắt đầu từ 0
+let carlist = [];
 
 function initEvent() {
     const nextbtn = document.getElementById("next-step"); 
@@ -176,14 +177,15 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
         carForm.remove(); // Xóa cả form
     };
 
+    //đẩy tên xe và icon thùng rác vào khung
     carAndClose.appendChild(carName);
     carAndClose.appendChild(closeIcon);
 
-    // Dòng thông tin
+    //dòng thông tin cơ bản xe
     const infoLine = document.createElement("div");
     infoLine.className = "info-line";
 
-    // Shop-time
+    //shop-time (thời gian bỏ xe vào giỏ)
     const shopTime = document.createElement("div");
     shopTime.className = "shop-time";
     const shopIcon = document.createElement("img");
@@ -192,6 +194,7 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
     const shopText = document.createElement("div");
     shopText.className = "time";
     shopText.textContent = time;
+    //đẩy icon và nội dung vào khung
     shopTime.appendChild(shopIcon);
     shopTime.appendChild(shopText);
 
