@@ -1,0 +1,144 @@
+{
+  "brand": { "id": "honda", "name": "Honda" },
+  "cars": [
+    {
+        "id": "Honda-Accord",
+        "name": "Honda Accord",
+        "type": "Sedan",
+        "priceUSD": 29000,
+        "hero": "images/honda/accord/accord-trans.png",
+        "gallery": [
+            "images/honda/accord/accord-img1.avif",
+            "images/honda/accord/accord-img2.avif",
+            "images/honda/accord/accord-img3.avif",
+            "images/honda/accord/accord-img4.png"
+        ],
+        "specs": {
+            "Model": "Honda Accord",
+            "Engine": "1.5-L turbocharged VTEC® 4-cylinder",
+            "Power": "192 HP",
+            "Torque": "260 Nm",
+            "Gear": "CVT automatic",
+            "Top Speed": "232 km/h",
+            "Length x Width x Height": "4,972 x 1,863 x 1,450 mm",
+            "Weight": "1,469 kg",
+            "Fuel Consumption": "7.35 L/100 km"
+        },
+        "safety": [
+            "Collision Mitigation Braking System",
+            "Forward Collision Warning",
+            "Lane Departure Warning"
+        ],
+        "convenience": [
+            "Dual-zone automatic climate control",
+            "Rear A/C vents",
+            "Keyless entry, remote engine start"
+        ]
+    },
+
+    {
+        "id": "Honda-Civic",
+        "name": "Honda Civic",
+        "type": "Sedan",
+        "priceUSD": 27000,
+        "hero": "images/honda/civic/civic-trans.png",
+        "gallery": [
+            "images/honda/civic/civic-img1.jpg",
+            "images/honda/civic/civic-img2.jpg",
+            "images/honda/civic/civic-img3.jpg",
+            "images/honda/civic/civic-img4.jpg"
+        ],
+        "specs": {
+            "Model": "Honda Civic",
+            "Engine": "2.0-L naturally aspirated inline-4",
+            "Power": "158 HP",
+            "Torque": "187 Nm",
+            "Gear": "CVT automatic",
+            "Top Speed": "210 km/h",
+            "Length x Width x Height": "4,547 x 1,800 x 1,415 mm",
+            "Weight": "1,350 kg",
+            "Fuel Consumption": "6.9 L/100 km"
+        },
+        "safety": [
+            "Advanced Compatibility Engineering",
+            "Multiple airbags",
+            "Lane Departure Warning"
+        ],
+        "convenience": [
+            "Dual-zone automatic climate control",
+            "Push button start and Smart Entry with Walk Away Auto Lock",
+            "Power-adjustable driver's seat with lumbar support"
+        ]
+    },
+
+    {
+       "id": "Honda-HR-V",
+        "name": "Honda HR-V",
+        "type": "SUV",
+        "priceUSD": 26000,
+        "hero": "images/honda/HRV/HRV-trans.png",
+        "gallery": [
+            "images/honda/HRV/HRV-img1.avif",
+            "images/honda/HRV/HRV-img2.avif", 
+            "images/honda/HRV/HRV-img3.avif",
+            "images/honda/HRV/HRV-img4.avif"
+        ],
+        "specs": {
+            "Model": "Honda HR-V",
+            "Engine": "1.5 L i-VTEC",
+            "Power": "180 HP",
+            "Torque": "187 Nm",
+            "Gear": "CVT automatic",
+            "Top Speed": "185 km/h",
+            "Length x Width x Height": "4,400 x 1,800 x 1,580 mm",
+            "Weight": "1,433 kg",
+            "Fuel Consumption": "6.7 L/100 km"
+        },
+        "safety": [
+            "Collision Mitigation Braking System",
+            "Forward Collision Warning",
+            "Lane Departure Warning"
+        ],
+        "convenience": [
+            "Touchscreen display",
+            "Apple CarPlay & Android Auto",
+            "Digital or semi-digital driver display"
+        ] 
+    },
+
+    {
+        "id": "Honda-CR-V",
+        "name": "Honda CR-V",
+        "type": "SUV",
+        "priceUSD": 32000,
+        "hero": "images/honda/CRV/CRV-trans.png",
+        "gallery": [
+            "images/honda/CRV/CRV-img1.avif",
+            "images/honda/CRV/CRV-img2.avif", 
+            "images/honda/CRV/CRV-img3.avif",
+            "images/honda/CRV/CRV-img4.avif"
+        ],
+        "specs": {
+            "Model": "Honda CR-V",
+            "Engine": "1.5 L turbocharged I4",
+            "Power": "190 HP",
+            "Torque": "243 Nm",
+            "Gear": "CVT automatic",
+            "Top Speed": "185 km/h",
+            "Length x Width x Height": "4,694 x 1,866 x 1,682 mm",
+            "Weight": "1,767 kg",
+            "Fuel Consumption": "7.8 L/100 km"
+        },
+        "safety": [
+            "Collision Mitigation Braking System",
+            "Forward Collision Warning",
+            "Lane Departure Warning"
+        ],
+        "convenience": [
+            "Dual-zone automatic climate control",
+            "Push button start and Smart Entry with Walk Away Auto Lock",
+            "Power-adjustable driver's seat with memory function"
+        ] 
+    }
+  ]
+}
