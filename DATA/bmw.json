@@ -1,0 +1,439 @@
+{
+  "brand": { "id": "bmw", "name": "BMW" },
+  "cars": [
+    {
+        "id": "BMW-X4",
+        "name": "BMW X4",
+        "type": "SUV",
+        "display": "images/bmw/X4/X4-display.webp",
+        "priceUSD": 56000,
+        "hero": "images/bmw/bmw-x4/X4-trans.jpg",
+        "gallery": [
+            "images/bmw/bmw-x4/X4-img1.jpg",
+            "images/bmw/bmw-x4/X4-img2.jpg",
+            "images/bmw/bmw-x4/X4-img3.avif",
+            "images/bmw/bmw-x4/X4-img4.jpg"
+        ],
+        "specs": {
+            "Model": "BMW X4",
+            "Engine": "3.0 L TwinPower Turbo inline-6 mild hybrid",
+            "Power": "360 HP",
+            "Torque": "500 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "268 km/h",
+            "Length x Width x Height": "4,754 x 1,938 x 1,621 mm",
+            "Weight": "1,998 kg",
+            "Fuel Consumption": "8 L/100 km"
+        },
+        "safety": [
+            "ABS + EBD + Brake Assist",
+            "Multiple airbags",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "Power / electric seats with memory function",
+            "Multi-zone automatic climate control",
+            "Infotainment touchscreen + digital instrument cluster"
+        ]
+    },
+
+    {
+        "id": "BMW-X5",
+        "name": "BMW X5",
+        "type": "SUV",
+        "display": "images/bmw/X5/X5-display.webp",
+        "priceUSD": 68000,
+        "hero": "images/bmw/bmw-x5/X5-trans.png",
+        "gallery": [
+            "images/bmw/bmw-x5/X5-img1.avif",
+            "images/bmw/bmw-x5/X5-img2.avif",
+            "images/bmw/bmw-x5/X5-img3.avif",
+            "images/bmw/bmw-x5/X5-img4.avif"
+        ],
+        "specs": {
+            "Model": "BMW X5",
+            "Engine": "3.0 L TwinPower Turbo inline-6 + 48-Volt mild-hybrid",
+            "Power": "381 HP",
+            "Torque": "540 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "4,935 x 2,004 x 1,765 mm",
+            "Weight": "2,240 kg",
+            "Fuel Consumption": "9.9-8.5 L/100 km"
+        },
+        "safety": [
+            "ABS + EBD + Brake Assist",
+            "Multiple airbags",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "Power / electric seats with memory function",
+            "Multi-zone automatic climate control",
+            "Infotainment touchscreen + digital instrument cluster"
+        ]
+    },
+
+    {
+        "id": "BMW-X6",
+        "name": "BMW X6",
+        "type": "SUV",
+        "display": "images/bmw/X6/X6-display.webp",
+        "priceUSD": 77000,
+        "hero": "images/bmw/bmw-x6/X6-trans.jpg",
+        "gallery": [
+            "images/bmw/bmw-x6/X6-img1.avif",
+            "images/bmw/bmw-x6/X6-img2.avif",
+            "images/bmw/bmw-x6/X6-img3.avif",
+            "images/bmw/bmw-x6/X6-img4.avif"
+        ],
+        "specs": {
+            "Model": "BMW X6",
+            "Engine": "3.0 L TwinPower Turbo inline-6 with 48V mild hybrid",
+            "Power": "381 HP",
+            "Torque": "540 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "4,935 x 2,015 x 1,695 mm",
+            "Weight": "2,070 kg",
+            "Fuel Consumption": "8.8 L/100 km"
+        },
+        "safety": [
+            "ABS + EBD + Brake Assist",
+            "Multiple airbags",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "Power / electric seats with memory function",
+            "Multi-zone automatic climate control",
+            "Infotainment touchscreen + digital instrument cluster"
+        ]
+    },
+
+    {
+        "id": "BMW-i5",
+        "name": "BMW i5",
+        "type": "Sedan",
+        "display": "images/bmw/i5/i5-display.webp",
+        "priceUSD": 68000,
+        "hero": "images/bmw/bmw-i5/i5-trans.webp",
+        "gallery": [
+            "images/bmw/bmw-i5/i5-img1.png",
+            "images/bmw/bmw-i5/i5-img2.png",
+            "images/bmw/bmw-i5/i5-img3.png",
+            "images/bmw/bmw-i5/i5-img4.png"
+        ],
+        "specs": {
+            "Model": "BMW i5",
+            "Engine": "Fully electric",
+            "Power": "340 HP",
+            "Torque": "400 Nm",
+            "Gear": "1-speed automatic",
+            "Top Speed": "190-193 km/h",
+            "Battery Capacity": "81.2 kWh",
+            "Length x Width x Height": "5,060 x 1,900 x 1,515 mm",
+            "Weight": "2,205 kg",
+            "Fuel Consumption": "8.8 L/100 km"
+        },
+        "safety": [
+            "Automated Emergency Braking with Pedestrian Detection",
+            "Blind-Spot Monitoring",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "BMW Curved Display",
+            "BMW iDrive (version ~8.5) interface, over-the-air updates",
+            "Wireless smartphone charging pad"
+        ]  
+    },
+
+    {
+        "id": "BMW-i7",
+        "name": "BMW i7",
+        "type": "Sedan",
+        "display": "images/bmw/i7/i7-display.webp",
+        "priceUSD": 106000,
+        "hero": "images/bmw/bmw-i7/i7-trans.webp",
+        "gallery": [
+            "images/bmw/bmw-i7/i7-img1.avif",
+            "images/bmw/bmw-i7/i7-img2.webp",
+            "images/bmw/bmw-i7/i7-img3.webp",
+            "images/bmw/bmw-i7/i7-img4.avif"
+        ],
+        "specs": {
+            "Model": "BMW i7",
+            "Engine": "Fully electric",
+            "Power": "659 HP",
+            "Torque": "1,015 Nm",
+            "Gear": "1-speed automatic",
+            "Top Speed": "250 km/h",
+            "Battery Capacity": "101.7 kWh",
+            "Length x Width x Height": "5,391 x 1,950 x 1,544 mm",
+            "Weight": "2,770 kg",
+            "Fuel Consumption": "8.8 L/100 km"
+        },
+        "safety": [
+            "Multiple airbags",
+            "Seat belts with pretensioners and reminders",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "Digital displays",
+            "BMW iDrive system + voice control / voice recognition",
+            "Apple CarPlay & Android Auto compatibility"
+        ]  
+    },
+
+    {
+        "id": "BMW-M3",
+        "name": "BMW M3",
+        "type": "Sedan",
+        "display": "images/bmw/M3/M3-display.webp",
+        "priceUSD": 79000,
+        "hero": "images/bmw/bmw-m3/M3-trans.avif",
+        "gallery": [
+            "images/bmw/bmw-m3/M3-img1.jpg",
+            "images/bmw/bmw-m3/M3-img2.avif",
+            "images/bmw/bmw-m3/M3-img3.avif",
+            "images/bmw/bmw-m3/M3-img4.avif"
+        ],
+        "specs": {
+            "Model": "BMW M3",
+            "Engine": "3.0 L TwinPower Turbo inline-6 petrol",
+            "Power": "510 HP",
+            "Torque": "650 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "4,801 x 1,903 x 1,438 mm",
+            "Weight": "1,855 kg",
+            "Fuel Consumption": "10.1-10 L/100 km"
+        },
+        "safety": [
+            "Multiple airbags",
+            "ABS + EBD + Brake Assist",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "Multi-zone automatic climate control",
+            "Electric / Power seats with memory function",
+            "Large infotainment display + digital instrument cluster"
+        ]  
+    },
+
+    {
+        "id": "BMW-M5",
+        "name": "BMW M5",
+        "type": "Sedan",
+        "display": "images/bmw/M5/M5-display.webp",
+        "priceUSD": 122000,
+        "hero": "images/bmw/bmw-m5/M5-trans.png",
+        "gallery": [
+            "images/bmw/bmw-m5/M5-img1.avif",
+            "images/bmw/bmw-m5/M5-img2.avif",
+            "images/bmw/bmw-m5/M5-img3.avif",
+            "images/bmw/bmw-m5/M5-img4.avif"
+        ],
+        "specs": {
+            "Model": "BMW M5",
+            "Engine": "4.4 L Twin-Turbo V8 + Plug-in Hybrid electric motor",
+            "Power": "727 HP",
+            "Torque": "1,000 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "5,096 x 1,970 x 1,510 mm",
+            "Weight": "2,510 kg",
+            "Fuel Consumption": "1,6-1.9 L/100 km"
+        },
+        "safety": [
+            "Multiple airbags",
+            "ABS + EBD + Brake Assist",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "Multi-zone automatic climate control",
+            "Electric / Power seats with memory function",
+            "Large infotainment display + digital instrument cluster"
+        ]  
+    },
+
+    {
+        "id": "BMW-i5",
+        "name": "BMW i5",
+        "type": "EV",
+        "display": "images/bmw/i5/i5-display.webp",
+        "priceUSD": 68000,
+        "hero": "images/bmw/bmw-i5/i5-trans.webp",
+        "gallery": [
+            "images/bmw/bmw-i5/i5-img1.png",
+            "images/bmw/bmw-i5/i5-img2.png",
+            "images/bmw/bmw-i5/i5-img3.png",
+            "images/bmw/bmw-i5/i5-img4.png"
+        ],
+        "specs": {
+            "Model": "BMW i5",
+            "Engine": "Fully electric",
+            "Power": "340 HP",
+            "Torque": "400 Nm",
+            "Gear": "1-speed automatic",
+            "Top Speed": "190-193 km/h",
+            "Battery Capacity": "81.2 kWh",
+            "Length x Width x Height": "5,060 x 1,900 x 1,515 mm",
+            "Weight": "2,205 kg",
+            "Fuel Consumption": "15.9 kWh/100 km"
+        },
+        "safety": [
+            "Automated Emergency Braking with Pedestrian Detection",
+            "Blind-Spot Monitoring",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "BMW Curved Display",
+            "BMW iDrive (version ~8.5) interface, over-the-air updates",
+            "Wireless smartphone charging pad"
+        ]  
+    },
+
+    {
+        "id": "BMW-i7",
+        "name": "BMW i7",
+        "type": "Sedan",
+        "display": "images/bmw/i7/i7-display.webp",
+        "priceUSD": 106000,
+        "hero": "images/bmw/bmw-i7/i7-trans.webp",
+        "gallery": [
+            "images/bmw/bmw-i7/i7-img1.avif",
+            "images/bmw/bmw-i7/i7-img2.webp",
+            "images/bmw/bmw-i7/i7-img3.webp",
+            "images/bmw/bmw-i7/i7-img4.avif"
+        ],
+        "specs": {
+            "Model": "BMW i7",
+            "Engine": "Fully electric",
+            "Power": "659 HP",
+            "Torque": "1,015 Nm",
+            "Gear": "1-speed automatic",
+            "Top Speed": "250 km/h",
+            "Battery Capacity": "101.7 kWh",
+            "Length x Width x Height": "5,391 x 1,950 x 1,544 mm",
+            "Weight": "2,770 kg",
+            "Fuel Consumption": "18.4 kWh / 100 km"
+        },
+        "safety": [
+            "Multiple airbags",
+            "Seat belts with pretensioners and reminders",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "Digital displays",
+            "BMW iDrive system + voice control / voice recognition",
+            "Apple CarPlay & Android Auto compatibility"
+        ]  
+    },
+
+    {
+        "id": "BMW-Z4",
+        "name": "BMW Z4",
+        "type": "Convertible",
+        "display": "images/bmw/Z4/Z4-display.webp",
+        "priceUSD": 57000,
+        "hero": "images/bmw/bmw-z4/Z4-trans.png",
+        "gallery": [
+            "images/bmw/bmw-z4/Z4-img1.avif",
+            "images/bmw/bmw-z4/Z4-img2.avif",
+            "images/bmw/bmw-z4/Z4-img3.avif",
+            "images/bmw/bmw-z4/Z4-img4.avif"
+        ],
+        "specs": {
+            "Model": "BMW Z4",
+            "Engine": "3.0-L turbocharged inline-6",
+            "Power": "382 HP",
+            "Torque": "500 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "270 km/h",
+            "Length x Width x Height": "4,324 x 1,864 x 1,304 mm",
+            "Weight": "1,607 kg",
+            "Fuel Consumption": "7.4-7.1 L/100 km"
+        },
+        "safety": [
+            "Multiple airbags",
+            "ABS + EBD + Brake Assist",
+            "Lane Keeping Assist / Lane Departure Warning"
+        ],
+        "convenience": [
+            "Dual-zone automatic climate control",
+            "Wireless Apple CarPlay; wired Android Auto",
+            "Large infotainment display + digital instrument cluster"
+        ]  
+    },
+
+    {
+        "id": "BMW-M4",
+        "name": "BMW M4",
+        "type": "Coupe",
+        "display": "images/bmw/M4/M4-display.webp",
+        "priceUSD": 82000,
+        "hero": "images/bmw/bmw-m4/M4-trans.avif",
+        "gallery": [
+            "images/bmw/bmw-m4/M4-img1.jpg",
+            "images/bmw/bmw-m4/M4-img2.jpg",
+            "images/bmw/bmw-m4/M4-img3.jpg",
+            "images/bmw/bmw-m4/M4-img4.jpg"
+        ],
+        "specs": {
+            "Model": "BMW M4",
+            "Engine": "3.0-L TwinPower Turbo inline-6 petrol",
+            "Power": "551 HP",
+            "Torque": "650 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "302 km/h",
+            "Length x Width x Height": "4,801 x 1,887 x 1,399 mm",
+            "Weight": "1,850 kg",
+            "Fuel Consumption": "10.1-10.2 L/100 km"
+        },
+        "safety": [
+            "Multiple airbags",
+            "ABS + EBD + Brake Assist",
+            "Stability Control, Traction Control"
+        ],
+        "convenience": [
+            "Leather / Extended Merino leather upholstery for seats",
+            "Ventilated front seats available in higher/optional trims",
+            "Large infotainment display + digital instrument cluster"
+        ]  
+    },
+
+    {
+        "id": "BMW-M8",
+        "name": "BMW M8",
+        "type": "Coupe",
+        "priceUSD": 82000,
+        "hero": "images/bmw/bmw-m8/M8-trans.webp",
+        "gallery": [
+            "images/bmw/bmw-m8/M8-img1.jpg",
+            "images/bmw/bmw-m8/M8-img2.jpg",
+            "images/bmw/bmw-m8/M8-img3.jpg",
+            "images/bmw/bmw-m8/M8-img4.jpg"
+        ],
+        "specs": {
+            "Model": "BMW M8",
+            "Engine": "4.4-L BMW M TwinPower Turbo V-8 petrol",
+            "Power": "617 HP",
+            "Torque": "750 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "4,867 x 1,907 x 1,362 mm",
+            "Weight": "2,005 kg",
+            "Fuel Consumption": "10-11.5 L/100 km"
+        },
+        "safety": [
+            "Adaptive LED Headlights with LaserLight",
+            "Frontal Collision Warning + Automatic City Collision Mitigation",
+            "Automatic High Beams"
+        ],
+        "convenience": [
+            "Heated steering wheel; heated armrests front; ventilated seats front",
+            "Power / Electric / M Sport Seats, often heated & ventilated front seats, with adjustment in multiple axes",
+            "Large infotainment display + digital instrument cluster"
+        ]  
+    }
+  ]
+}

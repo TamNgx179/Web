@@ -161,6 +161,80 @@
     justify-content: space-between;
 }
 
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.display-carform {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.carform {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+
+.line {
+    width: 1px;
+    height: 100px;
+    background: gray;
+    border: none;
+}
+
+
+.img-car {
+    width: 150px;
+    height: auto;   /* giữ đúng tỷ lệ */
+    object-fit: cover; /* cắt vừa khung nếu cần */
+    margin-left: 15px;
+}
+
+.car-and-close {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    align-items: center;
+
+    margin-right: 20px;
+}
+
+.info-line {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-between;
+    margin-right: 20px;
+}
+
+.shop-time, .car-power, .car-energy {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+
+.car-infomation {
+    display: flex;
+    flex-direction: column;
+
+    width: 70%;
+}
+
+
 
 @media (max-width: 600px) {
     #purchasing-progress {
@@ -187,5 +261,27 @@
     #Order-summary {
         width: 80%;
         margin-top: 20px;
+    }
+    .carform {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .line {
+        width: 250px;
+        height: 1px;
+        background: gray;
+        border: none;
+    }
+
+    .img-car {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+
+    .car-infomation {
+        width: 100%;
     }
 }

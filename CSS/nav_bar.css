@@ -41,25 +41,34 @@ nav ul {
 
 @media (max-width: 600px) {
     nav {
-        padding-top: 6px;
-        padding-bottom: 6px;
-        flex-wrap: nowrap;
+        padding: 8px 12px;
+        justify-content: space-between; /* tách 3 phần: logo - menu - icon */
     }
-    nav ul {
-        gap: 8px;
-        width: auto;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        flex-direction: row;
-    }
-    nav a {
-        font-size: 13px;
-    }
+
     #LOGO {
-        font-size: 15px;
-        margin-left: 15px;
-        display: block;
-        text-align: center;
+        margin: 0;
+        font-size: 12px;
+    }
+
+    nav ul {
+        flex: 1;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    #nav_block2 {
+        margin: 0;
+    }
+
+    #popup-login,
+    #Trolley {
+        margin: 0 6px;
+    }
+
+    #popup-login img, 
+    #Trolley img {
+        width: 20px;
+        height: 20px;
     }
 }
+

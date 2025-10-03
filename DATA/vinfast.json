@@ -1,0 +1,112 @@
+{
+  "brand": { "id": "vin", "name": "Vinfast" },
+  "cars": [
+    {
+        "id": "Vinfast-VF3",
+        "name": "Vinfast VF3",
+        "type": "EV",
+        "display": "images/vinfast/VF3/VF3-display.png",
+        "priceUSD": 13000,
+        "hero": "images/vinfast/VF3/VF3-trans.webp",
+        "gallery": [
+            "images/vinfast/VF3/VF3-img1.webp",
+            "images/vinfast/VF3/VF3-img2.jpg"
+        ],
+        "specs": {
+            "Model": "Vinfast VF3",
+            "Engine": "Electric motor",
+            "Power": "43 HP",
+            "Torque": "110 Nm",
+            "Gear": "Single-speed automatic",
+            "Top Speed": "100 km/h",
+            "Battery Capacity": "18.64 kWh",
+            "Length x Width x Height": "3,190 x 1,679 x 1,650 mm",
+            "Weight": "857 kg",
+            "Fuel Consumption": "8.1 kWh / 100 km"
+        },
+        "safety": [
+            "Anti-lock Braking System",
+            "Electronic Brake-force Distribution",
+            "Brake Assist"
+        ],
+        "convenience": [
+            "10-inch central touchscreen infotainment display",
+            "Bluetooth and WiFi connectivity",
+            "Drive modes: Eco, Normal"
+        ]
+    },
+
+    {
+        "id": "Vinfast-VF8",
+        "name": "Vinfast VF8",
+        "type": "EV",
+        "display": "images/vinfast/VF8/VF8-display.webp",
+        "priceUSD": 57000,
+        "hero": "images/vinfast/VF8/VF8-trans.png",
+        "gallery": [
+            "images/vinfast/VF8/VF8-img1.avif",
+            "images/vinfast/VF8/VF8-img2.avif",
+            "images/vinfast/VF8/VF8-img3.avif",
+            "images/vinfast/VF8/VF8-img4.avif"
+        ],
+        "specs": {
+            "Model": "Vinfast VF8",
+            "Engine": "Dual electric motors",
+            "Power": "402 HP",
+            "Torque": "620 Nm",
+            "Gear": "Single-speed automatic",
+            "Top Speed": "200 km/h",
+            "Battery Capacity": "87.7 kWh",
+            "Length x Width x Height": "4,750 x  1,900 x 1,660 mm",
+            "Weight": "2,150 kg",
+            "Fuel Consumption": "23.1 kWh / 100 km"
+        },
+        "safety": [
+            "Automatic Emergency Braking",
+            "Forward Collision Warning ",
+            "Lane Keeping Assist + Lane Departure Warning"
+        ],
+        "convenience": [
+            "Large 15.6-inch touchscreen",
+            "Head-Up Display (HUD)",
+            "Voice Assistant"
+        ]
+    },
+
+    {
+        "id": "Vinfast-VF9",
+        "name": "Vinfast VF9",
+        "type": "EV",
+        "display": "images/vinfast/VF8/VF8-display.webp",
+        "priceUSD": 57000,
+        "hero": "images/vinfast/VF9/VF9-trans.png",
+        "gallery": [
+            "images/vinfast/VF9/VF9-img1.avif",
+            "images/vinfast/VF9/VF9-img2.avif",
+            "images/vinfast/VF9/VF9-img3.avif"
+        ],
+        "specs": {
+            "Model": "Vinfast VF9",
+            "Engine": "Dual electric motors",
+            "Power": "402 HP",
+            "Torque": "620 Nm",
+            "Gear": "Single-speed automatic",
+            "Top Speed": "200 km/h",
+            "Battery Capacity": "92 kWh",
+            "Length x Width x Height": "5,118 x  2,254 x 1,696 mm",
+            "Weight": "2,800 kg",
+            "Fuel Consumption": "27.9 kWh / 100 km"
+        },
+        "safety": [
+            "Adaptive Cruise Control / Cruise Assist",
+            "Advanced Driver Assistance Systems",
+            "Blind Spot Monitoring / Detection"
+        ],
+        "convenience": [
+            "Large Infotainment Screen / Digital Cockpit",
+            "Vegan / Premium Leather Seats",
+            "Climate Control (Dual / Tri-zone)"
+        ]
+    }
+  ]
+}

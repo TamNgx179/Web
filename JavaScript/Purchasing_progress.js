@@ -1,4 +1,5 @@
 let currentStep = 0; // bước hiện tại, bắt đầu từ 0
+let carlist = [];
 
 function initEvent() {
     const nextbtn = document.getElementById("next-step"); 
@@ -25,7 +26,7 @@ function initEvent() {
                 currentStep++;
                 updateSteps();
             }
-            else document.alert("Please fill in all the information");
+            else alert("Please fill in all the information");
             
         }
     };
@@ -60,12 +61,22 @@ function setStepContent({ header, paragraph, options}) {
 function purchasingstep(index) {
     switch(index) {
         case 0:{
+            document.getElementById('method').style.display = 'none'
+            document.getElementById("info").style.display = "none";
+            document.getElementById('confirmation').style.display = "none"
+            document.querySelector('.carform').style.display = 'flex'
+            document.getElementById('back').style.display = 'none';
+
+            setstep0();
             break;
         }
         case 1:{
             document.getElementById("method").style.display = "flex";
             document.getElementById("info").style.display = "none";
             document.getElementById('confirmation').style.display = "none"
+            document.querySelector('.carform').style.display = 'none';
+            document.getElementById('back').style.display = 'block';
+
             
             setinfomation(index);
 
@@ -92,6 +103,10 @@ function purchasingstep(index) {
             document.getElementById("method").style.display = "flex";
             document.getElementById("info").style.display = "none";
             document.getElementById('confirmation').style.display = "none"
+            document.querySelector('.carform').style.display = 'none';
+
+            document.getElementById('back').style.display = 'block';
+
 
             setinfomation(index);
 
@@ -121,7 +136,118 @@ function purchasingstep(index) {
 
 }
 
+//hàm tạo car form
+function createCarForm(imgSrc, name, time, power, energy, price) {
+    //khung ngoài
+    const carForm = document.createElement("div");
+    carForm.className = "carform";
 
+    //ảnh xe
+    const imgCar = document.createElement("img");
+    imgCar.className = "img-car";
+    imgCar.src = imgSrc;
+    carForm.appendChild(imgCar);
+
+    //đường gạch dọc
+    const line = document.createElement("hr");
+    line.className = "line";
+    carForm.appendChild(line);
+
+    //phần thông tin xe
+    const carInfo = document.createElement("div");
+    carInfo.className = "car-infomation";
+
+    //tên xe + icon thùng rác
+    const carAndClose = document.createElement("div");
+    carAndClose.className = "car-and-close";
+
+    //tên xe
+    const carName = document.createElement("h4");
+    carName.className = "car-name";
+    carName.textContent = name;
+
+    //icon thùng rác
+    const closeIcon = document.createElement("img");
+    closeIcon.className = "icon";
+    closeIcon.src = "../Image_icon/trashcan.png";
+    closeIcon.style.cursor = "pointer"; // trỏ chuột
+
+    //click vào icon thùng rác
+    closeIcon.onclick = () => {
+        carForm.remove(); // Xóa cả form
+    };
+
+    //đẩy tên xe và icon thùng rác vào khung
+    carAndClose.appendChild(carName);
+    carAndClose.appendChild(closeIcon);
+
+    //dòng thông tin cơ bản xe
+    const infoLine = document.createElement("div");
+    infoLine.className = "info-line";
+
+    //shop-time (thời gian bỏ xe vào giỏ)
+    const shopTime = document.createElement("div");
+    shopTime.className = "shop-time";
+    const shopIcon = document.createElement("img");
+    shopIcon.className = "icon";
+    shopIcon.src = "../Image_icon/calendar.png";
+    const shopText = document.createElement("div");
+    shopText.className = "time";
+    shopText.textContent = time;
+    //đẩy icon và nội dung vào khung
+    shopTime.appendChild(shopIcon);
+    shopTime.appendChild(shopText);
+
+    // Car-power
+    const carPower = document.createElement("div");
+    carPower.className = "car-power";
+    const powerIcon = document.createElement("img");
+    powerIcon.className = "icon";
+    powerIcon.src = "../Image_icon/engine.png";
+    const powerText = document.createElement("div");
+    powerText.className = "power";
+    powerText.textContent = power;
+    carPower.appendChild(powerIcon);
+    carPower.appendChild(powerText);
+
+    // Car-energy
+    const carEnergy = document.createElement("div");
+    carEnergy.className = "car-energy";
+    const energyIcon = document.createElement("img");
+    energyIcon.className = "icon";
+    energyIcon.src = "../Image_icon/energy.png";
+    const energyText = document.createElement("div");
+    energyText.className = "energy";
+    energyText.textContent = energy;
+    carEnergy.appendChild(energyIcon);
+    carEnergy.appendChild(energyText);
+
+    // Gắn 3 khối info vào info-line
+    infoLine.appendChild(shopTime);
+    infoLine.appendChild(carPower);
+    infoLine.appendChild(carEnergy);
+
+    // Giá xe
+    const carPrice = document.createElement("h3");
+    carPrice.className = "car-price";
+    carPrice.textContent = price;
+
+    // Gắn tất cả vào car-info
+    carInfo.appendChild(carAndClose);
+    carInfo.appendChild(infoLine);
+    carInfo.appendChild(carPrice);
+
+    // Gắn vào form chính
+    carForm.appendChild(carInfo);
+
+    return carForm;
+}
+
+
+
+function setstep0(){
+    //đợi data
+}
 
 function setstep3() {
     document.getElementById("header").innerHTML = "Order confirmation";
@@ -133,6 +259,7 @@ function setstep3() {
     document.getElementById('item-label').innerHTML = "";
 
     document.getElementById('confirmation').style.display = 'flex';
+    document.getElementById('back').style.display = 'block';
 }
 
 function checkinputinfomation(stepindex){
@@ -231,3 +358,6 @@ function setinfomation(stepindex) {
     });
 }
 
+window.onload = function() {
+    purchasingstep(0);
+};

@@ -1,0 +1,258 @@
+{
+  "brand": { "id": "mercedes", "name": "Mercedes" },
+  "cars": [
+    {
+        "id": "Mercedes-GLS450",
+        "name": "Mercedes GLS450",
+        "type": "SUV",
+        "display": "images/mercedes/GLS450/GLS450-display.webp",
+        "priceUSD": 91000,
+        "hero": "images/mercedes/GLS450/GLS450-trans.png",
+        "gallery": [
+            "images/mercedes/GLS450/GLS450-img1.avif",
+            "images/mercedes/GLS450/GLS450-img2.avif",
+            "images/mercedes/GLS450/GLS450-img3.avif",
+            "images/mercedes/GLS450/GLS450-img4.avif"
+        ],
+        "specs": {
+            "Model": "Mercedes GLS450",
+            "Engine": "3.0L Inline-6 turbocharged with EQ Boost",
+            "Power": "375 HP",
+            "Torque": "500 Nm",
+            "Gear": "9-TRONIC automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "5,207 x 1,956 x 1,823 mm",
+            "Weight": "2,480 kg",
+            "Fuel Consumption": "10 L/100 km"
+        },
+        "safety": [
+            "Active Brake Assist",
+            "Blind Spot Assist with exit warning",
+            "Attention Assist"
+        ],
+        "convenience": [
+            "MBUX infotainment with dual 12.3-inch displays",
+            "Intelligent voice assistant",
+            "Infotainment touchscreen + digital instrument cluster"
+        ]
+    },
+
+    {
+        "id": "Mercedes-GLS600",
+        "name": "Mercedes Maybach GLS600",
+        "type": "SUV",
+        "display": "images/mercedes/GLS600/GLS600-display.webp",
+        "priceUSD": 180000,
+        "hero": "images/mercedes/GLS600/GLS600-trans.webp",
+        "gallery": [
+            "images/mercedes/GLS600/GLS600-img1.avif",
+            "images/mercedes/GLS600/GLS600-img2.avif",
+            "images/mercedes/GLS600/GLS600-img3.avif",
+            "images/mercedes/GLS600/GLS600-img4.avif"
+        ],
+        "specs": {
+            "Model": "Mercedes Maybach GLS600",
+            "Engine": "4.0L V8 Biturbo with EQ Boost",
+            "Power": "557 HP",
+            "Torque": "730 Nm",
+            "Gear": "9-TRONIC automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "5,205 x 2,030 x 1,838 mm",
+            "Weight": "2,900 kg",
+            "Fuel Consumption": "12 L/100 km"
+        },
+        "safety": [
+            "Active Distance Assist DISTRONIC",
+            "Active Steering Assist & Lane Keeping Assist",
+            "Active Brake Assist with cross-traffic function"
+        ],
+        "convenience": [
+            "MBUX infotainment with dual 12.3-inch displays",
+            "MBUX High-End Rear Entertainment with dual 11.6-inch touchscreens & MBUX tablet",
+            "Burmester High-End 3D Surround Sound System"
+        ]
+    },
+
+    {
+        "id": "Mercedes-S680",
+        "name": "Mercedes Maybach S680",
+        "type": "Sedan",
+        "display": "images/mercedes/S680/S680-display.webp",
+        "priceUSD": 241000,
+        "hero": "images/mercedes/MaybachS680/S680-trans.webp",
+        "gallery": [
+            "images/mercedes/MaybachS680/S680-img1.avif",
+            "images/mercedes/MaybachS680/S680-img2.avif",
+            "images/mercedes/MaybachS680/S680-img3.avif",
+            "images/mercedes/MaybachS680/S680-img4.avif"
+        ],
+        "specs": {
+            "Model": "Mercedes Maybach S680",
+            "Engine": "6.0L V12 Biturbo",
+            "Power": "612 HP",
+            "Torque": "900 Nm",
+            "Gear": "9-TRONIC automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "5,469 x 1,921 x 1,510 mm",
+            "Weight": "2,350 kg",
+            "Fuel Consumption": "13 L/100 km"
+        },
+        "safety": [
+            "Active Distance Assist DISTRONIC",
+            "Active Steering Assist & Lane Keeping Assist",
+            "Active Lane Change Assist"
+        ],
+        "convenience": [
+            "MBUX infotainment system with multiple displays",
+            "MBUX High-End Rear Entertainment System with dual 11.6-inch touchscreens + MBUX tablet in armrest",
+            "Burmester High-End 4D Surround Sound System"
+        ]
+    },
+
+    {
+        "id": "Mercedes-E350",
+        "name": "Mercedes E350",
+        "type": "Sedan",
+        "display": "images/mercedes/E350/E350-display.webp",
+        "priceUSD": 64000,
+        "hero": "images/mercedes/E350/E350-trans.png",
+        "gallery": [
+            "images/mercedes/E350/E350-img1.avif",
+            "images/mercedes/E350/E350-img2.avif",
+            "images/mercedes/E350/E350-img3.avif",
+            "images/mercedes/E350/E350-img4.avif"
+        ],
+        "specs": {
+            "Model": "Mercedes E350",
+            "Engine": "2.0L Inline-4 turbocharged with mild hybrid",
+            "Power": "255 HP",
+            "Torque": "370 Nm",
+            "Gear": "9-TRONIC automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "4,935 x 1,880 x 1,460 mm",
+            "Weight": "1,850 kg",
+            "Fuel Consumption": "7.5 L/100 km"
+        },
+        "safety": [
+            "Active Brake Assist",
+            "Attention Assist",
+            "Blind Spot Assist with exit warning function"
+        ],
+        "convenience": [
+            "MBUX infotainment system with dual widescreen displays",
+            "Touch control steering wheel + voice control",
+            "Apple CarPlay & Android Auto"
+        ]
+    },
+
+    {
+        "id": "Mercedes-AMGS63",
+        "name": "Mercedes AMG S63",
+        "type": "Sedan",
+        "display": "images/mercedes/AMGS63/AMGS63-display.webp",
+        "priceUSD": 187000,
+        "hero": "images/mercedes/AMGS63/AMGS63-trans.webp",
+        "gallery": [
+            "images/mercedes/AMGS63/AMGS63-img1.avif",
+            "images/mercedes/AMGS63/AMGS63-img2.avif",
+            "images/mercedes/AMGS63/AMGS63-img3.avif",
+            "images/mercedes/AMGS63/AMGS63-img4.avif"
+        ],
+        "specs": {
+            "Model": "Mercedes AMG S63",
+            "Engine": "4.0L V8 Biturbo with AMG-specific hybrid system",
+            "Power": "204 HP",
+            "Torque": "1,430 Nm",
+            "Gear": "9-speed multi-clutch automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "5,328 x 1,954 x 1,503 mm",
+            "Weight": "2,595 kg",
+            "Fuel Consumption": "4.4 L/100 km"
+        },
+        "safety": [
+            "Active Distance Assist DISTRONIC",
+            "Active Steering Assist & Active Lane Keeping Assist",
+            "Active Brake Assist with cross-traffic function"
+        ],
+        "convenience": [
+            "MBUX infotainment with AMG-specific performance displays",
+            "MBUX High-End Rear Entertainment System with dual touchscreens",
+            "Burmester 4D Surround Sound System"
+        ]
+    },
+
+    {
+        "id": "Mercedes-EQE350",
+        "name": "Mercedes EQE350",
+        "type": "EV",
+        "display": "images/mercedes/EQE350/EQE350-display.webp",
+        "priceUSD": 78000,
+        "hero": "images/mercedes/EQE350/EQE350-trans.png",
+        "gallery": [
+            "images/mercedes/EQE350/EQE350-img1.avif",
+            "images/mercedes/EQE350/EQE350-img2.jpg",
+            "images/mercedes/EQE350/EQE350-img3.jpg",
+            "images/mercedes/EQE350/EQE350-img4.jpg"
+        ],
+        "specs": {
+            "Model": "Mercedes EQE350",
+            "Engine": "Electric motor",
+            "Power": "288 HP",
+            "Torque": "765 Nm",
+            "Gear": "single-speed automatic",
+            "Top Speed": "250 km/h",
+            "Battery capacity": "96.8 kWh",
+            "Length x Width x Height": "4,946 x 1,961 x 1,512 mm",
+            "Weight": "2,500 kg",
+            "Fuel Consumption": "18 kWh/100 km"
+        },
+        "safety": [
+            "Active Distance Assist DISTRONIC",
+            "Active Steering Assist & Active Lane Keeping Assist",
+            "Active Brake Assist with cross-traffic function"
+        ],
+        "convenience": [
+            "MBUX infotainment system with 12.8-inch OLED central touchscreen",
+            "Optional MBUX Hyperscreen",
+            "Augmented Reality Navigation & Head-Up Display"
+        ]
+    },
+    
+    {
+        "id": "Mercedes-EQS",
+        "name": "Mercedes EQS",
+        "type": "EV",
+        "display": "images/mercedes/EQS/EQS-display.webp",
+        "priceUSD": 108000,
+        "hero": "images/mercedes/EQS/EQS-trans.png",
+        "gallery": [
+            "images/mercedes/EQS/EQS-img1.avif",
+            "images/mercedes/EQS/EQS-img2.avif",
+            "images/mercedes/EQS/EQS-img3.avif",
+            "images/mercedes/EQS/EQS-img4.avif"
+        ],
+        "specs": {
+            "Model": "Mercedes EQS",
+            "Engine": "Electric motor",
+            "Power": "402 HP",
+            "Torque": "855 Nm",
+            "Gear": "single-speed automatic",
+            "Top Speed": "250 km/h",
+            "Battery capacity": "107.8 kWh",
+            "Length x Width x Height": "5,216 x 1,926 x 1,512 mm",
+            "Weight": "2,480 kg",
+            "Fuel Consumption": "20.4 kWh/100 km"
+        },
+        "safety": [
+            "Active Distance Assist DISTRONIC",
+            "Active Steering Assist & Active Lane Keeping Assist",
+            "Active Brake Assist with cross-traffic function"
+        ],
+        "convenience": [
+            "MBUX Hyperscreen",
+            "Standard MBUX infotainment with voice assistant",
+            "Augmented reality head-up display"
+        ]
+    }
+  ]
+}

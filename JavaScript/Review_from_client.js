@@ -125,6 +125,7 @@ function showmorereview() {
             reviewMain.innerHTML = '';
             reviewblock_count = 2;
             showmore.textContent = 'Show more'
+            
             initreview(0, reviewblock_count)        
         }
         else {

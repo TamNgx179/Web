@@ -1,0 +1,143 @@
+{
+  "brand": { "id": "toyota", "name": "Toyota" },
+  "cars": [
+    {
+        "id": "Toyota-Camry",
+        "name": "Toyota Camry",
+        "type": "Sedan",
+        "display": "images/toyota/camry/camry-display.webp",
+        "priceUSD": 37000,
+        "hero": "images/toyota/camry/camry-trans.webp",
+        "gallery": [
+            "images/toyota/camry/camry-img1.avif",
+            "images/toyota/camry/camry-img2.avif",
+            "images/toyota/camry/camry-img3.avif"
+        ],
+        "specs": {
+            "Model": "Toyota Camry",
+            "Engine": "3.5L V6",
+            "Power": "301 HP",
+            "Torque": "362 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "250 km/h",
+            "Length x Width x Height": "4,895 x 1,839 x 1,445 mm",
+            "Weight": "1,998 kg",
+            "Fuel Consumption": "8.7 L/100 km"
+        },
+        "safety": [
+            "Blind Spot Monitor",
+            "Rear Cross-Traffic Alert",
+            "Safe Exit Alert"
+        ],
+        "convenience": [
+            "Dual-zone automatic climate control",
+            "Multiple USB ports"
+        ]
+    },
+
+    {
+        "id": "Toyota-Vios",
+        "name": "Toyota Vios",
+        "type": "Sedan",
+        "display": "images/toyota/vios/vios-display.png",
+        "priceUSD": 13000,
+        "hero": "images/toyota/vios/vios-trans.png",
+        "gallery": [
+            "images/toyota/vios/vios-img1.jpg",
+            "images/toyota/vios/vios-img2.jpg",
+            "images/toyota/vios/vios-img3.webp"
+        ],
+        "specs": {
+            "Model": "Toyota Vios",
+            "Engine": "1.5-litre DOHC Dual VVT-i petrol",
+            "Power": "106 HP",
+            "Torque": "140 Nm",
+            "Gear": "5-speed manual",
+            "Top Speed": "180 km/h",
+            "Length x Width x Height": "4,425 x 1,730 x 1,475 mm",
+            "Weight": "1,110 kg",
+            "Fuel Consumption": "5.2 L/100 km"
+        },
+        "safety": [
+            "Anti-Lock Braking System",
+            "Electronic Brake-Force Distribution",
+            "Brake Assist "
+        ],
+        "convenience": [
+            "Air Conditioning (manual) / Automatic Climate Control",
+            "Power windows",
+            "Keyless entry / Smart Key & Push-Button Start"
+        ]
+    },
+
+    {
+        "id": "Toyota-Landcruiser",
+        "name": "Toyota Landcruiser",
+        "type": "SUV",
+        "display": "images/toyota/landcruiser/landcruiser-display.webp",
+        "priceUSD": 77000,
+        "hero": "images/toyota/landcruiser/landcruiser-trans.webp",
+        "gallery": [
+            "images/toyota/landcruiser/landcruiser-img1.avif",
+            "images/toyota/landcruiser/landcruiser-img2.avif",
+            "images/toyota/landcruiser/landcruiser-img3.avif",
+            "images/toyota/landcruiser/landcruiser-img4.avif"
+        ],
+        "specs": {
+            "Model": "Toyota Landcruiser",
+            "Engine": "2.8 L turbo diesel",
+            "Power": "204 HP",
+            "Torque": "500 Nm",
+            "Gear": "8-speed automatic",
+            "Top Speed": "175 km/h",
+            "Length x Width x Height": "4,925 x 1,980 x 1,935 mm",
+            "Weight": "2,330 kg",
+            "Fuel Consumption": "10.2 L/100 km"
+        },
+        "safety": [
+            "Toyota Safety Sense suite",
+            "Blind-Spot Monitoring",
+            "Rear Cross-Traffic Alert"
+        ],
+        "convenience": [
+            "Multi-zone Automatic Climate Control",
+            "Power-Adjustable Seats / Heated & Ventilated Front Seats",
+            "Third-Row Seating"
+        ]
+    },
+
+    {
+        "id": "Toyota-Corollacross",
+        "name": "Toyota Corollacross",
+        "type": "SUV",
+        "display": "images/toyota/corollacross/corollacross-display.webp",
+        "priceUSD": 26000,
+        "hero": "images/toyota/corollacross/corollacross-trans.png",
+        "gallery": [
+            "images/toyota/corollacross/corollacross-img1.jpg",
+            "images/toyota/corollacross/corollacross-img2.jpg"
+        ],
+        "specs": {
+            "Model": "Toyota Corollacross",
+            "Engine": "2.0-liter inline-4 gasoline",
+            "Power": "169 HP",
+            "Torque": "203 Nm",
+            "Gear": "CVT automatic automatic",
+            "Top Speed": "193 km/h",
+            "Length x Width x Height": "4,460 x 1,826 x 1,647 mm",
+            "Weight": "1,535 kg",
+            "Fuel Consumption": "5.4 L/100 km"
+        },
+        "safety": [
+            "Toyota Safety Sense suite",
+            "Blind-Spot Monitoring",
+            "Rear Cross-Traffic Alert"
+        ],
+        "convenience": [
+            "Multi-zone Automatic Climate Control",
+            "Power-Adjustable Seats / Heated & Ventilated Front Seats",
+            "Third-Row Seating"
+        ]
+    }
+  ]
+}
