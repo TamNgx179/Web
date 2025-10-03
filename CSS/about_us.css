@@ -1,0 +1,300 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+
+/* Reset cơ bản */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #fff;
+  color: #000;
+}
+/*  */
+.about-text {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+  max-width: 700px;
+  margin-bottom: 10px; /* tạo khoảng cách giữa text và button */
+}
+/* about_us.css */
+
+/* Hero section chiếm chiều cao toàn màn hình */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* Giữ nguyên chiều cao ít nhất 1 màn hình */
+    display: flex;
+    align-items: center;
+    /* Căn lề trái, thêm padding lớn để nội dung không bị dính vào mép */
+    justify-content: flex-start;
+    padding: 0 10%; /* Điều chỉnh padding ngang để nội dung vào giữa trang hơn */
+    box-sizing: border-box;
+}
+
+/* Hero background - giữ nguyên, đảm bảo ảnh và overlay phủ đúng vị trí */
+.hero-bg img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Gradient Overlay - Điều chỉnh để hiệu ứng mờ dần từ trái sang phải rõ ràng hơn */
+.hero-bg .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Gradient: Từ trắng (100% opacity) sang trong suốt (0% opacity) */
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+    z-index: -1;
+}
+
+/* Nội dung trong hero */
+.hero-content {
+    /* Đặt chiều rộng khối nội dung khoảng 40% màn hình để giới hạn văn bản */
+    margin-top: -250px;
+    max-width: 100%; 
+    min-width: 600px; /* Đảm bảo nội dung đủ rộng trên màn hình lớn */
+    color: black;
+    position: relative;
+    z-index: 1;
+}
+
+/* Tiêu đề H1 - Làm chữ to và đậm hơn theo yêu cầu */
+.hero-content h1 {
+    font-size: 60px; /* Tăng kích thước chữ */
+    font-weight: 900; /* Làm chữ rất đậm */
+    line-height: 1.1;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    color: #000;
+}
+
+/* Đoạn văn mô tả */
+.about-text {
+    font-size: 22px;
+    line-height: 1.6;
+    color: #333;
+    /* Loại bỏ max-width cũ vì đã đặt cho .hero-content */
+    max-width: 100%; 
+    margin-bottom: 30px; /* Tăng khoảng cách giữa text và button */
+}
+
+/* Button */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    /* Điều chỉnh màu xám nhạt cho button */
+    background: #e0e0e0; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif; /* Đảm bảo font khớp với Inter */
+    font-size: 16px;
+    font-weight: 600; /* Đậm vừa phải */
+    text-decoration: none;
+    color: #000;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Thêm box-shadow nhẹ */
+}
+
+.btn .arrow {
+    width: 16px; /* Giảm kích thước mũi tên cho cân đối */
+    height: 16px;
+}
+
+.btn:hover {
+    background: #c7c7c7; /* hover màu xám tối hơn */
+    transform: translateY(-1px);
+}
+
+/* Hero Section
+.hero {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+/* Hero section chiếm full màn hình */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh; /* chiều cao ít nhất bằng 1 màn hình */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+/* Hero background */
+.hero-bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ảnh luôn phủ đầy */
+  z-index: -2;
+}
+
+.hero-bg .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0));
+  z-index: -1;
+}
+
+/* Nội dung trong hero */
+.hero-content {
+  max-width: 55%;
+  color: black;
+  position: relative;
+  z-index: 1;
+}
+
+/* Button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* khoảng cách giữa chữ và mũi tên */
+  padding: 12px 32px;
+  background: linear-gradient(90deg, #f0f0f0, #d9d9d9); /* gradient xám nhạt → xám đậm */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn span {
+  text-decoration: underline; /* gạch chân chữ */
+  color: black;
+}
+
+.btn .arrow {
+  width: 20px;
+  height: 20px;
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #d9d9d9, #bfbfbf); /* hover gradient tối hơn */
+  transform: translateY(-2px); /* nổi nhẹ khi hover */
+} 
+
+
+/* Service section code */
+
+.services {
+  position: relative;
+  text-align: center;
+  padding: 60px 10%;
+  /* opacity: 0.5;
+  background: #c7c5c5; */
+  
+}
+
+.services h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 40px;
+}
+
+.services-bg img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* canh giữa */
+  width: 70%;       /* vừa đủ rộng để che 3 card */
+  height: auto;     /* giữ tỉ lệ ảnh */
+  border-radius: 20px; /* bo góc */
+  object-fit: cover;
+  opacity: 1.0;     /* làm mờ */
+  z-index: -2;       /* cho nằm dưới card nhưng trên nền */
+}
+
+.services-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap:wrap;
+  margin-top: 450px
+}
+
+.service-card {
+  /* flexbox  */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /*  */
+  background: rgba(255, 255, 255, 0.8); /*chỉ nền mờ, chữ rõ */
+  border-radius: 16px;
+  padding: 30px 30px;
+  max-width: 430px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.service-card:hover
+{
+  background-color: #fff;
+}
+
+.service-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.service-card .btn {
+  font-size: 18px;
+  display: inline-block;
+  padding: 10px 10px;
+  background: black;
+  color: white;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.service-card .btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+

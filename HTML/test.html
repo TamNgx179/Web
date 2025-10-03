@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Services Landing Page</title>
+    <!-- Đã thêm Font Josefin Sans mà bạn sử dụng -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Load Tailwind CSS for utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* BASE RESET AND FONT */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Josefin Sans', sans-serif;
+            background: #f1f0ee; /* Nền trang màu be/xám nhạt */
+            color: #000;
+        }
+
+        /* --- BUTTON STYLE (GLOBAL) --- */
+        .btn {
+            display: inline-block;
+            padding: 10px 30px; 
+            background: black;
+            color: white;
+            font-weight: 600;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            line-height: 1.5;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+        }
+
+        /* ---------------------------------
+        1. SERVICES SECTION STYLES (MATCHING THE IMAGE)
+        --------------------------------- */
+
+        .services {
+            position: relative;
+            text-align: center;
+            padding: 80px 0 150px 0; 
+            background: #f1f0ee; 
+            overflow: hidden; 
+        }
+
+        .services h2 {
+            font-family: 'Josefin Sans', sans-serif; /* Sử dụng font của bạn */
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 5;
+            color: #1e1e1e;
+        }
+        
+        /* Background Wrapper (Chứa hình xe hơi) */
+        .service-bg-wrapper {
+            position: absolute;
+            top: 130px; 
+            left: 50%;
+            transform: translateX(-50%);
+            width: 85%; 
+            max-width: 1200px; 
+            height: 450px; 
+            border-radius: 20px;
+            overflow: hidden;
+            z-index: 1; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Hình ảnh xe hơi bên trong wrapper (Đã cập nhật path) */
+        .service-bg-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Bộ lọc Grayscale và làm tối ảnh nhẹ */
+            filter: grayscale(100%) brightness(0.9);
+        }
+
+
+        /* Container chứa 3 thẻ dịch vụ */
+        .services-container {
+            display: flex;
+            justify-content: center;
+            gap: 24px; 
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10; 
+            margin: -150px auto 0 auto; 
+            padding: 0 5%;
+            max-width: 1200px;
+        }
+
+        /* Thẻ Dịch vụ Cá nhân (The key part!) */
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            flex: 1; 
+            min-width: 250px;
+            max-width: 320px; 
+            
+            border-radius: 16px;
+            padding: 40px 30px;
+            text-align: center;
+            height: 400px; 
+            
+            /* HIỆU ỨNG KÍNH MỜ (FROSTED GLASS) */
+            background: rgba(255, 255, 255, 0.85); 
+            backdrop-filter: blur(15px); 
+            -webkit-backdrop-filter: blur(15px); 
+
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Icon Wrapper (Vùng tròn mờ phía sau Icon) */
+        .service-icon-box {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.7); 
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        /* Icon Image (Thay thế cho SVG) */
+        .service-icon-box img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        /* Text Styles */
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: #1e1e1e;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.6;
+            margin-bottom: 35px;
+            flex-grow: 1; 
+        }
+        
+        /* ---------------------------------
+        2. RESPONSIVENESS (THIẾT YẾU)
+        --------------------------------- */
+
+        /* Tablet/Nhỏ hơn (tối đa 992px) */
+        @media (max-width: 992px) {
+            .services h2 {
+                font-size: 28px;
+            }
+            .service-bg-wrapper {
+                top: 100px;
+                height: 300px; 
+            }
+            .services-container {
+                margin-top: -80px; 
+                gap: 20px;
+            }
+            .service-card {
+                max-width: 45%; 
+            }
+        }
+
+        /* Mobile (tối đa 768px) */
+        @media (max-width: 768px) {
+            .services {
+                padding: 40px 0 60px 0;
+            }
+            .services h2 {
+                margin-bottom: 30px;
+            }
+            .service-bg-wrapper {
+                width: 95%;
+                height: 250px;
+                top: 60px;
+            }
+            .services-container {
+                margin-top: 0; 
+                padding: 0 10px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            .service-card {
+                max-width: 100%; 
+                height: auto; 
+            }
+        }
+
+        /* ---------------------------------
+        3. HERO SECTION (Sử dụng đường dẫn và cấu trúc của bạn)
+        --------------------------------- */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 10%;
+            box-sizing: border-box;
+        }
+
+        .hero-bg img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-bg .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Đã chuyển gradient sang màu trắng/trong suốt để phù hợp với nền sáng */
+            background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(255, 255, 255, 0) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            margin-top: -250px;
+            max-width: 600px; 
+            color: black;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-family: 'Josefin Sans', sans-serif; /* Sử dụng font của bạn */
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .about-text {
+            font-size: 22px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 100%; 
+            margin-bottom: 30px;
+        }
+
+        /* Button Arrow for Hero (Chỉnh lại để phù hợp với cấu trúc button của bạn) */
+        .btn-hero {
+            background: #e0e0e0;
+            color: #000;
+            padding: 12px 24px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            /* Cần style lại thẻ p và img bên trong để nhìn đẹp hơn */
+        }
+        
+        .btn-hero p {
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .btn-hero img.arrow {
+            width: 16px;
+            height: 16px;
+        }
+
+
+        .btn-hero:hover {
+            background: #c7c7c7;
+        }
+
+        /* Mobile Hero Adjustments */
+        @media (max-width: 640px) {
+            .hero {
+                padding: 0 5%;
+                min-height: 80vh;
+            }
+            .hero-content {
+                margin-top: 0;
+                max-width: 100%;
+            }
+            .hero-content h1 {
+                font-size: 40px;
+            }
+            .about-text {
+                font-size: 18px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ---------------------------------
+    NAVBAR (Đã lấy từ code bạn cung cấp)
+    --------------------------------- -->
+    <nav>
+        <div id="LOGO">LOGO</div> 
+        <ul id="nav_block2">
+            <li><a href="../HTML/Home.html">Home</a></li>
+            <li><a href="../HTML/About_us.html">About us</a></li>
+            <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+            <li><a href="../HTML/contact_us.html">Contact</a></li>
+        </ul>
+        
+        <a id="Trolley" href="../HTML/Puschasing_Progress.html">
+            <img src="../Image_icon/trolley.png" alt="Trolley icon">
+        </a>
+
+        <div id="popup-login">
+            <img src="../Image_icon/Signin.png" alt="Popup image">
+        </div>
+    </nav>
+
+
+    <!-- ---------------------------------
+    HERO SECTION (Đã lấy từ code bạn cung cấp, sử dụng CSS tôi đã tối ưu)
+    --------------------------------- -->
+    <section class="hero">
+        <!-- Background: Đã sử dụng ảnh của bạn -->
+        <div class="hero-bg">
+            <img src="../Image/about_us_page.png" alt="Car">
+            <div class="overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="hero-content">
+            <h1>DESTINATION FOR AFFORDABLE AND RELIABLE CAR</h1>
+            <p class="about-text">
+                We are proud to be your destination for affordable and reliable cars. 
+                Our mission is simple: to make car ownership accessible to everyone by 
+                offering high-quality vehicles at prices that fit your budget. 
+                Reliability, trust, and transparency are the core values that guide 
+                everything we do.
+            </p>
+            <a href="#services" class="btn btn-hero">
+                <p> Learn more about us </p>
+                <img src="../Image_icon/arrow.png" alt="Arrow" class="arrow">
+            </a>
+        </div>
+    </section>
+
+    <!-- ---------------------------------
+    SERVICES SECTION (Đã sử dụng ảnh và icon của bạn, giữ lại hiệu ứng kính mờ)
+    --------------------------------- -->
+    <section id="services" class="services">
+        <h2>OUR SERVICES</h2>
+        
+        <!-- Hình nền xe hơi lớn, bo góc (Đã sử dụng ảnh của bạn) -->
+        <div class="service-bg-wrapper">
+            <img src="../Image/about-car-image2.png" alt="Services Background">
+        </div>
+        
+        <div class="services-container">
+            <!-- Card 1: New Car Sales -->
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <!-- Icon: Đã sử dụng ảnh của bạn -->
+                    <img src="../Image_icon/car-sale.png" alt="Car Sales Icon" class="service-icon">
+                </div>
+                <h3>New Car Sales</h3>
+                <p>Explore our wide range of brand-new vehicles from top manufacturers. We offer competitive pricing and flexible financing.</p>
+                <a href="#" class="btn">See more</a>
+            </div>
+
+            <!-- Card 2: Maintenance & Repairs -->
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <!-- Icon: Đã sử dụng ảnh của bạn -->
+                    <img src="../Image_icon/maintenance.png" alt="Maintenance Icon" class="service-icon">
+                </div>
+                <h3>Maintenance & Repairs</h3>
+                <p>Professional servicing, repairs, and genuine spare parts for your vehicle. Keep your car running perfectly with our expert team.</p>
+                <a href="#" class="btn">See more</a>
+            </div>
+
+            <!-- Card 3: Car Insurance -->
+            <div class="service-card">
+                <div class="service-icon-box">
+                    <!-- Icon: Đã sử dụng ảnh của bạn -->
+                    <img src="../Image_icon/insurance.png" alt="Insurance Icon" class="service-icon">
+                </div>
+                <h3>Car Insurance</h3>
+                <p>Protect your car with comprehensive insurance plans that cover accidents, theft, and unexpected damages. Drive worry-free.</p>
+                <a href="#" class="btn">See more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ---------------------------------
+    FOOTER (Đã lấy từ code bạn cung cấp)
+    --------------------------------- -->
+    <footer>
+        <div class="container">
+            <div class="avata">
+                <img class="circle" src="none" alt="Avatar">
+            </div>
+            
+            <div class="footer-section">
+                <div>
+                    <h2 class="footer-toggle">Information <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li><a href="../HTML/Home.html">Home</a></li>
+                        <li><a href="../HTML/About_us.html">About</a></li>
+                        <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="footer-toggle">Helpful Links <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Supports</a></li>
+                        <li><a href="#">Terms & Condition</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="footer-toggle">Contact us <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li>💬 Chat with sale</li>
+                        <li>☎️ (84) 000000000</li>
+                        <li>✉️ email</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><img src="../Image_icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="../Image_icon/X.png" alt="X"></a>
+                        <a href="#"><img src="../Image_icon/instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div id="under">
+            <p>Group ... 2025 | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- JS cho footer toggle -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggles = document.querySelectorAll('.footer-toggle');
+            toggles.forEach(toggle => {
+                toggle.onclick = () => {
+                    const list = toggle.nextElementSibling;
+                    // Chuyển đổi trạng thái hiển thị của danh sách
+                    if (list.style.maxHeight) {
+                        list.style.maxHeight = null;
+                        toggle.querySelector('span').textContent = '▼';
+                    } else {
+                        // Thiết lập max-height lớn để hiển thị, tốt hơn display: block trên mobile
+                        list.style.maxHeight = list.scrollHeight + "px";
+                        toggle.querySelector('span').textContent = '▲';
+                    }
+                };
+            });
+        });
+    </script>
+</body>
+</html>
