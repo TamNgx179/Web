@@ -5,13 +5,14 @@
         "id": "Honda-Accord",
         "name": "Honda Accord",
         "type": "Sedan",
+        "display": "../images/honda/accord/accord-display.webp",
         "priceUSD": 29000,
-        "hero": "images/honda/accord/accord-trans.png",
+        "hero": "../images/honda/accord/accord-trans.png",
         "gallery": [
-            "images/honda/accord/accord-img1.avif",
-            "images/honda/accord/accord-img2.avif",
-            "images/honda/accord/accord-img3.avif",
-            "images/honda/accord/accord-img4.png"
+            "../images/honda/accord/accord-img1.avif",
+            "../images/honda/accord/accord-img2.avif",
+            "../images/honda/accord/accord-img3.avif",
+            "../images/honda/accord/accord-img4.png"
         ],
         "specs": {
             "Model": "Honda Accord",
@@ -40,13 +41,14 @@
         "id": "Honda-Civic",
         "name": "Honda Civic",
         "type": "Sedan",
+        "display": "../images/honda/civic/civic-display.webp",
         "priceUSD": 27000,
-        "hero": "images/honda/civic/civic-trans.png",
+        "hero": "../images/honda/civic/civic-trans.png",
         "gallery": [
-            "images/honda/civic/civic-img1.jpg",
-            "images/honda/civic/civic-img2.jpg",
-            "images/honda/civic/civic-img3.jpg",
-            "images/honda/civic/civic-img4.jpg"
+            "../images/honda/civic/civic-img1.jpg",
+            "../images/honda/civic/civic-img2.jpg",
+            "../images/honda/civic/civic-img3.jpg",
+            "../images/honda/civic/civic-img4.jpg"
         ],
         "specs": {
             "Model": "Honda Civic",
@@ -75,13 +77,14 @@
        "id": "Honda-HR-V",
         "name": "Honda HR-V",
         "type": "SUV",
+        "display": "../images/honda/HR-V/HRV-display.webp",
         "priceUSD": 26000,
-        "hero": "images/honda/HRV/HRV-trans.png",
+        "hero": "../images/honda/HRV/HRV-trans.png",
         "gallery": [
-            "images/honda/HRV/HRV-img1.avif",
-            "images/honda/HRV/HRV-img2.avif", 
-            "images/honda/HRV/HRV-img3.avif",
-            "images/honda/HRV/HRV-img4.avif"
+            "../images/honda/HRV/HRV-img1.avif",
+            "../images/honda/HRV/HRV-img2.avif", 
+            "../images/honda/HRV/HRV-img3.avif",
+            "../images/honda/HRV/HRV-img4.avif"
         ],
         "specs": {
             "Model": "Honda HR-V",
@@ -110,13 +113,14 @@
         "id": "Honda-CR-V",
         "name": "Honda CR-V",
         "type": "SUV",
+        "display": "../images/honda/CR-V/CRV-display.webp",
         "priceUSD": 32000,
-        "hero": "images/honda/CRV/CRV-trans.png",
+        "hero": "../images/honda/CRV/CRV-trans.png",
         "gallery": [
-            "images/honda/CRV/CRV-img1.avif",
-            "images/honda/CRV/CRV-img2.avif", 
-            "images/honda/CRV/CRV-img3.avif",
-            "images/honda/CRV/CRV-img4.avif"
+            "../images/honda/CRV/CRV-img1.avif",
+            "../images/honda/CRV/CRV-img2.avif", 
+            "../images/honda/CRV/CRV-img3.avif",
+            "../images/honda/CRV/CRV-img4.avif"
         ],
         "specs": {
             "Model": "Honda CR-V",
