@@ -157,9 +157,7 @@ function renderCard(car) {
   let imgSrc = "";
   if (car.display) {
     imgSrc = car.display;
-  } else if (car.hero) {
-    imgSrc = car.hero;
-  }
+  } 
 
   if (imgSrc) {
     const img = document.createElement("img");
@@ -167,11 +165,7 @@ function renderCard(car) {
     img.src = imgSrc;
     img.alt = name;
     card.appendChild(img);
-  } else {
-    const ph = document.createElement("div");
-    ph.className = "thumb-empty";
-    card.appendChild(ph);
-  }
+  } 
 
   const body = document.createElement("div");
   body.className = "body";
