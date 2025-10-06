@@ -77,7 +77,7 @@
         "id": "Mercedes-S680",
         "name": "Mercedes Maybach S680",
         "type": "Sedan",
-        "display": "../images/mercedes/S680/S680-display.webp",
+        "display": "../images/mercedes/MaybachS680/S680-display.webp",
         "priceUSD": 241000,
         "hero": "../images/mercedes/MaybachS680/S680-trans.webp",
         "gallery": [
