@@ -68,6 +68,24 @@ function purchasingstep(index) {
             document.getElementById('back').style.display = 'none';
 
             setstep0();
+
+            setStepContent({
+                header: "Selection of cars for inspection",
+                paragraph: "<strong>We want you to get the best car possible, which is why we first carry out a thorough inspection.</strong> If your chosen car doesn’t pass the strict technical check, we’ll move on and inspect the next options from your list – that’s why it’s a good idea to select three cars upfront. You’ll receive a detailed report, complete photo documentation, and our recommendation. The final choice is entirely yours.",
+                options: [
+                    {
+                        img: "",
+                        title: "",
+                        content: ""
+                    },
+                    {
+                        img: "",
+                        title: "",
+                        content: ""
+                    }
+                ],
+            });
+
             break;
         }
         case 1:{
@@ -126,10 +144,12 @@ function purchasingstep(index) {
                     }
                 ],
             });
+
             break;
         }
         case 3: {
             setstep3();
+            
             break;
         }
     }

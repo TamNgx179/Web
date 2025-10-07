@@ -63,12 +63,17 @@ hr {
 
 .footer-section ul li {
     padding: 5px 0;
+    list-style: none;
+
+    margin-right: 20px;
 }
 
 .social-icons {
     display: flex;      
     gap: 10px;          
     margin-top: 10px;
+
+    margin-left: 38px;
 }
 
 .social-icons img {
@@ -84,6 +89,26 @@ hr {
 
 .footer-list {
     display: block;
+}
+
+.footer-toggle {
+    margin-bottom: 5px;
+    margin-left: 38px;
+}
+
+.footer-list {
+    margin-top: 5px;
+    margin-left: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: blue;
 }
 
 
