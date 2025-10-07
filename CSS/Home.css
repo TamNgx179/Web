@@ -3,7 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html, body {
+    width: 100%;
+    overscroll-behavior: none;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
 .slideshow {
   position: relative;
   width: 100%;
@@ -27,6 +32,7 @@
 
 /* Popular Categories */
 h1{
+  margin-top: 50px;
   padding-top: 50px;
   padding-left: 50px;
 }
@@ -188,6 +194,7 @@ h1{
   align-items: center;
   justify-content: space-between;
   margin-bottom: 100px;
+  margin-top: 100px;
 }
 
     
