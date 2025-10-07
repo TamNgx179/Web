@@ -43,6 +43,7 @@ nav ul {
     nav {
         padding: 8px 12px;
         justify-content: space-between; /* tách 3 phần: logo - menu - icon */
+        font-size: 10px;
     }
 
     #LOGO {

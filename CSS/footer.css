@@ -123,7 +123,7 @@ a:hover {
     }
 
     .avata {
-        display: none; /* ẩn avatar trên mobile */
+        display: none;
     }
 
     .footer-section ul {
