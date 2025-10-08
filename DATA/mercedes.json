@@ -226,10 +226,10 @@
         "priceUSD": 108000,
         "hero": "../images/mercedes/EQS/EQS-trans.png",
         "gallery": [
-            "../images/mercedes/EQS/EQS-img1.avif",
-            "../images/mercedes/EQS/EQS-img2.avif",
-            "../images/mercedes/EQS/EQS-img3.avif",
-            "../images/mercedes/EQS/EQS-img4.avif"
+            "../images/mercedes/EQS/EQS-img1.jpg",
+            "../images/mercedes/EQS/EQS-img2.jpg",
+            "../images/mercedes/EQS/EQS-img3.jpg",
+            "../images/mercedes/EQS/EQS-img4.jpg"
         ],
         "specs": {
             "Model": "Mercedes EQS",
