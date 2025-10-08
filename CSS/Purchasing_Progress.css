@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+}
+
+
 #main-content {
     display: flex;
     flex-direction: row;
@@ -248,7 +253,7 @@
     }
 
     #Choosing-method {
-        width: 83%;
+        width: 100%;
     }
 
     #paragraph {
@@ -259,7 +264,7 @@
         flex-direction: column;
     }
     #Order-summary {
-        width: 88%;
+        width: 100%;
         margin-top: 20px;
     }
     .carform {
