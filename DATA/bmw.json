@@ -7,7 +7,7 @@
         "type": "SUV",
         "display": "../images/bmw/bmw-x4/X4-display.webp",
         "priceUSD": 56000,
-        "hero": "../images/bmw/bmw-x4/X4-trans.jpg",
+        "hero": "../images/bmw/bmw-x4/X4-trans.png",
         "gallery": [
             "../images/bmw/bmw-x4/X4-img1.jpg",
             "../images/bmw/bmw-x4/X4-img2.jpg",
@@ -79,7 +79,7 @@
         "type": "SUV",
         "display": "../images/bmw/bmw-x6/X6-display.webp",
         "priceUSD": 77000,
-        "hero": "../images/bmw/bmw-x6/X6-trans.jpg",
+        "hero": "../images/bmw/bmw-x6/X6-trans.png",
         "gallery": [
             "../images/bmw/bmw-x6/X6-img1.avif",
             "../images/bmw/bmw-x6/X6-img2.avif",
