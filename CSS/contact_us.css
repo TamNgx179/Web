@@ -97,7 +97,7 @@ button#send_message:hover {
 }
 
 /* Responsive */
-@media (max-width: 600px) {
+@media (max-width: 1000px) {
     .wrapper {
         padding-top: 10px;
         padding-bottom: 10px;
@@ -121,3 +121,57 @@ button#send_message:hover {
         background-color: #4CAF50; /* xanh lá */
     }
 }
+
+/* iPad dọc (portrait) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .wrapper {
+        flex-direction: column;
+        padding: 40px 0;
+    }
+
+    #text-left {
+        display: none;
+    }
+
+    form {
+        width: 60%; /* nhỏ gọn hơn */
+        padding: 25px;
+    }
+
+    #inline {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button#send_message {
+        width: 50%;
+        align-self: center;
+    }
+}
+
+/* iPad ngang (landscape) */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .wrapper {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form {
+        width: 40%;
+        padding: 25px;
+    }
+
+    #text-left {
+        display: none;
+    }
+
+    #inline {
+        gap: 20px;
+    }
+
+    button#send_message {
+        width: max-content;
+    }
+}
+

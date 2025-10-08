@@ -238,7 +238,7 @@
 
 @media (max-width: 600px) {
     #purchasing-progress {
-        font-size: 8px;
+        font-size: 9px;
     }
 
     #main-content {
@@ -248,7 +248,7 @@
     }
 
     #Choosing-method {
-        width: 80%;
+        width: 83%;
     }
 
     #paragraph {
@@ -259,7 +259,7 @@
         flex-direction: column;
     }
     #Order-summary {
-        width: 80%;
+        width: 88%;
         margin-top: 20px;
     }
     .carform {
@@ -283,5 +283,59 @@
 
     .car-infomation {
         width: 100%;
+    }
+}
+
+/* iPad portrait & landscape */
+@media (min-width: 768px) and (max-width: 1024px) {
+    #main-content {
+        flex-direction: column;   /* cho form và order summary xếp dọc */
+        align-items: center;
+        gap: 30px;
+    }
+
+    #Choosing-method {
+        width: 70%;               /* form rộng hơn cho dễ nhập */
+        padding: 25px;
+    }
+
+    #Order-summary {
+        width: 70%;
+        position: static;         /* bỏ sticky để không đè form */
+        margin-top: 20px;
+    }
+
+    #step-purchasing {
+        flex-direction: row;   /* chia các bước theo cột cho gọn */
+        gap: 30px;
+    }
+
+    .carform {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    .line {
+        width: 80%;
+        height: 1px;
+    }
+
+    .img-car {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+
+    .car-infomation {
+        width: 100%;
+    }
+
+    #method {
+        flex-direction: column;
+    }
+
+    #purchasing-progress {
+        font-size: 11px;
     }
 }

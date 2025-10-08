@@ -43,28 +43,81 @@
         <!-- Content -->
         <div class="hero-content">
             <h1>DESTINATION FOR AFFORDABLE AND RELIABLE CAR</h1>
-            <p class = "about-text">
-                We are proud to be your destination for affordable and reliable cars. 
-                Our mission is simple: to make car ownership accessible to everyone by 
-                offering high-quality vehicles at prices that fit your budget. 
-                Reliability, trust, and transparency are the core values that guide 
-                everything we do.
-            </p>
-            <button class="btn">
-                <p> Learn more about us </p>
-                <img src="../Image_icon/arrow.png" alt="Arrow" class="arrow">
-            </button>
-            <!-- Làm button to ra -->
+            <div class = "hero-content-box">
+                <p class = "about-text">
+                    We are proud to be your destination for affordable and reliable cars. 
+                    Our mission is simple: to make car ownership accessible to everyone by 
+                    offering high-quality vehicles at prices that fit your budget. 
+                    Reliability, trust, and transparency are the core values that guide 
+                    everything we do.
+                </p>
+                <div class = "button-review">
+                    <button class="btn">
+                        <p> Learn more about us </p>
+                        <img src="../Image_icon/arrow.png" alt="Arrow" class="arrow">
+                    </button>
+                </div>
+            </div>
+
+            <div class = "hero">
+
+            </div>
+
         </div>
     </section>
 
-        <!-- Our Services Section -->
+    <!-- Section about us  -->
+
+    <section class="about-us">
+        <div class="container">
+            <div>
+                <h2>ABOUT AUTODEALER</h2>
+                <p>
+                We are dedicated to transforming the automotive industry in Vietnam through
+                innovation, transparency, and unwavering commitment to customer satisfaction.
+                Our mission is to make quality vehicles accessible to everyone.
+                </p>
+            </div>
+
+            <div class="stats">
+                <div class="stat-item highlight">
+                    <img src="../Image_icon/metal.png" alt="Experience Icon" class="icon" />
+                    <h3>15+</h3>
+                    <p>Years Experience</p>
+                </div>
+
+                <div class="stat-item highlight">
+                    <img src="../Image_icon/car_about_us.png" alt="Cars Sold Icon" class="icon" />
+                    <h3>1,000</h3>
+                    <p>Cars Sold</p>
+                </div>
+
+                <div class="stat-item">
+                    <img src="../Image_icon/customers.png" alt="Customers Icon" class="icon" />
+                    <h3>1,500</h3>
+                    <p>Satisfied Customers</p>
+                </div>
+
+                <div class="stat-item">
+                    <img src="../Image_icon/vietnam.png" alt="Provinces Icon" class="icon" />
+                    <h3>20</h3>
+                    <p>Provinces</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- OUR JOURNEY section -->
+     <secion class ="our-journey">
+        <h2>OUR JOURNEY</h2>
+        <p>From humble beginnings to becoming Vietnam's most trusted automotive partner - discover our journey of growth, innovation, and customer dedication.</p>
+        <div>
+
+        </div>
+    </secion>
+
+    <!-- Our Services Section -->
     <section class="services">
         <h2>OUR SERVICES</h2>
-        <div class="services-bg">
-            <img src="../images/about-car-image2.png" alt="Services Background">
-        </div>
-
         <div class="services-container">
             <!-- Service 1 -->
             <div class="service-card">
@@ -92,7 +145,57 @@
         </div>
     </section>
 
+    <!-- Map Section -->
+    <section class="network">
+        <h2>OUR NATIONWIDE NETWORK</h2>
+        <p class="subtitle">Interactive map showing our dealership locations across Vietnam's 63 provinces</p>
 
+        <div class="search-bar">
+        <input type="text" placeholder="Search provinces..." />
+        <select>
+            <option>All Regions</option>
+            <option>North</option>
+            <option>Central</option>
+            <option>South</option>
+        </select>
+        <div class="filters">
+            <button>🚗 Sales</button>
+            <button>🔧 Service</button>
+            <button>🛡 Insurance</button>
+        </div>
+        </div>
+
+        <div class="map-container">
+        <div class="map">
+            <!-- Simplified Vietnam SVG map -->
+            <svg width="250" height="400" viewBox="0 0 200 400">
+            <path id="hanoi" d="M80,40 L100,40 L110,60 L90,60 Z"></path>
+            <path id="danang" d="M90,150 L110,150 L115,170 L95,170 Z"></path>
+            <path id="hcm" d="M80,300 L100,300 L110,320 L90,320 Z"></path>
+            </svg>
+        </div>
+
+        <div class="info-card" id="info">
+            <h3>TP.HCM</h3>
+            <div class="tag">South</div>
+                <h4>AutoDealer Sài Gòn</h4>
+                <div class="details">
+                    <div>⭐ 4.9</div>
+                    <div>📍 789 Nguyễn Huệ, Quận 1, TP.HCM</div>
+                    <div>📞 +84 28 3345 6789</div>
+                    <div>🕒 8:00 - 19:00</div>
+                </div>
+            <div class="tags">
+                <span class="tag">sales</span>
+                <span class="tag">service</span>
+                <span class="tag">insurance</span>
+            </div>
+                <div class="actions">
+                    <button>🔗 View on Map</button>
+                </div>
+        </div>
+        </div>
+  </section>
 
 
     <!-- Footer -->
