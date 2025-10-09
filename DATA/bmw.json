@@ -295,7 +295,7 @@
     {
         "id": "BMW-i7",
         "name": "BMW i7",
-        "type": "Sedan",
+        "type": "EV",
         "display": "../images/bmw/bmw-i7/i7-display.webp",
         "priceUSD": 106000,
         "hero": "../images/bmw/bmw-i7/i7-trans.webp",
