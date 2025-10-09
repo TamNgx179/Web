@@ -42,7 +42,7 @@
         "type": "EV",
         "display": "../images/vinfast/VF8/VF8-display.webp",
         "priceUSD": 57000,
-        "hero": "../images/vinfast/VF8/VF8-trans.png",
+        "hero": "../images/vinfast/VF8/VF8-trans.webp",
         "gallery": [
             "../images/vinfast/VF8/VF8-img1.avif",
             "../images/vinfast/VF8/VF8-img2.avif",
@@ -79,7 +79,7 @@
         "type": "EV",
         "display": "../images/vinfast/VF8/VF8-display.webp",
         "priceUSD": 57000,
-        "hero": "../images/vinfast/VF9/VF9-trans.png",
+        "hero": "../images/vinfast/VF9/VF9-trans.webp",
         "gallery": [
             "../images/vinfast/VF9/VF9-img1.avif",
             "../images/vinfast/VF9/VF9-img2.avif",

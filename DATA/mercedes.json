@@ -115,7 +115,7 @@
         "type": "Sedan",
         "display": "../images/mercedes/E350/E350-display.webp",
         "priceUSD": 64000,
-        "hero": "../images/mercedes/E350/E350-trans.png",
+        "hero": "../images/mercedes/E350/E350-trans.webp",
         "gallery": [
             "../images/mercedes/E350/E350-img1.avif",
             "../images/mercedes/E350/E350-img2.avif",
@@ -187,7 +187,7 @@
         "type": "EV",
         "display": "../images/mercedes/EQE350/EQE350-display.webp",
         "priceUSD": 78000,
-        "hero": "../images/mercedes/EQE350/EQE350-trans.png",
+        "hero": "../images/mercedes/EQE350/EQE350-trans.webp",
         "gallery": [
             "../images/mercedes/EQE350/EQE350-img1.avif",
             "../images/mercedes/EQE350/EQE350-img2.jpg",
@@ -224,12 +224,12 @@
         "type": "EV",
         "display": "../images/mercedes/EQS/EQS-display.webp",
         "priceUSD": 108000,
-        "hero": "../images/mercedes/EQS/EQS-trans.png",
+        "hero": "../images/mercedes/EQS/EQS-trans.webp",
         "gallery": [
-            "../images/mercedes/EQS/EQS-img1.avif",
-            "../images/mercedes/EQS/EQS-img2.avif",
-            "../images/mercedes/EQS/EQS-img3.avif",
-            "../images/mercedes/EQS/EQS-img4.avif"
+            "../images/mercedes/EQS/EQS-img1.jpg",
+            "../images/mercedes/EQS/EQS-img2.jpg",
+            "../images/mercedes/EQS/EQS-img3.jpg",
+            "../images/mercedes/EQS/EQS-img4.jpg"
         ],
         "specs": {
             "Model": "Mercedes EQS",

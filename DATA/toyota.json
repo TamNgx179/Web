@@ -112,7 +112,7 @@
         "type": "SUV",
         "display": "../images/toyota/corollacross/corollacross-display.webp",
         "priceUSD": 26000,
-        "hero": "../images/toyota/corollacross/corollacross-trans.png",
+        "hero": "../images/toyota/corollacross/corollacross-trans.webp",
         "gallery": [
             "../images/toyota/corollacross/corollacross-img1.jpg",
             "../images/toyota/corollacross/corollacross-img2.jpg"
