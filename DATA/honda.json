@@ -7,7 +7,7 @@
         "type": "Sedan",
         "display": "../images/honda/accord/accord-display.webp",
         "priceUSD": 29000,
-        "hero": "../images/honda/accord/accord-trans.png",
+        "hero": "../images/honda/accord/accord-trans.webp",
         "gallery": [
             "../images/honda/accord/accord-img1.avif",
             "../images/honda/accord/accord-img2.avif",
@@ -43,7 +43,7 @@
         "type": "Sedan",
         "display": "../images/honda/civic/civic-display.webp",
         "priceUSD": 27000,
-        "hero": "../images/honda/civic/civic-trans.png",
+        "hero": "../images/honda/civic/civic-trans.webp",
         "gallery": [
             "../images/honda/civic/civic-img1.jpg",
             "../images/honda/civic/civic-img2.jpg",
@@ -79,7 +79,7 @@
         "type": "SUV",
         "display": "../images/honda/HR-V/HRV-display.webp",
         "priceUSD": 26000,
-        "hero": "../images/honda/HR-V/HRV-trans.png",
+        "hero": "../images/honda/HR-V/HRV-trans.webp",
         "gallery": [
             "../images/honda/HR-V/HRV-img1.avif",
             "../images/honda/HR-V/HRV-img2.avif", 
@@ -115,7 +115,7 @@
         "type": "SUV",
         "display": "../images/honda/CR-V/CRV-display.webp",
         "priceUSD": 32000,
-        "hero": "../images/honda/CR-V/CRV-trans.png",
+        "hero": "../images/honda/CR-V/CRV-trans.webp",
         "gallery": [
             "../images/honda/CR-V/CRV-img1.avif",
             "../images/honda/CR-V/CRV-img2.avif", 

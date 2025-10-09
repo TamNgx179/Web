@@ -7,7 +7,7 @@
         "type": "SUV",
         "display": "../images/bmw/bmw-x4/X4-display.webp",
         "priceUSD": 56000,
-        "hero": "../images/bmw/bmw-x4/X4-trans.png",
+        "hero": "../images/bmw/bmw-x4/X4-trans.webp",
         "gallery": [
             "../images/bmw/bmw-x4/X4-img1.jpg",
             "../images/bmw/bmw-x4/X4-img2.jpg",
@@ -43,7 +43,7 @@
         "type": "SUV",
         "display": "../images/bmw/bmw-x5/X5-display.webp",
         "priceUSD": 68000,
-        "hero": "../images/bmw/bmw-x5/X5-trans.png",
+        "hero": "../images/bmw/bmw-x5/X5-trans.webp",
         "gallery": [
             "../images/bmw/bmw-x5/X5-img1.avif",
             "../images/bmw/bmw-x5/X5-img2.avif",
@@ -79,7 +79,7 @@
         "type": "SUV",
         "display": "../images/bmw/bmw-x6/X6-display.webp",
         "priceUSD": 77000,
-        "hero": "../images/bmw/bmw-x6/X6-trans.png",
+        "hero": "../images/bmw/bmw-x6/X6-trans.webp",
         "gallery": [
             "../images/bmw/bmw-x6/X6-img1.avif",
             "../images/bmw/bmw-x6/X6-img2.avif",
@@ -189,7 +189,7 @@
         "type": "Sedan",
         "display": "../images/bmw/bmw-m3/M3-display.webp",
         "priceUSD": 79000,
-        "hero": "../images/bmw/bmw-m3/M3-trans.avif",
+        "hero": "../images/bmw/bmw-m3/M3-trans.webp",
         "gallery": [
             "../images/bmw/bmw-m3/M3-img1.jpg",
             "../images/bmw/bmw-m3/M3-img2.avif",
@@ -225,7 +225,7 @@
         "type": "Sedan",
         "display": "../images/bmw/bmw-m5/M5-display.webp",
         "priceUSD": 122000,
-        "hero": "../images/bmw/bmw-m5/M5-trans.png",
+        "hero": "../images/bmw/bmw-m5/M5-trans.webp",
         "gallery": [
             "../images/bmw/bmw-m5/M5-img1.avif",
             "../images/bmw/bmw-m5/M5-img2.avif",
@@ -335,7 +335,7 @@
         "type": "Convertible",
         "display": "../images/bmw/bmw-z4/Z4-display.webp",
         "priceUSD": 57000,
-        "hero": "../images/bmw/bmw-z4/Z4-trans.png",
+        "hero": "../images/bmw/bmw-z4/Z4-trans.webp",
         "gallery": [
             "../images/bmw/bmw-z4/Z4-img1.avif",
             "../images/bmw/bmw-z4/Z4-img2.avif",
@@ -371,7 +371,7 @@
         "type": "Coupe",
         "display": "../images/bmw/bmw-m4/M4-display.webp",
         "priceUSD": 82000,
-        "hero": "../images/bmw/bmw-m4/M4-trans.avif",
+        "hero": "../images/bmw/bmw-m4/M4-trans.webp",
         "gallery": [
             "../images/bmw/bmw-m4/M4-img1.jpg",
             "../images/bmw/bmw-m4/M4-img2.jpg",
