@@ -149,11 +149,13 @@ function renderDots(totalPages) {
 }
 
 function renderCard(car) {
+  const idxDelay = (gridEl.childElementCount % 8) * 0.05; // stagger within page
   const id = car.id;
   const name = car.name;
 
   const card = document.createElement("div");
-  card.className = "car-card";
+  card.className = "car-card reveal-up";
+  card.style.setProperty("--reveal-delay", idxDelay.toFixed(2) + "s");
 
   let imgSrc = "";
   if (car.display) {
@@ -184,6 +186,7 @@ function renderCard(car) {
   card.appendChild(body);
 
   gridEl.appendChild(card);
+  if (window.__reveal) { window.__reveal.observe(card); }
 }
 
 function renderPage() {
@@ -227,6 +230,7 @@ function renderPage() {
   } else {
     pager.classList.add("is-hidden");
   }
+  if (window.__reveal) { window.__reveal.observeAll(); }
 }
 
 // ---- Sự kiện tab loại xe ----
@@ -286,3 +290,22 @@ nextBtn.addEventListener("click", () => {
 
   applyFilter(type);
 })();
+
+
+// ================== Scroll Reveal (IntersectionObserver) ==================
+window.addEventListener("scroll", function() {
+  const reveals = document.querySelectorAll(".reveal");
+
+  for (let i = 0; i < reveals.length; i++) {
+    const windowHeight = window.innerHeight;
+    const revealTop = reveals[i].getBoundingClientRect().top;
+    const revealPoint = 100; // Cách đáy màn hình 100px thì bắt đầu hiện
+
+    if (revealTop < windowHeight - revealPoint) {
+      reveals[i].classList.add("active");
+    } else {
+      // Nếu muốn chỉ hiện 1 lần thì bỏ dòng này đi
+      reveals[i].classList.remove("active");
+    }
+  }
+});

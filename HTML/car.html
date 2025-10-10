@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Car Detail</title>
+    <link rel="stylesheet" href="../CSS/nav_bar.css" />
+    <link rel="stylesheet" href="../CSS/car.css" />
+</head>
+<body>
+  <nav>
+    <div id="LOGO">LOGO</div>
+    <ul id="nav_block2">
+        <li><a href="../HTML/Home.html">Home</a></li>
+        <li><a href="../HTML/About_us.html">About us</a></li>
+        <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+        <li><a href="../HTML/contact_us.html">Contact</a></li>
+    </ul>
+    <div style="display:flex; align-items:center; gap:12px;">
+        <a id="Trolley" href="#"><img src="../Image_icon/trolley.png" alt="Trolley icon" /></a>
+        <div id="popup-login"><img src="../Image_icon/Signin.png" alt="Popup image" /></div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+        <div class="hero-info">
+            <h1 id="title" class="car-name">Loading…</h1>
+            <p class="price-label">Starts at:</p>
+            <div id="price" class="price"></div>
+            <button id="purchaseBtn" class="btn">Purchase</button>
+        </div>
+        <div class="hero-media">
+            <img id="hero" alt="" width="1024" height="676" />
+        </div>
+    </section>
+
+    <h1 class="section-title">Photo gallery</h1>
+    <section class="gallery-section">
+        <div id="gallery" class="gallery"></div>
+    </section>
+
+    <h2 class="section-title">Technical detail</h2>
+    <section class="specs-card">
+        <table id="specsTable" class="specs-table"></table>
+        <div class="specs-col">
+            <h3>Safety &amp; Driving Assistance</h3>
+            <ul id="safety" class="bullet"></ul>
+
+            <h3>Convenience</h3>
+            <ul id="convenience" class="bullet"></ul>
+        </div>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
+        <div class="lb-counter" id="lbCounter">1 of 1</div>
+        <button class="lb-arrow left" id="lbPrev" aria-label="Previous">❮</button>
+        <img id="lbImg" alt="" />
+        <button class="lb-arrow right" id="lbNext" aria-label="Next">❯</button>
+        <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
+  </div>
+
+  <script src="../JavaScript/car.js" type="module"></script>
+</body>
+</html>
