@@ -146,18 +146,151 @@ body {
     transform: translateY(-1px);
 }
 
+
+
 /* OUR JOURNEY SECTION */
-.our-journey{
-  position: relative;
+.timeline-section {
+  background: #f5f7fb;
+  padding: 100px 0;
   text-align: center;
-  padding: 60px 10%;
+  font-family: "Inter", sans-serif;
 }
 
-.our-journey h2{
-  font-size: 4em;
-  font-weight: 800;
-  margin-bottom: 40px;
+.timeline-title {
+  font-size: 36px;
+  color: #142850;
+  font-weight: 700;
+  margin-bottom: 15px;
 }
+
+.timeline-subtitle {
+  color: #34495e;
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto 60px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: #3056D3;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 70px 0;
+  position: relative;
+}
+
+.timeline-item.left .timeline-content {
+  order: 1;
+  text-align: right;
+}
+
+.timeline-item.left .timeline-date {
+  order: 2;
+}
+
+
+.timeline-item.right .timeline-content {
+  order: 3;
+  text-align: left;
+}
+
+.timeline-item.right .timeline-date {
+  order: 2;
+}
+
+.timeline-content {
+  width: 40%;
+}
+
+.timeline-content h3 {
+  font-size: 22px;
+  color: #142850;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.timeline-content p {
+  font-size: 16px;
+  color: #34495e;
+}
+
+.timeline-date {
+  background: white;
+  border-radius: 50%;
+  border: 3px solid #3056D3;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.timeline-date .month {
+  color: #3056D3;
+  font-weight: 600;
+}
+
+.timeline-date .year {
+  font-size: 24px;
+  font-weight: 700;
+  color: #142850;
+}
+
+.timeline-flag img {
+  width: 250px;
+  height: 150px;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.timeline-item.left .timeline-flag {
+  order: 3;
+}
+
+.timeline-item.right .timeline-flag {
+  order: 1;
+  right: 0;
+}
+
+@media (max-width: 900px) {
+  .timeline::after {
+    left: 20px;
+  }
+  .timeline-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  .timeline-content, .timeline-flag {
+    width: 100%;
+  }
+  .timeline-date {
+    margin: 20px 0;
+  }
+}
+
+
+
+
 
 
 /* Service section code */
@@ -339,9 +472,10 @@ body {
   margin: 0 auto;             /* căn giữa toàn bộ container */
   gap: 2rem;    
 }
+
+
+
 /* Map section for the project  */
-
-
 .network {
   padding: 3rem 2rem;
   text-align: center;
