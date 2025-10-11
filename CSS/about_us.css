@@ -48,22 +48,23 @@ body {
 }
 
 .hero-container{
-  
+  text-align: left;
 }
 
 /* Nội dung trong hero */
 .hero-content {
     /* Đặt chiều rộng khối nội dung khoảng 40% màn hình để giới hạn văn bản */
    
-    max-width: 50%; 
+    max-width: 70%; 
     height: auto;
-    position: relative;
+    position: absolute;
+    left: 40px;
+    top: 0;
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.7); /* nền đen nhạt */
     color: white; /* chữ trắng để dễ đọc */
     padding: 30px; /* cách nội dung 1 khoảng đều */
     margin: 40px auto; /* tạo khoảng cách đều xung quanh box */
-    border: 2px solid rgba(0, 0, 0, 0.2); /* viền mờ nhẹ */
     border-radius: 15px; /* bo tròn góc */
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* đổ bóng nhẹ */
     transition: all 0.3s ease; /* hiệu ứng mượt khi hover */
@@ -281,11 +282,11 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 150px;
+  gap: 90px;
 }
 
 .stat-item {
-  width: 300px;
+  width: 250px;
   aspect-ratio: 1 / 1; 
   background: #f8f9fa;
   border-radius: 16px;
