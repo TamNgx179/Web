@@ -2,15 +2,23 @@
   box-sizing: border-box;
 }
 
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* chặn dư ngang */
+}
 
 #main-content {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    
-
     gap: 20px;
     margin-top: 20px;
+
+    align-items: flex-start; /* cho order summary top */
+
+    min-height: 100vh;
 }
 
 #step-purchasing {
@@ -33,6 +41,7 @@
 
     border-radius: 20px;
     border: 1px solid #ccc;
+    margin-right: 20%;
 }
 
 
@@ -136,20 +145,25 @@
 }
 
 #Order-summary {
-    width: 20%; /* hoặc 30% nếu trong flex row */
-    height: max-content;
+    width: 20%;
+    height: fit-content;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 20px;
     background-color: #f9f9f9;
 
-    position: sticky;
-    top: 20px;
+    margin-left: 45%;
+    
+    top: 53px; /* giữ cách mép trên 20px */
 
     display: flex;
     flex-direction: column;
     gap: 15px;
     font-size: 14px;
+
+    position: fixed;
+    align-self: flex-start;
+    z-index: 1000;
 }
 
 #summary {
@@ -241,32 +255,31 @@
 
 
 
+/* Mobile */
 @media (max-width: 600px) {
-    #purchasing-progress {
-        font-size: 9px;
-    }
-
     #main-content {
         flex-direction: column;
-
         width: 100%;
+        gap: 20px;
+        align-items: center;
     }
 
     #Choosing-method {
-        width: 100%;
+        width: 95%;
+        margin-right: 0;
     }
 
-    #paragraph {
-        display: none;
+    #Order-summary {
+        width: 95%;
+        position: static; /* tắt sticky */
+        margin-left: 10px;
+        margin-top: 20px;
     }
 
     #method {
         flex-direction: column;
     }
-    #Order-summary {
-        width: 100%;
-        margin-top: 20px;
-    }
+
     .carform {
         flex-direction: column;
         align-items: flex-start;
@@ -274,44 +287,46 @@
     }
 
     .line {
-        width: 250px;
+        width: 100%;
         height: 1px;
-        background: gray;
-        border: none;
     }
 
-    .img-car {
+    .img-car,
+    .car-infomation {
         width: 100%;
-        height: auto;
         margin: 0;
     }
 
-    .car-infomation {
-        width: 100%;
+    #purchasing-progress {
+        font-size: 9px;
     }
 }
 
-/* iPad portrait & landscape */
+/* iPad */
 @media (min-width: 768px) and (max-width: 1024px) {
     #main-content {
-        flex-direction: column;   /* cho form và order summary xếp dọc */
+        flex-direction: column;
         align-items: center;
         gap: 30px;
+        width: 100%;
     }
 
     #Choosing-method {
-        width: 70%;               /* form rộng hơn cho dễ nhập */
+        width: 70%;
         padding: 25px;
+        margin-right: 0;
     }
 
     #Order-summary {
         width: 70%;
-        position: static;         /* bỏ sticky để không đè form */
+        position: static; /* tắt sticky */
         margin-top: 20px;
+        align-self: center;
+        margin-left: 0;
     }
 
     #step-purchasing {
-        flex-direction: row;   /* chia các bước theo cột cho gọn */
+        flex-direction: row;
         gap: 30px;
     }
 
@@ -326,14 +341,10 @@
         height: 1px;
     }
 
-    .img-car {
-        width: 100%;
-        height: auto;
-        margin: 0;
-    }
-
+    .img-car,
     .car-infomation {
         width: 100%;
+        margin: 0;
     }
 
     #method {

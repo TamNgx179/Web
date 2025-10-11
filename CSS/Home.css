@@ -3,19 +3,19 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html, body {
   width: 100%;
-  overscroll-behavior: none;
-  overflow-x: hidden;
+  overflow-x: hidden;   /* giữ cuộn ngang bị ẩn, không ảnh hưởng sticky */
   scroll-behavior: smooth;
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
+
 
 .slideshow {
   position: relative;
   width: 100%;
   height: 600px;
-  overflow: hidden;
 }
 
 .slide {
