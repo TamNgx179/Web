@@ -1,5 +1,7 @@
 let currentStep = 0; // bước hiện tại, bắt đầu từ 0
 let carlist = [];
+// Lấy danh sách reviews từ localStorage hoặc tạo mới
+const trolley = JSON.parse(localStorage.getItem('trolley')) || [];
 
 function initEvent() {
     const nextbtn = document.getElementById("next-step"); 
@@ -22,7 +24,7 @@ function initEvent() {
     nextbtn.onclick = (event) => {
         event.preventDefault(); // ngăn form submit
         if (currentStep < steps.length - 1) {
-            if(checkinputinfomation(currentStep)){
+            if(checkinputinfomation(currentStep)){ 
                 currentStep++;
                 updateSteps();
             }
@@ -58,15 +60,31 @@ function setStepContent({ header, paragraph, options}) {
     document.getElementById("content2").innerHTML = options[1].content;
 }
 
+function settingdisplay_before_Step(method_status, info_status, confirmation_status, carforms_status, back_status, next_status) {
+    const method = document.getElementById('method');
+    const info = document.getElementById('info');
+    const confirmation = document.getElementById('confirmation');
+    const carforms = document.querySelectorAll('.carform');
+    const backBtn = document.getElementById('back');
+    const nextBtn = document.getElementById('next-step');
+
+    // Chỉ gán nếu giá trị khác rỗng (null, undefined, hoặc chuỗi trống)
+    if (method_status) method.style.display = method_status;
+    if (info_status) info.style.display = info_status;
+    if (confirmation_status) confirmation.style.display = confirmation_status;
+    if (back_status) backBtn.style.display = back_status;
+    if (next_status) nextBtn.style.display = next_status;
+    
+    if (carforms_status) {
+        carforms.forEach(item => item.style.display = carforms_status);
+    }
+}
+
 function purchasingstep(index) {
+    
     switch(index) {
         case 0:{
-            document.getElementById('method').style.display = 'none'
-            document.getElementById("info").style.display = "none";
-            document.getElementById('confirmation').style.display = "none"
-            document.querySelector('.carform').style.display = 'flex'
-            document.getElementById('back').style.display = 'none';
-
+            settingdisplay_before_Step('none', 'none', 'none', 'flex', 'none', 'flex');
             setstep0();
 
             setStepContent({
@@ -89,12 +107,7 @@ function purchasingstep(index) {
             break;
         }
         case 1:{
-            document.getElementById("method").style.display = "flex";
-            document.getElementById("info").style.display = "none";
-            document.getElementById('confirmation').style.display = "none"
-            document.querySelector('.carform').style.display = 'none';
-            document.getElementById('back').style.display = 'block';
-
+            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex');
             
             setinfomation(index);
 
@@ -118,14 +131,7 @@ function purchasingstep(index) {
             break;
         }
         case 2:{
-            document.getElementById("method").style.display = "flex";
-            document.getElementById("info").style.display = "none";
-            document.getElementById('confirmation').style.display = "none"
-            document.querySelector('.carform').style.display = 'none';
-
-            document.getElementById('back').style.display = 'block';
-
-
+            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex');
             setinfomation(index);
 
             setStepContent({
@@ -148,6 +154,7 @@ function purchasingstep(index) {
             break;
         }
         case 3: {
+            settingdisplay_before_Step('none', 'none', 'flex', 'none', 'block', 'none');
             setstep3();
             
             break;
@@ -192,10 +199,7 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
     closeIcon.src = "../Image_icon/trashcan.png";
     closeIcon.style.cursor = "pointer"; // trỏ chuột
 
-    //click vào icon thùng rác
-    closeIcon.onclick = () => {
-        carForm.remove(); // Xóa cả form
-    };
+    
 
     //đẩy tên xe và icon thùng rác vào khung
     carAndClose.appendChild(carName);
@@ -260,13 +264,49 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
     // Gắn vào form chính
     carForm.appendChild(carInfo);
 
+    //click vào icon thùng rác
+    closeIcon.onclick = () => {
+        carForm.remove(); // Xóa cả form
+        trolley = trolley.filter(x => x  != carForm)
+    };
+
     return carForm;
+}
+
+//Nhận id xe từ trang car
+function gettingcar(){
+    tmpcar = createCarForm('', '', '', '', '', '')
+    tmpcar2 = createCarForm('', '', '', '', '', '')
+    tmpcar3 = createCarForm('', '', '', '', '', '')
+
+    trolley.push(tmpcar)
+    trolley.push(tmpcar2)
+    trolley.push(tmpcar3)
+}
+
+//click chọn xe
+function selected_car_on_trolley(car_on_trolley_list){
+    car_on_trolley_list.forEach((item, index) => {
+        item.onclick = () => {
+            if(item.style.border.includes('green')){
+                item.style.border = '1px solid black';
+            } else {
+                item.style.border = '3px solid green';
+            }
+        }
+    });
 }
 
 
 
 function setstep0(){
-    //đợi data
+    const display = document.querySelector('.display-carform')
+
+    trolley.forEach(item => {
+        display.appendChild(item)
+    })
+    
+    selected_car_on_trolley(trolley)
 }
 
 function setstep3() {
@@ -378,6 +418,7 @@ function setinfomation(stepindex) {
     });
 }
 
-window.onload = function() {
-    purchasingstep(0);
-};
+window.onload = () => {
+    gettingcar()
+    setstep0()
+}
