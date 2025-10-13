@@ -1,9 +1,7 @@
-// ====== URL params ======
 const params = new URLSearchParams(location.search);
 const brandId = params.get("brand");
 const carId   = params.get("id");
 
-// ====== Map hãng -> file JSON ======
 const BRAND_SOURCES = {
   honda: "../data/honda.json",
   bmw: "../data/bmw.json",
@@ -32,14 +30,13 @@ const els = {
   lbCounter: document.getElementById("lbCounter"),
 };
 
-// ====== Helpers ======
 function clear(el){ while (el.firstChild) el.removeChild(el.firstChild); }
 function fmtUSD(v){
   try { return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(v); }
   catch(_e){ return "$" + v; }
 }
 
-// ====== Lightbox state ======
+
 let gallerySources = [];
 let currentIndex = 0;
 

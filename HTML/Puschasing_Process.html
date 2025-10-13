@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Purchasing Process</title>
+  <link rel="stylesheet" href="../CSS/nav_bar.css">
+  <link rel="stylesheet" href="../CSS/Purchasing_Process.css">
+  <script src="../JavaScript/Purchasing_Process.js" defer></script>
+</head>
+<body>
+  <nav>
+        <div id="LOGO">LOGO</div> 
+
+        <ul id="nav_block2">
+            <li><a href="../HTML/Home.html">Home</a></li>
+            <li><a href="../HTML/About_us.html">About us</a></li>
+            <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+            <li><a href="../HTML/contact_us.html">Contact</a></li>
+        </ul>
+        
+        <a id="Trolley" href="../HTML/Puschasing_Process.html"><img src="../Image_icon/trolley.png" alt="Trolley icon"></a>
+
+        <div id="popup-login">
+            <img src="../Image_icon/Signin.png" alt="Popup image">
+        </div>
+         
+  </nav>
+
+  <div id="purchasing-progress">
+    <ol id="step-purchasing" class="progress chevron">
+      <li class="step active"><span class="dot">1</span><span>Car selection</span></li>
+      <li class="step"><span class="dot">2</span><span>Payment method</span></li>
+      <li class="step"><span class="dot">3</span><span>Delivery service</span></li>
+      <li class="step"><span class="dot">4</span><span>Order confirmation</span></li>
+    </ol>
+  </div>
+
+  <div id="main-content">
+    <form id="Choosing-method" autocomplete="off">
+      <section class="card white" id="selection-card">
+        <h2 id="header">Selection of cars for inspection</h2>
+        <p id="paragraph">
+          <strong>We want you to get the best car possible, which is why we first carry out a thorough inspection.</strong>
+          If your chosen car doesn’t pass the strict technical check, we’ll move on and inspect the next options from your list – that’s why it’s a good idea to select three cars upfront. You’ll receive a detailed report, complete photo documentation, and our recommendation. The final choice is entirely yours.
+        </p>
+      </section>
+
+      <section class="card blue" id="inspection-card">
+        <h3 class="section-title">Cars for inspection</h3>
+        <div class="carform">
+          <img class="img-car" src="../images/bmw/bmw-i5/i5-display.webp" alt="car">
+          <hr class="line">
+          <div class="car-infomation">
+            <div class="car-and-close">
+              <h4 class="car-name">Tesla model 3</h4>
+              <img class="icon trash" src="../Image_icon/trashcan.png" alt="remove">
+            </div>
+            <div class="info-line">
+              <div class="shop-time"><img class="icon" src="../Image_icon/calendar.png" alt=""><div class="time">9/2025</div></div>
+              <div class="car-power"><img class="icon" src="../Image_icon/engine.png" alt=""><div class="power">152 hp</div></div>
+              <div class="car-energy"><img class="icon" src="../Image_icon/energy.png" alt=""><div class="energy">Electric</div></div>
+            </div>
+            <h3 class="car-price">$50,000</h3>
+          </div>
+        </div>
+
+        <div class="add-container" id="add-container"></div>
+      </section>
+
+      <div id="method">
+        <div class="Option">
+          <img id="icon1" src="../Image_icon/Credit_card.png" alt="icon">
+          <div>
+            <h4 id="chososing1">Credit/Debit card</h4>
+            <p id="content1">Pay now using VISA, Master card or AMEX</p>
+          </div>
+        </div>
+        <div class="Option">
+          <img id="icon2" src="../Image_icon/Pay_on_cash.png" alt="icon">
+          <div>
+            <h4 id="chososing2">Pay by cash</h4>
+            <p id="content2">Pay by cash in person</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="infomation">
+        <div id="info">
+          <label id="label1" for="info1">Name on card</label>
+          <input id="info1" type="text" placeholder="Name on card">
+          <label id="label2" for="info2">Card number</label>
+          <input id="info2" type="text" placeholder="Card number">
+        </div>
+
+        <div id="confirmation" class="confirmation">
+            <div class="item">
+                <span class="label">Item</span>    
+                <span class="value" id="item-label">—</span>
+            </div>
+            <div class="item">
+                <span class="label">Payment</span> 
+                <span class="value" id="payment-label">—</span>
+            </div>
+            <div class="item">
+                <span class="label">Delivery</span> 
+                <span class="value" id="delivery-label">—</span>
+            </div>
+        </div>
+      </div>
+
+      <div id="button-block">
+        <button id="back" type="button">Back</button>
+        <button id="next-step" type="button">Next</button>
+      </div>
+    </form>
+
+    <form id="Order-summary">
+      <h2>Order summary</h2>
+      <div id="summary" class="summary">
+        <div class="item">
+          <span span class="label">Item</span>     
+          <span class="value" id="item-label-sum">—</span> 
+        </div>
+        <div class="item">
+          <span class="label">Payment</span> 
+          <span class="value" id="payment-label-sum">—</span>
+        </div>
+        <div class="item">
+          <span class="label">Delivery</span>
+          <span class="value"><span id="delivery-label-sum">—</span><span id="delivery-fee" class="muted"></span></span>
+        </div>
+        <hr>
+        <div class="item total"><span class="label"><strong>Total</strong></span><span class="value" id="total-fee">$0</span></div>
+      </div>
+    </form>
+  </div>
+</body>
+</html>
