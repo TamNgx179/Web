@@ -198,10 +198,8 @@ body {
   font-weight: 700;        
 }
 
-.summary hr {
-  border: none;
-  border-top: 1px solid #E2E8F0;
-  margin: 8px 0;
+#Choosing-method.final-step #confirmation {
+  display: none !important;
 }
 
 .muted {
@@ -210,9 +208,6 @@ body {
   font-weight: 400;
 }
 
-#confirmation {
-  display: none;
-}
 
 .carform {
   display: flex;
@@ -369,7 +364,3 @@ body {
   }
 }
 
-/* ===================== ẨN TÓM TẮT Ở BƯỚC CUỐI ===================== */
-#Choosing-method.final-step #confirmation {
-  display: none !important;
-}
