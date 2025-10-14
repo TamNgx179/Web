@@ -82,7 +82,23 @@ body, html {
 
 .step.active span:last-child {
   color: #000;
+  font-weight: bold;
+}
+
+.step.completed .dot {
+  background-color: white; /* xanh lá */
+  color: black;
+  border: 2px solid #624BFF;
+}
+
+.step.completed span:last-child {
+  color: #624BFF;
   font-weight: 600;
+}
+
+/* Bước chưa hoàn thành (mặc định xám) */
+.step .dot {
+  transition: all 0.3s ease;
 }
 
 #Choosing-method {
@@ -126,7 +142,7 @@ body, html {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 30px;
 
     padding: 10px;
     margin: 10px;
@@ -142,6 +158,7 @@ body, html {
     width: 40px;
     height: 40px;
     object-fit: contain;
+    margin-left: 30px;
 }
 
 #method {
@@ -170,7 +187,7 @@ body, html {
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 14px;
-    width: 95%;             /* full chiều rộng khối cha */
+    width: 99%;             /* full chiều rộng khối cha */
 }
 
 #button-block {
@@ -344,31 +361,25 @@ body, html {
 
 
 
-/* Mobile */
-/* Mobile */
-/* Mobile */
+/* ---------- Mobile: max-width 600px ---------- */
 @media (max-width: 600px) {
     #main-content {
         flex-direction: column;
         width: 100%;
         gap: 20px;
         align-items: center;
+        padding: 10px;
     }
 
-    #Choosing-method {
+    #Choosing-method, #Order-summary {
         width: 95%;
-        margin-right: 0;
-    }
-
-    #Order-summary {
-        width: 95%;
-        position: static;
-        margin-left: 0;
-        margin-top: 20px;
+        margin: 0;
+        padding: 20px;
     }
 
     #method {
         flex-direction: column;
+        gap: 10px;
     }
 
     .carform {
@@ -389,16 +400,16 @@ body, html {
     }
 
     #step-purchasing {
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: flex;
         gap: 10px;
-        align-items: center;
+        justify-content: center;
     }
 
     .step {
         flex-direction: column; /* số trên chữ dưới */
         align-items: center;
-        font-size: 12px;
+        font-size: 8px;
+        position: relative;
     }
 
     .dot {
@@ -407,44 +418,53 @@ body, html {
         font-size: 12px;
     }
 
+    /* Bỏ thanh ngang */
     .step:not(:last-child)::after {
-        content: "›";
-        margin-left: 0; /* bỏ khoảng cách ngang */
-        margin-top: 4px; /* khoảng cách dọc giữa các step */
-        font-size: 14px;
+        content: none;
     }
 
     #purchasing-progress {
-        font-size: 12px;
+        margin-top: 7vh;
+        flex-direction: row;
         margin-right: 0;
+    }
+
+    #purchasing-progress span{
+        font-size: 8px;
+    }
+
+    #paragraph {
+        display: none;
+    }
+
+    .info-line {
+        display: flex;
+        flex-direction: row;
+
+        gap: 5px;
+        justify-content: space-between;
+        margin-right: 5px;
     }
 }
 
-/* iPad */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* ---------- Tablet: 601px - 1024px ---------- */
+@media (min-width: 601px) and (max-width: 1024px) {
     #main-content {
         flex-direction: column;
-        align-items: center;
-        gap: 30px;
         width: 100%;
+        align-items: center;
+        padding: 20px;
     }
 
-    #Choosing-method {
+    #Choosing-method, #Order-summary {
         width: 70%;
         padding: 25px;
-        margin-right: 0;
-    }
-
-    #Order-summary {
-        width: 70%;
-        position: static;
-        margin-top: 20px;
-        align-self: center;
-        margin-left: 0;
+        margin: 0;
     }
 
     #method {
         flex-direction: column;
+        gap: 15px;
     }
 
     .carform {
@@ -465,15 +485,17 @@ body, html {
     }
 
     #step-purchasing {
-        flex-direction: row;
-        gap: 20px;
         flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
     }
 
     .step {
         flex-direction: column; /* số trên chữ dưới */
         align-items: center;
         font-size: 14px;
+        min-width: 60px;
+        position: relative;
     }
 
     .dot {
@@ -482,17 +504,18 @@ body, html {
         font-size: 14px;
     }
 
+    /* Bỏ thanh ngang */
     .step:not(:last-child)::after {
-        content: "›";
-        margin-left: 0; /* bỏ khoảng cách ngang */
-        margin-top: 5px; /* khoảng cách dọc */
-        font-size: 16px;
+        content: none;
     }
 
     #purchasing-progress {
-        font-size: 14px;
+        margin-top: 7vh;
+        font-size: 12px;
         margin-right: 0;
     }
 }
+
+
 
 

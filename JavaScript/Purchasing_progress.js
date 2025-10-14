@@ -13,10 +13,11 @@ function initEvent() {
     function updateSteps() {
         steps.forEach((step, index) => {
             if(index === currentStep) {
-                step.style.fontWeight = "bold"; // in đậm bước hiện tại
+                setprocessbar(index)
+                
 
                 purchasingstep(index);
-            }else step.style.fontWeight = "normal"; // các bước khác bình thường
+            }else setprocessbar(index)
         });
     }
 
@@ -25,15 +26,18 @@ function initEvent() {
 
     // gán sự kiện nút Next
     nextbtn.onclick = (event) => {
+        
         event.preventDefault(); // ngăn form submit
         if (currentStep < steps.length - 1) {
             if(checkinputinfomation(currentStep)){ 
                 currentStep++;
+                
                 updateSteps();
             }
-            else alert("Please fill in all the information");
+            else alert("lease choose an option and fill in all the information");
             
         }
+
     };
 
     // gán sự kiện nút Prev
@@ -44,6 +48,25 @@ function initEvent() {
             updateSteps();
         }
     };
+}
+
+function setprocessbar(idx) {
+    const steps = document.querySelectorAll("#step-purchasing li");
+
+    steps.forEach((step, index) => {
+        // Xóa class cũ để reset
+        step.classList.remove("active", "completed");
+
+        // Nếu là bước hiện tại → active
+        if (index === currentStep) {
+            step.classList.add("active");
+        }
+        // Nếu là bước trước đó → completed
+        else if (index < currentStep) {
+            step.classList.add("completed");
+        }
+        // Bước sau thì để trống (mặc định)
+    });
 }
 
 initEvent();
@@ -63,20 +86,22 @@ function setStepContent({ header, paragraph, options}) {
     document.getElementById("content2").innerHTML = options[1].content;
 }
 
-function settingdisplay_before_Step(method_status, info_status, confirmation_status, carforms_status, back_status, next_status) {
+function settingdisplay_before_Step(method_status, info_status, confirmation_status, carforms_status, back_status, next_status, displaycarform) {
     const method = document.getElementById('method');
     const info = document.getElementById('info');
     const confirmation = document.getElementById('confirmation');
     const carforms = document.querySelectorAll('.carform');
     const backBtn = document.getElementById('back');
     const nextBtn = document.getElementById('next-step');
+    const display = document.querySelector('.display-carform')
 
     // Chỉ gán nếu giá trị khác rỗng (null, undefined, hoặc chuỗi trống)
-    if (method_status) method.style.display = method_status;
-    if (info_status) info.style.display = info_status;
-    if (confirmation_status) confirmation.style.display = confirmation_status;
-    if (back_status) backBtn.style.display = back_status;
-    if (next_status) nextBtn.style.display = next_status;
+    if (method_status) method.style.display = method_status
+    if (info_status) info.style.display = info_status
+    if (confirmation_status) confirmation.style.display = confirmation_status
+    if (back_status) backBtn.style.display = back_status
+    if (next_status) nextBtn.style.display = next_status
+    if (displaycarform) display.style.display = displaycarform
     
     if (carforms_status) {
         carforms.forEach(item => item.style.display = carforms_status);
@@ -86,8 +111,9 @@ function settingdisplay_before_Step(method_status, info_status, confirmation_sta
 function purchasingstep(index) {
     
     switch(index) {
+        
         case 0:{
-            settingdisplay_before_Step('none', 'none', 'none', 'flex', 'none', 'flex');
+            settingdisplay_before_Step('none', 'none', 'none', 'flex', 'none', 'flex', 'flex');
             setstep0();
 
             setStepContent({
@@ -110,7 +136,7 @@ function purchasingstep(index) {
             break;
         }
         case 1:{
-            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex');
+            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex', 'none');
             
             setinfomation(index);
 
@@ -134,7 +160,7 @@ function purchasingstep(index) {
             break;
         }
         case 2:{
-            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex');
+            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex', 'none');
             setinfomation(index);
 
             setStepContent({
@@ -157,7 +183,7 @@ function purchasingstep(index) {
             break;
         }
         case 3: {
-            settingdisplay_before_Step('none', 'none', 'flex', 'none', 'block', 'none');
+            settingdisplay_before_Step('none', 'none', 'flex', 'none', 'block', 'block', 'none');
             setstep3();
             
             break;
@@ -343,12 +369,11 @@ function checkinputinfomation(stepindex){
     }
     if(stepindex == 1 || stepindex == 2){
         if(info1.value.trim() === "" || info2.value.trim() === ""){
-            alert("Please choose an option and fill in all the information");
             return false;
         } else {
-            // reset input
-            info1.value = "";
-            info2.value = "";
+
+
+            
             return true;
         }
     }
@@ -368,6 +393,12 @@ function totalinfomation() {
     }
     // Showroom mặc định = 0
 
+    
+
+    const addressText = gettingaddress(2);
+
+    const feeDiv = document.querySelector('.fee');
+
     // Hiển thị giá delivery
     document.getElementById('delivery-fee').innerHTML = "$" + deliveryFee;
 
@@ -375,7 +406,98 @@ function totalinfomation() {
     document.getElementById('total-fee').innerHTML = "$" + deliveryFee;
 }
 
+function insertAddressLabel(addressText) {
+    const deliveryLabel = document.getElementById('delivery-label-sum');
+    const deliveryFee = document.getElementById('delivery-fee');
 
+    let addressLabel = document.getElementById('address');
+
+    if (!addressLabel) {
+        addressLabel = document.createElement('label');
+        addressLabel.id = 'address';
+        // chèn sau delivery-label-sum, trước delivery-fee
+        deliveryLabel.parentElement.insertBefore(addressLabel, deliveryFee);
+    }
+
+    // cập nhật nội dung
+    addressLabel.textContent = addressText;
+}
+
+function addtime(idx, index) {
+    const container = document.getElementById("info");
+
+    if (idx === 2) {
+        // Kiểm tra nếu chưa có thì mới tạo
+        if (!document.getElementById("label3")) {
+            const label = document.createElement("label");
+            label.id = "label3";
+            label.setAttribute("for", "info3");
+            label.textContent = "Time";
+
+            const input = document.createElement("input");
+            input.id = "info3";
+            input.type = "text";
+            input.name = "Time";
+            input.placeholder = "Time";
+
+            container.appendChild(label);
+            container.appendChild(input);
+        }
+    } else {
+        // Nếu khác 2 thì xóa nếu tồn tại
+        const label = document.getElementById("label3");
+        const input = document.getElementById("info3");
+
+        if (label) label.remove();
+        if (input) input.remove();
+    }
+}
+
+
+function gettingaddress() {
+
+        const addressInput = document.getElementById('info1');
+        const streetInput = document.getElementById('info2');
+
+        let address = "";
+        let street = "";
+
+
+        if (addressInput) {
+            address = addressInput.value.trim()
+        }
+
+
+        if (streetInput) {
+            street = streetInput.value.trim();
+        }
+
+
+        if (address === "" && street === "") {
+            return "No address provided";
+        }
+
+        if (street !== "") {
+            return address + ", " + street; 
+        } else {
+            return address;
+        }
+}
+
+
+function handleAddressInput() {
+    const info1 = document.getElementById('info1');
+    const info2 = document.getElementById('info2');
+
+    // Tạo label address nếu chưa có
+    insertAddressLabel(gettingaddress());
+
+    // Cập nhật address khi người dùng nhập
+    info1.oninput = info2.oninput = () => {
+        insertAddressLabel(gettingaddress());
+        totalinfomation();
+    }
+}
 
 
 function setinfomation(stepindex) {
@@ -398,23 +520,31 @@ function setinfomation(stepindex) {
         ],
         [
             { label: "Phone number", placeholder: "Phone number" },
-            { label: "Phone number", placeholder: "Phone number" }
+            { label: "Reciever", placeholder: "name" }
         ]
     ];
 
     infomationDiv.forEach((item, index) => {
         item.onclick = () => {
+            
             let info;
             indexdata = index
             if(stepindex == 1){
                 info = infodata[index];
                 document.getElementById('payment-label-sum').innerHTML = document.getElementById('payment-label').innerHTML = index == 0 ? "Card" : "Cash";
-
-                
+                addtime(stepindex, index)
             }
             if(stepindex == 2){
                 info = infodata[index + 2];
                 document.getElementById('delivery-label-sum').innerHTML =  document.getElementById('delivery-label').innerHTML = index == 0 ? "Home" : "Showroom";
+                addtime(stepindex, index)
+
+                if(index == 0){
+                    handleAddressInput(); // gọi hàm tách riêng
+                } else {
+                    const addressLabel = document.getElementById('address');
+                    if(addressLabel) addressLabel.remove();
+                }
 
                 totalinfomation();
             }
@@ -426,7 +556,18 @@ function setinfomation(stepindex) {
             }
             document.getElementById("info").style.display = "block";
         }
+        resetInputs()
     });
+}
+
+function resetInputs() {
+    const info1 = document.getElementById('info1');
+    const info2 = document.getElementById('info2');
+    const info3 = document.getElementById('info3'); // nếu có
+
+    if(info1) info1.value = "";
+    if(info2) info2.value = "";
+    if(info3) info3.value = "";
 }
 
 window.onload = () => {
