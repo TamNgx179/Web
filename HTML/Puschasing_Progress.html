@@ -29,11 +29,11 @@
 
 
     <div id="purchasing-progress">
-        <ol id="step-purchasing">
-            <li id="step1">Car select tion</li>
-            <li id="step2">Payment method</li>
-            <li id="step3">Delivery service</li>
-            <li id="step4">Order confirmation</li>  
+        <ol id="step-purchasing" class="progress chevron">
+            <li class="step active"><span class="dot">1</span><span>Car selection</span></li>
+            <li class="step"><span class="dot">2</span><span>Payment method</span></li>
+            <li class="step"><span class="dot">3</span><span>Delivery service</span></li>
+            <li class="step"><span class="dot">4</span><span>Order confirmation</span></li>
         </ol>
     </div>
 
@@ -41,11 +41,13 @@
         <form id="Choosing-method">
             <h2 id="header">Choosing a payment method</h2>
 
+            <hr id="cross-line">
+
             <p id="paragraph">Select one option below. Depending on your choice. We will ask for the minimum infomation 
                 needed to process securely. You can reviewevery thing aggain before placing the order</p>
 
             <div class="display-carform">
-
+                <p id="title-display-carform">Car for inspection</p>
                 <div class="carform">
                     <img class="img-car" src="../images/bmw/bmw-i5/i5-display.webp">
                     
@@ -77,6 +79,11 @@
 
                         <h3 class="car-price">50.000</h3>
                     </div>
+                </div>
+
+                <div id="addanother">
+                    <img class="icon" src="../Image_icon/add.png">
+                    <p>Add another car</p>
                 </div>
             </div>
 
@@ -147,6 +154,8 @@
                     <label id="delivery-label-sum"></label>
                     <label id="delivery-fee"></label>
                 </div>
+
+                <hr id="cross-line">
                 
                 <div class="fee">
                     <label><Strong>Total</Strong></label>

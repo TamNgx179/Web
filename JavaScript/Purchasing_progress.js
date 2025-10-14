@@ -1,7 +1,9 @@
 let currentStep = 0; // bước hiện tại, bắt đầu từ 0
 let carlist = [];
-// Lấy danh sách reviews từ localStorage hoặc tạo mới
-const trolley = JSON.parse(localStorage.getItem('trolley')) || [];
+let trolley = [];
+
+let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
+
 
 function initEvent() {
     const nextbtn = document.getElementById("next-step"); 
@@ -12,6 +14,7 @@ function initEvent() {
         steps.forEach((step, index) => {
             if(index === currentStep) {
                 step.style.fontWeight = "bold"; // in đậm bước hiện tại
+
                 purchasingstep(index);
             }else step.style.fontWeight = "normal"; // các bước khác bình thường
         });
@@ -274,14 +277,22 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
 }
 
 //Nhận id xe từ trang car
-function gettingcar(){
-    tmpcar = createCarForm('', '', '', '', '', '')
-    tmpcar2 = createCarForm('', '', '', '', '', '')
-    tmpcar3 = createCarForm('', '', '', '', '', '')
+function gettingcar() {
+    // Lấy dữ liệu từ localStorage
+    let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
 
-    trolley.push(tmpcar)
-    trolley.push(tmpcar2)
-    trolley.push(tmpcar3)
+    // Tạo form từ mỗi xe trong selectedcar
+    selectedcar.forEach(car => {
+        const carForm = createCarForm(
+            car.img,
+            car.name,
+            car.time,
+            car.power,
+            car.energy,
+            car.price
+        );
+        trolley.push(carForm);
+    });
 }
 
 //click chọn xe
