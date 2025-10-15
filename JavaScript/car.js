@@ -1,6 +1,6 @@
 const params = new URLSearchParams(location.search);
-const brandId = params.get("brand");
-const carId   = params.get("id");
+const brandId = params.get("brand"); 
+const carId = params.get("id");      
 
 const BRAND_SOURCES = {
   honda: "../data/honda.json",
@@ -10,7 +10,6 @@ const BRAND_SOURCES = {
   mercedes: "../data/mercedes.json"
 };
 
-// ====== DOM refs ======
 const els = {
   title: document.getElementById("title"),
   price: document.getElementById("price"),
@@ -21,7 +20,7 @@ const els = {
   convenience: document.getElementById("convenience"),
   purchaseBtn: document.getElementById("purchaseBtn"),
 
-  // lightbox
+
   lb: document.getElementById("lightbox"),
   lbImg: document.getElementById("lbImg"),
   lbPrev: document.getElementById("lbPrev"),
@@ -30,131 +29,181 @@ const els = {
   lbCounter: document.getElementById("lbCounter"),
 };
 
-function clear(el){ while (el.firstChild) el.removeChild(el.firstChild); }
-function fmtUSD(v){
-  try { return new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(v); }
-  catch(_e){ return "$" + v; }
+// ====== HÀM HỖ TRỢ ======
+// Xóa hết nội dung bên trong một phần tử
+function clear(el) {
+  while (el.firstChild) {
+    el.removeChild(el.firstChild);
+  }
 }
 
+// Định dạng số thành tiền USD
+function formatUSD(value) {
+  try {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD"
+    }).format(value);
+  } catch (error) {
+    return "$" + value;
+  }
+}
 
-let gallerySources = [];
-let currentIndex = 0;
+// ====== LIGHTBOX ======
+let gallerySources = []; 
+let currentIndex = 0;    
 
-function openLightbox(i){
-  if (!gallerySources.length) return;
+// Mở lightbox tại ảnh thứ i
+function openLightbox(i) {
+  if (gallerySources.length === 0) return;
+
+  // Nếu i vượt quá thì quay vòng lại
   currentIndex = (i + gallerySources.length) % gallerySources.length;
+
   els.lbImg.src = gallerySources[currentIndex];
-  els.lbCounter.textContent = `${currentIndex + 1} of ${gallerySources.length}`;
+  els.lbCounter.textContent = `${currentIndex + 1} / ${gallerySources.length}`;
+
   els.lb.classList.remove("hidden");
   els.lb.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden"; // Ẩn cuộn trang
 }
 
-function closeLightbox(){
+function closeLightbox() {
   els.lb.classList.add("hidden");
   els.lb.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
 
-function nextImage(step){
+// Chuyển ảnh kế hoặc lùi
+function changeImage(step) {
   openLightbox(currentIndex + step);
 }
 
-// ====== Main ======
-(async function init(){
+// ====== HÀM CHÍNH ======
+async function init() {
   if (!brandId || !carId || !BRAND_SOURCES[brandId]) {
-    if (els.title) els.title.textContent = "Không tìm thấy xe";
+    els.title.textContent = "Không tìm thấy xe";
     return;
   }
 
   let data;
   try {
-    const res = await fetch(BRAND_SOURCES[brandId]);
-    data = await res.json();
-  } catch(e){
-    if (els.title) els.title.textContent = "Lỗi tải dữ liệu";
+    const response = await fetch(BRAND_SOURCES[brandId]);
+    data = await response.json();
+  } catch (error) {
+    els.title.textContent = "Lỗi tải dữ liệu";
     return;
   }
 
-  // mảng xe
+  // ===== LẤY DANH SÁCH XE =====
   let cars = [];
-  if (Array.isArray(data?.cars)) cars = data.cars;
-  else if (Array.isArray(data)) cars = data;
 
-  // tìm xe theo id
-  let car = cars.find(c => String(c.id) === String(carId));
+  if (Array.isArray(data.cars)) {
+    cars = data.cars;
+  } else if (Array.isArray(data)) {
+    cars = data;
+  }
+
+  // ===== TÌM XE THEO ID =====
+  const car = cars.find(item => String(item.id) === String(carId));
+
   if (!car) {
-    if (els.title) els.title.textContent = "Không tìm thấy xe";
+    els.title.textContent = "Không tìm thấy xe";
     return;
   }
 
-  // ===== Render =====
-  const name = car.name || carId;
+  // ===== HIỂN THỊ THÔNG TIN XE =====
+  const name = car.name || "Xe không rõ tên";
   document.title = name;
-  if (els.title) els.title.textContent = name;
+  els.title.textContent = name;
 
-  // price
-  els.price.textContent = (typeof car.priceUSD !== "undefined") ? fmtUSD(car.priceUSD) : "";
+  // Giá xe
+  if (car.priceUSD !== undefined) {
+    els.price.textContent = formatUSD(car.priceUSD);
+  }
 
-  // hero image
-  if (car.hero) { els.hero.src = car.hero; els.hero.alt = name; }
-  else if (car.display) { els.hero.src = car.display; els.hero.alt = name; }
-  else if (els.hero?.parentElement) { els.hero.parentElement.style.display = "none"; }
+  // Ảnh chính 
+  if (car.hero) {
+    els.hero.src = car.hero;
+  } else if (car.display) {
+    els.hero.src = car.display;
+  } else {
+    // Nếu không có ảnh thì ẩn khung
+    if (els.hero.parentElement) {
+      els.hero.parentElement.style.display = "none";
+    }
+  }
 
-  // gallery
+  // ===== GALLERY =====
   clear(els.gallery);
   gallerySources = Array.isArray(car.gallery) ? car.gallery.slice() : [];
-  gallerySources.forEach((src, i) => {
+
+  gallerySources.forEach((src, index) => {
     const img = document.createElement("img");
-    img.loading = "lazy";
     img.src = src;
-    img.alt = `${name} photo ${i+1}`;
-    img.addEventListener("click", () => openLightbox(i));
+    img.alt = `${name} - ảnh ${index + 1}`;
+    img.loading = "lazy"; // Tải ảnh khi cần
+    img.addEventListener("click", () => openLightbox(index));
     els.gallery.appendChild(img);
   });
 
-  // specs table
+  // ===== BẢNG THÔNG SỐ =====
   clear(els.specsTable);
   const specs = car.specs || {};
-  Object.keys(specs).forEach(k => {
+
+  for (const key in specs) {
     const tr = document.createElement("tr");
     const th = document.createElement("th");
     const td = document.createElement("td");
-    th.textContent = k;
-    td.textContent = String(specs[k]);
-    tr.appendChild(th); tr.appendChild(td);
+    th.textContent = key;
+    td.textContent = specs[key];
+    tr.appendChild(th);
+    tr.appendChild(td);
     els.specsTable.appendChild(tr);
-  });
+  }
 
-  // safety & convenience
+  // ===== Safety =====
   clear(els.safety);
   (car.safety || []).forEach(item => {
-    const li = document.createElement("li"); li.textContent = item;
+    const li = document.createElement("li");
+    li.textContent = item;
     els.safety.appendChild(li);
   });
+
+  // ===== Convenience =====
   clear(els.convenience);
   (car.convenience || []).forEach(item => {
-    const li = document.createElement("li"); li.textContent = item;
+    const li = document.createElement("li");
+    li.textContent = item;
     els.convenience.appendChild(li);
   });
 
-  // purchase btn
-  els.purchaseBtn?.addEventListener("click", () => {
-    alert("Bạn đã chọn mua: " + name);
-  });
+  // ===== NÚT MUA =====
+  if (els.purchaseBtn) {
+    els.purchaseBtn.addEventListener("click", () => {
+      alert("Bạn đã chọn mua: " + name);
+    });
+  }
 
-  // ===== Lightbox events =====
-  els.lbPrev?.addEventListener("click", () => nextImage(-1));
-  els.lbNext?.addEventListener("click", () => nextImage(1));
-  els.lbClose?.addEventListener("click", closeLightbox);
-  els.lb?.addEventListener("click", (e) => {
-    // click nền tối để đóng (không đóng khi click vào ảnh hoặc nút)
-    if (e.target === els.lb) closeLightbox();
-  });
+  // ===== SỰ KIỆN CHO LIGHTBOX =====
+  if (els.lbPrev) els.lbPrev.addEventListener("click", () => changeImage(-1));
+  if (els.lbNext) els.lbNext.addEventListener("click", () => changeImage(1));
+  if (els.lbClose) els.lbClose.addEventListener("click", closeLightbox);
+
+  // Nhấn nền tối để đóng
+  if (els.lb) {
+    els.lb.addEventListener("click", (e) => {
+      if (e.target === els.lb) closeLightbox();
+    });
+  }
+
+  // Bấm phím ESC hoặc mũi tên để điều khiển
   document.addEventListener("keydown", (e) => {
     if (els.lb.classList.contains("hidden")) return;
     if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowLeft") nextImage(-1);
-    if (e.key === "ArrowRight") nextImage(1);
+    if (e.key === "ArrowLeft") changeImage(-1);
+    if (e.key === "ArrowRight") changeImage(1);
   });
-})();
+}
+
+init();
