@@ -13,7 +13,9 @@ body {
   color: #000;
 }
 /* about_us.css */
-
+#counter {
+  right: 440px;
+}
 /* Hero section chiếm chiều cao toàn màn hình */
 .hero-container {
     position: relative;

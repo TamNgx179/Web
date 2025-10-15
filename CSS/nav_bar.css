@@ -33,7 +33,19 @@ nav ul {
 #LOGO, #Trolley {
    margin-left: 10%;
 }
-
+#counter{
+    display:flex;
+    width:20px;
+    height:20px;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top:47%;
+    right: 450px;
+}
 #nav_block2 {
     margin-left: 5%;
 }
