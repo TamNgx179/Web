@@ -205,5 +205,195 @@ async function init() {
     if (e.key === "ArrowRight") changeImage(1);
   });
 }
+/* ========= APPEND-ONLY: CART PUSH + COUNTER + EMPTY POPUP ========= */
+(function () {
+  // ====== KHÓA DỮ LIỆU TRONG LOCAL STORAGE ======
+  const CART_KEY = "selectedcar";
+
+  // ====== LẤY DANH SÁCH XE TRONG GIỎ ======
+  function getCart() {
+    try {
+      const saved = localStorage.getItem(CART_KEY);
+      if (saved) {
+        return JSON.parse(saved);
+      } else {
+        return [];
+      }
+    } catch (error) {
+      return [];
+    }
+  }
+
+  // ====== LƯU GIỎ XE LÊN LOCAL STORAGE ======
+  function setCart(cartArray) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cartArray));
+    updateCounter();
+  }
+
+  // ====== CẬP NHẬT SỐ XE HIỂN THỊ TRÊN ICON GIỎ HÀNG ======
+  function updateCounter() {
+    const counter = document.getElementById("counter");
+    if (counter) {
+      counter.textContent = String(getCart().length);
+    }
+  }
+
+  // ====== HIỂN THỊ THÔNG BÁO KHI GIỎ HÀNG TRỐNG ======
+  function showEmptyCartPopup() {
+    // Tạo lớp nền tối
+    const overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.inset = "0";
+    overlay.style.background = "rgba(0,0,0,0.55)";
+    overlay.style.display = "grid";
+    overlay.style.placeItems = "center";
+    overlay.style.zIndex = "9999";
+
+    // Tạo khung hộp thông báo
+    const box = document.createElement("div");
+    box.style.width = "min(440px, 92vw)";
+    box.style.background = "#fff";
+    box.style.borderRadius = "14px";
+    box.style.padding = "22px";
+    box.style.textAlign = "center";
+    box.style.boxShadow = "0 10px 30px rgba(0,0,0,0.25)";
+
+    // Thêm nội dung vào hộp
+    box.innerHTML = `
+      <h3 style="margin:0 0 8px;font:700 20px system-ui">Giỏ hàng trống</h3>
+      <p style="margin:0 0 18px;color:#555">Hãy chọn mẫu xe bạn yêu thích trước.</p>
+      <button id="goBrowse" 
+        style="padding:10px 16px;border:0;border-radius:999px;
+        background:#111;color:#fff;cursor:pointer">
+        Xem danh sách xe
+      </button>
+    `;
+
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    // Khi bấm nút → chuyển về trang danh sách xe
+    const btn = document.getElementById("goBrowse");
+    btn.onclick = function () {
+      location.href = "../HTML/Cars_And_Review.html";
+    };
+
+    // Khi bấm ra ngoài khung → đóng popup
+    overlay.onclick = function (e) {
+      if (e.target === overlay) {
+        overlay.remove();
+      }
+    };
+  }
+
+  // ====== NGĂN NGƯỜI DÙNG MỞ TRANG GIỎ KHI CHƯA CÓ XE ======
+  function guardEmptyCartLink() {
+    const trolleyLink = document.getElementById("Trolley");
+    if (!trolleyLink) return;
+
+    trolleyLink.addEventListener("click", function (event) {
+      const cart = getCart();
+      if (cart.length === 0) {
+        event.preventDefault(); // Chặn không cho đi link
+        showEmptyCartPopup();   // Hiện thông báo
+      }
+    });
+  }
+
+  // ====== LẤY DỮ LIỆU XE THEO brandId VÀ carId ======
+  async function fetchCarByParams() {
+    try {
+      if (!brandId || !carId || !BRAND_SOURCES[brandId]) {
+        return null;
+      }
+
+      const response = await fetch(BRAND_SOURCES[brandId]);
+      const data = await response.json();
+
+      // Lấy danh sách xe trong JSON
+      let cars = [];
+      if (Array.isArray(data.cars)) {
+        cars = data.cars;
+      } else if (Array.isArray(data)) {
+        cars = data;
+      }
+
+      // Tìm xe có id khớp
+      const found = cars.find(function (car) {
+        return String(car.id) === String(carId);
+      });
+
+      return found || null;
+    } catch (error) {
+      return null;
+    }
+  }
+
+  // ====== CHUYỂN SỐ TIỀN THÀNH DẠNG $x,xxx ======
+  function formatUSD(value) {
+    const number = Number(String(value).replace(/[^\d.]/g, ""));
+    if (isNaN(number)) return "$0";
+    return "$" + number.toLocaleString("en-US");
+  }
+
+  // ====== TẠO ĐỐI TƯỢNG XE DÙNG ĐỂ LƯU VÀO GIỎ ======
+  function buildCartItem(car) {
+    const name = car.name || "Unknown car";
+    const img = car.display || car.hero || car.image || "";
+    const specs = car.specs || {};
+
+    const weight = specs["Weight"] || specs["weight"] || "N/A";
+    const power = specs["Power"] || specs["Horsepower"] || "N/A";
+    const speed =
+      specs["Top Speed"] || specs["Top speed"] || specs["Max speed"] || "N/A";
+
+    const price = formatUSD(car.priceUSD || car.price || 0);
+
+    return {
+      id: (brandId + ":" + (car.id || name)).toLowerCase(),
+      name: name,
+      img: img,
+      weight: weight,
+      power: power,
+      speed: speed,
+      price: price
+    };
+  }
+
+  // ====== HÀM THÊM XE VÀO GIỎ KHI NGƯỜI DÙNG BẤM "PURCHASE" ======
+  async function addCarToCart() {
+    const car = await fetchCarByParams();
+    if (!car) return;
+
+    const item = buildCartItem(car);
+    const cart = getCart();
+
+    // Kiểm tra xem xe đã có trong giỏ chưa
+    const alreadyInCart = cart.some(function (x) {
+      return x.id === item.id;
+    });
+
+    if (!alreadyInCart) {
+      cart.push(item);
+    }
+
+    setCart(cart);
+    updateCounter();
+
+    alert("Đã thêm xe \"" + item.name + "\" vào giỏ hàng!");
+  }
+
+  // ====== KHI TRANG TẢI XONG ======
+  document.addEventListener("DOMContentLoaded", function () {
+    updateCounter();      // Cập nhật số xe
+    guardEmptyCartLink(); // Kiểm tra giỏ trống
+
+    const btn = document.getElementById("purchaseBtn");
+    if (btn) {
+      btn.addEventListener("click", addCarToCart);
+    }
+  });
+})();
+
 
 init();

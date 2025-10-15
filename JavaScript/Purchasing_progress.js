@@ -2,12 +2,12 @@ let currentStep = 0; // bước hiện tại, bắt đầu từ 0
 let carlist = [];
 let trolley = [];
 
-let tmp = createCarForm("a", "a", "a", "a", "a", "a")
-let tmp2 = createCarForm("b", "b", "b", "b", "b", "b")
-let tmp3 = createCarForm("c", "c", "c", "c", "c", "c")
-trolley.push(tmp)
-trolley.push(tmp2)
-trolley.push(tmp3)
+// let tmp = createCarForm("a", "a", "a", "a", "a", "a")
+// let tmp2 = createCarForm("b", "b", "b", "b", "b", "b")
+// let tmp3 = createCarForm("c", "c", "c", "c", "c", "c")
+// trolley.push(tmp)
+// trolley.push(tmp2)
+// trolley.push(tmp3)
 
 let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
 
@@ -41,7 +41,7 @@ function initEvent() {
                 
                 updateSteps();
             }
-            else alert("lease choose an option and fill in all the information");
+            else alert("Please choose an option and fill in all the information");
             
         }
 
@@ -198,7 +198,7 @@ function purchasingstep(index) {
 }
 
 //hàm tạo car form
-function createCarForm(imgSrc, name, time, power, energy, price) {
+function createCarForm(imgSrc, name, weight, power, speed, price) {
     //khung ngoài
     const carForm = document.createElement("div");
     carForm.className = "carform";
@@ -243,18 +243,18 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
     const infoLine = document.createElement("div");
     infoLine.className = "info-line";
 
-    //shop-time (thời gian bỏ xe vào giỏ)
-    const shopTime = document.createElement("div");
-    shopTime.className = "shop-time";
-    const shopIcon = document.createElement("img");
-    shopIcon.className = "icon";
-    shopIcon.src = "../Image_icon/calendar.png";
-    const shopText = document.createElement("div");
-    shopText.className = "time";
-    shopText.textContent = time;
+    //car-weight
+    const carWeight = document.createElement("div");
+    carWeight.className = "car-weight";
+    const weightIcon = document.createElement("img");
+    weightIcon.className = "icon";
+    weightIcon.src = "../Image_icon/weight.png";
+    const weightText = document.createElement("div");
+    weightText.className = "weight";
+    weightText.textContent = weight;
     //đẩy icon và nội dung vào khung
-    shopTime.appendChild(shopIcon);
-    shopTime.appendChild(shopText);
+    carWeight.appendChild(weightIcon);
+    carWeight.appendChild(weightText);
 
     // Car-power
     const carPower = document.createElement("div");
@@ -268,22 +268,22 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
     carPower.appendChild(powerIcon);
     carPower.appendChild(powerText);
 
-    // Car-energy
-    const carEnergy = document.createElement("div");
-    carEnergy.className = "car-energy";
-    const energyIcon = document.createElement("img");
-    energyIcon.className = "icon";
-    energyIcon.src = "../Image_icon/energy.png";
-    const energyText = document.createElement("div");
-    energyText.className = "energy";
-    energyText.textContent = energy;
-    carEnergy.appendChild(energyIcon);
-    carEnergy.appendChild(energyText);
+    // Car-speed
+    const carSpeed = document.createElement("div");
+    carSpeed.className = "car-speed";
+    const speedIcon = document.createElement("img");
+    speedIcon.className = "icon";
+    speedIcon.src = "../Image_icon/energy.png";
+    const speedText = document.createElement("div");
+    speedText.className = "speed";
+    speedText.textContent = speed;
+    carSpeed.appendChild(speedIcon);
+    carSpeed.appendChild(speedText);
 
     // Gắn 3 khối info vào info-line
-    infoLine.appendChild(shopTime);
+    infoLine.appendChild(carWeight);
     infoLine.appendChild(carPower);
-    infoLine.appendChild(carEnergy);
+    infoLine.appendChild(carSpeed);
 
     // Giá xe
     const carPrice = document.createElement("h3");
@@ -306,24 +306,6 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
 
     return carForm;
 }
-
-//Nhận id xe từ trang car
-function gettingcar() {
-    // Nếu có xe từ localStorage
-    selectedcar.forEach(car => {
-        const carForm = createCarForm(
-            car.img,
-            car.name,
-            car.time,
-            car.power,
-            car.energy,
-            car.price
-        );
-        trolley.push(carForm);
-    });
-
-}
-
 
 //click chọn xe
 function selected_car_on_trolley(car_on_trolley_list){
@@ -618,6 +600,174 @@ function resetInputs() {
     if(info2) info2.value = "";
     if(info3) info3.value = "";
 }
+//Nhận id xe từ trang car
+function gettingcar() {
+    // Nếu có xe từ localStorage
+    selectedcar.forEach(car => {
+        const carForm = createCarForm(
+            car.img,
+            car.name,
+            car.weight,
+            car.power,
+            car.speed,
+            car.price
+        );
+        trolley.push(carForm);
+    });
+
+}
+/* ========= APPEND-ONLY: COUNTER + EMPTY POPUP + TRASH REMOVAL ========= */
+(function () {
+  // ====== TÊN KHÓA LƯU DỮ LIỆU TRONG LOCAL STORAGE ======
+  const CART_KEY = "selectedcar";
+
+  // ====== HÀM LẤY DỮ LIỆU GIỎ HÀNG ======
+  function getCart() {
+    try {
+      const saved = localStorage.getItem(CART_KEY);
+      if (saved) {
+        return JSON.parse(saved);
+      } else {
+        return [];
+      }
+    } catch (error) {
+      return [];
+    }
+  }
+
+  // ====== HÀM LƯU DỮ LIỆU GIỎ HÀNG ======
+  function setCart(cartArray) {
+    localStorage.setItem(CART_KEY, JSON.stringify(cartArray));
+    updateCounter(); // cập nhật số lượng hiển thị
+  }
+
+  // ====== CẬP NHẬT SỐ XE TRÊN ICON GIỎ HÀNG ======
+  function updateCounter() {
+    const counter = document.getElementById("counter");
+    if (counter) {
+      counter.textContent = String(getCart().length);
+    }
+  }
+
+  // ====== HIỂN THỊ POPUP KHI GIỎ HÀNG TRỐNG ======
+  function showEmptyCartPopup() {
+    // Tạo nền mờ bao phủ trang
+    const overlay = document.createElement("div");
+    overlay.style.position = "fixed";
+    overlay.style.top = "0";
+    overlay.style.left = "0";
+    overlay.style.right = "0";
+    overlay.style.bottom = "0";
+    overlay.style.background = "rgba(0,0,0,0.55)";
+    overlay.style.display = "grid";
+    overlay.style.placeItems = "center";
+    overlay.style.zIndex = "9999";
+
+    // Tạo khung thông báo
+    const box = document.createElement("div");
+    box.style.width = "min(440px, 92vw)";
+    box.style.background = "#fff";
+    box.style.borderRadius = "14px";
+    box.style.padding = "22px";
+    box.style.textAlign = "center";
+    box.style.boxShadow = "0 10px 30px rgba(0,0,0,0.25)";
+
+    // Thêm nội dung vào khung
+    box.innerHTML = `
+      <h3 style="margin:0 0 8px;font:700 20px system-ui">Giỏ hàng trống</h3>
+      <p style="margin:0 0 18px;color:#555">
+        Hãy chọn mẫu xe bạn yêu thích trước nhé!
+      </p>
+      <button id="goBrowse"
+        style="padding:10px 16px;border:0;border-radius:999px;
+               background:#111;color:#fff;cursor:pointer">
+        Xem danh sách xe
+      </button>
+    `;
+
+    overlay.appendChild(box);
+    document.body.appendChild(overlay);
+
+    // Khi bấm nút → chuyển sang trang danh sách xe
+    const browseBtn = document.getElementById("goBrowse");
+    browseBtn.onclick = function () {
+      location.href = "../HTML/Cars_And_Review.html";
+    };
+
+    // Khi bấm ra ngoài khung → đóng popup
+    overlay.onclick = function (event) {
+      if (event.target === overlay) {
+        overlay.remove();
+      }
+    };
+  }
+
+  // ====== CHẶN KHÔNG CHO VÀO TRANG GIỎ HÀNG NẾU GIỎ TRỐNG ======
+  function guardEmptyCartLink() {
+    const trolleyLink = document.getElementById("Trolley");
+    if (!trolleyLink) return;
+
+    trolleyLink.addEventListener("click", function (event) {
+      const cart = getCart();
+      if (cart.length === 0) {
+        event.preventDefault(); // Chặn link không cho qua trang
+        showEmptyCartPopup();   // Hiện thông báo
+      }
+    });
+  }
+
+  // ====== XOÁ XE KHỎI LOCALSTORAGE KHI NHẤN VÀO ICON THÙNG RÁC ======
+  function removeFromStorageOnTrash() {
+    // Lấy phần tử chứa danh sách xe
+    const container = document.querySelector(".display-carform");
+    if (!container) return;
+
+    // Lắng nghe sự kiện click trên toàn bộ khu vực đó
+    container.addEventListener("click", function (event) {
+      const target = event.target;
+
+      // Kiểm tra có click vào ảnh thùng rác không
+      const isTrashIcon = (
+        target &&
+        target.tagName === "IMG" &&
+        target.src.includes("trashcan.png")
+      );
+
+      if (!isTrashIcon) return;
+
+      // Tìm phần tử cha chứa thông tin xe (thẻ .carform)
+      const carCard = target.closest(".carform");
+      if (!carCard) return;
+
+      // Lấy tên xe từ phần tử có class .car-name
+      const nameElement = carCard.querySelector(".car-name");
+      const carName = nameElement ? nameElement.textContent.trim() : "";
+
+      if (!carName) return;
+
+      // Lọc bỏ xe bị xóa ra khỏi danh sách
+      const newCart = getCart().filter(function (item) {
+        return (item.name || "").trim() !== carName;
+      });
+
+      // Lưu lại giỏ hàng mới
+      setCart(newCart);
+
+      // Cập nhật biến toàn cục (nếu code khác có dùng)
+      try {
+        window.selectedcar = JSON.parse(localStorage.getItem(CART_KEY)) || [];
+      } catch (error) {}
+    }, true); // Sử dụng capture = true để chạy trước các handler khác
+  }
+
+  // ====== KHI TRANG ĐÃ TẢI XONG ======
+  document.addEventListener("DOMContentLoaded", function () {
+    updateCounter();          // Cập nhật số lượng giỏ hàng
+    guardEmptyCartLink();     // Chặn khi giỏ trống
+    removeFromStorageOnTrash(); // Cho phép xóa xe khỏi localStorage
+  });
+})();
+
 
 window.onload = () => {
     gettingcar()

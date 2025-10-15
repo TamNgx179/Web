@@ -351,7 +351,7 @@ body, html {
     margin-right: 20px;
 }
 
-.shop-time, .car-power, .car-energy {
+.car-weight, .car-power, .car-speed {
     display: flex;
     flex-direction: row;
 
