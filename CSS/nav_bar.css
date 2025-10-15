@@ -34,17 +34,19 @@ nav ul {
    margin-left: 10%;
 }
 #counter{
-    display:flex;
-    width:20px;
-    height:20px;
-    background-color: red;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    border-radius: 50%;
-    position: absolute;
-    top:47%;
-    right: 450px;
+    position:absolute;
+    top:3px;
+    right:450px;
+    min-width:18px;
+    height:18px; 
+    padding:0 4px;
+    border-radius:999px;
+    background:#ff3b30;
+    color:#fff;
+    font-size:12px;
+    line-height:18px;
+    text-align:center;
+    font-weight:700;
 }
 #nav_block2 {
     margin-left: 5%;
