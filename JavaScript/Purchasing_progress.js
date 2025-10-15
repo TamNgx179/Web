@@ -2,6 +2,13 @@ let currentStep = 0; // bước hiện tại, bắt đầu từ 0
 let carlist = [];
 let trolley = [];
 
+let tmp = createCarForm("a", "a", "a", "a", "a", "a")
+let tmp2 = createCarForm("b", "b", "b", "b", "b", "b")
+let tmp3 = createCarForm("c", "c", "c", "c", "c", "c")
+trolley.push(tmp)
+trolley.push(tmp2)
+trolley.push(tmp3)
+
 let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
 
 
@@ -68,8 +75,6 @@ function setprocessbar(idx) {
         // Bước sau thì để trống (mặc định)
     });
 }
-
-initEvent();
 
 function setStepContent({ header, paragraph, options}) {
     document.getElementById("header").innerHTML = header;
@@ -304,10 +309,7 @@ function createCarForm(imgSrc, name, time, power, energy, price) {
 
 //Nhận id xe từ trang car
 function gettingcar() {
-    // Lấy dữ liệu từ localStorage
-    let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
-
-    // Tạo form từ mỗi xe trong selectedcar
+    // Nếu có xe từ localStorage
     selectedcar.forEach(car => {
         const carForm = createCarForm(
             car.img,
@@ -319,7 +321,9 @@ function gettingcar() {
         );
         trolley.push(carForm);
     });
+
 }
+
 
 //click chọn xe
 function selected_car_on_trolley(car_on_trolley_list){
@@ -327,24 +331,69 @@ function selected_car_on_trolley(car_on_trolley_list){
         item.onclick = () => {
             if(item.style.border.includes('green')){
                 item.style.border = '1px solid black';
+                inputcarintosumary(item, false)
             } else {
                 item.style.border = '3px solid green';
+                inputcarintosumary(item, true)
             }
         }
     });
 }
 
+function inputcarintosumary(item, selected) {
+    const list = document.getElementById('list-car-selected');
 
+    if (selected) {
+        const li = document.createElement('li');
+        const name = document.createElement('span');
+        const price = document.createElement('span');
 
-function setstep0(){
-    const display = document.querySelector('.display-carform')
+        name.classList.add('car-name');
+        price.classList.add('car-price');
 
-    trolley.forEach(item => {
-        display.appendChild(item)
-    })
-    
-    selected_car_on_trolley(trolley)
+        name.innerHTML = item.querySelector('.car-name')?.innerHTML || '';
+        price.innerHTML = item.querySelector('.car-price')?.innerHTML || '';
+
+        li.appendChild(name);
+        li.appendChild(price);
+        list.appendChild(li);
+    } 
+    else {
+        const allLi = list.querySelectorAll('li');
+        allLi.forEach(li => {
+            const carName = li.querySelector('.car-name')?.innerHTML.trim();
+            const itemName = item.querySelector('.car-name')?.innerHTML.trim();
+            if (carName === itemName) {
+                li.remove();
+            }
+        });
+    }
 }
+
+
+
+function setstep0() {
+    const display = document.querySelector('.display-carform');
+    const addAnother = document.getElementById('addanother');
+
+    // Xóa carform cũ khỏi DOM
+    display.querySelectorAll('.carform').forEach(el => el.remove());
+
+    // Tạo 1 form trống mới test
+    
+    trolley.forEach(item => {
+        display.insertBefore(item, addAnother)
+    })
+
+    // Gán lại event cho toàn bộ form
+    selected_car_on_trolley(trolley);
+
+    addAnother.onclick = () => {
+        window.location.href = "../HTML/Cars_And_Review.html";
+    }
+}
+
+
 
 function setstep3() {
     document.getElementById("header").innerHTML = "Order confirmation";
@@ -391,9 +440,7 @@ function totalinfomation() {
     if(delivery === "Home") {
         deliveryFee = 499;
     }
-    // Showroom mặc định = 0
 
-    
 
     const addressText = gettingaddress(2);
 
@@ -415,6 +462,7 @@ function insertAddressLabel(addressText) {
     if (!addressLabel) {
         addressLabel = document.createElement('label');
         addressLabel.id = 'address';
+        addressLabel.style.fontWeight = 'normal'
         // chèn sau delivery-label-sum, trước delivery-fee
         deliveryLabel.parentElement.insertBefore(addressLabel, deliveryFee);
     }
@@ -532,6 +580,7 @@ function setinfomation(stepindex) {
             if(stepindex == 1){
                 info = infodata[index];
                 document.getElementById('payment-label-sum').innerHTML = document.getElementById('payment-label').innerHTML = index == 0 ? "Card" : "Cash";
+                document.getElementById('payment-label-sum').style.fontWeight = 'normal'
                 addtime(stepindex, index)
             }
             if(stepindex == 2){
@@ -572,5 +621,5 @@ function resetInputs() {
 
 window.onload = () => {
     gettingcar()
-    setstep0()
+    initEvent();
 }
