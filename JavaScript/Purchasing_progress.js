@@ -649,73 +649,7 @@ function gettingcar() {
     }
   }
 
-  // ====== HIỂN THỊ POPUP KHI GIỎ HÀNG TRỐNG ======
-  function showEmptyCartPopup() {
-    // Tạo nền mờ bao phủ trang
-    const overlay = document.createElement("div");
-    overlay.style.position = "fixed";
-    overlay.style.top = "0";
-    overlay.style.left = "0";
-    overlay.style.right = "0";
-    overlay.style.bottom = "0";
-    overlay.style.background = "rgba(0,0,0,0.55)";
-    overlay.style.display = "grid";
-    overlay.style.placeItems = "center";
-    overlay.style.zIndex = "9999";
-
-    // Tạo khung thông báo
-    const box = document.createElement("div");
-    box.style.width = "min(440px, 92vw)";
-    box.style.background = "#fff";
-    box.style.borderRadius = "14px";
-    box.style.padding = "22px";
-    box.style.textAlign = "center";
-    box.style.boxShadow = "0 10px 30px rgba(0,0,0,0.25)";
-
-    // Thêm nội dung vào khung
-    box.innerHTML = `
-      <h3 style="margin:0 0 8px;font:700 20px system-ui">Giỏ hàng trống</h3>
-      <p style="margin:0 0 18px;color:#555">
-        Hãy chọn mẫu xe bạn yêu thích trước nhé!
-      </p>
-      <button id="goBrowse"
-        style="padding:10px 16px;border:0;border-radius:999px;
-               background:#111;color:#fff;cursor:pointer">
-        Xem danh sách xe
-      </button>
-    `;
-
-    overlay.appendChild(box);
-    document.body.appendChild(overlay);
-
-    // Khi bấm nút → chuyển sang trang danh sách xe
-    const browseBtn = document.getElementById("goBrowse");
-    browseBtn.onclick = function () {
-      location.href = "../HTML/Cars_And_Review.html";
-    };
-
-    // Khi bấm ra ngoài khung → đóng popup
-    overlay.onclick = function (event) {
-      if (event.target === overlay) {
-        overlay.remove();
-      }
-    };
-  }
-
-  // ====== CHẶN KHÔNG CHO VÀO TRANG GIỎ HÀNG NẾU GIỎ TRỐNG ======
-  function guardEmptyCartLink() {
-    const trolleyLink = document.getElementById("Trolley");
-    if (!trolleyLink) return;
-
-    trolleyLink.addEventListener("click", function (event) {
-      const cart = getCart();
-      if (cart.length === 0) {
-        event.preventDefault(); // Chặn link không cho qua trang
-        showEmptyCartPopup();   // Hiện thông báo
-      }
-    });
-  }
-
+  
   // ====== XOÁ XE KHỎI LOCALSTORAGE KHI NHẤN VÀO ICON THÙNG RÁC ======
   function removeFromStorageOnTrash() {
     // Lấy phần tử chứa danh sách xe
@@ -763,7 +697,6 @@ function gettingcar() {
   // ====== KHI TRANG ĐÃ TẢI XONG ======
   document.addEventListener("DOMContentLoaded", function () {
     updateCounter();          // Cập nhật số lượng giỏ hàng
-    guardEmptyCartLink();     // Chặn khi giỏ trống
     removeFromStorageOnTrash(); // Cho phép xóa xe khỏi localStorage
   });
 })();
