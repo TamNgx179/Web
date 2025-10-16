@@ -33,19 +33,23 @@ function initEvent() {
 
     // gán sự kiện nút Next
     nextbtn.onclick = (event) => {
-        
         event.preventDefault(); // ngăn form submit
         if (currentStep < steps.length - 1) {
             if(checkinputinfomation(currentStep)){ 
                 currentStep++;
-                
                 updateSteps();
             }
-            else alert("Please choose an option and fill in all the information");
-            
-        }
+            else {
+                if(currentStep != 0){
+                    alert("Please choose an option and fill in all the information");
+                }
+                else {
+                    alert("Please select a car before next step")
+                }
+            }
 
-    };
+        };
+    }
 
     // gán sự kiện nút Prev
     prevbtn.onclick = (event) => {
@@ -299,7 +303,9 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
     carForm.appendChild(carInfo);
 
     //click vào icon thùng rác
-    closeIcon.onclick = () => {
+    closeIcon.onclick = function (e) {
+        //tránh lan sự kiện click sang selectedcarform
+        e.stopPropagation() 
     // Xóa form khỏi DOM
         carForm.remove();
 
@@ -312,6 +318,7 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
             const newCart = JSON.parse(localStorage.getItem("selectedcar")) || [];
             const updatedCart = newCart.filter(item => (item.name || "").trim() !== carName);
             localStorage.setItem("selectedcar", JSON.stringify(updatedCart));
+            totalinfomation()
         }
 
         // Cập nhật counter trên icon giỏ hàng
@@ -319,6 +326,8 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
         if (counter) {
             counter.textContent = String(JSON.parse(localStorage.getItem("selectedcar") || "[]").length);
         }
+
+        inputcarintosumary(carForm ,false)
     };
 
     return carForm;
@@ -408,27 +417,26 @@ function setstep3() {
 }
 
 function checkinputinfomation(stepindex){
-    const info1 = document.getElementById('info1');
-    const info2 = document.getElementById('info2');
-
     if(stepindex == 0){
-        document.getElementById('next-step').innerText = "Next step";
-        return true;
-    }
-    if(stepindex == 1 || stepindex == 2){
-        if(info1.value.trim() === "" || info2.value.trim() === ""){
-            return false;
-        } else {
-
-
-            
-            return true;
+        const ol = document.querySelector('#list-car-selected')
+        if(ol.querySelectorAll('li').length == 0){
+            return false
         }
+        else return true
     }
-    else if(stepindex == 3){
-        return true;
+    else if(stepindex == 1){
+        if(document.getElementById('payment-label-sum').textContent == ''){
+            return false
+        }
+        else return true
     }
-    return false;
+    else if (stepindex == 2){
+        if(document.getElementById('delivery-fee').textContent == ''){
+            return false
+        }
+        else return true
+    }
+    else return true
 }
 
 
@@ -436,6 +444,7 @@ function totalinfomation() {
     let delivery = document.getElementById('delivery-label-sum').innerHTML.trim(); // loại bỏ khoảng trắng
 
     let deliveryFee = 0;
+    let totalitemcost = 0;
     if(delivery === "Home") {
         deliveryFee = 499;
     }
@@ -445,11 +454,19 @@ function totalinfomation() {
 
     const feeDiv = document.querySelector('.fee');
 
+    const itemcost = document.querySelectorAll('.carform')
+
+    itemcost.forEach(item => {
+        let priceText = item.querySelector('.car-price').textContent; //Lấy giá
+        let cost = parseInt(priceText.replace(/[^0-9]/g, '')); // xóa mọi ký tự không phải số
+        totalitemcost += cost;
+    });
+
     // Hiển thị giá delivery
     document.getElementById('delivery-fee').innerHTML = "$" + deliveryFee;
 
     // Tổng = deliveryFee
-    document.getElementById('total-fee').innerHTML = "$" + deliveryFee;
+    document.getElementById('total-fee').innerHTML = "$" + (deliveryFee + totalitemcost).toLocaleString(); //thêm dấu , khi hiện số
 }
 
 function insertAddressLabel(addressText) {
@@ -673,7 +690,6 @@ function gettingcar() {
     updateCounter();          // Cập nhật số lượng giỏ hàng
   });
 })();
-
 
 window.onload = () => {
     gettingcar()

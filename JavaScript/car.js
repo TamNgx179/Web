@@ -178,13 +178,6 @@ async function init() {
     els.convenience.appendChild(li);
   });
 
-  // ===== NÚT MUA =====
-  if (els.purchaseBtn) {
-    els.purchaseBtn.addEventListener("click", () => {
-      alert("Bạn đã chọn mua: " + name);
-    });
-  }
-
   // ===== SỰ KIỆN CHO LIGHTBOX =====
   if (els.lbPrev) els.lbPrev.addEventListener("click", () => changeImage(-1));
   if (els.lbNext) els.lbNext.addEventListener("click", () => changeImage(1));
@@ -318,8 +311,6 @@ async function init() {
 
     setCart(cart);
     updateCounter();
-
-    alert("Đã thêm xe \"" + item.name + "\" vào giỏ hàng!");
   }
 
   // ====== KHI TRANG TẢI XONG ======
