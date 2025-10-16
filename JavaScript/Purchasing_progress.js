@@ -300,8 +300,25 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
 
     //click vào icon thùng rác
     closeIcon.onclick = () => {
-        carForm.remove(); // Xóa cả form
-        trolley = trolley.filter(x => x  != carForm)
+    // Xóa form khỏi DOM
+        carForm.remove();
+
+        // Xóa khỏi mảng trolley
+        trolley = trolley.filter(x => x != carForm);
+
+        // Xóa khỏi localStorage dựa trên tên xe
+        const carName = carForm.querySelector(".car-name")?.textContent.trim();
+        if (carName) {
+            const newCart = JSON.parse(localStorage.getItem("selectedcar")) || [];
+            const updatedCart = newCart.filter(item => (item.name || "").trim() !== carName);
+            localStorage.setItem("selectedcar", JSON.stringify(updatedCart));
+        }
+
+        // Cập nhật counter trên icon giỏ hàng
+        const counter = document.getElementById("counter");
+        if (counter) {
+            counter.textContent = String(JSON.parse(localStorage.getItem("selectedcar") || "[]").length);
+        }
     };
 
     return carForm;
@@ -650,54 +667,10 @@ function gettingcar() {
   }
 
   
-  // ====== XOÁ XE KHỎI LOCALSTORAGE KHI NHẤN VÀO ICON THÙNG RÁC ======
-  function removeFromStorageOnTrash() {
-    // Lấy phần tử chứa danh sách xe
-    const container = document.querySelector(".display-carform");
-    if (!container) return;
-
-    // Lắng nghe sự kiện click trên toàn bộ khu vực đó
-    container.addEventListener("click", function (event) {
-      const target = event.target;
-
-      // Kiểm tra có click vào ảnh thùng rác không
-      const isTrashIcon = (
-        target &&
-        target.tagName === "IMG" &&
-        target.src.includes("trashcan.png")
-      );
-
-      if (!isTrashIcon) return;
-
-      // Tìm phần tử cha chứa thông tin xe (thẻ .carform)
-      const carCard = target.closest(".carform");
-      if (!carCard) return;
-
-      // Lấy tên xe từ phần tử có class .car-name
-      const nameElement = carCard.querySelector(".car-name");
-      const carName = nameElement ? nameElement.textContent.trim() : "";
-
-      if (!carName) return;
-
-      // Lọc bỏ xe bị xóa ra khỏi danh sách
-      const newCart = getCart().filter(function (item) {
-        return (item.name || "").trim() !== carName;
-      });
-
-      // Lưu lại giỏ hàng mới
-      setCart(newCart);
-
-      // Cập nhật biến toàn cục (nếu code khác có dùng)
-      try {
-        window.selectedcar = JSON.parse(localStorage.getItem(CART_KEY)) || [];
-      } catch (error) {}
-    }, true); // Sử dụng capture = true để chạy trước các handler khác
-  }
 
   // ====== KHI TRANG ĐÃ TẢI XONG ======
   document.addEventListener("DOMContentLoaded", function () {
     updateCounter();          // Cập nhật số lượng giỏ hàng
-    removeFromStorageOnTrash(); // Cho phép xóa xe khỏi localStorage
   });
 })();
 
