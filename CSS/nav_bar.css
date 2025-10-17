@@ -1,3 +1,8 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
 nav {
     width: 100%;
     background-color: white;
@@ -9,6 +14,11 @@ nav {
 
     padding-bottom: 10px;
     padding-top: 10px;
+
+    position: fixed !important;
+    top: 0;
+    z-index: 9999;
+    transform: none !important;
 }
 
 nav ul {
@@ -23,7 +33,21 @@ nav ul {
 #LOGO, #Trolley {
    margin-left: 10%;
 }
-
+#counter{
+    position:absolute;
+    top:3px;
+    right:450px;
+    min-width:18px;
+    height:18px; 
+    padding:0 4px;
+    border-radius:999px;
+    background:#ff3b30;
+    color:#fff;
+    font-size:12px;
+    line-height:18px;
+    text-align:center;
+    font-weight:700;
+}
 #nav_block2 {
     margin-left: 5%;
 }
@@ -39,10 +63,21 @@ nav ul {
     object-fit: contain;
 }
 
+a {
+    text-decoration: none; /* tắt gạch chân */
+    color: black; /* giữ màu chữ theo thẻ cha, không đổi màu xanh */
+}
+
+
+a:hover {
+    color: #007BFF; /* màu xanh khi hover, tuỳ ý */
+}
+
 @media (max-width: 600px) {
     nav {
         padding: 8px 12px;
         justify-content: space-between; /* tách 3 phần: logo - menu - icon */
+        font-size: 10px;
     }
 
     #LOGO {

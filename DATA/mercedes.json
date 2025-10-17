@@ -5,14 +5,14 @@
         "id": "Mercedes-GLS450",
         "name": "Mercedes GLS450",
         "type": "SUV",
-        "display": "images/mercedes/GLS450/GLS450-display.webp",
+        "display": "../images/mercedes/GLS450/GLS450-display.webp",
         "priceUSD": 91000,
-        "hero": "images/mercedes/GLS450/GLS450-trans.png",
+        "hero": "../images/mercedes/GLS450/GLS450-trans.png",
         "gallery": [
-            "images/mercedes/GLS450/GLS450-img1.avif",
-            "images/mercedes/GLS450/GLS450-img2.avif",
-            "images/mercedes/GLS450/GLS450-img3.avif",
-            "images/mercedes/GLS450/GLS450-img4.avif"
+            "../images/mercedes/GLS450/GLS450-img1.avif",
+            "../images/mercedes/GLS450/GLS450-img2.avif",
+            "../images/mercedes/GLS450/GLS450-img3.avif",
+            "../images/mercedes/GLS450/GLS450-img4.avif"
         ],
         "specs": {
             "Model": "Mercedes GLS450",
@@ -41,14 +41,14 @@
         "id": "Mercedes-GLS600",
         "name": "Mercedes Maybach GLS600",
         "type": "SUV",
-        "display": "images/mercedes/GLS600/GLS600-display.webp",
+        "display": "../images/mercedes/GLS600/GLS600-display.webp",
         "priceUSD": 180000,
-        "hero": "images/mercedes/GLS600/GLS600-trans.webp",
+        "hero": "../images/mercedes/GLS600/GLS600-trans.webp",
         "gallery": [
-            "images/mercedes/GLS600/GLS600-img1.avif",
-            "images/mercedes/GLS600/GLS600-img2.avif",
-            "images/mercedes/GLS600/GLS600-img3.avif",
-            "images/mercedes/GLS600/GLS600-img4.avif"
+            "../images/mercedes/GLS600/GLS600-img1.avif",
+            "../images/mercedes/GLS600/GLS600-img2.avif",
+            "../images/mercedes/GLS600/GLS600-img3.avif",
+            "../images/mercedes/GLS600/GLS600-img4.avif"
         ],
         "specs": {
             "Model": "Mercedes Maybach GLS600",
@@ -77,14 +77,14 @@
         "id": "Mercedes-S680",
         "name": "Mercedes Maybach S680",
         "type": "Sedan",
-        "display": "images/mercedes/S680/S680-display.webp",
+        "display": "../images/mercedes/MaybachS680/S680-display.webp",
         "priceUSD": 241000,
-        "hero": "images/mercedes/MaybachS680/S680-trans.webp",
+        "hero": "../images/mercedes/MaybachS680/S680-trans.webp",
         "gallery": [
-            "images/mercedes/MaybachS680/S680-img1.avif",
-            "images/mercedes/MaybachS680/S680-img2.avif",
-            "images/mercedes/MaybachS680/S680-img3.avif",
-            "images/mercedes/MaybachS680/S680-img4.avif"
+            "../images/mercedes/MaybachS680/S680-img1.avif",
+            "../images/mercedes/MaybachS680/S680-img2.avif",
+            "../images/mercedes/MaybachS680/S680-img3.avif",
+            "../images/mercedes/MaybachS680/S680-img4.avif"
         ],
         "specs": {
             "Model": "Mercedes Maybach S680",
@@ -113,14 +113,14 @@
         "id": "Mercedes-E350",
         "name": "Mercedes E350",
         "type": "Sedan",
-        "display": "images/mercedes/E350/E350-display.webp",
+        "display": "../images/mercedes/E350/E350-display.webp",
         "priceUSD": 64000,
-        "hero": "images/mercedes/E350/E350-trans.png",
+        "hero": "../images/mercedes/E350/E350-trans.webp",
         "gallery": [
-            "images/mercedes/E350/E350-img1.avif",
-            "images/mercedes/E350/E350-img2.avif",
-            "images/mercedes/E350/E350-img3.avif",
-            "images/mercedes/E350/E350-img4.avif"
+            "../images/mercedes/E350/E350-img1.avif",
+            "../images/mercedes/E350/E350-img2.avif",
+            "../images/mercedes/E350/E350-img3.avif",
+            "../images/mercedes/E350/E350-img4.avif"
         ],
         "specs": {
             "Model": "Mercedes E350",
@@ -149,14 +149,14 @@
         "id": "Mercedes-AMGS63",
         "name": "Mercedes AMG S63",
         "type": "Sedan",
-        "display": "images/mercedes/AMGS63/AMGS63-display.webp",
+        "display": "../images/mercedes/AMGS63/AMGS63-display.webp",
         "priceUSD": 187000,
-        "hero": "images/mercedes/AMGS63/AMGS63-trans.webp",
+        "hero": "../images/mercedes/AMGS63/AMGS63-trans.webp",
         "gallery": [
-            "images/mercedes/AMGS63/AMGS63-img1.avif",
-            "images/mercedes/AMGS63/AMGS63-img2.avif",
-            "images/mercedes/AMGS63/AMGS63-img3.avif",
-            "images/mercedes/AMGS63/AMGS63-img4.avif"
+            "../images/mercedes/AMGS63/AMGS63-img1.avif",
+            "../images/mercedes/AMGS63/AMGS63-img2.avif",
+            "../images/mercedes/AMGS63/AMGS63-img3.avif",
+            "../images/mercedes/AMGS63/AMGS63-img4.avif"
         ],
         "specs": {
             "Model": "Mercedes AMG S63",
@@ -185,14 +185,14 @@
         "id": "Mercedes-EQE350",
         "name": "Mercedes EQE350",
         "type": "EV",
-        "display": "images/mercedes/EQE350/EQE350-display.webp",
+        "display": "../images/mercedes/EQE350/EQE350-display.webp",
         "priceUSD": 78000,
-        "hero": "images/mercedes/EQE350/EQE350-trans.png",
+        "hero": "../images/mercedes/EQE350/EQE350-trans.webp",
         "gallery": [
-            "images/mercedes/EQE350/EQE350-img1.avif",
-            "images/mercedes/EQE350/EQE350-img2.jpg",
-            "images/mercedes/EQE350/EQE350-img3.jpg",
-            "images/mercedes/EQE350/EQE350-img4.jpg"
+            "../images/mercedes/EQE350/EQE350-img1.avif",
+            "../images/mercedes/EQE350/EQE350-img2.jpg",
+            "../images/mercedes/EQE350/EQE350-img3.jpg",
+            "../images/mercedes/EQE350/EQE350-img4.jpg"
         ],
         "specs": {
             "Model": "Mercedes EQE350",
@@ -222,14 +222,14 @@
         "id": "Mercedes-EQS",
         "name": "Mercedes EQS",
         "type": "EV",
-        "display": "images/mercedes/EQS/EQS-display.webp",
+        "display": "../images/mercedes/EQS/EQS-display.webp",
         "priceUSD": 108000,
-        "hero": "images/mercedes/EQS/EQS-trans.png",
+        "hero": "../images/mercedes/EQS/EQS-trans.webp",
         "gallery": [
-            "images/mercedes/EQS/EQS-img1.avif",
-            "images/mercedes/EQS/EQS-img2.avif",
-            "images/mercedes/EQS/EQS-img3.avif",
-            "images/mercedes/EQS/EQS-img4.avif"
+            "../images/mercedes/EQS/EQS-img1.jpg",
+            "../images/mercedes/EQS/EQS-img2.jpg",
+            "../images/mercedes/EQS/EQS-img3.jpg",
+            "../images/mercedes/EQS/EQS-img4.jpg"
         ],
         "specs": {
             "Model": "Mercedes EQS",

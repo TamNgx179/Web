@@ -5,13 +5,13 @@
         "id": "Toyota-Camry",
         "name": "Toyota Camry",
         "type": "Sedan",
-        "display": "images/toyota/camry/camry-display.webp",
+        "display": "../images/toyota/camry/camry-display.webp",
         "priceUSD": 37000,
-        "hero": "images/toyota/camry/camry-trans.webp",
+        "hero": "../images/toyota/camry/camry-trans.webp",
         "gallery": [
-            "images/toyota/camry/camry-img1.avif",
-            "images/toyota/camry/camry-img2.avif",
-            "images/toyota/camry/camry-img3.avif"
+            "../images/toyota/camry/camry-img1.avif",
+            "../images/toyota/camry/camry-img2.avif",
+            "../images/toyota/camry/camry-img3.avif"
         ],
         "specs": {
             "Model": "Toyota Camry",
@@ -39,13 +39,13 @@
         "id": "Toyota-Vios",
         "name": "Toyota Vios",
         "type": "Sedan",
-        "display": "images/toyota/vios/vios-display.png",
+        "display": "../images/toyota/vios/vios-display.png",
         "priceUSD": 13000,
-        "hero": "images/toyota/vios/vios-trans.png",
+        "hero": "../images/toyota/vios/vios-trans.png",
         "gallery": [
-            "images/toyota/vios/vios-img1.jpg",
-            "images/toyota/vios/vios-img2.jpg",
-            "images/toyota/vios/vios-img3.webp"
+            "../images/toyota/vios/vios-img1.jpg",
+            "../images/toyota/vios/vios-img2.jpg",
+            "../images/toyota/vios/vios-img3.webp"
         ],
         "specs": {
             "Model": "Toyota Vios",
@@ -74,14 +74,14 @@
         "id": "Toyota-Landcruiser",
         "name": "Toyota Landcruiser",
         "type": "SUV",
-        "display": "images/toyota/landcruiser/landcruiser-display.webp",
+        "display": "../images/toyota/landcruiser/landcruiser-display.webp",
         "priceUSD": 77000,
-        "hero": "images/toyota/landcruiser/landcruiser-trans.webp",
+        "hero": "../images/toyota/landcruiser/landcruiser-trans.webp",
         "gallery": [
-            "images/toyota/landcruiser/landcruiser-img1.avif",
-            "images/toyota/landcruiser/landcruiser-img2.avif",
-            "images/toyota/landcruiser/landcruiser-img3.avif",
-            "images/toyota/landcruiser/landcruiser-img4.avif"
+            "../images/toyota/landcruiser/landcruiser-img1.avif",
+            "../images/toyota/landcruiser/landcruiser-img2.avif",
+            "../images/toyota/landcruiser/landcruiser-img3.avif",
+            "../images/toyota/landcruiser/landcruiser-img4.avif"
         ],
         "specs": {
             "Model": "Toyota Landcruiser",
@@ -110,12 +110,12 @@
         "id": "Toyota-Corollacross",
         "name": "Toyota Corollacross",
         "type": "SUV",
-        "display": "images/toyota/corollacross/corollacross-display.webp",
+        "display": "../images/toyota/corollacross/corollacross-display.webp",
         "priceUSD": 26000,
-        "hero": "images/toyota/corollacross/corollacross-trans.png",
+        "hero": "../images/toyota/corollacross/corollacross-trans.webp",
         "gallery": [
-            "images/toyota/corollacross/corollacross-img1.jpg",
-            "images/toyota/corollacross/corollacross-img2.jpg"
+            "../images/toyota/corollacross/corollacross-img1.jpg",
+            "../images/toyota/corollacross/corollacross-img2.jpg"
         ],
         "specs": {
             "Model": "Toyota Corollacross",

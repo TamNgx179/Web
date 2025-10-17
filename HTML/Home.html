@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/nav_bar.css">
+    <link rel="stylesheet" href="../CSS/Home.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
 </head>
 <body>
     <nav>
@@ -17,8 +18,8 @@
             <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
             <li><a href="../HTML/contact_us.html">Contact</a></li>
         </ul>
-        
         <a id="Trolley" href="../HTML/Puschasing_Progress.html"><img src="../Image_icon/trolley.png" alt="Trolley icon"></a>
+        <span id="counter">0</span>
 
         <div id="popup-login">
             <img src="../Image_icon/Signin.png" alt="Popup image">
@@ -32,26 +33,24 @@
     </div>
 
     <h1>Popular Categories</h1>
-    <div class="popular">
-            <button class="category active">EVs</button>
-            <button class="category">SUVs</button>
-            <button class="category">Sedans</button>
-            <button class="category">Pickup trucks</button>
-            <button class="category">Coupes</button>
-            <button class="category">Hatchbacks</button>
-            <button class="category">Wagons</button>
-            <button class="category">Convertibles</button>
-            <button class="category">Vans</button>
-        </div>
-    
-    <div class="car-list"></div>
-    
-    <div class = "browse">
-        <div class ="blackbox">
-            <img src="../images/lambo.png">
+  <div class="popular">
+    <div class ="reveal">
+      <button class="category active">EVs</button>
+      <button class="category">SUVs</button>
+      <button class="category">Sedans</button>
+      <button class="category">Coupes</button>
+      <button class="category">Convertibles</button>
+    </div>
+  </div>
+
+  <div class="car-list"></div>
+
+  <div class = "browse">
+        <div class ="blackbox reveal">
+            <img src="../images/lambo.png"> 
         </div>
 
-        <div class ="content">
+        <div class ="content reveal">
             <h2>Browse new cars by brand</h2>
             <p id="pick">Pick your car by brand</p>
             <div class="brands">
@@ -66,50 +65,95 @@
         </div>
     </div>
 
-    <div class="best-offer">
-        <h3>Get our <span>BestOffer</span></h3>
-        <p id="lead">Premium picks with perks included for a worry-free purchase.</p>
-        <div class="offer-content">
-            <div class="left-features">
-                <div class="feature">
-                    <div class="text">
-                        <h4>Featured Luxury Car</h4>
-                        <p>Hand-selected models with full technical checks and verified mileage</p>
-                    </div>
-                    <div class="icon"></div>
-                </div>
-                <div class="feature">
-                    <div class="text">
-                        <h4>Insurance Included</h4>
-                        <p>First-year basic coverage bundled; upgrade options at checkout</p>
-                    </div>
-                    <div class="icon"></div>
-                </div>
+  <div class="best-offer">
+    <div class="reveal">
+      <h3>Get our <span>BestOffer</span></h3>
+      <p id="lead">Premium picks with perks included for a worry-free purchase.</p>
+      <div class="offer-content">
+        <div class="left-features">
+          <div class="feature">
+            <span class="icon"></span>
+            <div class="text">
+              <h4>Featured Luxury Car</h4>
+              <p>Hand-selected models with full technical checks and verified mileage</p>
             </div>
-
-            <div class="car-box">
-                <img src="../images/car.png" alt="Top view car" class="car" />
+          </div>
+          <div class="feature">
+            <span class="icon"></span>
+            <div class="text">
+              <h4>Insurance Included</h4>
+              <p>First-year basic coverage bundled; upgrade options at checkout</p>
             </div>
-
-            <div class="right-features">
-                <div class="feature">
-                    <div class="icon"></div>
-                    <div class="text">
-                        <h4>Cleaning Included</h4>
-                        <p>Enjoy complimentary cleaning services—available 
-                        before delivery and whenever you need a refresh</p>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="icon"></div>
-                    <div class="text">
-                        <h4>Online 24/7 Support</h4>
-                        <p>Chat anytime for financing, delivery, or returns</p>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+
+        <div class="car-box">
+          <img src="../images/car.png" alt="Top view car" class="car" />
+        </div>
+
+        <div class="right-features">
+          <div class="feature">
+            <span class="icon"></span>
+            <div class="text">
+              <h4>Cleaning Included</h4>
+              <p>Enjoy complimentary cleaning services—available before delivery and whenever you need a refresh</p>
+            </div>
+          </div>
+          <div class="feature">
+            <span class="icon"></span>
+            <div class="text">
+              <h4>Online 24/7 Support</h4>
+              <p>Chat anytime for financing, delivery, or returns</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="../JavaScript/Home.js"></script>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="avata"><img class="circle" src="none" alt="avatar" /></div>
+      <div class="footer-section">
+        <div>
+          <h2 class="footer-toggle">Information <span class="span">▼</span></h2>
+          <ul class="footer-list">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Cars and reviews</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-toggle">Helpful Links <span class="span">▼</span></h2>
+          <ul class="footer-list">
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Supports</a></li>
+            <li><a href="#">Terms & Condition</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-toggle">Contact us <span class="span">▼</span></h2>
+          <ul class="footer-list">
+            <li>💬 Chat with sale</li>
+            <li>☎️ (84) 000000000</li>
+            <li>✉️ email</li>
+          </ul>
+          <div class="social-icons">
+            <a href="#"><img src="../Image_icon/facebook.png" alt="Facebook" /></a>
+            <a href="#"><img src="../Image_icon/X.png" alt="X" /></a>
+            <a href="#"><img src="../Image_icon/instagram.png" alt="Instagram" /></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div id="under"><p>Group ... 2025 | All Rights Reserved</p></div>
+  </footer>
+
+</body>
+
+<script src="../JavaScript/Home.js"></script>
+<script src="../JavaScript/Footer.js"></script>
 </body>
 </html>

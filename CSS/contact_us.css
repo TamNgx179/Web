@@ -1,46 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+
 html, body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: white;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
+/* Wrapper chính */
 .wrapper {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 100%;
-    background-color: #A0A8A4;
-
+    flex-wrap: wrap;           /* cho phép wrap trên màn hình nhỏ */
     justify-content: center;
     align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-height: 100vh;         /* đảm bảo chiều cao đủ cho sticky */
+    padding: 20px;             /* tránh tràn ra ngoài */
+    background-color: #A0A8A4;
 }
 
+/* Form */
 form {
     display: flex;
     flex-direction: column;
     width: 20%;
-    height: max-content;
+    max-width: 500px;           /* giới hạn tối đa */
+    min-width: 280px;           /* giới hạn tối thiểu */
     background-color: white;
     padding: 20px;
     border-radius: 20px;
     gap: 20px;
 }
 
-form input {
+/* Input & textarea */
+form input, #Message {
     padding: 12px 15px;
     border-radius: 6px;
     border: 1px solid #ccc;
     width: 100%;
-    box-sizing: border-box;
     font-size: 16px;
-    transition: all 0.3s ease;
     outline: none;
     background-color: #f9f9f9;
+    transition: all 0.3s ease;
 }
 
+#Message {
+    height: 180px;
+    resize: vertical;
+}
+
+/* Groupings */
 #usname, #usmessage {
     display: flex;
     flex-direction: column;
@@ -49,25 +64,21 @@ form input {
 #inline {
     display: flex;
     flex-direction: row;
-    gap: 20px;   
+    gap: 20px;
     width: 100%;
 }
 
 #inline > div {
-    flex: 1;          /* mỗi input chiếm 50% */
+    flex: 1;
     display: flex;
     flex-direction: column;
 }
 
-#inline input {
-    width: 100%;
-}
-
+/* Button */
 button#send_message {
     padding: 12px;
     border-radius: 6px;
     width: max-content;
-
     align-self: center;
     border: none;
     background-color: #D9D9D9;
@@ -82,26 +93,42 @@ button#send_message:hover {
     transform: translateY(-2px);
 }
 
-#Message {
-    height: 180px;
-    resize: vertical;
-    width: 100%;
-    padding: 12px 15px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    box-sizing: border-box;
-    background-color: #f9f9f9;
-    transition: all 0.3s ease;
-    outline: none;
+/* Responsive */
+
+/* Mobile < 700px */
+@media (max-width: 700px) {
+    .wrapper {
+        flex-direction: column;
+        padding: 20px 0;
+        min-height: 100vh;
+        margin-top: 35px;
+    }
+
+    #text-left {
+        display: none;
+    }
+
+    form {
+        width: 90%;
+        max-width: none;
+    }
+
+    #inline {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button#send_message {
+        width: 80%;
+        align-self: center;
+    }
 }
 
-/* Responsive */
-@media (max-width: 600px) {
+/* Tablet / iPad 700px - 1024px */
+@media (min-width: 700px) and (max-width: 1024px) {
     .wrapper {
-        padding-top: 10px;
-        padding-bottom: 10px;
         flex-direction: column;
+        padding: 40px 0;
     }
 
     #text-left {
@@ -110,14 +137,36 @@ button#send_message:hover {
 
     form {
         width: 80%;
+        max-width: 450px;
+        padding: 25px;
+        margin-top: 20px;
     }
 
     #inline {
-        flex-direction: column;  /* 2 input xếp dọc */
-        gap: 20px;
+        flex-direction: column;
+        gap: 15px;
     }
-    
-    button#send_message:hover {
-        background-color: #4CAF50; /* xanh lá */
+
+    button#send_message {
+        width: fit-content;
+        align-self: center;
+    }
+}
+
+/* Desktop lớn > 1024px */
+@media (min-width: 1025px) {
+    .wrapper {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    form {
+        width: 20%;
+        max-width: 500px;
+    }
+
+    #inline {
+        flex-direction: row;
     }
 }

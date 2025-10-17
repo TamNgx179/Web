@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Dealership Locator</title>
+    <style>
+        /* General Styling */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Main Wrapper */
+        .locator-wrapper {
+            display: flex;
+            gap: 30px;
+            width: 100%;
+            max-width: 1200px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Map Container */
+        .map-container {
+            flex-basis: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .map-svg {
+            width: 100%;
+            height: auto;
+        }
+
+        .map-svg path {
+            fill: #e9ecef;
+            stroke: #ffffff;
+            stroke-width: 1.5;
+            cursor: pointer;
+        }
+
+        .map-svg path:hover {
+            fill: #ced4da;
+        }
+
+        .map-svg path.active {
+            fill: #007bff; /* Highlight color for selected region */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            flex-basis: 40%;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 24px;
+            height: 70vh; /* Fixed height to contain the scrollable list */
+        }
+
+        .sidebar-header h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .sidebar-header p {
+            margin: 4px 0 16px 0;
+            color: #6c757d;
+            font-size: 14px;
+        }
+
+        /* Store List - The scrollable part */
+        #store-list {
+            overflow-y: auto; /* This makes the div scrollable */
+            flex-grow: 1; /* Allows it to take up available space */
+            padding-right: 10px; /* Space for the scrollbar */
+        }
+        
+        #store-list .initial-message {
+            color: #6c757d;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Custom Scrollbar */
+        #store-list::-webkit-scrollbar {
+            width: 6px;
+        }
+        #store-list::-webkit-scrollbar-track {
+            background: #e9ecef;
+            border-radius: 10px;
+        }
+        #store-list::-webkit-scrollbar-thumb {
+            background: #adb5bd;
+            border-radius: 10px;
+        }
+        #store-list::-webkit-scrollbar-thumb:hover {
+            background: #868e96;
+        }
+
+        /* Store Card Styling */
+        .store-card {
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .store-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .store-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .store-card h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #212529;
+        }
+        .store-card .rating {
+            background: #ffc107;
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .store-card .details p {
+            margin: 8px 0;
+            color: #495057;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .store-card hr {
+            border: 0;
+            border-top: 1px solid #e9ecef;
+            margin: 12px 0;
+            
+        }
+        .store-card .services {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            transform: translateY(100px);
+
+            margin-top: 4px;      /* giảm khoảng cách trên */
+            margin-bottom: 0;     /* sát đáy card */
+            padding-bottom: 0;    /* đảm bảo không có đệm thừa */
+        }
+        .store-card .services span {
+            background-color: #e9ecef;
+            color: #495057;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .locator-wrapper {
+                flex-direction: column;
+                height: auto;
+            }
+            .sidebar {
+                height: 50vh; /* Adjust height for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="locator-wrapper">
+        <div class="map-container">
+            <svg class="map-svg" viewBox="0 0 400 800" xmlns="http://www.w3.org/2000/svg">
+              <g id="vietnam-map">
+                <path data-region="hanoi" d="M193 133c-6,-11 -21,-14 -33,-11c-11,2 -19,13 -18,24c-1,12 8,24 20,26c12,1 24,-7 26,-18c2,-12 -4,-23 -11,-33c6,-11 21,-14 33,-11c11,2 19,13 18,24c1,12 -8,24 -20,26c-12,1 -24,-7 -26,-18c-2,-12 4,-23 11,-33z" />
+                <path data-region="danang" d="M260 350 c-10,-10 -25,-10 -35,0 s-10,25 0,35 s25,10 35,0 s10,-25 0,-35z" />
+                <path data-region="hcm" d="M225 600 c-15,0 -25,15 -25,30 s10,30 25,30 s25,-15 25,-30 s-10,-30 -25,-30z M240 650 c-15,0 -25,15 -25,30 s10,30 25,30 s25,-15 25,-30 s-10,-30 -25,-30z" />
+                <path data-region="other" d="M150 450 c-10,0 -20,10 -20,20 s10,20 20,20 s20,-10 20,-20 s-10,-20 -20,-20z" />
+              </g>
+            </svg>
+        </div>
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2 id="region-name">Select a Region</h2>
+                <p id="location-count">Click on the map to see available dealerships.</p>
+            </div>
+            <div id="store-list">
+                <p class="initial-message">Your results will appear here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Store Data: A JavaScript object containing dealership information.
+        // It's easily expandable. Just add a new key for a new region.
+        const storeData = {
+            hcm: {
+                name: 'TP.HCM',
+                region: 'South',
+                locations: [
+                    {
+                        name: 'AutoDealer Sài Gòn',
+                        rating: 4.9,
+                        address: '789 Nguyễn Huệ, Quận 1, TP.HCM',
+                        phone: '+84 28 3345 6789',
+                        hours: '8:00 - 19:00',
+                        services: ['sales', 'service', 'insurance']
+                    },
+                    {
+                        name: 'AutoHub Thủ Đức',
+                        rating: 4.7,
+                        address: '123 Võ Văn Ngân, TP. Thủ Đức',
+                        phone: '+84 28 9876 5432',
+                        hours: '8:30 - 19:30',
+                        services: ['sales', 'service']
+                    },
+                    {
+                        name: 'CarCenter Quận 7',
+                        rating: 4.8,
+                        address: '456 Nguyễn Thị Thập, Quận 7',
+                        phone: '+84 28 1122 3344',
+                        hours: '8:00 - 18:00',
+                        services: ['sales', 'insurance', 'parts']
+                    },
+                    {
+                        name: 'Prestige Motors Bình Thạnh',
+                        rating: 4.9,
+                        address: '99 Xô Viết Nghệ Tĩnh, Q. Bình Thạnh',
+                        phone: '+84 28 5566 7788',
+                        hours: '9:00 - 20:00',
+                        services: ['luxury sales', 'certified service']
+                    }
+                ]
+            },
+            hanoi: {
+                name: 'Hà Nội',
+                region: 'North',
+                locations: [
+                    {
+                        name: 'Capital Cars Hà Nội',
+                        rating: 4.8,
+                        address: '55 Tràng Tiền, Hoàn Kiếm, Hà Nội',
+                        phone: '+84 24 1234 5678',
+                        hours: '8:00 - 19:00',
+                        services: ['sales', 'service']
+                    },
+                    {
+                        name: 'Westlake Auto',
+                        rating: 4.6,
+                        address: '210 Võ Chí Công, Tây Hồ, Hà Nội',
+                        phone: '+84 24 8765 4321',
+                        hours: '8:30 - 18:30',
+                        services: ['sales', 'parts', 'insurance']
+                    }
+                ]
+            },
+            danang: {
+                name: 'Đà Nẵng',
+                region: 'Central',
+                locations: [
+                    {
+                        name: 'Dragon Bridge Motors',
+                        rating: 4.9,
+                        address: '02 Nguyễn Văn Linh, Hải Châu, Đà Nẵng',
+                        phone: '+84 236 9999 8888',
+                        hours: '8:00 - 18:00',
+                        services: ['sales', 'service', 'insurance']
+                    }
+                ]
+            }
+        };
+
+        // DOM Element References
+        const mapPaths = document.querySelectorAll('.map-svg path');
+        const regionNameEl = document.getElementById('region-name');
+        const locationCountEl = document.getElementById('location-count');
+        const storeListEl = document.getElementById('store-list');
+
+        // Function to update the sidebar with store information
+        function updateSidebar(regionId) {
+            const regionData = storeData[regionId];
+
+            // Clear previous results
+            storeListEl.innerHTML = '';
+
+            if (regionData && regionData.locations.length > 0) {
+                // Update header text
+                regionNameEl.textContent = regionData.name;
+                locationCountEl.textContent = `${regionData.region} ・ Showing ${regionData.locations.length} locations`;
+
+                // Generate and append store cards
+                regionData.locations.forEach(store => {
+                    // Create a comma-separated list of services
+                    const servicesHTML = store.services.map(service => `<span>${service}</span>`).join('');
+                    
+                    const storeCardHTML = `
+                        <div class="store-card">
+                            <div class="card-header">
+                                <h3>${store.name}</h3>
+                                <span class="rating">⭐ ${store.rating}</span>
+                            </div>
+                            <div class="details">
+                                <p>📍 ${store.address}</p>
+                                <p>📞 ${store.phone}</p>
+                                <p>🕘 ${store.hours}</p>
+                            </div>
+                            <hr>
+                            <div class="services">
+                                ${servicesHTML}
+                            </div>
+                        </div>
+                    `;
+                    storeListEl.innerHTML += storeCardHTML;
+                });
+
+            } else {
+                // Handle case where no data is available
+                regionNameEl.textContent = 'No Data Available';
+                locationCountEl.textContent = 'Please select another region.';
+                storeListEl.innerHTML = '<p class="initial-message">Sorry, no dealerships found here.</p>';
+            }
+        }
+
+        // Add click event listeners to each map path
+        mapPaths.forEach(path => {
+            path.addEventListener('click', (event) => {
+                // Remove 'active' class from all paths
+                mapPaths.forEach(p => p.classList.remove('active'));
+                
+                // Add 'active' class to the clicked path
+                const currentPath = event.currentTarget;
+                currentPath.classList.add('active');
+
+                // Get the region ID from the data attribute
+                const regionId = currentPath.dataset.region;
+
+                // Update the sidebar with data for the clicked region
+                updateSidebar(regionId);
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -5,14 +5,14 @@
         "id": "BMW-X4",
         "name": "BMW X4",
         "type": "SUV",
-        "display": "images/bmw/X4/X4-display.webp",
+        "display": "../images/bmw/bmw-x4/X4-display.webp",
         "priceUSD": 56000,
-        "hero": "images/bmw/bmw-x4/X4-trans.jpg",
+        "hero": "../images/bmw/bmw-x4/X4-trans.webp",
         "gallery": [
-            "images/bmw/bmw-x4/X4-img1.jpg",
-            "images/bmw/bmw-x4/X4-img2.jpg",
-            "images/bmw/bmw-x4/X4-img3.avif",
-            "images/bmw/bmw-x4/X4-img4.jpg"
+            "../images/bmw/bmw-x4/X4-img1.jpg",
+            "../images/bmw/bmw-x4/X4-img2.jpg",
+            "../images/bmw/bmw-x4/X4-img3.avif",
+            "../images/bmw/bmw-x4/X4-img4.jpg"
         ],
         "specs": {
             "Model": "BMW X4",
@@ -41,14 +41,14 @@
         "id": "BMW-X5",
         "name": "BMW X5",
         "type": "SUV",
-        "display": "images/bmw/X5/X5-display.webp",
+        "display": "../images/bmw/bmw-x5/X5-display.webp",
         "priceUSD": 68000,
-        "hero": "images/bmw/bmw-x5/X5-trans.png",
+        "hero": "../images/bmw/bmw-x5/X5-trans.webp",
         "gallery": [
-            "images/bmw/bmw-x5/X5-img1.avif",
-            "images/bmw/bmw-x5/X5-img2.avif",
-            "images/bmw/bmw-x5/X5-img3.avif",
-            "images/bmw/bmw-x5/X5-img4.avif"
+            "../images/bmw/bmw-x5/X5-img1.avif",
+            "../images/bmw/bmw-x5/X5-img2.avif",
+            "../images/bmw/bmw-x5/X5-img3.avif",
+            "../images/bmw/bmw-x5/X5-img4.avif"
         ],
         "specs": {
             "Model": "BMW X5",
@@ -77,14 +77,14 @@
         "id": "BMW-X6",
         "name": "BMW X6",
         "type": "SUV",
-        "display": "images/bmw/X6/X6-display.webp",
+        "display": "../images/bmw/bmw-x6/X6-display.webp",
         "priceUSD": 77000,
-        "hero": "images/bmw/bmw-x6/X6-trans.jpg",
+        "hero": "../images/bmw/bmw-x6/X6-trans.webp",
         "gallery": [
-            "images/bmw/bmw-x6/X6-img1.avif",
-            "images/bmw/bmw-x6/X6-img2.avif",
-            "images/bmw/bmw-x6/X6-img3.avif",
-            "images/bmw/bmw-x6/X6-img4.avif"
+            "../images/bmw/bmw-x6/X6-img1.avif",
+            "../images/bmw/bmw-x6/X6-img2.avif",
+            "../images/bmw/bmw-x6/X6-img3.avif",
+            "../images/bmw/bmw-x6/X6-img4.avif"
         ],
         "specs": {
             "Model": "BMW X6",
@@ -113,14 +113,14 @@
         "id": "BMW-i5",
         "name": "BMW i5",
         "type": "Sedan",
-        "display": "images/bmw/i5/i5-display.webp",
+        "display": "../images/bmw/bmw-i5/i5-display.webp",
         "priceUSD": 68000,
-        "hero": "images/bmw/bmw-i5/i5-trans.webp",
+        "hero": "../images/bmw/bmw-i5/i5-trans.webp",
         "gallery": [
-            "images/bmw/bmw-i5/i5-img1.png",
-            "images/bmw/bmw-i5/i5-img2.png",
-            "images/bmw/bmw-i5/i5-img3.png",
-            "images/bmw/bmw-i5/i5-img4.png"
+            "../images/bmw/bmw-i5/i5-img1.png",
+            "../images/bmw/bmw-i5/i5-img2.png",
+            "../images/bmw/bmw-i5/i5-img3.png",
+            "../images/bmw/bmw-i5/i5-img4.png"
         ],
         "specs": {
             "Model": "BMW i5",
@@ -150,14 +150,14 @@
         "id": "BMW-i7",
         "name": "BMW i7",
         "type": "Sedan",
-        "display": "images/bmw/i7/i7-display.webp",
+        "display": "../images/bmw/bmw-i7/i7-display.webp",
         "priceUSD": 106000,
-        "hero": "images/bmw/bmw-i7/i7-trans.webp",
+        "hero": "../images/bmw/bmw-i7/i7-trans.webp",
         "gallery": [
-            "images/bmw/bmw-i7/i7-img1.avif",
-            "images/bmw/bmw-i7/i7-img2.webp",
-            "images/bmw/bmw-i7/i7-img3.webp",
-            "images/bmw/bmw-i7/i7-img4.avif"
+            "../images/bmw/bmw-i7/i7-img1.avif",
+            "../images/bmw/bmw-i7/i7-img2.webp",
+            "../images/bmw/bmw-i7/i7-img3.webp",
+            "../images/bmw/bmw-i7/i7-img4.avif"
         ],
         "specs": {
             "Model": "BMW i7",
@@ -187,14 +187,14 @@
         "id": "BMW-M3",
         "name": "BMW M3",
         "type": "Sedan",
-        "display": "images/bmw/M3/M3-display.webp",
+        "display": "../images/bmw/bmw-m3/M3-display.webp",
         "priceUSD": 79000,
-        "hero": "images/bmw/bmw-m3/M3-trans.avif",
+        "hero": "../images/bmw/bmw-m3/M3-trans.webp",
         "gallery": [
-            "images/bmw/bmw-m3/M3-img1.jpg",
-            "images/bmw/bmw-m3/M3-img2.avif",
-            "images/bmw/bmw-m3/M3-img3.avif",
-            "images/bmw/bmw-m3/M3-img4.avif"
+            "../images/bmw/bmw-m3/M3-img1.jpg",
+            "../images/bmw/bmw-m3/M3-img2.avif",
+            "../images/bmw/bmw-m3/M3-img3.avif",
+            "../images/bmw/bmw-m3/M3-img4.avif"
         ],
         "specs": {
             "Model": "BMW M3",
@@ -223,14 +223,14 @@
         "id": "BMW-M5",
         "name": "BMW M5",
         "type": "Sedan",
-        "display": "images/bmw/M5/M5-display.webp",
+        "display": "../images/bmw/bmw-m5/M5-display.webp",
         "priceUSD": 122000,
-        "hero": "images/bmw/bmw-m5/M5-trans.png",
+        "hero": "../images/bmw/bmw-m5/M5-trans.webp",
         "gallery": [
-            "images/bmw/bmw-m5/M5-img1.avif",
-            "images/bmw/bmw-m5/M5-img2.avif",
-            "images/bmw/bmw-m5/M5-img3.avif",
-            "images/bmw/bmw-m5/M5-img4.avif"
+            "../images/bmw/bmw-m5/M5-img1.avif",
+            "../images/bmw/bmw-m5/M5-img2.avif",
+            "../images/bmw/bmw-m5/M5-img3.avif",
+            "../images/bmw/bmw-m5/M5-img4.avif"
         ],
         "specs": {
             "Model": "BMW M5",
@@ -259,14 +259,14 @@
         "id": "BMW-i5",
         "name": "BMW i5",
         "type": "EV",
-        "display": "images/bmw/i5/i5-display.webp",
+        "display": "../images/bmw/bmw-i5/i5-display.webp",
         "priceUSD": 68000,
-        "hero": "images/bmw/bmw-i5/i5-trans.webp",
+        "hero": "../images/bmw/bmw-i5/i5-trans.webp",
         "gallery": [
-            "images/bmw/bmw-i5/i5-img1.png",
-            "images/bmw/bmw-i5/i5-img2.png",
-            "images/bmw/bmw-i5/i5-img3.png",
-            "images/bmw/bmw-i5/i5-img4.png"
+            "../images/bmw/bmw-i5/i5-img1.png",
+            "../images/bmw/bmw-i5/i5-img2.png",
+            "../images/bmw/bmw-i5/i5-img3.png",
+            "../images/bmw/bmw-i5/i5-img4.png"
         ],
         "specs": {
             "Model": "BMW i5",
@@ -295,15 +295,15 @@
     {
         "id": "BMW-i7",
         "name": "BMW i7",
-        "type": "Sedan",
-        "display": "images/bmw/i7/i7-display.webp",
+        "type": "EV",
+        "display": "../images/bmw/bmw-i7/i7-display.webp",
         "priceUSD": 106000,
-        "hero": "images/bmw/bmw-i7/i7-trans.webp",
+        "hero": "../images/bmw/bmw-i7/i7-trans.webp",
         "gallery": [
-            "images/bmw/bmw-i7/i7-img1.avif",
-            "images/bmw/bmw-i7/i7-img2.webp",
-            "images/bmw/bmw-i7/i7-img3.webp",
-            "images/bmw/bmw-i7/i7-img4.avif"
+            "../images/bmw/bmw-i7/i7-img1.avif",
+            "../images/bmw/bmw-i7/i7-img2.webp",
+            "../images/bmw/bmw-i7/i7-img3.webp",
+            "../images/bmw/bmw-i7/i7-img4.avif"
         ],
         "specs": {
             "Model": "BMW i7",
@@ -333,14 +333,14 @@
         "id": "BMW-Z4",
         "name": "BMW Z4",
         "type": "Convertible",
-        "display": "images/bmw/Z4/Z4-display.webp",
+        "display": "../images/bmw/bmw-z4/Z4-display.webp",
         "priceUSD": 57000,
-        "hero": "images/bmw/bmw-z4/Z4-trans.png",
+        "hero": "../images/bmw/bmw-z4/Z4-trans.webp",
         "gallery": [
-            "images/bmw/bmw-z4/Z4-img1.avif",
-            "images/bmw/bmw-z4/Z4-img2.avif",
-            "images/bmw/bmw-z4/Z4-img3.avif",
-            "images/bmw/bmw-z4/Z4-img4.avif"
+            "../images/bmw/bmw-z4/Z4-img1.avif",
+            "../images/bmw/bmw-z4/Z4-img2.avif",
+            "../images/bmw/bmw-z4/Z4-img3.avif",
+            "../images/bmw/bmw-z4/Z4-img4.avif"
         ],
         "specs": {
             "Model": "BMW Z4",
@@ -369,14 +369,14 @@
         "id": "BMW-M4",
         "name": "BMW M4",
         "type": "Coupe",
-        "display": "images/bmw/M4/M4-display.webp",
+        "display": "../images/bmw/bmw-m4/M4-display.webp",
         "priceUSD": 82000,
-        "hero": "images/bmw/bmw-m4/M4-trans.avif",
+        "hero": "../images/bmw/bmw-m4/M4-trans.webp",
         "gallery": [
-            "images/bmw/bmw-m4/M4-img1.jpg",
-            "images/bmw/bmw-m4/M4-img2.jpg",
-            "images/bmw/bmw-m4/M4-img3.jpg",
-            "images/bmw/bmw-m4/M4-img4.jpg"
+            "../images/bmw/bmw-m4/M4-img1.jpg",
+            "../images/bmw/bmw-m4/M4-img2.jpg",
+            "../images/bmw/bmw-m4/M4-img3.jpg",
+            "../images/bmw/bmw-m4/M4-img4.jpg"
         ],
         "specs": {
             "Model": "BMW M4",
@@ -405,13 +405,14 @@
         "id": "BMW-M8",
         "name": "BMW M8",
         "type": "Coupe",
+        "display": "../images/bmw/bmw-m8/M8-display.webp",
         "priceUSD": 82000,
-        "hero": "images/bmw/bmw-m8/M8-trans.webp",
+        "hero": "../images/bmw/bmw-m8/M8-trans.webp",
         "gallery": [
-            "images/bmw/bmw-m8/M8-img1.jpg",
-            "images/bmw/bmw-m8/M8-img2.jpg",
-            "images/bmw/bmw-m8/M8-img3.jpg",
-            "images/bmw/bmw-m8/M8-img4.jpg"
+            "../images/bmw/bmw-m8/M8-img1.jpg",
+            "../images/bmw/bmw-m8/M8-img2.jpg",
+            "../images/bmw/bmw-m8/M8-img3.jpg",
+            "../images/bmw/bmw-m8/M8-img4.jpg"
         ],
         "specs": {
             "Model": "BMW M8",

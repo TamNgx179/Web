@@ -1,8 +1,15 @@
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
 footer {
     display: flex;
     flex-direction: column;
     margin-bottom: 0;
-
+    margin-top: 80px;
     height: fit-content;
     background-color: wheat;
 }
@@ -62,13 +69,19 @@ hr {
 }
 
 .footer-section ul li {
-    padding: 5px 0;
+    padding-left: 40px; 
+    padding-top: 10px;
+    list-style: none;
+
+    margin-right: 10px;
 }
 
 .social-icons {
     display: flex;      
     gap: 10px;          
     margin-top: 10px;
+
+    margin-left: 38px;
 }
 
 .social-icons img {
@@ -86,8 +99,29 @@ hr {
     display: block;
 }
 
+.footer-toggle {
+    margin-bottom: 5px;
+    margin-left: 38px;
+}
+
+.footer-list {
+    margin-top: 5px;
+    margin-left: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: blue;
+}
+
 
 @media (max-width: 600px) {
+
 
     .span {
         display: inline; /* hiển thị mũi tên */
@@ -98,7 +132,7 @@ hr {
     }
 
     .avata {
-        display: none; /* ẩn avatar trên mobile */
+        display: none;
     }
 
     .footer-section ul {
@@ -107,6 +141,11 @@ hr {
 
     .footer-section{
         flex-direction: column;
+        margin-left: 20px;
+    }
+
+    .footer-toggle {
+        margin-right: 10px;
     }
 
     .footer-section h2 {

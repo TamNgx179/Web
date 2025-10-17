@@ -2,14 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;   /* giữ cuộn ngang bị ẩn, không ảnh hưởng sticky */
+  scroll-behavior: smooth;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
 
 .slideshow {
   position: relative;
   width: 100%;
   height: 600px;
-  overflow: hidden;
+  margin-top:50px;
 }
 
 .slide {
@@ -26,9 +33,9 @@
 }
 
 
-/* Popular Categories */
+/* ============ Popular Categories ============== */
 h1{
-  font-size: 40px;
+  margin-top: 50px;
   padding-top: 50px;
   padding-left: 50px;
 }
@@ -43,10 +50,9 @@ h1{
 .category{
   background-color: white;
   border: none;
-  margin-top: 10px;
   padding: 10px 20px;
   border-radius: 999px;
-  font-size: 23px;
+  font-size: 16px;
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
@@ -62,53 +68,171 @@ h1{
   background: #111;       
   color: white;           
 }
-.car-list{
-  background:grey;
-  width: 100%;
-  height:300px;
-  margin-bottom: 150px;
+.car-list {
+  max-width: 100%;
+  padding: 0 20px;
+  margin: 30px 0 50px 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 50px;
+  background: transparent;
+  height: auto;
 }
 
-/*Browse cars by brand */
+.car-card {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow:
+  0 2px 4px rgba(0, 0, 0, 0.1),
+  0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.car-card .body {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.car-card h3 {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.car-card .cta {
+  font-weight: 800;
+  text-decoration: none;
+  color: #000000;
+  width: fit-content;
+}
+
+.car-card .cta::after {
+  content: " →";
+}
+/* Ép 4 cột cho danh sách xe */
+.car-list.grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+}
+
+/* Ảnh card và placeholder */
+.thumb-img {
+  width: 100%;
+  height: 230px;
+  object-fit: contain;
+  background: #ffffff;
+  border-bottom: 1px solid #eee;
+  display: block;
+}
+
+/* Pager */
+.pager-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 20px 20px 20px;
+}
+
+.pager-controls.is-hidden {
+  display: none;
+}
+
+.pager-prev,
+.pager-next {
+  background: #111;
+  color: #fff;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.pager-prev:disabled,
+.pager-next:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.pager-dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.pager-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cfd2d4;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.pager-dot.active {
+  background: #111;
+}
+
+
+/* ============== Browse cars by brand ============== */
 .browse{
   background-color: #fcecec;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 100px;
+  margin-top: 100px;
 }
 
     
 .blackbox {
   background-color: #000;
-  width: 30%;
-  height: 500px;
+  width: 600px;
+  height: 400px;
   position: relative; /* để ảnh bám vào */
   overflow: visible;  /* cho phép ảnh vượt ra */
 }
 
 .blackbox img {
   position: absolute;
-  right: -40%; /* đẩy xe lấn sang phần hồng */
+  right: -180px; /* đẩy xe lấn sang phần hồng */
   top: 50%;
-  transform: translateY(-20%);
+  transform: translateY(-30%);
 }
 
 .content {
-  width: 53%;
+  width: 50%;
   padding: 0 150px 40px 0;
   display: flex;
   flex-direction: column;
   gap: 25px; /* tạo khoảng cách đều giữa h3, p, brands, button */
-  transform: translateX(-10%);
+  transform: translateX(-20%);
 }
 
 h2 {
   font-size: 40px;
   font-weight: bold;
+  margin: 0;
 }
 
-#pick {
-  font-size: 30px;
+p {
+  font-size: 20px;
   margin: 0;
   color: #333;
 }
@@ -121,7 +245,7 @@ h2 {
 }
 .brands a {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 22px;
   cursor: pointer;
   z-index: 10; /*do ảnh đang che lên nút */
   text-decoration: none;
@@ -131,7 +255,7 @@ h2 {
 }
 
 .brands a:hover {
-  color: blue;   
+  color: blue;   /* hover đổi sang đỏ */
 }
 .see-all {
   background-color: #d60000;
@@ -140,7 +264,7 @@ h2 {
   padding: 10px 20px;
   border-radius: 20px;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 16px;
   font-weight: bold;
   width: fit-content;
   transition: 0.3s;
@@ -151,16 +275,17 @@ h2 {
   background: #b30000;
 }
 
-/*Best offer*/
+/* =============== Best offer ================*/
 .best-offer {
   background: #f6eee9;             
   padding: 40px 20px;
-  margin-top: 150px;
+  padding-top: 40px;
   text-align: center;
+  font-family: Arial, sans-serif;
 }
 
 .best-offer h3 {
-  font-size: 40px;
+  font-size: 32px;
   font-weight: normal;
   margin: 0;
 }
@@ -169,13 +294,9 @@ h2 {
   font-weight: bold;
 }
 
-#lead{
-  font-size: 30px;
-  padding-top: 15px;
-}
 /* Khối content: chia 3 cột (trái - xe - phải) */
 .offer-content {
-  margin-top: 60px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -188,8 +309,8 @@ h2 {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 150px;   /* khoảng cách giữa các feature */
-  max-width: 500px;
+  gap: 80px;   /* khoảng cách giữa các feature */
+  max-width: 350px;
 }
 
 
@@ -203,7 +324,6 @@ h2 {
 .feature .icon {
   width: 18px;
   height: 18px;
-  margin-top: 10px;
   background: #000;
   display: inline-block; 
   flex-shrink: 0;
@@ -217,7 +337,7 @@ h2 {
 }
 
 .feature p {
-  font-size: 30px;
+  font-size: 20px;
   line-height: 1.5;
   color: #333;
 }
@@ -235,3 +355,290 @@ h2 {
   max-width: 260px;
   display: block;
 }
+
+
+/* ================== Responsive ================== */
+
+/* <= 992px (Tablet landscape) */
+@media (max-width: 1024px) {
+  .slideshow {
+    height: 480px;
+  }
+
+  h1 {
+    padding-left: 20px;
+  }
+
+  .popular {
+    padding-left: 20px;
+    gap: 10px;
+  }
+
+  .car-list {
+    gap: 30px;
+  }
+
+  .car-list.grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .browse {
+    gap: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    padding: 0 20px;
+  }
+
+  .blackbox {
+    width: 480px;
+    height: 320px;
+    overflow: visible;
+  }
+
+  .blackbox img {
+    right: -60px;
+    transform: translateY(-25%);
+    max-width: 800px;
+    height: 450px;
+  }
+
+  .content {
+    width: 50%;
+    padding: 0 40px 30px 0;
+    gap: 18px;
+    transform: none;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .brands a {
+    font-size: 18px;
+  }
+
+  .best-offer {
+    padding: 32px 16px;
+  }
+
+  .best-offer h3 {
+    font-size: 28px;
+  }
+
+  .offer-content {
+    gap: 40px;
+  }
+
+  .left-features,
+  .right-features {
+    gap: 40px;
+    max-width: 300px;
+  }
+
+  .feature h4 {
+    font-size: 24px;
+  }
+
+  .feature p {
+    font-size: 18px;
+  }
+}
+
+/* <= 768px (Tablet portrait) */
+@media (max-width: 768px) {
+  .slideshow {
+    height: 360px;
+  }
+
+  .popular {
+    flex-wrap: wrap;
+  }
+
+  .car-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+    margin: 24px 0 40px 0;
+    padding: 0 16px;
+  }
+
+  .car-list.grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .browse {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+    padding: 0 16px 24px 16px;
+  }
+
+  .blackbox {
+    width: 100%;
+    max-width: 100%;
+    height: 280px;
+    overflow: visible;
+  }
+
+  .blackbox img {
+    right: -30px;
+    top: 50%;
+    transform: translateY(-35%);
+    max-width: none;
+    width: 1000px;
+    height: 500px;
+  }
+
+  .content {
+    width: 100%;
+    padding: 0;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .brands {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    justify-items: center;
+    gap: 12px 24px;
+  }
+
+  .see-all {
+    margin: 0 auto;
+  }
+
+  .offer-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .left-features,
+  .right-features {
+    max-width: 520px;
+    width: 100%;
+    gap: 24px;
+  }
+
+  .car-box {
+    flex: 0 0 auto;
+  }
+}
+
+/* <= 576px (Mobile) */
+@media (max-width: 576px) {
+  .slideshow {
+    height: 240px;
+  }
+
+  h1 {
+    margin-top: 24px;
+    padding-top: 24px;
+    padding-left: 16px;
+    font-size: 26px;
+  }
+
+  .popular {
+    padding-left: 16px;
+    gap: 8px;
+  }
+
+  .category {
+    font-size: 14px;
+    padding: 8px 14px;
+  }
+
+  .car-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin: 20px 0 36px 0;
+    padding: 0 12px;
+  }
+
+  .thumb-img {
+    height: 200px;
+  }
+
+  .pager-controls {
+    margin: 8px 12px 16px 12px;
+  }
+
+  .browse {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    padding: 0 12px;
+  }
+
+  .blackbox {
+    width: 100%;
+    height: 200px;
+    overflow: visible;
+  }
+
+  .blackbox img {
+    right: auto;
+    left: 50%;
+    transform: translate(-60%, -30%);
+    height:300px;
+    width: 550px;
+    max-width: none;
+  }
+
+  .content {
+    padding: 0;
+    gap: 14px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  .brands {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 16px;
+  }
+
+  .brands a {
+    font-size: 16px;
+  }
+
+  .best-offer {
+    padding: 24px 12px;
+  }
+
+  .best-offer h3 {
+    font-size: 24px;
+  }
+
+  .offer-content {
+    gap: 24px;
+  }
+
+  .feature h4 {
+    font-size: 20px;
+  }
+
+  .feature p {
+    font-size: 16px;
+  }
+}
+
+/* ================== Scroll Reveal ================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+/* Khi phần tử xuất hiện trên màn hình */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+

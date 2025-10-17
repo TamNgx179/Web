@@ -5,12 +5,12 @@
         "id": "Vinfast-VF3",
         "name": "Vinfast VF3",
         "type": "EV",
-        "display": "images/vinfast/VF3/VF3-display.png",
+        "display": "../images/vinfast/VF3/VF3-display.png",
         "priceUSD": 13000,
-        "hero": "images/vinfast/VF3/VF3-trans.webp",
+        "hero": "../images/vinfast/VF3/VF3-trans.webp",
         "gallery": [
-            "images/vinfast/VF3/VF3-img1.webp",
-            "images/vinfast/VF3/VF3-img2.jpg"
+            "../images/vinfast/VF3/VF3-img1.webp",
+            "../images/vinfast/VF3/VF3-img2.jpg"
         ],
         "specs": {
             "Model": "Vinfast VF3",
@@ -40,14 +40,14 @@
         "id": "Vinfast-VF8",
         "name": "Vinfast VF8",
         "type": "EV",
-        "display": "images/vinfast/VF8/VF8-display.webp",
+        "display": "../images/vinfast/VF8/VF8-display.webp",
         "priceUSD": 57000,
-        "hero": "images/vinfast/VF8/VF8-trans.png",
+        "hero": "../images/vinfast/VF8/VF8-trans.webp",
         "gallery": [
-            "images/vinfast/VF8/VF8-img1.avif",
-            "images/vinfast/VF8/VF8-img2.avif",
-            "images/vinfast/VF8/VF8-img3.avif",
-            "images/vinfast/VF8/VF8-img4.avif"
+            "../images/vinfast/VF8/VF8-img1.avif",
+            "../images/vinfast/VF8/VF8-img2.avif",
+            "../images/vinfast/VF8/VF8-img3.avif",
+            "../images/vinfast/VF8/VF8-img4.avif"
         ],
         "specs": {
             "Model": "Vinfast VF8",
@@ -77,13 +77,13 @@
         "id": "Vinfast-VF9",
         "name": "Vinfast VF9",
         "type": "EV",
-        "display": "images/vinfast/VF8/VF8-display.webp",
+        "display": "../images/vinfast/VF8/VF8-display.webp",
         "priceUSD": 57000,
-        "hero": "images/vinfast/VF9/VF9-trans.png",
+        "hero": "../images/vinfast/VF9/VF9-trans.webp",
         "gallery": [
-            "images/vinfast/VF9/VF9-img1.avif",
-            "images/vinfast/VF9/VF9-img2.avif",
-            "images/vinfast/VF9/VF9-img3.avif"
+            "../images/vinfast/VF9/VF9-img1.avif",
+            "../images/vinfast/VF9/VF9-img2.avif",
+            "../images/vinfast/VF9/VF9-img3.avif"
         ],
         "specs": {
             "Model": "Vinfast VF9",
