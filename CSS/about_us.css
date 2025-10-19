@@ -381,7 +381,7 @@ body {
   margin-bottom: 12px;
   opacity: 1.0;     /* làm mờ */
   filter: brightness(60%);
-  z-index: -2;       /* cho nằm dưới card nhưng trên nền */
+  z-index: -1;       /* cho nằm dưới card nhưng trên nền */
 }
 
 

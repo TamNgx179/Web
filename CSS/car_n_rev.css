@@ -1,0 +1,421 @@
+/* Reset and Body Styles */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff;
+        }
+
+        /* Hero Section Container */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            min-height: 100vh; /* Chỉnh chiều cao theo ý muốn */
+            
+            /* Tạo nền 2 màu: màu tím chiếm 60%, màu trắng chiếm 40% */
+            background: linear-gradient( #9B89A4 60%);
+            
+            position: relative;
+        }
+
+        /* Content Wrapper */
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px; /* Giới hạn chiều rộng nội dung */
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+
+        /* Text Block */
+        .hero-text {
+            flex-basis: 40%; /* Chiếm 40% chiều rộng của content */
+            color: white;
+        }
+
+        .hero-text h1 {
+            /* Kích thước chữ lớn, responsive */
+            font-size: clamp(2.5rem, 6vw, 4rem); 
+            font-weight: 700;
+            line-height: 1.1;
+            margin: 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Image Block */
+        .hero-image {
+            flex-basis: 60%; /* Chiếm 60% chiều rộng của content */
+            display: flex;
+            justify-content: flex-end; /* Đẩy ảnh về phía bên phải */
+            align-items: center;
+            position: relative;
+            margin-left: 120px;
+        }
+
+        .hero-image img {
+            max-width: 120%; /* Cho phép ảnh to hơn một chút để tràn ra đẹp mắt */
+            height: auto;
+            position: relative;
+            bottom: -120px; /* Đẩy ảnh xuống một chút để tạo hiệu ứng bóng đổ */
+            /* Tạo bóng đổ thực tế cho xe */
+            transform: translateX(100px);
+            filter: drop-shadow(0 20px 15px rgba(0, 0, 0, 0.3));
+        }
+
+/* Filter cho phần xe  */
+
+.car-selling{
+    position: relative;
+    min-height: 100vh;
+}
+/* Filter Bar Container */
+        .filter-bar {
+            position: relative;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            width: 360px;
+            margin-top: 100px;
+            margin-left: 40px;
+        }
+
+        .filter-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        /* Form Group Layout */
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #8a8a8e;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        /* Input Fields & Selects */
+        input[type="text"],
+        .select-wrapper select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: white;
+            color: #1c1c1e;
+        }
+        
+        input[type="text"]::placeholder {
+            color: #c7c7cc;
+        }
+        
+        /* Select Dropdown Wrapper */
+        .select-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .select-wrapper select {
+            background-image: url('YOUR_DARK_DROPDOWN_ARROW_ICON_LINK');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 24px;
+            padding-right: 45px;
+        }
+        
+        /* Form Row */
+        .form-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Feature Checkbox Group */
+        .feature-group > label {
+            font-size: 16px;
+            color: #1c1c1e;
+            text-transform: none;
+            font-weight: 600;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            border: 1px solid #c7c7cc;
+            border-radius: 4px;
+            -webkit-appearance: none;
+            appearance: none;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .checkbox-item input[type="checkbox"]:checked::after {
+            content: '✔';
+            position: absolute;
+            color: #1c1c1e;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 12px;
+        }
+        
+        .checkbox-item label {
+            font-size: 15px;
+            color: #1c1c1e;
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+
+        /* Separator Line */
+        .separator {
+            border: none;
+            border-top: 1px solid #e5e5ea;
+            margin: 25px 0;
+        }
+
+        /* Search Button */
+        .search-btn {
+            width: 100%;
+            padding: 14px;
+            background-color: #fff;
+            color: #1c1c1e;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        .search-btn:hover {
+            background-color: #f2f2f7;
+            border-color: #d1d1d6;
+        }
+
+        /* ============================================================
+           CSS CHO MODAL (VẪN GIỮ NGUYÊN)
+        ============================================================
+        */
+        
+        .modal-trigger-button {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0; 
+            border-radius: 10px; 
+            font-size: 16px;
+            box-sizing: border-box;
+            background-color: white;
+            color: #1c1c1e;
+            cursor: pointer;
+            text-align: left;
+            transition: border-color 0.2s;
+        }
+
+        .modal-trigger-button:hover {
+            border-color: #c7c7cc;
+        }
+        
+        .modal-trigger-button .icon {
+
+            object-fit: contain;
+        }
+        
+        .modal-trigger-button .placeholder-text {
+            color: #c7c7cc;
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+        .modal-trigger-button .icon-left {
+            width: 40px;
+            height: 40px;
+            margin-right: auto;
+        }
+        
+        .modal-trigger-button .icon-right {
+            width: 25px;
+            height: 25px;
+            margin-left: auto;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            border-radius: 16px;
+            width: 90%;
+            max-width: 450px;
+            max-height: 85vh;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .modal-close-btn {
+            background: none;
+            border: none;
+            font-size: 28px;
+            font-weight: 300;
+            color: #888;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-search {
+            padding: 16px 24px;
+            position: relative;
+        }
+
+        .modal-search .search-icon {
+            position: absolute;
+            left: 38px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            object-fit: contain;
+        }
+
+        .modal-search input {
+            width: 100%;
+            padding: 14px 14px 14px 44px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+        
+        .modal-body {
+            overflow-y: auto;
+            padding: 0 24px 24px;
+        }
+        
+        .modal-body h3 {
+            font-size: 14px;
+            color: #666;
+            font-weight: 500;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+        }
+
+        .brand-grid-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .brand-grid-item img {
+            max-width: 80%;
+            max-height: 40px;
+            object-fit: contain;
+        }
+        .brand-grid-item:hover {
+            background-color: #f9f9f9;
+            border-color: #ccc;
+        }
+        
+        .brand-list {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-list-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .brand-list-item:hover {
+            background-color: #f4f4f4;
+        }
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            object-fit: contain;
+        }
+        .brand-name {
+            font-size: 16px;
+            font-weight: 500;
+        }

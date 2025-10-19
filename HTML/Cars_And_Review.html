@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+    <head>
+         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Car Website - About Us</title>
+        <link rel="stylesheet" href="../CSS/nav_bar.css">
+        <link rel="stylesheet" href="../CSS/footer.css">
+        <link rel ="stylesheet" href="../CSS/car_n_rev.css">
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+         <!-- Navbar -->
+    <nav>
+        <div id="LOGO">LOGO</div> 
+        <ul id="nav_block2">
+            <li><a href="../HTML/Home.html">Home</a></li>
+            <li><a href="../HTML/About_us.html">About us</a></li>
+            <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+            <li><a href="../HTML/contact_us.html">Contact</a></li>
+        </ul>
+        
+        <a id="Trolley" href="../HTML/Puschasing_Progress.html">
+            <img src="../Image_icon/trolley.png" alt="Trolley icon">
+        </a>
+
+        <div id="popup-login">
+            <img src="../Image_icon/Signin.png" alt="Popup image">
+        </div>
+    </nav>
+
+
+    <!-- Hero section -->
+     <section>
+        <div class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Find your<br>favorite car</h1>
+                </div>
+                <div class="hero-image">
+                    <img src="../images/image.png" alt="Range Rover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<section class = "car-selling">
+    <!-- Filter -->
+
+        <div class="filter-bar">
+            <h2 class="filter-title">Filter</h2>
+            <form class="filter-form">
+
+                <div class="form-group">
+                    <label for="car-model">CAR MODEL</label>
+                    <button type="button" class="modal-trigger-button" id="openMakeModalBtn">
+                        <img src="../Image_icon/plus.png" alt="Add" class="icon icon-left"> <span class="placeholder-text">Add a car</span>
+                        <img src="../Image_icon/arrow_bl.png" alt="Select" class="icon icon-right"> </button>
+                </div>
+
+                <div class="form-group">
+                    <label>PRICE</label>
+                    <div class="form-row">
+                        <div class="select-wrapper">
+                            <select><option>From</option></select>
+                        </div>
+                        <div class="select-wrapper">
+                            <select><option>To</option></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>MILEAGE</label>
+                    <div class="form-row">
+                        <div class="select-wrapper">
+                            <select><option>From</option></select>
+                        </div>
+                        <div class="select-wrapper">
+                            <select><option>To</option></select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>TRANSMISSION</label>
+                    <div class="select-wrapper">
+                        <select><option>Manual</option></select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>FUEL</label>
+                    <div class="select-wrapper">
+                        <select><option>Diesel</option></select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>POWER</label>
+                    <div class="form-row">
+                        <div class="select-wrapper">
+                            <select><option>From</option></select>
+                        </div>
+                        <div class="select-wrapper">
+                            <select><option>To</option></select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>VEHICLE TYPE</label>
+                    <div class="select-wrapper">
+                        <select><option>All</option></select>
+                    </div>
+                </div>
+                
+                <div class="form-group feature-group">
+                    <label>Feature</label>
+                    <div class="feature-list">
+                        <div class="checkbox-item"><input type="checkbox" id="feature1"><label for="feature1">Phi gay dog</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="feature2"><label for="feature2">Phi gay dog</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="feature3"><label for="feature3">Phi gay dog</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="feature4"><label for="feature4">Phi gay dog</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="feature5"><label for="feature5">Phi gay dog</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="feature6"><label for="feature6">Phi gay dog</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="feature7"><label for="feature7">Phi gay dog</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="feature8"><label for="feature8">Phi gay dog</label></div>
+                    </div>
+                </div>
+                
+                <hr class="separator">
+
+                <div class="form-group">
+                    <button type="submit" class="search-btn">Detail search</button>
+                </div>
+                
+            </form>
+    </div>
+
+    <!-- Form hiện ra để chọn xe và model -->
+    <div class="modal-overlay" id="makeModalOverlay">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h2>Select make</h2>
+                <button class="modal-close-btn" id="closeMakeModalBtn">&times;</button>
+            </div>
+
+            <div class="modal-search">
+                <img src="../Image_icon/search.png" alt="Search" class="search-icon"> <input type="text" placeholder="Make or model">
+            </div>
+            
+            <div class="modal-body">
+                
+                <h3>Most Searched Tags</h3>
+                <div class="brand-grid" id="brand-grid-container">
+                    </div>
+
+                <h3>All Brands</h3>
+                <div class="brand-list" id="brand-list-container">
+                    </div>
+            </div>
+
+        </div>
+    </div>
+    <!--  -->
+
+    <!-- Car display -->
+    <div class = "car-display">
+        <div class = "car-container">
+                <div class = "car-card">
+                    <h3>
+
+                    </h3>
+                    <div>
+                        <img src="" alt="">
+                    </div>
+                </div>
+        </div>
+    </div>
+
+</section>
+
+
+    <script>
+        // Đảm bảo code chạy sau khi HTML đã tải xong
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ==========================================================
+            // PHẦN DỮ LIỆU MỚI (BẠN CHỈ CẦN SỬA Ở ĐÂY)
+            // ==========================================================
+            
+            // Mảng cho "Most Searched Tags"
+            const mostSearchedBrands = [
+                { name: 'Audi', imgSrc: "../Image_icon/audi.png" },
+                { name: 'BMW', imgSrc: '../Image_icon/bmw.png' },
+                { name: 'Citroën', imgSrc: '../Image_icon/citroen.png' },
+                { name: 'Dacia', imgSrc: '../Image_icon/dacia.png' },
+                { name: 'Ford', imgSrc: '../Image_icon/ford.png' },
+                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' },
+                { name: 'Mercedes', imgSrc: '../Image_icon/mec.png' },
+                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' }
+            ];
+
+            // Mảng cho "All Brands"
+            const allBrands = [
+                { name: 'Audi', imgSrc: "../Image_icon/audi.png" },
+                { name: 'BMW', imgSrc: '../Image_icon/bmw.png' },
+                { name: 'Citroën', imgSrc: '../Image_icon/citroen.png' },
+                { name: 'Dacia', imgSrc: '../Image_icon/dacia.png' },
+                { name: 'Ford', imgSrc: '../Image_icon/ford.png' },
+                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' },
+                { name: 'Mercedes', imgSrc: '../Image_icon/mec.png' },
+                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' }
+            ];
+
+
+            // ==========================================================
+            // PHẦN LOGIC MỚI (Tự động tạo HTML)
+            // ==========================================================
+
+            // 1. Lấy các container
+            const gridContainer = document.getElementById('brand-grid-container');
+            const listContainer = document.getElementById('brand-list-container');
+
+            // 2. Điền dữ liệu cho "Most Searched"
+            mostSearchedBrands.forEach(brand => {
+                // Tạo div.brand-grid-item
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'brand-grid-item';
+                
+                // Tạo <img>
+                const img = document.createElement('img');
+                img.src = brand.imgSrc;
+                img.alt = brand.name;
+                
+                // Gắn img vào div, rồi gắn div vào container
+                itemDiv.appendChild(img);
+                gridContainer.appendChild(itemDiv);
+            });
+
+            // 3. Điền dữ liệu cho "All Brands"
+            allBrands.forEach(brand => {
+                // Tạo div.brand-list-item
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'brand-list-item';
+                
+                // Tạo <img>
+                const img = document.createElement('img');
+                img.className = 'brand-logo';
+                img.src = brand.imgSrc;
+                img.alt = brand.name;
+                
+                // Tạo <span>
+                const span = document.createElement('span');
+                span.className = 'brand-name';
+                span.textContent = brand.name;
+                
+                // Gắn img và span vào div, rồi gắn div vào container
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(span);
+                listContainer.appendChild(itemDiv);
+            });
+
+
+            // ==========================================================
+            // LOGIC CŨ (Điều khiển Modal)
+            // ==========================================================
+            const openModalBtn = document.getElementById('openMakeModalBtn');
+            const closeModalBtn = document.getElementById('closeMakeModalBtn');
+            const modalOverlay = document.getElementById('makeModalOverlay');
+
+            function openModal() {
+                modalOverlay.classList.add('active');
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+            }
+
+            openModalBtn.addEventListener('click', openModal);
+            closeModalBtn.addEventListener('click', closeModal);
+
+            modalOverlay.addEventListener('click', function(event) {
+                if (event.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+        }); // Đóng sự kiện DOMContentLoaded
+    </script>
+
+    <!-- Car dis play-->
+
+
+
+
+        <footer>
+        <div class="container">
+            <div class="avata">
+                <img class="circle" src="none">
+            </div>
+            
+            <div class="footer-section">
+                <div>
+                    <h2 class="footer-toggle">Infomation <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li><a href="../HTML/Home.html">Home</a></li>
+                        <li><a href="../HTML/About_us.html">About</a></li>
+                        <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="footer-toggle">Helpful Links <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Supports</a></li>
+                        <li><a href="#">Terms & Condition</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="footer-toggle">Contact us <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li>💬 Chat with sale</li>
+                        <li>☎️ (84) 000000000</li>
+                        <li>✉️ email</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><img src="../Image_icon/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="../Image_icon/X.png" alt="X"></a>
+                        <a href="#"><img src="../Image_icon/instagram.png" alt="Instagram"></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <hr> <!-- Đường kẻ ngang -->
+
+        <div id="under">
+            <p>Group ... 2025 | All Rights Reserved</p>
+        </div>
+    </footer>
+
+</body>
+
+    <script src="../JavaScript/Footer.js"></script>
+    </body>
+</html>
