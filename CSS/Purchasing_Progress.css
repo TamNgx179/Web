@@ -125,6 +125,7 @@ body, html {
     align-items: center;
     gap: 20px;
 
+    cursor: pointer;
     justify-content: center;
     border-radius: 15px;
     padding: 20px;
@@ -256,15 +257,23 @@ body, html {
     gap: 15px;
 }
 
+#summary label {
+    font-weight: bold;
+}
+
+#payment-label-sum,
+
+
 .car-selected{
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
 .fee {
     display: flex;
     flex-direction: row;
-    gap: 15px;
+    gap: 40px;
 
     justify-content: space-between;
 }
@@ -342,7 +351,7 @@ body, html {
     margin-right: 20px;
 }
 
-.shop-time, .car-power, .car-energy {
+.car-weight, .car-power, .car-speed {
     display: flex;
     flex-direction: row;
 
@@ -359,7 +368,21 @@ body, html {
     width: 70%;
 }
 
+#list-car-selected li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
+#delivery-label-sum,
+#delivery-fee {
+    font-weight: normal !important;
+}
+
+#payment-label-sum,
+#delivery-label-sum {
+    margin-left: 9%;
+}
 
 /* ---------- Mobile: max-width 600px ---------- */
 @media (max-width: 600px) {
@@ -444,6 +467,10 @@ body, html {
         gap: 5px;
         justify-content: space-between;
         margin-right: 5px;
+    }
+    #payment-label-sum,
+    #delivery-label-sum {
+        margin-left: 13%;
     }
 }
 

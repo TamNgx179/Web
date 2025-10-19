@@ -33,7 +33,21 @@ nav ul {
 #LOGO, #Trolley {
    margin-left: 10%;
 }
-
+#counter{
+    position:absolute;
+    top:3px;
+    right:450px;
+    min-width:18px;
+    height:18px; 
+    padding:0 4px;
+    border-radius:999px;
+    background:#ff3b30;
+    color:#fff;
+    font-size:12px;
+    line-height:18px;
+    text-align:center;
+    font-weight:700;
+}
 #nav_block2 {
     margin-left: 5%;
 }
