@@ -1,421 +1,722 @@
 /* Reset and Body Styles */
-        body {
-            margin: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #ffffff;
-        }
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    padding-top: 80px;
+}
 
-        /* Hero Section Container */
-        .hero-section {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            min-height: 100vh; /* Chỉnh chiều cao theo ý muốn */
-            
-            /* Tạo nền 2 màu: màu tím chiếm 60%, màu trắng chiếm 40% */
-            background: linear-gradient( #9B89A4 60%);
-            
-            position: relative;
-        }
+/* Hero Section Container */
+.hero-section {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh; /* Chỉnh chiều cao theo ý muốn */
+    /* Tạo nền 2 màu: màu tím chiếm 60%, màu trắng chiếm 40% */
+    background: linear-gradient( #9B89A4 60%);
+    position: relative;
+}
 
-        /* Content Wrapper */
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            max-width: 1200px; /* Giới hạn chiều rộng nội dung */
-            margin: 0 auto;
-            padding: 0 40px;
-            width: 100%;
-        }
+/* Content Wrapper */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px; /* Giới hạn chiều rộng nội dung */
+    margin: 0 auto;
+    padding: 0 40px;
+    width: 100%;
+}
 
-        /* Text Block */
-        .hero-text {
-            flex-basis: 40%; /* Chiếm 40% chiều rộng của content */
-            color: white;
-        }
+/* Text Block */
+.hero-text {
+    flex-basis: 40%; /* Chiếm 40% chiều rộng của content */
+    color: white;
+}
 
-        .hero-text h1 {
-            /* Kích thước chữ lớn, responsive */
-            font-size: clamp(2.5rem, 6vw, 4rem); 
-            font-weight: 700;
-            line-height: 1.1;
-            margin: 0;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-        }
+.hero-text h1 {
+    /* Kích thước chữ lớn, responsive */
+    font-size: clamp(2.5rem, 6vw, 4rem); 
+    font-weight: 700;
+    line-height: 1.1;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
 
-        /* Image Block */
-        .hero-image {
-            flex-basis: 60%; /* Chiếm 60% chiều rộng của content */
-            display: flex;
-            justify-content: flex-end; /* Đẩy ảnh về phía bên phải */
-            align-items: center;
-            position: relative;
-            margin-left: 120px;
-        }
+/* Image Block */
+.hero-image {
+    flex-basis: 60%; /* Chiếm 60% chiều rộng của content */
+    display: flex;
+    justify-content: flex-end; /* Đẩy ảnh về phía bên phải */
+    align-items: center;
+    position: relative;
+    margin-left: 120px;
+}
 
-        .hero-image img {
-            max-width: 120%; /* Cho phép ảnh to hơn một chút để tràn ra đẹp mắt */
-            height: auto;
-            position: relative;
-            bottom: -120px; /* Đẩy ảnh xuống một chút để tạo hiệu ứng bóng đổ */
-            /* Tạo bóng đổ thực tế cho xe */
-            transform: translateX(100px);
-            filter: drop-shadow(0 20px 15px rgba(0, 0, 0, 0.3));
-        }
+.hero-image img {
+    max-width: 120%; /* Cho phép ảnh to hơn một chút để tràn ra đẹp mắt */
+    height: auto;
+    position: relative;
+    bottom: -120px; /* Đẩy ảnh xuống một chút để tạo hiệu ứng bóng đổ */
+    /* Tạo bóng đổ thực tế cho xe */
+    transform: translateX(100px);
+    filter: drop-shadow(0 20px 15px rgba(0, 0, 0, 0.3));
+}
 
 /* Filter cho phần xe  */
 
 .car-selling{
     position: relative;
+    background-color: #ffffff;
     min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
 }
 /* Filter Bar Container */
-        .filter-bar {
-            position: relative;
-            background-color: #ffffff;
-            border-radius: 15px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-            padding: 25px;
-            width: 360px;
-            margin-top: 100px;
-            margin-left: 40px;
-        }
+.filter-bar {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    width: 360px;
+    margin-top: 100px;
+    margin-left: 40px;
+}
 
-        .filter-title {
-            text-align: center;
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 25px;
-        }
+.filter-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
 
-        /* Form Group Layout */
-        .form-group {
-            margin-bottom: 18px;
-        }
+/* Form Group Layout */
+.form-group {
+    margin-bottom: 18px;
+}
 
-        .form-group label {
-            display: block;
-            font-size: 11px;
-            font-weight: 600;
-            color: #8a8a8e;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-        }
+.form-group label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #8a8a8e;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
 
-        /* Input Fields & Selects */
-        input[type="text"],
-        .select-wrapper select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            box-sizing: border-box;
-            -webkit-appearance: none;
-            -moz-appearance: none;
-            appearance: none;
-            background-color: white;
-            color: #1c1c1e;
-        }
-        
-        input[type="text"]::placeholder {
-            color: #c7c7cc;
-        }
-        
-        /* Select Dropdown Wrapper */
-        .select-wrapper {
-            position: relative;
-            width: 100%;
-        }
+/* Input Fields & Selects */
+input[type="text"],
+.select-wrapper select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: white;
+    color: #1c1c1e;
+}
 
-        .select-wrapper select {
-            background-image: url('YOUR_DARK_DROPDOWN_ARROW_ICON_LINK');
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 24px;
-            padding-right: 45px;
-        }
-        
-        /* Form Row */
-        .form-row {
-            display: flex;
-            gap: 10px;
-        }
+input[type="text"]::placeholder {
+    color: #c7c7cc;
+}
 
-        /* Feature Checkbox Group */
-        .feature-group > label {
-            font-size: 16px;
-            color: #1c1c1e;
-            text-transform: none;
-            font-weight: 600;
-        }
+/* Select Dropdown Wrapper */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
 
-        .feature-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
+.select-wrapper select {
+    background-image: url('YOUR_DARK_DROPDOWN_ARROW_ICON_LINK');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 24px;
+    padding-right: 45px;
+}
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-        }
+/* Form Row */
+.form-row {
+    display: flex;
+    gap: 10px;
+}
 
-        .checkbox-item input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            margin-right: 10px;
-            border: 1px solid #c7c7cc;
-            border-radius: 4px;
-            -webkit-appearance: none;
-            appearance: none;
-            cursor: pointer;
-            position: relative;
-        }
+/* Feature Checkbox Group */
+.feature-group > label {
+    font-size: 16px;
+    color: #1c1c1e;
+    text-transform: none;
+    font-weight: 600;
+}
 
-        .checkbox-item input[type="checkbox"]:checked::after {
-            content: '✔';
-            position: absolute;
-            color: #1c1c1e;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 12px;
-        }
-        
-        .checkbox-item label {
-            font-size: 15px;
-            color: #1c1c1e;
-            font-weight: normal;
-            margin-bottom: 0;
-        }
+.feature-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
 
-        /* Separator Line */
-        .separator {
-            border: none;
-            border-top: 1px solid #e5e5ea;
-            margin: 25px 0;
-        }
+.checkbox-item {
+    display: flex;
+    align-items: center;
+}
 
-        /* Search Button */
-        .search-btn {
-            width: 100%;
-            padding: 14px;
-            background-color: #fff;
-            color: #1c1c1e;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.2s ease, color 0.2s ease;
-        }
+.checkbox-item input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-right: 10px;
+    border: 1px solid #c7c7cc;
+    border-radius: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+}
 
-        .search-btn:hover {
-            background-color: #f2f2f7;
-            border-color: #d1d1d6;
-        }
+.checkbox-item input[type="checkbox"]:checked::after {
+    content: '✔';
+    position: absolute;
+    color: #1c1c1e;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+}
 
-        /* ============================================================
-           CSS CHO MODAL (VẪN GIỮ NGUYÊN)
-        ============================================================
-        */
-        
-        .modal-trigger-button {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #e0e0e0; 
-            border-radius: 10px; 
-            font-size: 16px;
-            box-sizing: border-box;
-            background-color: white;
-            color: #1c1c1e;
-            cursor: pointer;
-            text-align: left;
-            transition: border-color 0.2s;
-        }
+.checkbox-item label {
+    font-size: 15px;
+    color: #1c1c1e;
+    font-weight: normal;
+    margin-bottom: 0;
+}
 
-        .modal-trigger-button:hover {
-            border-color: #c7c7cc;
-        }
-        
-        .modal-trigger-button .icon {
+/* Separator Line */
+.separator {
+    border: none;
+    border-top: 1px solid #e5e5ea;
+    margin: 25px 0;
+}
 
-            object-fit: contain;
-        }
-        
-        .modal-trigger-button .placeholder-text {
-            color: #c7c7cc;
-            flex-grow: 1;
-            margin-left: 10px;
-        }
-        .modal-trigger-button .icon-left {
-            width: 40px;
-            height: 40px;
-            margin-right: auto;
-        }
-        
-        .modal-trigger-button .icon-right {
-            width: 25px;
-            height: 25px;
-            margin-left: auto;
-        }
+/* Search Button */
+.search-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #fff;
+    color: #1c1c1e;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
 
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.6);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
+.search-btn:hover {
+    background-color: #f2f2f7;
+    border-color: #d1d1d6;
+}
 
-        .modal-overlay.active {
-            display: flex;
-        }
+/* ============================================================
+    CSS CHO MODAL (VẪN GIỮ NGUYÊN)
+============================================================
+*/
 
-        .modal-content {
-            background-color: #fff;
-            border-radius: 16px;
-            width: 90%;
-            max-width: 450px;
-            max-height: 85vh;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            display: flex;
-            flex-direction: column;
-            animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
+.modal-trigger-button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0; 
+    border-radius: 10px; 
+    font-size: 16px;
+    box-sizing: border-box;
+    background-color: white;
+    color: #1c1c1e;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+}
 
-        @keyframes slideIn {
-            from {
-                transform: translateY(30px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+.modal-trigger-button:hover {
+    border-color: #c7c7cc;
+}
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 24px;
-            border-bottom: 1px solid #eee;
-        }
+.modal-trigger-button .icon {
 
-        .modal-header h2 {
-            margin: 0;
-            font-size: 20px;
-        }
+    object-fit: contain;
+}
 
-        .modal-close-btn {
-            background: none;
-            border: none;
-            font-size: 28px;
-            font-weight: 300;
-            color: #888;
-            cursor: pointer;
-            line-height: 1;
-        }
+.modal-trigger-button .placeholder-text {
+    color: #c7c7cc;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+.modal-trigger-button .icon-left {
+    width: 40px;
+    height: 40px;
+    margin-right: auto;
+}
 
-        .modal-search {
-            padding: 16px 24px;
-            position: relative;
-        }
+.modal-trigger-button .icon-right {
+    width: 25px;
+    height: 25px;
+    margin-left: auto;
+}
 
-        .modal-search .search-icon {
-            position: absolute;
-            left: 38px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            object-fit: contain;
-        }
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
 
-        .modal-search input {
-            width: 100%;
-            padding: 14px 14px 14px 44px;
-            font-size: 16px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-        
-        .modal-body {
-            overflow-y: auto;
-            padding: 0 24px 24px;
-        }
-        
-        .modal-body h3 {
-            font-size: 14px;
-            color: #666;
-            font-weight: 500;
-            margin-top: 20px;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-        }
+.modal-overlay.active {
+    display: flex;
+}
 
-        .brand-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 10px;
-        }
+.modal-content {
+    background-color: #fff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 450px;
+    max-height: 85vh;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
 
-        .brand-grid-item {
-            border: 1px solid #eee;
-            border-radius: 8px;
-            height: 60px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.2s, border-color 0.2s;
-            padding: 5px;
-            box-sizing: border-box;
-        }
-        .brand-grid-item img {
-            max-width: 80%;
-            max-height: 40px;
-            object-fit: contain;
-        }
-        .brand-grid-item:hover {
-            background-color: #f9f9f9;
-            border-color: #ccc;
-        }
-        
-        .brand-list {
-            display: flex;
-            flex-direction: column;
-        }
+@keyframes slideIn {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
-        .brand-list-item {
-            display: flex;
-            align-items: center;
-            padding: 10px 8px;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background-color 0.2s;
-        }
-        .brand-list-item:hover {
-            background-color: #f4f4f4;
-        }
-        .brand-logo {
-            width: 32px;
-            height: 32px;
-            margin-right: 12px;
-            object-fit: contain;
-        }
-        .brand-name {
-            font-size: 16px;
-            font-weight: 500;
-        }
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 28px;
+    font-weight: 300;
+    color: #888;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.modal-search {
+    padding: 16px 24px;
+    position: relative;
+}
+
+.modal-search .search-icon {
+    position: absolute;
+    left: 38px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.modal-search input {
+    width: 100%;
+    padding: 14px 14px 14px 44px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.modal-body {
+    overflow-y: auto;
+    padding: 0 24px 24px;
+}
+
+.modal-body h3 {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+.brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+}
+
+.brand-grid-item {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    padding: 5px;
+    box-sizing: border-box;
+}
+.brand-grid-item img {
+    max-width: 80%;
+    max-height: 40px;
+    object-fit: contain;
+}
+.brand-grid-item:hover {
+    background-color: #f9f9f9;
+    border-color: #ccc;
+}
+
+.brand-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-list-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.brand-list-item:hover {
+    background-color: #f4f4f4;
+}
+.brand-logo {
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+    object-fit: contain;
+}
+.brand-name {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+/* ======================================================================== Car display ===========================================================-- */
+.available-cars-container{
+    width: 100%;
+    max-width: 1000px;
+    margin-top: 100px;
+    z-index: 1;
+}
+
+.section-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.pagination-nav
+{
+    margin-bottom: 0;
+}
+.section-title{
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 0;
+}
+
+.pagination{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    margin: 0;
+    gap: 0;
+    border-radius: 12px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.06) ;
+}
+
+  
+/* Chỉ thêm border cho nút Previous và Next */
+.pagination li.control-prev {
+        border-right: 1px solid #e5e5ea;
+}
+.pagination li.control-next {
+        border-left: 1px solid #e5e5ea;
+}
+
+
+.pagination li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    padding: 8px 18px; /* Tăng padding để rộng hơn */
+    border-radius: 0; /* Bỏ bo tròn riêng lẻ */
+    transition: background-color 0.2s, color 0.2s;
+    font-size: 16px;
+    gap: 8px; /* Thêm khoảng cách giữa chữ và icon */
+    cursor: pointer;
+}
+
+.pagination li a:hover {
+    background-color: #f0f2f5; /* Hiệu ứng hover */
+    color: #1a1a1a;
+}
+
+/* Trang active sẽ có nền đậm hơn */
+.pagination li.active a {
+    background-color: #e9ecef; 
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.pagination li.disabled a {
+    color: #aaa;
+    cursor: not-allowed;
+}
+
+.pagination .arrow-icon {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* <!-- ======================================================================== Car display ===========================================================--> */
+
+
+.car-card {
+    background-color: #ffffff;
+    min-height: 200px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid transparent; /* Viền trong suốt để không bị giật layout khi active */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, border-color 0.2s;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.car-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Thêm viền xanh cho thẻ được chọn */
+.car-card.active {
+    border-color: #007aff; 
+    box-shadow: 0 8px 25px rgba(0, 122, 255, 0.15);
+}
+
+.car-image {
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    flex-basis: 40%;
+    flex-shrink: 0;
+}
+
+.car-card-content {
+    flex-basis: 50%;
+    margin-left: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Đảm bảo nội dung co giãn lấp đầy thẻ */
+}
+
+.car-card-content-header{
+    display: flex;
+    flex-direction: row;
+}
+
+.car-card-content-title{
+    margin-bottom: 14px;
+}
+
+.car-title {
+    font-size: 23px;
+    font-weight:800;
+    margin: 0 0 8px 0;
+}
+
+.car-price {
+    position: absolute; 
+    bottom: -12px;       
+    right: 10px;        
+
+    font-size: 22px;
+    font-weight: 700;
+    color: #000000;    
+}
+
+.car-location {
+    position: absolute;
+    display: flex;        /* Bật Flexbox để xếp icon và span ngang hàng */
+    align-items: center;
+    right: 10px;
+    gap: 6px;
+    color: #555;
+    font-size: 14px;
+    margin-top: 0px;
+}
+.car-location .icon {
+    width: 28px;
+    height: 28px;
+}
+
+.car-location span{
+
+    margin-bottom: 0;
+}
+
+.car-specs {
+    display: flex;
+    flex-direction: rows;
+    gap: 17px;
+    margin-bottom: 10px;
+    margin-top: -8px; /* Đẩy thông số xuống dưới cùng */
+}
+
+.spec-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.spec-item .icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    opacity: 0.7;
+}
+
+.spec-item span {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.details-button-container {
+    text-align: center;
+    
+}
+
+.details-button {
+    display: inline-block; /* Thay đổi từ block */
+    width: calc(100% - 100px);
+    text-align: center;
+    padding: 12px 40px; /* Thêm padding ngang */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: transparent;
+    color: #333;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.details-button:hover {
+    background-color: #1a1a1a;
+    color: #fff;
+    border-color: #1a1a1a;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .section-header {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section-title {
+        font-size: 28px;
+    }
+    .car-grid {
+        grid-template-columns: 1fr; /* 1 cột trên điện thoại */
+    }
+}
+/* ===================================================================================================================================-- */
+.car-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Căn giữa các tag và nút "see more" */
+    gap: 8px;
+    margin-top: 8px; /* Khoảng cách với header */
+}
+
+/* /* MỚI */ */
+/* ================================================== */
+/* === CODE CSS MỚI CHO FEATURE TAGS (ĐÃ TRANG TRÍ LẠI) === */
+/* ================================================== */
+
+/* /* MỚI */ */
+.car-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center; /* Căn giữa các tag và nút "see more" */
+    gap: 8px;
+    margin-top: 8px; /* Khoảng cách với header */
+}
+
+.car-tag {
+    background-color: #E9ECEF; /* Màu nền xám nhạt (giống pagination) */
+    color: #343A40; /* Màu chữ xám đậm/đen */
+    font-size: 12px; /* Chữ to hơn một chút */
+    font-weight: 500;
+    padding: 5px 12px; /* Rộng hơn một chút */
+    border-radius: 8px; /* Bo góc ít hơn (vuông vắn hơn) */
+    white-space: nowrap; 
+}
+
+.car-tag-more {
+    font-size: 12px; /* SỬA: 5px quá nhỏ, tăng lên 12px */
+    font-weight: 800;
+    color: #495057; /* Màu chữ xám (hơi đậm) */
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 4px; 
+    margin-left: 4px; 
+    background: transparent;
+    border: 2px solid transparent; /* SỬA: Thêm border trong suốt để không bị giật layout khi hover */
+    z-index: 20;
+    transition: border-color 0.2s; /* Thêm hiệu ứng chuyển động mượt */
+}
+
+/* SỬA: GỘP 2 BLOCK HOVER LẠI VÀ SỬA LỖI SELECTOR (bỏ dấu cách) */
+.car-tag-more:hover { /* Giữ lại gạch chân */
+    /* Thêm style viền đen */
+    border: 2px solid;
+    border-color: #1a1a1a;
+    border-radius: 8px;
+}
+/* /* MỚI */ 
