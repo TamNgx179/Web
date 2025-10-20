@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Brand</title>
+    <link rel="stylesheet" href="../CSS/nav_bar.css">
+    <link rel="stylesheet" href="../CSS/Brand.css">
+    <link rel="stylesheet" href="../CSS/footer.css">
+</head>
+
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div id="LOGO">LOGO</div> 
+        <ul id="nav_block2">
+            <li><a href="../HTML/Home.html">Home</a></li>
+            <li><a href="../HTML/About_us.html">About us</a></li>
+            <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+            <li><a href="../HTML/contact_us.html">Contact</a></li>
+        </ul>
+        <a id="Trolley" href="../HTML/Puschasing_Progress.html">
+            <img src="../Image_icon/trolley.png" alt="Trolley icon">
+        </a>
+        <span id="counter">0</span>
+        <div id="popup-login">
+            <img src="../Image_icon/Signin.png" alt="Popup image">
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main class="header-container">
+
+        <!-- Hero / Introduction section -->
+        <section class="main-info">
+        <!-- thanh tiêu đề + nút đổi brand -->
+        <div class="brand-toolbar">
+            <h1 id="brand">Brand Name</h1>
+            <button id="change-brand">Change</button>
+        </div>
+
+        <!-- ảnh hero ở giữa -->
+        <div class="image">
+            <img id="hero" alt="Brand hero" width="1000" height="370">
+        </div>
+        </section>
+
+        <!-- MÔ TẢ & CTA  (đã đưa ra nền trắng, tách khỏi .main-info) -->
+        <section class="context">
+        <p id="main-paragraph">
+            Welcome to our brand page. Explore our lineup, discover innovation, and find your dream car.
+        </p>
+        <a id="shop" href="../HTML/Cars_And_Review.html">Shop now</a>
+        </section>
+
+        <!-- Lineup Section -->
+        <section class="brand-lineup">
+            <h2 id="lineup">Car lineup</h2>
+            <div class="lineup-buttons">
+                <button class="category active">All models</button>
+                <button class="category">SUV</button>
+                <button class="category">Sedan</button>
+                <button class="category">EV</button>
+                <button class="category">Coupe</button>
+            </div>
+            <div id="lineup-list" class="lineup-list">
+                <!-- JS sẽ thêm danh sách xe ở đây -->
+            </div>
+        </section>
+
+        <!-- Competitor Section -->
+        <section class="competitors">
+            <h3 id="browse-compe">Browse brand competitors</h3>
+            <div id="competitor-list" class="competitor-list">
+                <!-- JS sẽ thêm logo/hãng đối thủ ở đây -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="avata"><img class="circle" src="none" alt="avatar" /></div>
+            <div class="footer-section">
+                <div>
+                    <h2 class="footer-toggle">Information <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Cars and reviews</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="footer-toggle">Helpful Links <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Supports</a></li>
+                        <li><a href="#">Terms & Condition</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="footer-toggle">Contact us <span class="span">▼</span></h2>
+                    <ul class="footer-list">
+                        <li>💬 Chat with sale</li>
+                        <li>☎️ (84) 000000000</li>
+                        <li>✉️ email</li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><img src="../Image_icon/facebook.png" alt="Facebook" /></a>
+                        <a href="#"><img src="../Image_icon/X.png" alt="X" /></a>
+                        <a href="#"><img src="../Image_icon/instagram.png" alt="Instagram" /></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div id="under"><p>Group ... 2025 | All Rights Reserved</p></div>
+    </footer>
+
+    <script type="module" src="../JavaScript/Brand.js"></script>
+    <script src="../JavaScript/Footer.js"></script>
+</body>
+</html>

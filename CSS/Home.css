@@ -196,8 +196,8 @@ h1{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 100px;
-  margin-top: 100px;
+  margin-bottom: 200px;
+  margin-top: 200px;
 }
 
     
@@ -211,7 +211,7 @@ h1{
 
 .blackbox img {
   position: absolute;
-  right: -180px; /* đẩy xe lấn sang phần hồng */
+  right: -250px; /* đẩy xe lấn sang phần hồng */
   top: 50%;
   transform: translateY(-30%);
 }
