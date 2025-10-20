@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="../CSS/footer.css">
         <link rel="stylesheet" href="../CSS/car_n_rev.css"> 
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="../CSS/Review_from_client.css">
+        <script src="../JavaScript/Review_from_client.js" defer></script>
     </head>
     <body>
         <nav>
@@ -179,7 +182,167 @@
 </section>
 
 
+<<<<<<< HEAD
     <footer>
+=======
+    <script>
+        // Đảm bảo code chạy sau khi HTML đã tải xong
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ==========================================================
+            // PHẦN DỮ LIỆU MỚI (BẠN CHỈ CẦN SỬA Ở ĐÂY)
+            // ==========================================================
+            
+            // Mảng cho "Most Searched Tags"
+            const mostSearchedBrands = [
+                { name: 'Audi', imgSrc: "../Image_icon/audi.png" },
+                { name: 'BMW', imgSrc: '../Image_icon/bmw.png' },
+                { name: 'Citroën', imgSrc: '../Image_icon/citroen.png' },
+                { name: 'Dacia', imgSrc: '../Image_icon/dacia.png' },
+                { name: 'Ford', imgSrc: '../Image_icon/ford.png' },
+                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' },
+                { name: 'Mercedes', imgSrc: '../Image_icon/mec.png' },
+                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' }
+            ];
+
+            // Mảng cho "All Brands"
+            const allBrands = [
+                { name: 'Audi', imgSrc: "../Image_icon/audi.png" },
+                { name: 'BMW', imgSrc: '../Image_icon/bmw.png' },
+                { name: 'Citroën', imgSrc: '../Image_icon/citroen.png' },
+                { name: 'Dacia', imgSrc: '../Image_icon/dacia.png' },
+                { name: 'Ford', imgSrc: '../Image_icon/ford.png' },
+                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' },
+                { name: 'Mercedes', imgSrc: '../Image_icon/mec.png' },
+                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' }
+            ];
+
+
+            // ==========================================================
+            // PHẦN LOGIC MỚI (Tự động tạo HTML)
+            // ==========================================================
+
+            // 1. Lấy các container
+            const gridContainer = document.getElementById('brand-grid-container');
+            const listContainer = document.getElementById('brand-list-container');
+
+            // 2. Điền dữ liệu cho "Most Searched"
+            mostSearchedBrands.forEach(brand => {
+                // Tạo div.brand-grid-item
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'brand-grid-item';
+                
+                // Tạo <img>
+                const img = document.createElement('img');
+                img.src = brand.imgSrc;
+                img.alt = brand.name;
+                
+                // Gắn img vào div, rồi gắn div vào container
+                itemDiv.appendChild(img);
+                gridContainer.appendChild(itemDiv);
+            });
+
+            // 3. Điền dữ liệu cho "All Brands"
+            allBrands.forEach(brand => {
+                // Tạo div.brand-list-item
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'brand-list-item';
+                
+                // Tạo <img>
+                const img = document.createElement('img');
+                img.className = 'brand-logo';
+                img.src = brand.imgSrc;
+                img.alt = brand.name;
+                
+                // Tạo <span>
+                const span = document.createElement('span');
+                span.className = 'brand-name';
+                span.textContent = brand.name;
+                
+                // Gắn img và span vào div, rồi gắn div vào container
+                itemDiv.appendChild(img);
+                itemDiv.appendChild(span);
+                listContainer.appendChild(itemDiv);
+            });
+
+
+            // ==========================================================
+            // LOGIC CŨ (Điều khiển Modal)
+            // ==========================================================
+            const openModalBtn = document.getElementById('openMakeModalBtn');
+            const closeModalBtn = document.getElementById('closeMakeModalBtn');
+            const modalOverlay = document.getElementById('makeModalOverlay');
+
+            function openModal() {
+                modalOverlay.classList.add('active');
+            }
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+            }
+
+            openModalBtn.addEventListener('click', openModal);
+            closeModalBtn.addEventListener('click', closeModal);
+
+            modalOverlay.addEventListener('click', function(event) {
+                if (event.target === modalOverlay) {
+                    closeModal();
+                }
+            });
+
+        }); // Đóng sự kiện DOMContentLoaded
+    </script>
+
+    <!-- Car dis play-->
+
+    <!-- review from client-->
+
+    <div class="review-container">
+        <h2>Review from our clients</h2>
+        <div id="droplist-sort">
+            <label for="sort-review">Select Client</label>
+            <select id="sort-review">
+                <option value="oldest">Oldest</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+
+        <div id="review-main">
+            <div class="review" style="display: none;">
+                <h3 class="name-input"></h3>
+                <h3 class="date-time"></h3>
+                <p class="review-message"></p>
+                <button class="show-full">Show full review</button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button id="write-review">Write a review</button>
+            <button id="see-all-reviews" style="display: none;">See more</button>
+        </div>
+
+        <form id="review-form" style="display: none;">
+            <div id="name-container">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div id="email-container">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div id="review-input">
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" required></textarea>
+            </div>
+
+            <button id="submit-review" type="submit">Submit Review</button>
+            <button id="close-review" type="close">Close</button>
+        </form>
+    </div>
+
+        <footer>
+>>>>>>> a52c430b1915a3856ad80a61c9d63769f6535016
         <div class="container">
             <div class="avata">
                 <img class="circle" src="none">
