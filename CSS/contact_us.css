@@ -1,69 +1,121 @@
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: white;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f5f7f6;
+    color: #333;
     width: 100%;
     min-height: 100%;
 }
 
-/* Wrapper chính */
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;           /* cho phép wrap trên màn hình nhỏ */
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 100%;
-    min-height: 100vh;         /* đảm bảo chiều cao đủ cho sticky */
-    padding: 20px;             /* tránh tràn ra ngoài */
-    background-color: #A0A8A4;
-}
-
-/* Form */
-form {
+body {
     display: flex;
     flex-direction: column;
-    width: 20%;
-    max-width: 500px;           /* giới hạn tối đa */
-    min-width: 280px;           /* giới hạn tối thiểu */
-    background-color: white;
-    padding: 20px;
-    border-radius: 20px;
-    gap: 20px;
+    align-items: center;
 }
 
-/* Input & textarea */
-form input, #Message {
-    padding: 12px 15px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 50px;
     width: 100%;
-    font-size: 16px;
-    outline: none;
-    background-color: #f9f9f9;
+    max-width: 1200px;
+    padding: 60px 20px;
+
+    margin-top: 20vh;
+}
+
+#text-left {
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
+    color: #2d2d2d;
+}
+
+#text-left h1 {
+    font-size: 2.4rem;
+    color: #1a1a1a;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#text-left h1::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background-color: #0a84ff;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+
+#text-left p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+}
+
+
+form {
+    flex: 1;
+    min-width: 320px;
+    max-width: 450px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 30px 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     transition: all 0.3s ease;
 }
 
+form p {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #222;
+    text-align: center;
+}
+
+
+form label {
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background-color: #fafafa;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: #0a84ff;
+    background-color: #fff;
+}
+
 #Message {
-    height: 180px;
     resize: vertical;
+    min-height: 150px;
 }
 
-/* Groupings */
-#usname, #usmessage {
-    display: flex;
-    flex-direction: column;
-}
-
+/* Hai ô ngang hàng */
 #inline {
     display: flex;
-    flex-direction: row;
     gap: 20px;
     width: 100%;
 }
@@ -74,99 +126,80 @@ form input, #Message {
     flex-direction: column;
 }
 
-/* Button */
+
 button#send_message {
-    padding: 12px;
-    border-radius: 6px;
-    width: max-content;
     align-self: center;
+    padding: 12px 28px;
+    border-radius: 10px;
     border: none;
-    background-color: #D9D9D9;
-    color: white;
-    font-size: 16px;
+    background: linear-gradient(135deg, #0078d7, #0a84ff);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 10px rgba(10, 132, 255, 0.3);
 }
 
 button#send_message:hover {
-    background-color: #45a049;
     transform: translateY(-2px);
+    background: linear-gradient(135deg, #0a84ff, #3699ff);
+    box-shadow: 0 5px 14px rgba(10, 132, 255, 0.4);
 }
 
-/* Responsive */
 
-/* Mobile < 700px */
-@media (max-width: 700px) {
+
+/* Tablet & Mobile chung (< 1024px) */
+@media (max-width: 1024px) {
     .wrapper {
         flex-direction: column;
-        padding: 20px 0;
-        min-height: 100vh;
-        margin-top: 35px;
+        gap: 30px;
+        padding: 40px 20px;
+        margin-top: 10vh;
     }
 
     #text-left {
-        display: none;
+        text-align: center;
+    }
+
+    #text-left h1::after {
+        margin: 10px auto;
     }
 
     form {
-        width: 90%;
-        max-width: none;
-    }
-
-    #inline {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    button#send_message {
-        width: 80%;
-        align-self: center;
-    }
-}
-
-/* Tablet / iPad 700px - 1024px */
-@media (min-width: 700px) and (max-width: 1024px) {
-    .wrapper {
-        flex-direction: column;
-        padding: 40px 0;
-    }
-
-    #text-left {
-        display: none;
-    }
-
-    form {
-        width: 80%;
-        max-width: 450px;
-        padding: 25px;
-        margin-top: 20px;
-    }
-
-    #inline {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    button#send_message {
-        width: fit-content;
-        align-self: center;
-    }
-}
-
-/* Desktop lớn > 1024px */
-@media (min-width: 1025px) {
-    .wrapper {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-    }
-
-    form {
-        width: 20%;
+        width: 100%;
         max-width: 500px;
     }
 
     #inline {
-        flex-direction: row;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    button#send_message {
+        width: 100%;
+    }
+
+    form p {
+        font-size: 25px;
+    }
+}
+
+/* Mobile nhỏ (<600px) */
+@media (max-width: 600px) {
+    .wrapper{
+        margin-top: 10vh;
+    }
+    #text-left h1 {
+        font-size: 2rem;
+    }
+
+    form {
+        padding: 25px 20px;
+        border-radius: 15px;
+    }
+
+    form p {
+        font-size: 18px;
     }
 }

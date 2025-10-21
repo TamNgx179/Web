@@ -68,11 +68,11 @@ function setprocessbar(idx) {
         // Xóa class cũ để reset
         step.classList.remove("active", "completed");
 
-        // Nếu là bước hiện tại → active
+        // active bước hiện tại
         if (index === currentStep) {
             step.classList.add("active");
         }
-        // Nếu là bước trước đó → completed
+        //complete bước trước đó
         else if (index < currentStep) {
             step.classList.add("completed");
         }
@@ -80,6 +80,7 @@ function setprocessbar(idx) {
     });
 }
 
+//set chỉnh nội dung các trang
 function setStepContent({ header, paragraph, options}) {
     document.getElementById("header").innerHTML = header;
     document.getElementById("paragraph").innerHTML = paragraph;
@@ -337,10 +338,12 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
 function selected_car_on_trolley(car_on_trolley_list){
     car_on_trolley_list.forEach((item, index) => {
         item.onclick = () => {
+            //nếu đã chọn (viền green) thì click phát nữa bỏ chọn (quay về black)
             if(item.style.border.includes('green')){
                 item.style.border = '1px solid black';
                 inputcarintosumary(item, false)
             } else {
+                //viền black (chưa chọn) thì chuyển thành green (chọn)
                 item.style.border = '3px solid green';
                 inputcarintosumary(item, true)
             }
@@ -351,6 +354,7 @@ function selected_car_on_trolley(car_on_trolley_list){
 function inputcarintosumary(item, selected) {
     const list = document.getElementById('list-car-selected');
 
+    //nếu được chọn từ selected_car_on_trolley() thì tạo li để them vào sumary (viền green)
     if (selected) {
         const li = document.createElement('li');
         const name = document.createElement('span');
@@ -366,6 +370,8 @@ function inputcarintosumary(item, selected) {
         li.appendChild(price);
         list.appendChild(li);
     } 
+
+    //xóa li nếu bỏ chọn (viền black)
     else {
         const allLi = list.querySelectorAll('li');
         allLi.forEach(li => {
@@ -388,12 +394,12 @@ function setstep0() {
     display.querySelectorAll('.carform').forEach(el => el.remove());
 
     // Tạo 1 form trống mới test
-    
+    // load lại tất cả các xe đã được chọn từ các trang khác
     trolley.forEach(item => {
         display.insertBefore(item, addAnother)
     })
 
-    // Gán lại event cho toàn bộ form
+    // Gán lại event click chọn cho toàn bộ form xe
     selected_car_on_trolley(trolley);
 
     addAnother.onclick = () => {
@@ -418,6 +424,8 @@ function setstep3() {
 
 function checkinputinfomation(stepindex){
     if(stepindex == 0){
+
+        //chưa form nào được chọn (ol chưa có li nào) (sumary trống)
         const ol = document.querySelector('#list-car-selected')
         if(ol.querySelectorAll('li').length == 0){
             return false
@@ -425,17 +433,21 @@ function checkinputinfomation(stepindex){
         else return true
     }
     else if(stepindex == 1){
+        //chưa chọn phương thức thanh toán (sumary trống)
         if(document.getElementById('payment-label-sum').textContent == ''){
             return false
         }
         else return true
     }
     else if (stepindex == 2){
+        //chưa chọn phương thức vận chuyển (sumary trống)
         if(document.getElementById('delivery-fee').textContent == ''){
             return false
         }
         else return true
     }
+
+    //step cuối luôn đúng
     else return true
 }
 
@@ -443,8 +455,13 @@ function checkinputinfomation(stepindex){
 function totalinfomation() {
     let delivery = document.getElementById('delivery-label-sum').innerHTML.trim(); // loại bỏ khoảng trắng
 
+    //phí vẫn chuyển
     let deliveryFee = 0;
+
+    //Tổng thành tiền
     let totalitemcost = 0;
+
+    //chuyển về tận nhà thì giá ship $499
     if(delivery === "Home") {
         deliveryFee = 499;
     }
@@ -479,6 +496,7 @@ function insertAddressLabel(addressText) {
         addressLabel = document.createElement('label');
         addressLabel.id = 'address';
         addressLabel.style.fontWeight = 'normal'
+
         // chèn sau delivery-label-sum, trước delivery-fee
         deliveryLabel.parentElement.insertBefore(addressLabel, deliveryFee);
     }
@@ -490,6 +508,7 @@ function insertAddressLabel(addressText) {
 function addtime(idx, index) {
     const container = document.getElementById("info");
 
+    //chỉ tạo khi đang ở bước chọn phương thức giao hàng
     if (idx === 2) {
         // Kiểm tra nếu chưa có thì mới tạo
         if (!document.getElementById("label3")) {
@@ -595,6 +614,7 @@ function setinfomation(stepindex) {
             indexdata = index
             if(stepindex == 1){
                 info = infodata[index];
+                //ở bước phương thức thanh toán
                 document.getElementById('payment-label-sum').innerHTML = document.getElementById('payment-label').innerHTML = index == 0 ? "Card" : "Cash";
                 document.getElementById('payment-label-sum').style.fontWeight = 'normal'
                 addtime(stepindex, index)
@@ -605,8 +625,12 @@ function setinfomation(stepindex) {
                 addtime(stepindex, index)
 
                 if(index == 0){
+
+                    //chọn giao hàng tại nhà thì tạo thêm div địa chỉ vào sumary
                     handleAddressInput(); // gọi hàm tách riêng
                 } else {
+
+                    // nếu chọn Showroom thì xoá input địa chỉ
                     const addressLabel = document.getElementById('address');
                     if(addressLabel) addressLabel.remove();
                 }

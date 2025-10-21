@@ -10,7 +10,9 @@
 </head>
 <body>
     <nav>
-        <div id="LOGO">LOGO</div> 
+        <a id="Logo" href="../HTML/Home.html">
+            <img src="../images/LogoWeb-removebg-preview.png" alt="LogoWeb">
+        </a>
 
         <ul id="nav_block2">
             <li><a href="../HTML/Home.html">Home</a></li>
@@ -18,29 +20,29 @@
             <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
             <li><a href="../HTML/contact_us.html">Contact</a></li>
         </ul>
-        
-        <a id="Trolley" href="../HTML/Puschasing_Progress.html"><img src="../Image_icon/trolley.png" alt="Trolley icon"></a>
-        <span id="counter">0</span>
-        <div id="popup-login">
+
+        <div class="nav-right">
+            <a id="Trolley" href="../HTML/Puschasing_Progress.html">
+            <img src="../Image_icon/trolley.png" alt="Trolley icon">
+            <span id="counter">0</span>
+            </a>
+            <div id="popup-login">
             <img src="../Image_icon/Signin.png" alt="Popup image">
+            </div>
         </div>
-         
     </nav>
 
 
     <div class="wrapper">
         <div id="text-left">
             <h1>Contact with us</h1>
-
             <p>Not sure what you’re looking for? <br>
-            Our sales team is here to help and guide <br>
-            you through every step.</p>
+              Our sales team is here to help and guide <br>
+                you through every step.</p>
         </div>
 
         <form>
-            <p><strong> We love to hear from you! <br>
-            Let’s get in touch</strong></p>
-            
+            <p><strong>We love to hear from you! <br>Let’s get in touch</strong></p>
             <div id="usname">
                 <label for="username">Full name</label>
                 <input id="username" type="text" name="username" placeholder="Full name">
@@ -62,10 +64,11 @@
                 <label for="Message">Your message</label>
                 <textarea id="Message" name="message" placeholder="Your message"></textarea>
             </div>
-    
+
             <button id="send_message">Send message</button>
         </form>
     </div>
+
     
 </body>
 </html>
