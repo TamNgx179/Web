@@ -8,6 +8,8 @@ body, html {
     width: 100%;
     overflow-x: hidden; /* chặn dư ngang */
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    overflow-y: auto;
+    height: auto;
 }
 
 #main-content {
@@ -18,8 +20,7 @@ body, html {
     margin-top: 20px;
 
     align-items: flex-start; /* cho order summary top */
-
-    min-height: 100vh;
+    overflow: visible;
 }
 
 #purchasing-progress {
@@ -265,6 +266,8 @@ body, html {
 }
 
 #Order-summary {
+    position: sticky;
+    top: 10px;
     width: 30%;
     height: fit-content;
     padding: 20px;
@@ -418,10 +421,10 @@ body, html {
 }
 
 #list-car-selected li {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* 3 cột: tên - số lượng - giá */
+    gap: 10px;
+    align-items: center;
     margin-left: 10%;
 }
 

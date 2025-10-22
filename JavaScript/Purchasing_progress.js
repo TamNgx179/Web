@@ -315,7 +315,7 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
 
     carForm.appendChild(carInfo);
 
-    // ==== Setup event cho form ====
+    // ==== Setup event cho form ==== 
     setupCarEvents(carForm);
 
     return carForm;
@@ -455,7 +455,6 @@ function inputcarintosumary(item, selected) {
         });
     }
 }
-
 
 
 function setstep0() {
