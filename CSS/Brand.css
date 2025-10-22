@@ -28,6 +28,7 @@ body{
   margin: 0;
   font-weight: 800;
   padding-left: 150px;
+  padding-bottom: 15px;
 }
 
 #change-brand {
@@ -146,7 +147,7 @@ body{
 .image {
   position: absolute;
   left: 50%;
-  top: 45%;               
+  top: 35%;               
   transform: translateX(-50%);
   width: 100%;            
   display: flex;
@@ -155,23 +156,24 @@ body{
 }
 
 .image img {
-  width: 85%;             
+  width: 85%;
   max-width: 1300px;
-  max-height: 370px;
+  height: 430px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   object-fit: cover;
+  display: block;
 }
 
 /* ===== CONTEXT SECTION (nền trắng) ===== */
 .context {
   position: relative;
   background: #fff;
-  padding: 180px 48px 60px 190px; /* padding trên lớn để tránh đè ảnh */
+  padding: 180px 190px 30px 190px; /* padding trên lớn để tránh đè ảnh */
 }
 
 #main-paragraph {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.7;
   color: #333;
   margin-bottom: 20px;
@@ -196,7 +198,7 @@ body{
 /* ===== LINEUP ===== */
 .brand-lineup{
   background:#fff;
-  padding:56px 64px 60px 190px;
+  padding:56px 64px 160px 190px;
 }
 .brand-lineup h2{
   font-size:56px;
@@ -204,7 +206,10 @@ body{
   margin:0 0 22px 0;
   text-transform:uppercase;
 }
-.lineup-buttons{ margin-bottom:32px; }
+.lineup-buttons{ 
+  margin-bottom:32px; 
+}
+
 .category{
   background-color: white;
   border: none;
@@ -291,24 +296,59 @@ body{
 
 /* ===== COMPETITORS ===== */
 .competitors{
-  background:#f7f7f7;
   padding:48px 64px;
-  text-align:center;
+  text-align:left;
 }
 .competitors h3{
-  font-size:28px; margin:0 0 20px 0;
+  font-size:32px;
+  font-weight:800;
+  text-align: center;
+  margin:0 0 24px 0;
 }
+
 .competitor-list{
-  display:flex; flex-wrap:wrap; gap:22px; justify-content:center;
+  display:grid;
+  grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) );
+  gap:28px;
 }
+
 .competitor-card{
-  background:#fff; width:180px; height:100px; border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-  transition:transform .25s; cursor:pointer;
+  background:#141918;              
+  color:#e9efee;
+  border-radius:18px;
+  height:160px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.14);
+  transition: transform .2s ease, box-shadow .2s ease;
+  cursor:pointer;
+  text-decoration:none;            
+  outline: none;
 }
-.competitor-card:hover{ transform:scale(1.05); }
-.competitor-card img{ max-width:100px; object-fit:contain; }
+.competitor-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
+}
+.competitor-card:focus-visible{
+  box-shadow: 0 0 0 3px #cde4df, 0 6px 18px rgba(0,0,0,.14);
+}
+
+.competitor-logo{
+  width:64px;
+  height:64px;
+  object-fit:contain;
+  opacity:.9;
+  filter: grayscale(100%) contrast(110%);
+}
+.competitor-name{
+  margin:0;
+  font-size:20px;
+  font-weight:700;
+}
+
 
 
 
@@ -323,5 +363,3 @@ body{
   .brand-toolbar h1{ font-size:34px; }
   #change-brand{ padding:10px 16px; }
 }
-
-
