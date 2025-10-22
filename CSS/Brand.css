@@ -10,7 +10,7 @@ body{
 .main-info {
   position: relative;
   background: #ececec;
-  height: 250px;
+  height: 550px;
   padding: 60px 48px 180px; /* chừa không gian cho ảnh hero “lấn” xuống */
   overflow: visible;
 }
@@ -29,6 +29,7 @@ body{
   font-weight: 800;
   padding-left: 150px;
   padding-bottom: 15px;
+  margin-top: 50px;
 }
 
 #change-brand {
@@ -41,6 +42,7 @@ body{
   font-weight: 600;
   transition: opacity 0.25s ease;
   margin-right: 150px;
+  margin-top: 50px;
 }
 
 #change-brand:hover {
@@ -147,7 +149,7 @@ body{
 .image {
   position: absolute;
   left: 50%;
-  top: 35%;               
+  top: 45%;               
   transform: translateX(-50%);
   width: 100%;            
   display: flex;
@@ -158,7 +160,7 @@ body{
 .image img {
   width: 85%;
   max-width: 1300px;
-  height: 430px;
+  height: 470px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   object-fit: cover;
@@ -169,7 +171,7 @@ body{
 .context {
   position: relative;
   background: #fff;
-  padding: 180px 190px 30px 190px; /* padding trên lớn để tránh đè ảnh */
+  padding: 250px 190px 30px 190px; /* padding trên lớn để tránh đè ảnh */
 }
 
 #main-paragraph {
@@ -296,6 +298,7 @@ body{
 
 /* ===== COMPETITORS ===== */
 .competitors{
+  background:#f1f4f3;      /* nền xám nhạt như ảnh */
   padding:48px 64px;
   text-align:left;
 }
@@ -313,7 +316,7 @@ body{
 }
 
 .competitor-card{
-  background:#141918;              
+  background:#141918;              /* đen xám như hình */
   color:#e9efee;
   border-radius:18px;
   height:160px;
@@ -325,7 +328,7 @@ body{
   box-shadow: 0 6px 18px rgba(0,0,0,.14);
   transition: transform .2s ease, box-shadow .2s ease;
   cursor:pointer;
-  text-decoration:none;            
+  text-decoration:none;            /* nếu là <a> */
   outline: none;
 }
 .competitor-card:hover{
@@ -341,14 +344,12 @@ body{
   height:64px;
   object-fit:contain;
   opacity:.9;
-  filter: grayscale(100%) contrast(110%);
 }
 .competitor-name{
   margin:0;
   font-size:20px;
   font-weight:700;
 }
-
 
 
 

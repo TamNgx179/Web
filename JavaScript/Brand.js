@@ -27,6 +27,23 @@ const BRAND_INTRO = {
   porsche: "Porsche is a legendary German automaker synonymous with performance, precision, and timeless design. Established in 1931 by Ferdinand Porsche, the brand is best known for its iconic 911 sports car, a global symbol of engineering excellence. Every Porsche combines thrilling performance with refined luxury, embodying the spirit of racing and innovation. The company’s expansion into electric vehicles, like the Taycan, marks its evolution toward a sustainable future without compromising driving emotion. Porsche vehicles stand out for their craftsmanship, attention to detail, and driver-centered design. For decades, Porsche has represented the perfect balance between heritage, technology, and passion for speed."
 };
 
+const BRAND_LOGOS = {
+  bmw:       "../images/logos/bmw-logo.png",
+  honda:     "../images/logos/honda-logo.png",
+  mercedes:  "../images/logos/mercedes-logo.png",
+  porsche:   "../images/logos/porsche-logo.png",
+  toyota:    "../images/logos/toyota-logo.png",
+  vinfast:   "../images/logos/vinfast-logo.png"
+};
+
+const COMPETITOR_MAP = {
+  vinfast:  ["toyota","honda","bmw","mercedes","porsche"],
+  mercedes: ["bmw","porsche","vinfast","toyota","honda"],
+  porsche:  ["bmw","mercedes","vinfast","toyota","honda"],
+  toyota:   ["honda","bmw","mercedes","vinfast","porsche"],
+  honda:    ["toyota","bmw","mercedes","vinfast","porsche"],
+  bmw:      ["mercedes","porsche","toyota","honda","vinfast"]
+};
 let CURRENT_BRAND_ID = null;
 let LOADED_CARS = [];
 
@@ -201,11 +218,48 @@ async function loadLineup(brandId) {
   renderCards("all");
 }
 
+function renderCompetitors(currentId){
+  const wrap = document.getElementById("competitor-list");
+  if (!wrap) return;
+  wrap.innerHTML = "";
+
+  // chỉ giữ các brand có trong ALLOWED_BRANDS
+  const allowedIds = new Set(ALLOWED_BRANDS.map(b => b.id));
+  const list = (COMPETITOR_MAP[currentId] || ALLOWED_BRANDS.map(b=>b.id).filter(id=>id!==currentId))
+               .filter(id => allowedIds.has(id))
+               .slice(0, 6); // tối đa 6 ô như ảnh
+
+  const frag = document.createDocumentFragment();
+  list.forEach(id => {
+    const meta = ALLOWED_BRANDS.find(b => b.id === id);
+    const a = document.createElement("a");
+    a.className = "competitor-card";
+    a.href = `./Brand.html?brand=${encodeURIComponent(id)}`;
+    a.setAttribute("aria-label", `${meta?.name || id}`);
+
+    const img = document.createElement("img");
+    img.className = "competitor-logo";
+    img.alt = `${meta?.name || id} logo`;
+    img.src = BRAND_LOGOS[id] || BRAND_LOGOS["bmw"]; // fallback
+
+    const p = document.createElement("p");
+    p.className = "competitor-name";
+    p.textContent = meta?.name || id;
+
+    a.appendChild(img);
+    a.appendChild(p);
+    frag.appendChild(a);
+  });
+
+  wrap.appendChild(frag);
+}
+
 /** ========== Main init ========== */
 (function init() {
   CURRENT_BRAND_ID = getBrandFromURL();
   hydrateHero(CURRENT_BRAND_ID);
   setupFilters();
   loadLineup(CURRENT_BRAND_ID);
+  renderCompetitors(CURRENT_BRAND_ID);
   document.getElementById("change-brand").addEventListener("click", () => renderBrandPopup(CURRENT_BRAND_ID));
 })();
