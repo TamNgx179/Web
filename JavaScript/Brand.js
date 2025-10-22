@@ -11,20 +11,20 @@ const ALLOWED_BRANDS = [
 
 const BRAND_HERO = {
   bmw:     "../images/bmw/bmw-x5/X5-img1.avif",
-  honda:   "../images/honda/civic/civic-img3.jpg",
-  mercedes:"../images/mercedes/EQE350/EQE350-img4.jpg",
-  toyota:  "../images/toyota/camry/camry-img3.avif",
-  vinfast: "../images/vinfast/VF9/VF9-img3.avif",
+  honda:   "../images/honda/CR-V/CRV-img4.avif",
+  mercedes:"../images/mercedes/AMGS63/AMGS63-img4.avif",
+  toyota:  "../images/toyota/corollacross/corollacross-img1.jpg",
+  vinfast: "../images/vinfast/VF8/VF8-img3.avif",
   porsche: "../images/porsche/911/911-img1.jpg"
 };
 
 const BRAND_INTRO = {
-  bmw: "BMW nổi tiếng với cảm giác lái phấn khích, công nghệ tiên tiến và thiết kế đậm chất thể thao trong từng dòng xe từ sedan đến SAV.",
-  honda: "Honda cân bằng giữa hiệu quả, độ bền và giá trị sử dụng — phù hợp cho nhu cầu hằng ngày nhưng vẫn đủ thú vị khi cầm lái.",
-  mercedes: "Mercedes-Benz đại diện cho sự sang trọng và tinh tế của Đức, tập trung vào tiện nghi, an toàn và hệ sinh thái xe điện EQ.",
-  toyota: "Toyota chú trọng độ bền, tiết kiệm và chi phí sở hữu hợp lý; danh mục trải dài từ sedan, SUV đến các mẫu hybrid nổi bật.",
-  vinfast: "VinFast là thương hiệu Việt Nam định hướng xe điện toàn cầu, tập trung thiết kế hiện đại, công nghệ thông minh và dịch vụ linh hoạt.",
-  porsche: "Porsche kết hợp di sản hiệu năng với kỹ thuật tỉ mỉ của Đức, mang trải nghiệm lái thể thao từ 911 đến dòng Taycan thuần điện."
+  bmw: "BMW, short for Bayerische Motoren Werke, is a globally renowned German automaker known for its dynamic blend of luxury, innovation, and precision engineering. Founded in 1916, BMW has built a strong legacy of crafting vehicles that deliver exceptional performance and driving pleasure. Its philosophy, “The Ultimate Driving Machine,” captures the brand’s dedication to superior handling and advanced technology. From sporty sedans and SUVs to electric models under the BMW i lineup, every vehicle reflects refined craftsmanship and forward-thinking design. BMW also leads in sustainability through innovation in electric mobility and digitalization. Today, the brand stands as a symbol of performance, prestige, and progress in the automotive world.",
+  honda: "Honda is a Japanese automobile and motorcycle manufacturer celebrated worldwide for its reliability, fuel efficiency, and customer-focused engineering. Since its founding in 1948, Honda has consistently delivered vehicles that combine practicality, innovation, and environmental responsibility. Known for producing durable cars like the Civic and Accord, the company also leads in hybrid and electric technologies. Honda’s philosophy, “The Power of Dreams,” reflects its commitment to creativity and human-centered design. Beyond automobiles, Honda’s achievements extend to robotics, aviation, and renewable energy. With a strong focus on safety and sustainability, Honda continues to make mobility accessible and enjoyable for everyone.",
+  mercedes: "Mercedes-Benz is one of the world’s most prestigious automotive brands, symbolizing elegance, innovation, and superior craftsmanship. Founded in 1926 in Germany, the company has long been associated with the phrase “The Best or Nothing,” embodying its pursuit of perfection. From luxurious sedans and SUVs to high-performance AMG models, Mercedes combines timeless design with cutting-edge technology. The brand has been a pioneer in automotive safety, comfort, and electrification. Through its EQ lineup, Mercedes leads the transition toward sustainable luxury mobility. Every Mercedes vehicle represents a perfect harmony of performance, sophistication, and advanced engineering.",
+  toyota: "Toyota, founded in 1937, is a Japanese automotive giant known for building reliable, durable, and efficient vehicles. The brand has earned global trust through its consistent quality and forward-looking innovation. Toyota revolutionized the industry with the introduction of the Prius, the world’s first mass-produced hybrid car. Guided by its philosophy of continuous improvement (Kaizen), Toyota invests heavily in sustainability and mobility technologies. Its lineup spans from affordable compact cars to luxury SUVs and advanced electric vehicles. Today, Toyota continues to lead the way toward a greener, smarter, and more connected automotive future.",
+  vinfast: "VinFast is a rising Vietnamese automotive brand founded in 2017 under the Vingroup conglomerate. Despite its young age, the company has rapidly gained international recognition for its bold designs, advanced technologies, and commitment to electric mobility. VinFast aims to bring Vietnam onto the global automotive map by producing intelligent, eco-friendly vehicles. The brand’s focus on innovation and sustainability reflects its vision of “driving the movement of the future.” With operations expanding to North America and Europe, VinFast is not only building cars but also redefining the image of modern Vietnamese industry. It represents ambition, transformation, and national pride in every vehicle.",
+  porsche: "Porsche is a legendary German automaker synonymous with performance, precision, and timeless design. Established in 1931 by Ferdinand Porsche, the brand is best known for its iconic 911 sports car, a global symbol of engineering excellence. Every Porsche combines thrilling performance with refined luxury, embodying the spirit of racing and innovation. The company’s expansion into electric vehicles, like the Taycan, marks its evolution toward a sustainable future without compromising driving emotion. Porsche vehicles stand out for their craftsmanship, attention to detail, and driver-centered design. For decades, Porsche has represented the perfect balance between heritage, technology, and passion for speed."
 };
 
 let CURRENT_BRAND_ID = null;
@@ -110,12 +110,13 @@ function normalizeType(t) {
 }
 
 /** ========== Render card lineup ========== */
+/** ========== Render card lineup ========== */
 function renderCards(filter = "all") {
   const container = document.getElementById("lineup-list");
   container.innerHTML = "";
 
   if (!LOADED_CARS.length) {
-    container.innerHTML = `<p class="lineup-empty">Hiện tại chưa có thông tin</p>`;
+    container.innerHTML = `<p class="lineup-empty">No information yet</p>`;
     return;
   }
 
@@ -129,10 +130,11 @@ function renderCards(filter = "all") {
   });
 
   if (!list.length) {
-    container.innerHTML = `<p class="lineup-empty">Hiện tại chưa có thông tin</p>`;
+    container.innerHTML = `<p class="lineup-empty">No information yet</p>`;
     return;
   }
 
+  // === Giữ nguyên cấu trúc thẻ card ===
   const frag = document.createDocumentFragment();
   list.forEach(car => {
     const card = document.createElement("div");
@@ -145,7 +147,9 @@ function renderCards(filter = "all") {
         <h4>${car.name}</h4>
         <p class="type">${car.type || ""}</p>
         ${car.priceUSD ? `<p class="price">$${Number(car.priceUSD).toLocaleString()}</p>` : ""}
-        <a class="view-btn" href="../HTML/car.html?car=${encodeURIComponent(car.id)}">View</a>
+        <a class="view-btn cta" href="car.html?brand=${encodeURIComponent(CURRENT_BRAND_ID)}&id=${encodeURIComponent(car.id)}">
+          Shop now
+        </a>
       </div>
     `;
     frag.appendChild(card);
