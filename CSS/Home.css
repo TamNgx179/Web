@@ -92,7 +92,9 @@ h1{
 }
 
 .car-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-4px);
+  scale: 1.1;
+  border: 1px solid blue;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
 }
 
@@ -204,15 +206,16 @@ h1{
 .blackbox {
   background-color: #000;
   width: 600px;
-  height: 400px;
+  height: 580px;
   position: relative; /* để ảnh bám vào */
   overflow: visible;  /* cho phép ảnh vượt ra */
 }
 
 .blackbox img {
   position: absolute;
+  height: 700px;
   right: -250px; /* đẩy xe lấn sang phần hồng */
-  top: 50%;
+  top: 60%;
   transform: translateY(-30%);
 }
 
@@ -235,6 +238,7 @@ p {
   font-size: 20px;
   margin: 0;
   color: #333;
+  transform: translateY(-20%);
 }
 
 .brands {
@@ -252,6 +256,7 @@ p {
   color: #000;      
   font-weight: bold;
   transition: 0.5s;
+  transform: translateY(-15%);
 }
 
 .brands a:hover {

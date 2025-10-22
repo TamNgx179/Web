@@ -346,3 +346,17 @@ function renderCompetitors(id) {
   const btn = document.getElementById("change-brand");
   if (btn) btn.addEventListener("click", () => renderBrandPopup(CURRENT_BRAND_ID));
 })();
+
+// --------- Scroll reveal effect ---------
+function revealOnScroll() {
+  const reveals = document.querySelectorAll(".reveal");
+  const trigger = window.innerHeight * 0.85; // xuất hiện khi 85% chiều cao viewport
+
+  reveals.forEach((el) => {
+    const top = el.getBoundingClientRect().top;
+    if (top < trigger) el.classList.add("active");
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
