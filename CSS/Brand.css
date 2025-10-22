@@ -296,6 +296,52 @@ body{
   font-style:italic; 
 }
 
+/* ==== Pagination styles ==== */
+.pager-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pager-btn {
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.pager-btn:hover:not(:disabled) {
+  background: #f2f2f2;
+}
+.pager-btn:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.pager-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.pager-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  outline: 1px solid #999;
+  cursor: pointer;
+  background: #fff;
+}
+.pager-dot.active {
+  background: #111;
+}
+
 /* ===== COMPETITORS ===== */
 .competitors{
   background:#f1f4f3;      /* nền xám nhạt như ảnh */
@@ -353,14 +399,3 @@ body{
 
 
 
-/* ===== Responsive ===== */
-@media (max-width:1024px){
-  .brand-toolbar h1{ font-size:44px; }
-  .image img{ width:96%; }
-}
-@media (max-width:640px){
-  .main-info{ padding:24px 20px 28px; }
-  .context{ padding:22px 20px 32px; }
-  .brand-toolbar h1{ font-size:34px; }
-  #change-brand{ padding:10px 16px; }
-}

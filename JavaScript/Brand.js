@@ -1,21 +1,21 @@
-// ====== Brand.js (hoàn chỉnh với multi-brand data) ======
+// ====== Brand.js (fix filter buttons + multi-type filter, keep dedup & pagination) ======
 
 const ALLOWED_BRANDS = [
-  { id: "vinfast",  name: "VinFast" },
+  { id: "vinfast", name: "VinFast" },
   { id: "mercedes", name: "Mercedes" },
-  { id: "porsche",  name: "Porsche" },
-  { id: "toyota",   name: "Toyota" },
-  { id: "honda",    name: "Honda" },
-  { id: "bmw",      name: "BMW" },
+  { id: "porsche", name: "Porsche" },
+  { id: "toyota", name: "Toyota" },
+  { id: "honda", name: "Honda" },
+  { id: "bmw", name: "BMW" },
 ];
 
 const BRAND_HERO = {
-  bmw:     "../images/bmw/bmw-x5/X5-img1.avif",
-  honda:   "../images/honda/CR-V/CRV-img4.avif",
-  mercedes:"../images/mercedes/AMGS63/AMGS63-img4.avif",
-  toyota:  "../images/toyota/corollacross/corollacross-img1.jpg",
+  bmw: "../images/bmw/bmw-x5/X5-img1.avif",
+  honda: "../images/honda/CR-V/CRV-img4.avif",
+  mercedes: "../images/mercedes/AMGS63/AMGS63-img4.avif",
+  toyota: "../images/toyota/corollacross/corollacross-img1.jpg",
   vinfast: "../images/vinfast/VF8/VF8-img3.avif",
-  porsche: "../images/porsche/911/911-img1.jpg"
+  porsche: "../images/porsche/911/911-img1.jpg",
 };
 
 const BRAND_INTRO = {
@@ -28,44 +28,54 @@ const BRAND_INTRO = {
 };
 
 const BRAND_LOGOS = {
-  bmw:       "../images/logos/bmw-logo.png",
-  honda:     "../images/logos/honda-logo.png",
-  mercedes:  "../images/logos/mercedes-logo.png",
-  porsche:   "../images/logos/porsche-logo.png",
-  toyota:    "../images/logos/toyota-logo.png",
-  vinfast:   "../images/logos/vinfast-logo.png"
+  bmw: "../images/logos/bmw-logo.png",
+  honda: "../images/logos/honda-logo.png",
+  mercedes: "../images/logos/mercedes-logo.png",
+  porsche: "../images/logos/porsche-logo.png",
+  toyota: "../images/logos/toyota-logo.png",
+  vinfast: "../images/logos/vinfast-logo.png",
 };
 
 const COMPETITOR_MAP = {
-  vinfast:  ["toyota","honda","bmw","mercedes","porsche"],
-  mercedes: ["bmw","porsche","vinfast","toyota","honda"],
-  porsche:  ["bmw","mercedes","vinfast","toyota","honda"],
-  toyota:   ["honda","bmw","mercedes","vinfast","porsche"],
-  honda:    ["toyota","bmw","mercedes","vinfast","porsche"],
-  bmw:      ["mercedes","porsche","toyota","honda","vinfast"]
+  vinfast: ["toyota", "honda", "bmw", "mercedes", "porsche"],
+  mercedes: ["bmw", "porsche", "vinfast", "toyota", "honda"],
+  porsche: ["bmw", "mercedes", "vinfast", "toyota", "honda"],
+  toyota: ["honda", "bmw", "mercedes", "vinfast", "porsche"],
+  honda: ["toyota", "bmw", "mercedes", "vinfast", "porsche"],
+  bmw: ["mercedes", "porsche", "toyota", "honda", "vinfast"],
 };
+
 let CURRENT_BRAND_ID = null;
 let LOADED_CARS = [];
 
-/** ========== Helper functions ========== */
+const PAGE_SIZE = 8;
+let CURRENT_PAGE = 0;
+let CURRENT_FILTER = "all";
+let CURRENT_LIST = [];
+
+/* --------- Helpers --------- */
 function getBrandFromURL() {
   const url = new URL(window.location.href);
   const q = (url.searchParams.get("brand") || "").toLowerCase();
-  const allowedIds = ALLOWED_BRANDS.map(b => b.id);
-  return allowedIds.includes(q) ? q : "vinfast";
+  const allowed = ALLOWED_BRANDS.map((b) => b.id);
+  return allowed.includes(q) ? q : "vinfast";
 }
 
-function hydrateHero(brandId) {
-  const meta = ALLOWED_BRANDS.find(b => b.id === brandId);
-  const brandName = meta ? meta.name : brandId;
+function hydrateHero(id) {
+  const meta = ALLOWED_BRANDS.find((b) => b.id === id);
+  const brandName = meta?.name || id;
+  const brandEl = document.getElementById("brand");
+  const changeBtn = document.getElementById("change-brand");
+  const hero = document.getElementById("hero");
+  const p = document.getElementById("main-paragraph");
 
-  document.getElementById("brand").textContent = brandName;
-  document.getElementById("change-brand").textContent = brandName;
-  document.getElementById("hero").src = BRAND_HERO[brandId] || BRAND_HERO["vinfast"];
-  document.getElementById("main-paragraph").textContent = BRAND_INTRO[brandId] || "";
+  if (brandEl) brandEl.textContent = brandName;
+  if (changeBtn) changeBtn.textContent = brandName;
+  if (hero) hero.src = BRAND_HERO[id] || "";
+  if (p) p.textContent = BRAND_INTRO[id] || "";
 }
 
-/** ========== Popup chọn brand ========== */
+/* --------- Popup chọn brand --------- */
 function renderBrandPopup(currentId) {
   const overlay = document.createElement("div");
   overlay.className = "brand-overlay";
@@ -73,14 +83,13 @@ function renderBrandPopup(currentId) {
     <div class="brand-modal">
       <div class="brand-modal-header">
         <h4>Choose a brand</h4>
-        <button class="brand-modal-close" aria-label="Close">✕</button>
+        <button class="brand-modal-close">✕</button>
       </div>
       <div class="brand-modal-body"></div>
     </div>
   `;
-
   const body = overlay.querySelector(".brand-modal-body");
-  ALLOWED_BRANDS.forEach(b => {
+  ALLOWED_BRANDS.forEach((b) => {
     const row = document.createElement("button");
     row.className = "brand-row";
     row.dataset.brand = b.id;
@@ -93,28 +102,26 @@ function renderBrandPopup(currentId) {
 
   document.body.appendChild(overlay);
   document.body.classList.add("no-scroll");
-  document.getElementById("change-brand").classList.add("open");
 
-  overlay.addEventListener("click", e => {
-    if (e.target.classList.contains("brand-overlay") || e.target.classList.contains("brand-modal-close")) {
-      closePopup();
+  overlay.addEventListener("click", (e) => {
+    if (
+      e.target.classList.contains("brand-overlay") ||
+      e.target.classList.contains("brand-modal-close")
+    ) {
+      overlay.remove();
+      document.body.classList.remove("no-scroll");
     }
   });
-  body.addEventListener("click", e => {
+
+  body.addEventListener("click", (e) => {
     const btn = e.target.closest(".brand-row");
     if (!btn) return;
     const id = btn.dataset.brand;
     window.location.href = `./Brand.html?brand=${encodeURIComponent(id)}`;
   });
-
-  function closePopup() {
-    overlay.remove();
-    document.body.classList.remove("no-scroll");
-    document.getElementById("change-brand").classList.remove("open");
-  }
 }
 
-/** ========== Chuẩn hóa type để lọc ========== */
+/* --------- Chuẩn hóa & tách nhiều loại --------- */
 function normalizeType(t) {
   const val = (t || "").toString().toLowerCase().trim();
   if (!val) return "";
@@ -126,34 +133,61 @@ function normalizeType(t) {
   return val;
 }
 
-/** ========== Render card lineup ========== */
-/** ========== Render card lineup ========== */
-function renderCards(filter = "all") {
-  const container = document.getElementById("lineup-list");
-  container.innerHTML = "";
+function expandTypes(raw) {
+  // raw có thể là chuỗi: "SUV, EV" hoặc mảng: ["SUV","EV"]
+  if (Array.isArray(raw)) return raw.map(normalizeType).filter(Boolean);
+  return raw
+    ? String(raw)
+        .split(/[,/|;]+/)
+        .map(normalizeType)
+        .filter(Boolean)
+    : [];
+}
 
-  if (!LOADED_CARS.length) {
-    container.innerHTML = `<p class="lineup-empty">No information yet</p>`;
-    return;
-  }
+/* --------- Dedup + Filter --------- */
+function buildFilteredList(filter = "all") {
+  if (!Array.isArray(LOADED_CARS)) return [];
 
-  const list = LOADED_CARS.filter(car => {
+  const pre = LOADED_CARS.filter((car) => {
     if (filter === "all") return true;
-    const raw = car.type || car.category || "";
-    const types = Array.isArray(raw)
-      ? raw.map(normalizeType)
-      : raw.split(/[,/|]/).map(normalizeType);
+    const types = expandTypes(car.type || car.category || "");
     return types.includes(filter);
   });
 
-  if (!list.length) {
-    container.innerHTML = `<p class="lineup-empty">No information yet</p>`;
+  // khử trùng theo tên (không phân biệt hoa/thường, trim)
+  const seen = new Set();
+  const out = [];
+  for (const car of pre) {
+    const key = (car.name || "").toString().trim().toLowerCase();
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push(car);
+  }
+  return out;
+}
+
+/* --------- Pagination Rendering --------- */
+function renderPage() {
+  const container = document.getElementById("lineup-list");
+  const pager = ensurePagerContainer();
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (!CURRENT_LIST.length) {
+    container.innerHTML = `<p class="lineup-empty">No cars found</p>`;
+    if (pager) pager.innerHTML = "";
     return;
   }
 
-  // === Giữ nguyên cấu trúc thẻ card ===
-  const frag = document.createDocumentFragment();
-  list.forEach(car => {
+  const totalPages = Math.ceil(CURRENT_LIST.length / PAGE_SIZE);
+  CURRENT_PAGE = Math.min(Math.max(0, CURRENT_PAGE), totalPages - 1);
+
+  const start = CURRENT_PAGE * PAGE_SIZE;
+  const end = start + PAGE_SIZE;
+  const slice = CURRENT_LIST.slice(start, end);
+
+  slice.forEach((car) => {
     const card = document.createElement("div");
     card.className = "lineup-card";
     card.innerHTML = `
@@ -169,97 +203,146 @@ function renderCards(filter = "all") {
         </a>
       </div>
     `;
-    frag.appendChild(card);
+    container.appendChild(card);
   });
-  container.appendChild(frag);
+
+  renderPaginationControls(pager, totalPages);
 }
 
-/** ========== Gắn sự kiện cho các nút category ========== */
+function ensurePagerContainer() {
+  let pager = document.getElementById("lineup-pager");
+  if (!pager) {
+    pager = document.createElement("div");
+    pager.id = "lineup-pager";
+    pager.className = "pager-container";
+    const host = document.querySelector(".brand-lineup");
+    if (host) host.appendChild(pager);
+  }
+  return pager;
+}
+
+function renderPaginationControls(pager, totalPages) {
+  if (!pager) return;
+  pager.innerHTML = `
+    <button class="pager-btn prev" ${CURRENT_PAGE === 0 ? "disabled" : ""}>‹</button>
+    <div class="pager-dots"></div>
+    <button class="pager-btn next" ${CURRENT_PAGE >= totalPages - 1 ? "disabled" : ""}>›</button>
+  `;
+  const dotsWrap = pager.querySelector(".pager-dots");
+
+  for (let i = 0; i < totalPages; i++) {
+    const dot = document.createElement("button");
+    dot.className = `pager-dot ${i === CURRENT_PAGE ? "active" : ""}`;
+    dot.dataset.page = i;
+    dotsWrap.appendChild(dot);
+  }
+
+  pager.querySelector(".prev").onclick = () => {
+    if (CURRENT_PAGE > 0) {
+      CURRENT_PAGE--;
+      renderPage();
+    }
+  };
+  pager.querySelector(".next").onclick = () => {
+    if (CURRENT_PAGE < totalPages - 1) {
+      CURRENT_PAGE++;
+      renderPage();
+    }
+  };
+  dotsWrap.addEventListener("click", (e) => {
+    const dot = e.target.closest(".pager-dot");
+    if (!dot) return;
+    CURRENT_PAGE = Number(dot.dataset.page);
+    renderPage();
+  });
+}
+
+/* --------- Filter Buttons (auto map text -> data-filter nếu thiếu) --------- */
 function setupFilters() {
   const btns = Array.from(document.querySelectorAll(".lineup-buttons .category"));
   if (!btns.length) return;
 
-  btns.forEach(btn => {
+  // ánh xạ text -> filter slug
+  const textToFilter = (txt) => {
+    const t = (txt || "").toLowerCase().trim();
+    if (t === "all models" || t === "all") return "all";
+    if (t === "suv" || t === "suvs") return "suv";
+    if (t === "sedan" || t === "sedans") return "sedan";
+    if (t === "ev" || t === "evs" || t.includes("electric")) return "ev";
+    if (t === "coupe" || t === "coupes") return "coupe";
+    if (t === "convertible" || t === "convertibles" || t.includes("cabrio")) return "convertible";
+    // fall back: dùng luôn text
+    return t || "all";
+  };
+
+  // gán data-filter nếu chưa có
+  btns.forEach((btn) => {
     if (!btn.dataset.filter) {
-      const text = btn.textContent.trim().toLowerCase();
-      const map = {
-        "all models": "all", all: "all", suv: "suv", sedans: "sedan",
-        sedan: "sedan", evs: "ev", ev: "ev", coupes: "coupe",
-        coupe: "coupe", convertibles: "convertible", convertible: "convertible"
-      };
-      btn.dataset.filter = map[text] || text;
+      btn.dataset.filter = textToFilter(btn.textContent);
     }
   });
 
-  btns.forEach(btn => {
+  // set active ban đầu cho nút All (hoặc theo CURRENT_FILTER)
+  btns.forEach((b) => b.classList.remove("active"));
+  const first = btns.find((b) => (b.dataset.filter || "") === CURRENT_FILTER) || btns[0];
+  if (first) first.classList.add("active");
+
+  // gắn click
+  btns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      btns.forEach(b => b.classList.remove("active"));
+      btns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
-      renderCards(btn.dataset.filter || "all");
+      CURRENT_FILTER = btn.dataset.filter || "all";
+      CURRENT_PAGE = 0;
+      CURRENT_LIST = buildFilteredList(CURRENT_FILTER);
+      renderPage();
     });
   });
 }
 
-/** ========== Load JSON lineup theo brand ========== */
+/* --------- Load JSON --------- */
 async function loadLineup(brandId) {
   LOADED_CARS = [];
-  const jsonPath = `../data/${brandId}.json`;
-
+  const path = `../data/${brandId}.json`;
   try {
-    const res = await fetch(jsonPath, { cache: "no-store" });
+    const res = await fetch(path, { cache: "no-store" });
     if (res.ok) {
       const data = await res.json();
       LOADED_CARS = Array.isArray(data.cars) ? data.cars : [];
     }
-  } catch (err) {
-    console.warn(`Không thể tải ${jsonPath}`, err);
+  } catch (e) {
+    console.warn("Load lineup error:", e);
   }
-
-  renderCards("all");
+  CURRENT_LIST = buildFilteredList("all");
+  renderPage();
 }
 
-function renderCompetitors(currentId){
+/* --------- Competitors --------- */
+function renderCompetitors(id) {
   const wrap = document.getElementById("competitor-list");
   if (!wrap) return;
   wrap.innerHTML = "";
-
-  // chỉ giữ các brand có trong ALLOWED_BRANDS
-  const allowedIds = new Set(ALLOWED_BRANDS.map(b => b.id));
-  const list = (COMPETITOR_MAP[currentId] || ALLOWED_BRANDS.map(b=>b.id).filter(id=>id!==currentId))
-               .filter(id => allowedIds.has(id))
-               .slice(0, 6); // tối đa 6 ô như ảnh
-
-  const frag = document.createDocumentFragment();
-  list.forEach(id => {
-    const meta = ALLOWED_BRANDS.find(b => b.id === id);
+  const list = (COMPETITOR_MAP[id] || []).slice(0, 6);
+  list.forEach((cid) => {
     const a = document.createElement("a");
     a.className = "competitor-card";
-    a.href = `./Brand.html?brand=${encodeURIComponent(id)}`;
-    a.setAttribute("aria-label", `${meta?.name || id}`);
-
-    const img = document.createElement("img");
-    img.className = "competitor-logo";
-    img.alt = `${meta?.name || id} logo`;
-    img.src = BRAND_LOGOS[id] || BRAND_LOGOS["bmw"]; // fallback
-
-    const p = document.createElement("p");
-    p.className = "competitor-name";
-    p.textContent = meta?.name || id;
-
-    a.appendChild(img);
-    a.appendChild(p);
-    frag.appendChild(a);
+    a.href = `./Brand.html?brand=${cid}`;
+    a.innerHTML = `
+      <img src="${BRAND_LOGOS[cid]}" alt="${cid} logo" class="competitor-logo">
+      <p class="competitor-name">${cid.toUpperCase()}</p>
+    `;
+    wrap.appendChild(a);
   });
-
-  wrap.appendChild(frag);
 }
 
-/** ========== Main init ========== */
+/* --------- Main Init --------- */
 (function init() {
   CURRENT_BRAND_ID = getBrandFromURL();
   hydrateHero(CURRENT_BRAND_ID);
   setupFilters();
   loadLineup(CURRENT_BRAND_ID);
   renderCompetitors(CURRENT_BRAND_ID);
-  document.getElementById("change-brand").addEventListener("click", () => renderBrandPopup(CURRENT_BRAND_ID));
+
+  const btn = document.getElementById("change-brand");
+  if (btn) btn.addEventListener("click", () => renderBrandPopup(CURRENT_BRAND_ID));
 })();
