@@ -12,6 +12,39 @@ function showSlide() {
 }
 setInterval(showSlide, 3000);
 showSlide();
+// ================== Cart counter ======================
+let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
+(function () {
+  // ====== TÊN KHÓA LƯU DỮ LIỆU TRONG LOCAL STORAGE ======
+  const CART_KEY = "selectedcar";
+
+  // ====== HÀM LẤY DỮ LIỆU GIỎ HÀNG ======
+  function getCart() {
+    try {
+      const saved = localStorage.getItem(CART_KEY);
+      if (saved) {
+        return JSON.parse(saved);
+      } else {
+        return [];
+      }
+    } catch (error) {
+      return [];
+    }
+  }
+
+  // ====== CẬP NHẬT SỐ XE TRÊN ICON GIỎ HÀNG ======
+  function updateCounter() {
+    const counter = document.getElementById("counter");
+    if (counter) {
+      counter.textContent = String(getCart().length);
+    }
+  }
+
+  // ====== KHI TRANG ĐÃ TẢI XONG ======
+  document.addEventListener("DOMContentLoaded", function () {
+    updateCounter();          // Cập nhật số lượng giỏ hàng
+  });
+})();
 
 // ================== Browse by Type (gộp 5 hãng + phân trang bằng dots) ==================
 const BRANDS = [
@@ -43,6 +76,7 @@ let ALL_CARS = [];
 let CURRENT_TYPE = "EV";
 let PAGE = 0;
 let FILTERED = [];
+
 
 // ----- Pager (Prev / Dots / Next) -----
 const pager = document.createElement("div");

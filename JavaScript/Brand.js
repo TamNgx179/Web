@@ -1,4 +1,36 @@
-// ====== Brand.js (fix filter buttons + multi-type filter, keep dedup & pagination) ======
+// ================== Cart counter ======================
+let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
+(function () {
+  // ====== TÊN KHÓA LƯU DỮ LIỆU TRONG LOCAL STORAGE ======
+  const CART_KEY = "selectedcar";
+
+  // ====== HÀM LẤY DỮ LIỆU GIỎ HÀNG ======
+  function getCart() {
+    try {
+      const saved = localStorage.getItem(CART_KEY);
+      if (saved) {
+        return JSON.parse(saved);
+      } else {
+        return [];
+      }
+    } catch (error) {
+      return [];
+    }
+  }
+
+  // ====== CẬP NHẬT SỐ XE TRÊN ICON GIỎ HÀNG ======
+  function updateCounter() {
+    const counter = document.getElementById("counter");
+    if (counter) {
+      counter.textContent = String(getCart().length);
+    }
+  }
+
+  // ====== KHI TRANG ĐÃ TẢI XONG ======
+  document.addEventListener("DOMContentLoaded", function () {
+    updateCounter();          // Cập nhật số lượng giỏ hàng
+  });
+})();
 
 const ALLOWED_BRANDS = [
   { id: "vinfast", name: "VinFast" },
