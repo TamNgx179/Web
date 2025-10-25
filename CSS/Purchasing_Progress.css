@@ -247,7 +247,7 @@ body, html {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    width: 95%;
+    width: 100%;
 }
 
 #confirmation label#item-label,
@@ -420,12 +420,16 @@ body, html {
     gap: 10px;
 }
 
-#list-car-selected li {
+.list-car-selected li {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr; /* 3 cột: tên - số lượng - giá */
     gap: 10px;
     align-items: center;
     margin-left: 10%;
+}
+
+.list-car-selected li .car-price{
+    justify-self: end; /* canh phải giá */
 }
 
 #delivery-label-sum,
@@ -447,6 +451,80 @@ body, html {
 #info input {
     margin-bottom: 25px;
 }
+
+#payment-method {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 90%;
+    margin-left: 10%;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+#payment-method > label#payment-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 5px;
+}
+
+.check-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: 0.3s;
+}
+
+.check-info:hover {
+    background-color: #eef3f6;
+    border-color: #a5b3c3;
+}
+
+.check-info label {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #444;
+}
+
+.check-info div {
+    width: 30%;
+}
+
+.button-fix {
+    width: 24px;
+    height: 24px;
+    background-color: #3498db;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    transition: 0.2s ease;
+}
+
+.button-fix::before {
+    content: "✏️";
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    font-size: 14px;
+}
+
+.button-fix:hover {
+    background-color: #2980b9;
+    transform: scale(1.1);
+}
+
+/* Khi label đang được chỉnh sửa */
+.editing {
+    outline: 2px solid #3498db;
+    background-color: #fff;
+}
+
 
 
 /* ---------- Mobile: max-width 600px ---------- */
@@ -677,7 +755,3 @@ body, html {
         margin-right: 0;
     }
 }
-
-
-
-

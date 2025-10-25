@@ -36,6 +36,7 @@ function initEvent() {
         event.preventDefault(); // ngăn form submit
         if (currentStep < steps.length - 1) {
             if(checkinputinfomation(currentStep)){ 
+                process_infomation_input(currentStep);
                 currentStep++;
                 updateSteps();
             }
@@ -150,6 +151,7 @@ function purchasingstep(index) {
             
             setinfomation(index);
 
+            
             setStepContent({
                 header: "Choosing a payment method",
                 paragraph: "Select one option below. Depending on your choice. We will ask for the minimum information needed to process securely. You can review everything again before placing the order",
@@ -201,6 +203,8 @@ function purchasingstep(index) {
     }
 
 }
+
+
 
 //hàm tạo car form
 function createCarForm(imgSrc, name, weight, power, speed, price) {
@@ -411,49 +415,52 @@ function selected_car_on_trolley(car_on_trolley_list){
 }
 
 function inputcarintosumary(item, selected) {
-    const list = document.getElementById('list-car-selected');
+    const l = document.querySelectorAll('.list-car-selected');
 
-    if (selected) {
-        const li = document.createElement('li');
+    l.forEach(list => {
 
-        const name = document.createElement('span');
-        name.classList.add('car-name');
-        name.textContent = item.querySelector('.car-name')?.textContent || '';
+        if (selected) {
+            const li = document.createElement('li');
 
-        const price = document.createElement('span');
-        price.classList.add('car-price');
-        price.textContent = item.querySelector('.car-price')?.textContent || '';
+            const name = document.createElement('span');
+            name.classList.add('car-name');
+            name.textContent = item.querySelector('.car-name')?.textContent || '';
 
-        const qty = document.createElement('span');
-        qty.classList.add('car-qty');
-        qty.textContent = " Count: " + (item.querySelector('.qty-input')?.value || 1); // thêm số lượng
+            const price = document.createElement('span');
+            price.classList.add('car-price');
+            price.textContent = item.querySelector('.car-price')?.textContent || '';
 
-        li.appendChild(name);
-        li.appendChild(qty);   // chèn sau tên
-        li.appendChild(price);
+            const qty = document.createElement('span');
+            qty.classList.add('car-qty');
+            qty.textContent = " Count: " + (item.querySelector('.qty-input')?.value || 1); // thêm số lượng
 
-        list.appendChild(li);
+            li.appendChild(name);
+            li.appendChild(qty);   // chèn sau tên
+            li.appendChild(price);
 
-        // Bắt sự kiện onchange trên input qty
-        const qtyInput = item.querySelector('.qty-input');
-        qtyInput.onchange = () => {
+            list.appendChild(li);
 
-            // Cập nhật summary
-            const qtySpan = li.querySelector('.car-qty');
-            if (qtySpan) qtySpan.textContent = " Count: " + qtyInput.value;
+            // Bắt sự kiện onchange trên input qty
+            const qtyInput = item.querySelector('.qty-input');
+            qtyInput.onchange = () => {
 
-        };
-    } 
-    else {
-        const allLi = list.querySelectorAll('li');
-        allLi.forEach(li => {
-            const carName = li.querySelector('.car-name')?.textContent.trim();
-            const itemName = item.querySelector('.car-name')?.textContent.trim();
-            if (carName === itemName) {
-                li.remove();
-            }
-        });
-    }
+                // Cập nhật summary
+                const qtySpan = li.querySelector('.car-qty');
+                if (qtySpan) qtySpan.textContent = " Count: " + qtyInput.value;
+
+            };
+        } 
+        else {
+            const allLi = list.querySelectorAll('li');
+            allLi.forEach(li => {
+                const carName = li.querySelector('.car-name')?.textContent.trim();
+                const itemName = item.querySelector('.car-name')?.textContent.trim();
+                if (carName === itemName) {
+                    li.remove();
+                }
+            });
+        }
+    })
 }
 
 
@@ -498,14 +505,12 @@ function setstep3() {
 }
 
 function checkinputinfomation(stepindex){
-    if(stepindex == 0){
-
-        //chưa form nào được chọn (ol chưa có li nào) (sumary trống)
-        const ol = document.querySelector('#list-car-selected')
-        if(ol.querySelectorAll('li').length == 0){
-            return false
+    if (stepindex == 0) {
+        const l = document.querySelector('.list-car-selected');
+        if (!l || l.querySelectorAll('li').length === 0) {
+            return false;
         }
-        else return true
+        return true;
     }
     else if(stepindex == 1){
         //chưa chọn phương thức thanh toán (sumary trống)
@@ -583,26 +588,24 @@ function insertAddressLabel(addressText) {
 function addtime(idx, index) {
     const container = document.getElementById("info");
 
-    //chỉ tạo khi đang ở bước chọn phương thức giao hàng
+    // chỉ tạo khi đang ở bước chọn phương thức giao hàng
     if (idx === 2) {
-        // Kiểm tra nếu chưa có thì mới tạo
         if (!document.getElementById("label3")) {
             const label = document.createElement("label");
             label.id = "label3";
             label.setAttribute("for", "info3");
-            label.textContent = "Time";
+            label.textContent = "Delivery Time";
 
             const input = document.createElement("input");
             input.id = "info3";
-            input.type = "text";
+            input.type = "datetime-local"; // dùng datetime picker
             input.name = "Time";
-            input.placeholder = "Time";
+            input.placeholder = "Choose date & time";
 
             container.appendChild(label);
             container.appendChild(input);
         }
     } else {
-        // Nếu khác 2 thì xóa nếu tồn tại
         const label = document.getElementById("label3");
         const input = document.getElementById("info3");
 
@@ -647,14 +650,28 @@ function handleAddressInput() {
     const info1 = document.getElementById('info1');
     const info2 = document.getElementById('info2');
 
-    // Tạo label address nếu chưa có
-    insertAddressLabel(gettingaddress());
+    if (!info1 || !info2) return;
 
-    // Cập nhật address khi người dùng nhập
-    info1.oninput = info2.oninput = () => {
+    // hiển thị lần đầu khi gọi
+    insertAddressLabel(gettingaddress());
+    totalinfomation();
+
+    let runCount = 0; // đếm số lần handler chạy
+
+    const handler = () => {
+        runCount++;
         insertAddressLabel(gettingaddress());
         totalinfomation();
-    }
+
+        if (runCount >= 2) {
+            // sau 2 lần, gỡ listener cả hai input
+            info1.removeEventListener('input', handler);
+            info2.removeEventListener('input', handler);
+        }
+    };
+
+    info1.addEventListener('input', handler);
+    info2.addEventListener('input', handler);
 }
 
 
@@ -693,6 +710,7 @@ function setinfomation(stepindex) {
                 document.getElementById('payment-label-sum').innerHTML = document.getElementById('payment-label').innerHTML = index == 0 ? "Card" : "Cash";
                 document.getElementById('payment-label-sum').style.fontWeight = 'normal'
                 addtime(stepindex, index)
+                resetInputs();
             }
             if(stepindex == 2){
                 info = infodata[index + 2];
@@ -723,6 +741,78 @@ function setinfomation(stepindex) {
         resetInputs()
     });
 }
+
+function process_infomation_input(stepindex) {
+    const info1 = document.getElementById('info1'); // Name / Full name
+    const info2 = document.getElementById('info2'); // Card number / Phone
+
+    if (stepindex == 1) {
+        const paylab = document.getElementById('payment-label').textContent.trim();
+
+        if (paylab === "Card") {
+            
+            // phần label cố định
+            document.getElementById('info-confirm-paymentmethod1').textContent = "Name on card: ";
+            document.getElementById('confirm-paymentmethod1').textContent = info1.value.trim();
+
+            document.getElementById('info-confirm-paymentmethod2').textContent = "Card number: ";
+            document.getElementById('confirm-paymentmethod2').textContent = info2.value.trim();
+        }
+        else if (paylab === "Cash") {
+            document.getElementById('info-confirm-paymentmethod1').textContent = "Full name: ";
+            document.getElementById('confirm-paymentmethod1').textContent = info1.value.trim();
+
+            document.getElementById('info-confirm-paymentmethod2').textContent = "Phone number: ";
+            document.getElementById('confirm-paymentmethod2').textContent = info2.value.trim();
+        }
+    }
+
+    if(stepindex == 3) {
+        const addressText = gettingaddress();
+        document.getElementById('confirm-address').textContent = addressText;
+    }
+}
+
+
+//chỉnh sửa thông tin confirmation phần payment
+document.querySelectorAll('.button-fix').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const label = btn.previousElementSibling; // label đứng trước button
+        const oldText = label.textContent.trim();
+
+        // Tạo input tạm
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.value = oldText;
+        input.classList.add('editing');
+        input.style.flex = '1';
+        input.style.fontSize = '1rem';
+        input.style.border = '1px solid #3498db';
+        input.style.borderRadius = '5px';
+        input.style.padding = '4px 6px';
+
+        // Thay label bằng input
+        label.replaceWith(input);
+        input.focus();
+
+        // Khi nhấn Enter hoặc click ra ngoài -> lưu lại
+        const saveChange = () => {
+            const newLabel = document.createElement('label');
+            newLabel.textContent = input.value.trim() || oldText; // nếu rỗng thì giữ nguyên
+            input.replaceWith(newLabel);
+        };
+
+        input.addEventListener('blur', saveChange);
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                saveChange();
+            }
+        });
+    });
+});
+
 
 function resetInputs() {
     const info1 = document.getElementById('info1');

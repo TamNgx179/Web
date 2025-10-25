@@ -21,7 +21,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: nowrap; /* ❌ không cho xuống dòng */
+    flex-wrap: nowrap; 
     padding: 10px 5vw;
     position: fixed;
     top: 0;
@@ -32,7 +32,7 @@ nav {
     overflow: hidden;
 }
 
-/* ==== LOGO ==== */
+
 #Logo img {
     width: 60px;
     height: auto;
@@ -40,7 +40,7 @@ nav {
     flex-shrink: 0; /* không bị co */
 }
 
-/* ==== MENU ==== */
+
 nav ul {
     display: flex;
     flex-direction: row;
@@ -73,7 +73,7 @@ nav a:hover {
     flex-shrink: 0;
 }
 
-/* ==== ICON ==== */
+
 #Trolley, #popup-login {
     display: flex;
     align-items: center;
@@ -127,7 +127,7 @@ nav a:hover {
         gap: 14px;
     }
     nav ul li a {
-        font-size: 10px; /* ✅ giảm font chữ nav */
+        font-size: 10px; 
     }
     #Logo img {
         width: 30px;
