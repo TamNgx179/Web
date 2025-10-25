@@ -39,6 +39,7 @@ const ALLOWED_BRANDS = [
   { id: "toyota", name: "Toyota" },
   { id: "honda", name: "Honda" },
   { id: "bmw", name: "BMW" },
+  { id: "porsche", name: "Porsche"}
 ];
 
 const BRAND_HERO = {
@@ -47,7 +48,7 @@ const BRAND_HERO = {
   mercedes: "../images/mercedes/AMGS63/AMGS63-img4.avif",
   toyota: "../images/toyota/corollacross/corollacross-img1.jpg",
   vinfast: "../images/vinfast/VF8/VF8-img3.avif",
-  porsche: "../images/porsche/911/911-img1.jpg",
+  porsche: "../images/porsche/cayenne/cayenne-img2.avif",
 };
 
 const BRAND_INTRO = {

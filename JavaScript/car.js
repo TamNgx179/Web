@@ -7,7 +7,8 @@ const BRAND_SOURCES = {
   bmw: "../data/bmw.json",
   toyota: "../data/toyota.json",
   vinfast: "../data/vinfast.json",
-  mercedes: "../data/mercedes.json"
+  mercedes: "../data/mercedes.json",
+  porsche: "../data/porsche.json"
 };
 
 const els = {

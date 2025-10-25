@@ -1,0 +1,360 @@
+{
+  "brand": {
+    "id": "porsche",
+    "name": "Porsche"
+  },
+  "cars": [
+    {
+      "id": "Porsche-718-Cayman",
+      "name": "Porsche 718 Cayman",
+      "type": "Coupe",
+      "display": "../images/porsche/cayman/cayman-display.webp",
+      "priceUSD": 70000,
+      "hero": "../images/porsche/cayman/cayman-trans.webp",
+      "gallery": [
+        "../images/porsche/cayman/cayman-img1.jpg",
+        "../images/porsche/cayman/cayman-img2.jpg",
+        "../images/porsche/cayman/cayman-img3.jpg",
+        "../images/porsche/cayman/cayman-img4.jpg"
+      ],
+      "specs": {
+        "Model": "718 Cayman",
+        "Engine": "2.0 L turbocharged flat-4",
+        "Power": "300 HP",
+        "Torque": "380 Nm",
+        "Gear": "7-speed PDK",
+        "Top Speed": "275 km/h",
+        "Length x Width x Height": "4,379 x 1,801 x 1,295 mm",
+        "Weight": "1,365 kg",
+        "Fuel Consumption": "8.1 L/100 km"
+      },
+      "safety": [
+        "ABS + EBD + Brake Assist",
+        "Multiple airbags",
+        "Stability and Traction Control (PSM)"
+      ],
+      "convenience": [
+        "Power sport seats with memory",
+        "Dual-zone automatic climate control",
+        "Porsche Communication Management (PCM) touchscreen"
+      ]
+    },
+    {
+      "id": "Porsche-718-Boxster",
+      "name": "Porsche 718 Boxster",
+      "type": "Convertible",
+      "display": "../images/porsche/boxster/boxster-display.webp",
+      "priceUSD": 72000,
+      "hero": "../images/porsche/boxster/boxster-trans.webp",
+      "gallery": [
+        "../images/porsche/boxster/boxster-img1.jpg",
+        "../images/porsche/boxster/boxster-img2.jpg",
+        "../images/porsche/boxster/boxster-img3.jpg",
+        "../images/porsche/boxster/boxster-img4.jpg"
+      ],
+      "specs": {
+        "Model": "718 Boxster",
+        "Engine": "2.0 L turbocharged flat-4",
+        "Power": "300 HP",
+        "Torque": "380 Nm",
+        "Gear": "7-speed PDK",
+        "Top Speed": "275 km/h",
+        "Length x Width x Height": "4,379 x 1,801 x 1,281 mm",
+        "Weight": "1,375 kg",
+        "Fuel Consumption": "8.4 L/100 km"
+      },
+      "safety": [
+        "ABS + EBD + Brake Assist",
+        "Multiple airbags",
+        "Stability and Traction Control (PSM)"
+      ],
+      "convenience": [
+        "Electric soft top operation",
+        "Dual-zone automatic climate control",
+        "PCM with Apple CarPlay"
+      ]
+    },
+    {
+      "id": "Porsche-911-Carrera",
+      "name": "Porsche 911 Carrera",
+      "type": "Coupe",
+      "display": "../images/porsche/carrera/carrera-display.webp",
+      "priceUSD": 116000,
+      "hero": "../images/porsche/carrera/carrera-trans.webp",
+      "gallery": [
+        "../images/porsche/carrera/carrera-img1.avif",
+        "../images/porsche/carrera/carrera-img2.avif",
+        "../images/porsche/carrera/carrera-img3.avif",
+        "../images/porsche/carrera/carrera-img4.avif"
+      ],
+      "specs": {
+        "Model": "911 Carrera",
+        "Engine": "3.0 L twin-turbo flat-6",
+        "Power": "390 HP",
+        "Torque": "450 Nm",
+        "Gear": "8-speed PDK",
+        "Top Speed": "293 km/h",
+        "Length x Width x Height": "4,519 x 1,852 x 1,298 mm",
+        "Weight": "1,580 kg",
+        "Fuel Consumption": "10.0 L/100 km"
+      },
+      "safety": [
+        "ABS + EBD + Brake Assist",
+        "Lane Departure Warning",
+        "ParkAssist with rear camera"
+      ],
+      "convenience": [
+        "Heated power seats with memory",
+        "Three-zone automatic climate control",
+        "PCM with online navigation"
+      ]
+    },
+    {
+      "id": "Porsche-911-Turbo",
+      "name": "Porsche 911 Turbo",
+      "type": "Coupe",
+      "display": "../images/porsche/turbo/turbo-display.webp",
+      "priceUSD": 230000,
+      "hero": "../images/porsche/turbo/turbo-trans.webp",
+      "gallery": [
+        "../images/porsche/turbo/turbo-img1.avif",
+        "../images/porsche/turbo/turbo-img2.avif",
+        "../images/porsche/turbo/turbo-img3.avif",
+        "../images/porsche/turbo/turbo-img4.avif"
+      ],
+      "specs": {
+        "Model": "911 Turbo ",
+        "Engine": "3.8 L twin-turbo flat-6",
+        "Power": "640 HP",
+        "Torque": "800 Nm",
+        "Gear": "8-speed PDK",
+        "Top Speed": "330 km/h",
+        "Length x Width x Height": "4,535 x 2,024 x 1,303 mm",
+        "Weight": "1,640 kg",
+        "Fuel Consumption": "11.1 L/100 km"
+      },
+      "safety": [
+        "Porsche Ceramic Composite Brakes (PCCB)",
+        "Adaptive cruise control with stop & go",
+        "Lane Keep Assist"
+      ],
+      "convenience": [
+        "Adaptive sport seats (18-way)",
+        "Burmester premium audio (optional)",
+        "Front axle lift system"
+      ]
+    },
+    {
+      "id": "Porsche-911-GT3",
+      "name": "Porsche 911 GT3",
+      "type": "Coupe",
+      "display": "../images/porsche/gt3/gt3-display.webp",
+      "priceUSD": 180000,
+      "hero": "../images/porsche/gt3/gt3-trans.webp",
+      "gallery": [
+        "../images/porsche/gt3/gt3-img1.avif",
+        "../images/porsche/gt3/gt3-img2.avif",
+        "../images/porsche/gt3/gt3-img3.avif",
+        "../images/porsche/gt3/gt3-img4.avif"
+      ],
+      "specs": {
+        "Model": "911 GT3",
+        "Engine": "4.0 L naturally aspirated flat-6",
+        "Power": "510 HP",
+        "Torque": "470 Nm",
+        "Gear": "7-speed PDK",
+        "Top Speed": "318 km/h",
+        "Length x Width x Height": "4,573 x 1,852 x 1,279 mm",
+        "Weight": "1,435 kg",
+        "Fuel Consumption": "13.0 L/100 km"
+      },
+      "safety": [
+        "Porsche Stability Management (track mode)",
+        "PCCB (optional)",
+        "Roll-over protection system (club sport package)"
+      ],
+      "convenience": [
+        "Lightweight bucket seats",
+        "Drive mode selector (Normal/Sport/Track)",
+        "PCM with track telemetry (optional)"
+      ]
+    },
+    {
+      "id": "Porsche-Panamera",
+      "name": "Porsche Panamera",
+      "type": "Sedan",
+      "display": "../images/porsche/panamera/panamera-display.webp",
+      "priceUSD": 100000,
+      "hero": "../images/porsche/panamera/panamera-trans.webp",
+      "gallery": [
+        "../images/porsche/panamera/panamera-img1.avif",
+        "../images/porsche/panamera/panamera-img2.avif",
+        "../images/porsche/panamera/panamera-img3.avif",
+        "../images/porsche/panamera/panamera-img4.avif"
+      ],
+      "specs": {
+        "Model": "Panamera",
+        "Engine": "2.9 L twin-turbo V6",
+        "Power": "350 HP",
+        "Torque": "500 Nm",
+        "Gear": "8-speed PDK",
+        "Top Speed": "270 km/h",
+        "Length x Width x Height": "5,049 x 1,937 x 1,423 mm",
+        "Weight": "1,870 kg",
+        "Fuel Consumption": "9.4 L/100 km"
+      },
+      "safety": [
+        "Multiple airbags",
+        "Lane Keeping Assist",
+        "Night Vision Assist (optional)"
+      ],
+      "convenience": [
+        "Four-zone automatic climate control",
+        "Rear executive seating package (optional)",
+        "PCM with dual 12-inch displays"
+      ]
+    },
+    {
+      "id": "Porsche-Macan",
+      "name": "Porsche Macan",
+      "type": "SUV",
+      "display": "../images/porsche/macan/macan-display.webp",
+      "priceUSD": 62000,
+      "hero": "../images/porsche/macan/macan-trans.webp",
+      "gallery": [
+        "../images/porsche/macan/macan-img1.avif",
+        "../images/porsche/macan/macan-img2.jpg",
+        "../images/porsche/macan/macan-img3.jpg",
+        "../images/porsche/macan/macan-img4.jpg"
+      ],
+      "specs": {
+        "Model": "Macan",
+        "Engine": "2.0 L turbocharged inline-4",
+        "Power": "265 HP",
+        "Torque": "400 Nm",
+        "Gear": "7-speed PDK",
+        "Top Speed": "232 km/h",
+        "Length x Width x Height": "4,726 x 1,922 x 1,606 mm",
+        "Weight": "1,865 kg",
+        "Fuel Consumption": "10.5 L/100 km"
+      },
+      "safety": [
+        "ABS + EBD + Brake Assist",
+        "Lane Departure Warning",
+        "Front & rear ParkAssist"
+      ],
+      "convenience": [
+        "10.9-inch PCM touchscreen",
+        "Power tailgate",
+        "Tri-zone climate control"
+      ]
+    },
+    {
+      "id": "Porsche-Macan-Electric",
+      "name": "Porsche Macan Electric",
+      "type": "EV",
+      "display": "../images/porsche/macan/macan-display.webp",
+      "priceUSD": 80000,
+      "hero": "../images/porsche/macan/macan-trans.webp",
+      "gallery": [
+        "../images/porsche/macan/macan-img1.avif",
+        "../images/porsche/macan/macan-img2.jpg",
+        "../images/porsche/macan/macan-img3.jpg",
+        "../images/porsche/macan/macan-img4.jpg"
+      ],
+      "specs": {
+        "Model": "Macan Electric",
+        "Engine": "Dual-motor all-wheel drive (BEV)",
+        "Power": "402 HP",
+        "Torque": "650 Nm",
+        "Gear": "1-speed automatic",
+        "Top Speed": "220 km/h",
+        "Battery Capacity": "95 kWh",
+        "Length x Width x Height": "4,784 x 1,938 x 1,622 mm",
+        "Weight": "2,300 kg",
+        "Fuel Consumption": "20.5 kWh/100 km"
+      },
+      "safety": [
+        "Active lane keep & lane change assist",
+        "360° camera",
+        "Automatic emergency braking"
+      ],
+      "convenience": [
+        "Fast DC charging capability",
+        "Heated/ventilated front seats",
+        "Wireless Apple CarPlay & Android Auto"
+      ]
+    },
+    {
+      "id": "Porsche-Cayenne",
+      "name": "Porsche Cayenne",
+      "type": "SUV",
+      "display": "../images/porsche/cayenne/cayenne-display.webp",
+      "priceUSD": 80000,
+      "hero": "../images/porsche/cayenne/cayenne-trans.webp",
+      "gallery": [
+        "../images/porsche/cayenne/cayenne-img1.avif",
+        "../images/porsche/cayenne/cayenne-img2.avif",
+        "../images/porsche/cayenne/cayenne-img3.avif",
+        "../images/porsche/cayenne/cayenne-img4.avif"
+      ],
+      "specs": {
+        "Model": "Cayenne",
+        "Engine": "3.0 L turbocharged V6",
+        "Power": "348 HP",
+        "Torque": "500 Nm",
+        "Gear": "8-speed Tiptronic S",
+        "Top Speed": "248 km/h",
+        "Length x Width x Height": "4,918 x 1,983 x 1,696 mm",
+        "Weight": "2,090 kg",
+        "Fuel Consumption": "10.8 L/100 km"
+      },
+      "safety": [
+        "Multiple airbags",
+        "Porsche InnoDrive with ACC (optional)",
+        "Night Vision Assist (optional)"
+      ],
+      "convenience": [
+        "Air suspension (optional)",
+        "Panoramic roof system",
+        "PCM touchscreen with voice control"
+      ]
+    },
+    {
+      "id": "Porsche-Taycan-4S",
+      "name": "Porsche Taycan 4S",
+      "type": "EV",
+      "display": "../images/porsche/taycan/taycan-display.webp",
+      "priceUSD": 110000,
+      "hero": "../images/porsche/taycan/taycan-trans.webp",
+      "gallery": [
+        "../images/porsche/taycan/taycan-img1.avif",
+        "../images/porsche/taycan/taycan-img2.avif",
+        "../images/porsche/taycan/taycan-img3.avif",
+        "../images/porsche/taycan/taycan-img4.avif"
+      ],
+      "specs": {
+        "Model": "Taycan 4S",
+        "Engine": "Dual-motor all-wheel drive (BEV)",
+        "Power": "530 HP",
+        "Torque": "650 Nm",
+        "Gear": "2-speed rear axle transmission",
+        "Top Speed": "250 km/h",
+        "Battery Capacity": "93.4 kWh",
+        "Length x Width x Height": "4,963 x 1,966 x 1,378 mm",
+        "Weight": "2,220 kg",
+        "Fuel Consumption": "20.0 kWh/100 km"
+      },
+      "safety": [
+        "Autonomous emergency braking with pedestrian detection",
+        "Lane Keep Assist",
+        "Traffic Sign Recognition"
+      ],
+      "convenience": [
+        "800-volt fast charging",
+        "Heated/ventilated seats (front)",
+        "Heads-up display (optional)"
+      ]
+    }
+  ]
+}
