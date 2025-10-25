@@ -52,7 +52,8 @@ const BRANDS = [
   { id: "bmw",      name: "BMW",      url: "../data/bmw.json" },
   { id: "toyota",   name: "Toyota",   url: "../data/toyota.json" },
   { id: "vinfast",  name: "VinFast",  url: "../data/vinfast.json" },
-  { id: "mercedes", name: "Mercedes", url: "../data/mercedes.json" }
+  { id: "mercedes", name: "Mercedes", url: "../data/mercedes.json" },
+  { id: "porsche",  name: "Porsche",  url: "../data/porsche.json"}
 ];
 
 const TYPE_MAP = {

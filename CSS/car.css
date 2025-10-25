@@ -19,6 +19,7 @@ html,body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 22px;
+  margin-top: 65px;
 }
 
 /* --- Tên xe trong hero --- */
@@ -250,6 +251,7 @@ html,body {
 
 .lb-arrow.right {
   right: 24px;
+  transform: translateY(-22px);
 }
 
 /* Close */
@@ -267,3 +269,224 @@ html,body {
   cursor: pointer;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
+
+/* ====== ≤ 1024px (tablet ngang, laptop nhỏ) ====== */
+@media (max-width: 1024px) {
+  .info_container {
+    max-width: 940px;
+    padding: 18px;
+  }
+
+  /* HERO: vẫn 2 cột nhưng nới tỷ lệ + giảm ảnh */
+  .hero {
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    padding: 18px;
+    margin-bottom: 56px;
+  }
+  .car-name { font-size: 40px; padding-left: 40px; }
+  .price-label, .hero-info .price, .btn { padding-left: 40px; }
+  .hero-info .price { font-size: 30px; margin-bottom: 16px; }
+  .btn { padding: 10px 16px; }
+
+  .hero-media img {
+    width: 520px;
+    max-width: 100%;
+  }
+
+  /* GALLERY: giữ 2 cột, hạ chiều cao ảnh */
+  .gallery-section { padding: 14px; margin-bottom: 56px; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .gallery img { height: 240px; }
+
+  /* SPECS: vẫn 2 cột, giảm gap/padding */
+  .specs-card {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 18px;
+    padding: 16px;
+  }
+  .section-title { font-size: 30px; }
+  .specs-col h3 { font-size: 24px; }
+  #safety, #convenience { font-size: 18px; }
+
+  /* Lightbox controls nhỏ hơn chút */
+  .lb-arrow { width: 40px; height: 40px; font-size: 20px; }
+  .lb-close { width: 40px; height: 40px; font-size: 18px; }
+}
+
+/* ====== ≤ 768px (tablet dọc) ====== */
+@media (max-width: 768px) {
+  .info_container {
+    max-width: 720px;
+    padding: 16px;
+  }
+
+  /* HERO: chuyển 1 cột, nội dung lên trước, ảnh dưới */
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 44px;
+  }
+  .car-name { 
+    font-size: 34px; 
+    padding-left: 0; 
+  }
+  .price-label, .hero-info .price, .btn { 
+    padding-left: 0; 
+  }
+
+  .hero-info .price { 
+    font-size: 28px; 
+  }
+  .btn { 
+    margin-left: 0; 
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: auto;
+    max-width: 720px;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* GALLERY: 2 cột */
+  .gallery { 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 10px; 
+  }
+
+  .gallery img { 
+    height: 200px; 
+  }
+
+  /* SPECS: chuyển 1 cột để dễ đọc */
+  .specs-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 14px;
+  }
+  .section-title { 
+    font-size: 26px; 
+  }
+
+  .specs-col h3 { 
+    font-size: 22px; 
+    margin-top: 6px; 
+  }
+
+  #safety, #convenience { 
+    font-size: 17px; 
+  }
+
+  /* Bảng: giảm padding ô để gọn gàng */
+  .specs-table th, .specs-table td { 
+    padding: 8px 10px; 
+  }
+
+  .lb-arrow { 
+    width: 36px; 
+    height: 36px; 
+    font-size: 18px; 
+    margin: 10px -25px 0 -25px;
+  }
+
+  .lb-counter { 
+    left: 16px; 
+    font-size: 16px; 
+  }
+}
+
+/* ====== ≤ 576px (mobile) ====== */
+@media (max-width: 576px) {
+  html, body { 
+    font-size: 14px; 
+  }
+  .info_container { 
+    padding: 14px; 
+  }
+
+  /* HERO: nén khoảng cách, chữ và nút */
+  .hero {
+    padding: 14px;
+    gap: 10px;
+    border-radius: 16px;
+    margin-bottom: 36px;
+  }
+  .car-name { 
+    font-size: 28px;
+  }
+
+  .hero-info .price { 
+    font-size: 24px; 
+    margin-bottom: 12px; 
+  }
+
+  .btn { 
+    padding: 9px 14px; 
+    font-weight: 700;
+  }
+
+  .hero-media img {
+    width: 100%;
+    height: auto;
+    max-width: 540px;
+    border-radius: 12px;
+  }
+
+  /* GALLERY: 1 cột full width */
+  .gallery-section {
+    padding: 12px;
+    margin-bottom: 36px; 
+  }
+  .gallery {
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+  }
+  .gallery img { 
+    height: 190px; 
+    border-radius: 12px;
+  }
+  /* SPECS: 1 cột, chữ dễ đọc */
+  .section-title { 
+    font-size: 22px; 
+  }
+
+  .specs-card { 
+    padding: 12px; 
+    border-radius: 16px; 
+  }
+
+  .specs-table th, .specs-table td { 
+    padding: 8px; 
+  }
+
+  .specs-col h3 { 
+    font-size: 20px; 
+  }
+
+  #safety, #convenience { 
+    font-size: 16px;
+  }
+  .bullet { 
+    margin-bottom: 10px; 
+  }
+
+  /* Lightbox: nút nhỏ gọn */
+  .lb-arrow { 
+    width: 36px; 
+    height: 36px; 
+    font-size: 18px; 
+    margin: 0 -20px 0 -20px;
+  }
+  .lb-close { 
+    width: 36px; 
+    height: 36px; 
+    font-size: 17px; 
+  }
+  #lbImg {
+    width: 320px;
+  }
+}
+
