@@ -11,6 +11,66 @@ html, body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 20%;
+  left: 6%;
+  color: #fff;
+  max-width: 500px;
+  z-index: 2;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+}
+
+.hero-overlay h1 {
+  font-size: 32px;
+  font-weight: 700;
+  transform: translateX(-30%);
+  margin-left: 85px;
+  margin-bottom: 170px;
+}
+
+.hero-overlay p {
+  font-size: 25px;
+  color: rgb(233, 171, 71);
+  border-color: white;
+  font-weight: 600;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  transform: translateY(-170%);
+}
+
+.hero-buttons {
+  padding-left: 10px;
+  display: flex;
+  gap: 12px;
+  transform: translateY(-350%);
+}
+
+.btn-primary, .btn-outline {
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #0078ff;
+  border: none;
+  color: #fff;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.btn-outline:hover { background-color: #fff; color: #000; }
 
 .slideshow {
   position: relative;
