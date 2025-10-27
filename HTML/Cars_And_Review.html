@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="../CSS/nav_bar.css">
         <link rel="stylesheet" href="../CSS/footer.css">
         <link rel="stylesheet" href="../CSS/car_n_rev.css"> 
+        <script src="../JavaScript/Review_from_client.js" defer></script>
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
         <link rel="stylesheet" href="../CSS/Review_from_client.css">
@@ -185,6 +186,50 @@
     </div>
 
 </section>
+
+<div class="review-container">
+        <h2>Review from our clients</h2>
+        <div id="droplist-sort">
+            <label for="sort-review">Select Client</label>
+            <select id="sort-review">
+                <option value="oldest">Oldest</option>
+                <option value="newest">Newest</option>
+            </select>
+        </div>
+
+        <div id="review-main">
+            <div class="review" style="display: none;">
+                <h3 class="name-input"></h3>
+                <h3 class="date-time"></h3>
+                <p class="review-message"></p>
+                <button class="show-full">Show full review</button>
+            </div>
+        </div>
+        <div class="button-container">
+            <button id="write-review">Write a review</button>
+            <button id="see-all-reviews" style="display: none;">See more</button>
+        </div>
+
+        <form id="review-form" style="display: none;">
+            <div id="name-container">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div id="email-container">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div id="review-input">
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" required></textarea>
+            </div>
+
+            <button id="submit-review" type="submit">Submit Review</button>
+            <button id="close-review" type="close">Close</button>
+        </form>
+    </div>
 
 
     <footer>
