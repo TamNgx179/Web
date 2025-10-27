@@ -116,28 +116,32 @@
                 </div>
                 
                 <div class="form-group feature-group">
-                    <label>Feature</label>
+                    <label>FEATURE</label>
+                    <input type="text" placeholder="Search for feature" class="feature-search-input">
                     <div class="feature-list">
-                        <div class="checkbox-item"><input type="checkbox" id="feature1"><label for="feature1">Trailer coupling</label></div>
+                        <!-- <div class="checkbox-item"><input type="checkbox" id="feature1"><label for="feature1">Trailer coupling</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="feature2"><label for="feature2">Heated front seats</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="feature3"><label for="feature3">Navigation system</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="feature4"><label for="feature4">Heated steering wheel</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="feature5"><label for="feature5">Heated windshield</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="feature6"><label for="feature6">Auxiliary heating</label></div>
                         <div class="checkbox-item"><input type="checkbox" id="feature7"><label for="feature7">Ventilated front seats</label></div>
-                        <div class="checkbox-item"><input type="checkbox" id="feature8"><label for="feature8">Panoramic roof</label></div>
+                        <div class="checkbox-item"><input type="checkbox" id="feature8"><label for="feature8">Panoramic roof</label></div> -->
                     </div>
                 </div>
+                <div class = "more-feature"><a>More feature</a></div>
                 
                 <hr class="separator">
 
                 <div class="form-group">
                     <button type="submit" class="search-btn">Detail search</button>
+                    <img>
                 </div>
                 
             </form>
     </div>
-
+     <!-- ======================================================================================================== -->
+      
     <div class="modal-overlay" id="makeModalOverlay">
         <div class="modal-content">
             
@@ -163,6 +167,9 @@
 
         </div>
     </div>
+
+    <!-- ======================================================================================================== -->
+
     <div class = "available-cars-container">
 
         <header class = "section-header">
@@ -174,175 +181,21 @@
 
         </header>
 
-        <div class = "car-grid " id = "car-grid-container">
+        <div class = "car-grid " id = "car-grid-container"></div>
+
+        <div class = "section-header">
+            <div class="pagination-nav" aria-label='Page navigation 1'>
+                <a href="#" class="back-to-top">↑ Back to top</a> 
+                <ul class="pagination">
+                    </ul>
             </div>
+        </div>
 
     </div>
 
 </section>
 
-
-<<<<<<< HEAD
     <footer>
-=======
-    <script>
-        // Đảm bảo code chạy sau khi HTML đã tải xong
-        document.addEventListener('DOMContentLoaded', function() {
-
-            // ==========================================================
-            // PHẦN DỮ LIỆU MỚI (BẠN CHỈ CẦN SỬA Ở ĐÂY)
-            // ==========================================================
-            
-            // Mảng cho "Most Searched Tags"
-            const mostSearchedBrands = [
-                { name: 'Audi', imgSrc: "../Image_icon/audi.png" },
-                { name: 'BMW', imgSrc: '../Image_icon/bmw.png' },
-                { name: 'Citroën', imgSrc: '../Image_icon/citroen.png' },
-                { name: 'Dacia', imgSrc: '../Image_icon/dacia.png' },
-                { name: 'Ford', imgSrc: '../Image_icon/ford.png' },
-                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' },
-                { name: 'Mercedes', imgSrc: '../Image_icon/mec.png' },
-                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' }
-            ];
-
-            // Mảng cho "All Brands"
-            const allBrands = [
-                { name: 'Audi', imgSrc: "../Image_icon/audi.png" },
-                { name: 'BMW', imgSrc: '../Image_icon/bmw.png' },
-                { name: 'Citroën', imgSrc: '../Image_icon/citroen.png' },
-                { name: 'Dacia', imgSrc: '../Image_icon/dacia.png' },
-                { name: 'Ford', imgSrc: '../Image_icon/ford.png' },
-                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' },
-                { name: 'Mercedes', imgSrc: '../Image_icon/mec.png' },
-                { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' }
-            ];
-
-
-            // ==========================================================
-            // PHẦN LOGIC MỚI (Tự động tạo HTML)
-            // ==========================================================
-
-            // 1. Lấy các container
-            const gridContainer = document.getElementById('brand-grid-container');
-            const listContainer = document.getElementById('brand-list-container');
-
-            // 2. Điền dữ liệu cho "Most Searched"
-            mostSearchedBrands.forEach(brand => {
-                // Tạo div.brand-grid-item
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'brand-grid-item';
-                
-                // Tạo <img>
-                const img = document.createElement('img');
-                img.src = brand.imgSrc;
-                img.alt = brand.name;
-                
-                // Gắn img vào div, rồi gắn div vào container
-                itemDiv.appendChild(img);
-                gridContainer.appendChild(itemDiv);
-            });
-
-            // 3. Điền dữ liệu cho "All Brands"
-            allBrands.forEach(brand => {
-                // Tạo div.brand-list-item
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'brand-list-item';
-                
-                // Tạo <img>
-                const img = document.createElement('img');
-                img.className = 'brand-logo';
-                img.src = brand.imgSrc;
-                img.alt = brand.name;
-                
-                // Tạo <span>
-                const span = document.createElement('span');
-                span.className = 'brand-name';
-                span.textContent = brand.name;
-                
-                // Gắn img và span vào div, rồi gắn div vào container
-                itemDiv.appendChild(img);
-                itemDiv.appendChild(span);
-                listContainer.appendChild(itemDiv);
-            });
-
-
-            // ==========================================================
-            // LOGIC CŨ (Điều khiển Modal)
-            // ==========================================================
-            const openModalBtn = document.getElementById('openMakeModalBtn');
-            const closeModalBtn = document.getElementById('closeMakeModalBtn');
-            const modalOverlay = document.getElementById('makeModalOverlay');
-
-            function openModal() {
-                modalOverlay.classList.add('active');
-            }
-
-            function closeModal() {
-                modalOverlay.classList.remove('active');
-            }
-
-            openModalBtn.addEventListener('click', openModal);
-            closeModalBtn.addEventListener('click', closeModal);
-
-            modalOverlay.addEventListener('click', function(event) {
-                if (event.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-
-        }); // Đóng sự kiện DOMContentLoaded
-    </script>
-
-    <!-- Car dis play-->
-
-    <!-- review from client-->
-
-    <div class="review-container">
-        <h2>Review from our clients</h2>
-        <div id="droplist-sort">
-            <label for="sort-review">Select Client</label>
-            <select id="sort-review">
-                <option value="oldest">Oldest</option>
-                <option value="newest">Newest</option>
-            </select>
-        </div>
-
-        <div id="review-main">
-            <div class="review" style="display: none;">
-                <h3 class="name-input"></h3>
-                <h3 class="date-time"></h3>
-                <p class="review-message"></p>
-                <button class="show-full">Show full review</button>
-            </div>
-        </div>
-        <div class="button-container">
-            <button id="write-review">Write a review</button>
-            <button id="see-all-reviews" style="display: none;">See more</button>
-        </div>
-
-        <form id="review-form" style="display: none;">
-            <div id="name-container">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div id="email-container">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-
-            <div id="review-input">
-                <label for="review">Review:</label>
-                <textarea id="review" name="review" required></textarea>
-            </div>
-
-            <button id="submit-review" type="submit">Submit Review</button>
-            <button id="close-review" type="close">Close</button>
-        </form>
-    </div>
-
-        <footer>
->>>>>>> a52c430b1915a3856ad80a61c9d63769f6535016
         <div class="container">
             <div class="avata">
                 <img class="circle" src="none">
@@ -389,339 +242,8 @@
             <p>Group ... 2025 | All Rights Reserved</p>
         </div>
     </footer>
-    <script src="../JavaScript/Footer.js"></script> <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    <script src="../JavaScript/Footer.js"></script> 
+    <script src="../JavaScript/car_n_rev.js"></script>
 
-        // ==========================================================
-        // LOGIC CHO MODAL (Pop-up chọn xe)
-        // ==========================================================
-        
-        const mostSearchedBrands = [
-            { name: 'Audi', imgSrc: "../Image_icon/audi.png" },
-            { name: 'BMW', imgSrc: '../Image_icon/bmw.png' },
-            { name: 'Citroën', imgSrc: '../Image_icon/citroen.png' },
-            { name: 'Dacia', imgSrc: '../Image_icon/dacia.png' },
-            { name: 'Ford', imgSrc: '../Image_icon/ford.png' },
-            { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' },
-            { name: 'Mercedes', imgSrc: '../Image_icon/mec.png' },
-            { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' }
-        ];
-
-        const allBrands = [
-            { name: 'Audi', imgSrc: "../Image_icon/audi.png" },
-            { name: 'BMW', imgSrc: '../Image_icon/bmw.png' },
-            { name: 'Citroën', imgSrc: '../Image_icon/citroen.png' },
-            { name: 'Dacia', imgSrc: '../Image_icon/dacia.png' },
-            { name: 'Ford', imgSrc: '../Image_icon/ford.png' },
-            { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' },
-            { name: 'Mercedes', imgSrc: '../Image_icon/mec.png' },
-            { name: 'Hyundai', imgSrc: '../Image_icon/hyndai.png' }
-        ];
-
-        const gridContainer = document.getElementById('brand-grid-container');
-        const listContainer = document.getElementById('brand-list-container');
-
-        if (gridContainer) {
-            mostSearchedBrands.forEach(brand => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'brand-grid-item';
-                const img = document.createElement('img');
-                img.src = brand.imgSrc;
-                img.alt = brand.name;
-                itemDiv.appendChild(img);
-                gridContainer.appendChild(itemDiv);
-            });
-        }
-
-        if (listContainer) {
-            allBrands.forEach(brand => {
-                const itemDiv = document.createElement('div');
-                itemDiv.className = 'brand-list-item';
-                const img = document.createElement('img');
-                img.className = 'brand-logo';
-                img.src = brand.imgSrc;
-                img.alt = brand.name;
-                const span = document.createElement('span');
-                span.className = 'brand-name';
-                span.textContent = brand.name;
-                itemDiv.appendChild(img);
-                itemDiv.appendChild(span);
-                listContainer.appendChild(itemDiv);
-            });
-        }
-
-        const openModalBtn = document.getElementById('openMakeModalBtn');
-        const closeModalBtn = document.getElementById('closeMakeModalBtn');
-        const modalOverlay = document.getElementById('makeModalOverlay');
-
-        // /* SỬA LỖI */ - Đã sửa lỗi functionopenModal
-        function openModal() {
-            if (modalOverlay) {
-                modalOverlay.classList.add('active');
-            }
-        }
-
-        function closeModal() {
-            if (modalOverlay) {
-                modalOverlay.classList.remove('active');
-            }
-        }
-
-        if (openModalBtn) openModalBtn.addEventListener('click', openModal);
-        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-
-        if (modalOverlay) {
-            modalOverlay.addEventListener('click', function(event) {
-                if (event.target === modalOverlay) {
-                    closeModal();
-                }
-            });
-        }
-
-
-        // ==========================================================
-        // LOGIC HIỂN THỊ XE VÀ PHÂN TRANG
-        // ==========================================================
-        
-        const iconMap = {
-            transmission: {
-                'Manual': '../Image_icon/transmission_manual.png',
-                'Automatic': '../Image_icon/transmission_auto.png'
-            },
-            fuel: {
-                'Gasoline': '../Image_icon/fuel_gas.png',
-                'Electric': '../Image_icon/fuel_electric.png',
-                'Diesel': '../Image_icon/fuel_diesel.png'
-            },
-            drivetrain: {
-                '4x4': '../Image_icon/drivetrain_4x4.png',
-                'AWD': '../Image_icon/drivetrain_awd.png',
-                'RWD': '../Image_icon/drivetrain_rwd.png'
-            },
-            default: {
-                power: '../Image_icon/power.png',
-                mileage: '../Image_icon/mileage.png',
-                year: '../Image_icon/date.png',
-                location: '../Image_icon/location.png'
-            }
-        };
-
-        // /* MỚI */ - Cập nhật dữ liệu carData với mảng "features" mới
-        const carData = [
-            {
-                title: 'Bently Flying Spur Azure',
-                price: '$298,250',
-                imageSrc: '../images/gas-station.png',
-                isActive: false,
-                location: { city: 'Ho Chi Minh' },
-                specs: [ { label: 'Power', value: '450kw' }, { label: 'Mileage', value: '22,00km' }, { label: 'Year', value: '2023' }, { label: 'Transmission', value: 'Manual' }, { label: 'Fuel', value: 'Gasoline' }, { label: 'Drivetrain', value: '4x4' } ],
-                // Đây là xe có nhiều features, sẽ có nút "see more"
-                features: ["Panoramic roof", "Heated steering wheel", "Navigation system", "Apple CarPlay", "Android Auto", "Ventilated front seats", "Blind spot assist"]
-            },
-            {
-                title: 'Porsche 911 Carrera',
-                price: '$155,500',
-                imageSrc: '../images/gas-station.png',
-                isActive: false,
-                location: { city: 'Ha Noi' },
-                specs: [ { label: 'Power', value: '385kw' }, { label: 'Mileage', value: '15,00km' }, { label: 'Year', value: '2024' }, { label: 'Transmission', value: 'Automatic' }, { label: 'Fuel', value: 'Gasoline' }, { label: 'Drivetrain', value: 'RWD' } ],
-                 // Xe này có ít features, sẽ không có nút "see more"
-                features: ["Heated front seats", "Navigation system","Panoramic roof", "Heated steering wheel", "Navigation system", "Apple CarPlay", "Android Auto", "Ventilated front seats", "Blind spot assist"]
-            },
-            {
-                title: 'Tesla Model S Plaid',
-                price: '$95,000',
-                imageSrc: '../images/gas-station.png',
-                isActive: false,
-                location: { city: 'Ho Chi Minh' },
-                specs: [ { label: 'Power', value: '1020hp' }, { label: 'Mileage', value: '5,500km' }, { label: 'Year', value: '2024' }, { label: 'Transmission', value: 'Automatic' }, { label: 'Fuel', value: 'Electric' }, { label: 'Drivetrain', value: 'AWD' } ],
-                // Xe này có nhiều features
-                features: ["Trailer coupling", "Heated windshield", "Auxiliary heating", "Panoramic roof", "Blind spot assist", "Apple CarPlay"]
-            },
-            {
-                title: 'Mercedes-Benz G-Class',
-                price: '$180,000',
-                imageSrc: '../images/gas-station.png',
-                isActive: false,
-                location: { city: 'Vung Tau' },
-                specs: [ { label: 'Power', value: '577hp' }, { label: 'Mileage', value: '11,00km' }, { label: 'Year', value: '2023' }, { label: 'Transmission', value: 'Automatic' }, { label: 'Fuel', value: 'Gasoline' }, { label: 'Drivetrain', value: 'AWD' } ],
-                // Xe này không có features
-                features: ["Panoramic roof", "Heated steering wheel", "Navigation system", "Apple CarPlay", "Android Auto", "Ventilated front seats", "Blind spot assist","Panoramic roof", "Heated steering wheel", "Navigation system", "Apple CarPlay", "Android Auto", "Ventilated front seats", "Blind spot assist"]
-            },
-        ];
-
-        const carGridContainer = document.getElementById('car-grid-container');
-
-        function getIconForSpec(spec) {
-            const labelKey = spec.label.toLowerCase();
-            if (iconMap[labelKey] && iconMap[labelKey][spec.value]) {
-                return iconMap[labelKey][spec.value];
-            }
-            if (iconMap.default[labelKey]) {
-                return iconMap.default[labelKey];
-            }
-            return 'YOUR_DEFAULT_FALLBACK_ICON.png';
-        }
-
-        function renderCarGrid(page) {
-            if (!carGridContainer) return;
-            carGridContainer.innerHTML = '';
-            console.log(`Đang tải dữ liệu cho trang ${page}...`);
-
-            carData.forEach(car => {
-                let specsHTML = '';
-                car.specs.forEach(spec => {
-                    const iconSrc = getIconForSpec(spec);
-                    specsHTML += `<div class="spec-item"><img class="icon" src="${iconSrc}" alt="${spec.label}"><span>${spec.value}</span></div>`;
-                });
-
-                // /* MỚI */ - Logic để tạo HTML cho features và nút "see more"
-                let featuresHTML = '';
-                const maxVisibleFeatures = 3; // Chỉ hiển thị 3 feature mặc định
-                // Tạo ID duy nhất cho mỗi xe, ví dụ: "Bently-Flying-Spur-Azure"
-                const carId = car.title.replace(/[^a-zA-Z0-9]/g, '-'); 
-
-                if (car.features && car.features.length > 0) {
-                    featuresHTML += `<div class="car-tags-row" id="tags-for-car-${carId}">`; // Thêm container
-                    
-                    for (let i = 0; i < car.features.length; i++) {
-                        if (i < maxVisibleFeatures) {
-                            // Hiển thị các tag đầu tiên
-                            featuresHTML += `<span class="car-tag">${car.features[i]}</span>`;
-                        } else {
-                            // Nếu nhiều hơn, thêm nút "see more" và dừng lại
-                            const remainingFeatures = car.features.length - maxVisibleFeatures;
-                            featuresHTML += `<div class="car-tag-more" data-car-id="${carId}"> ${remainingFeatures} more  </div>`;
-                            break; 
-                        }
-                    }
-                    featuresHTML += '</div>'; // Đóng container
-                }
-                // Hết logic mới
-
-                const activeClass = car.isActive ? 'active' : '';
-
-                // /* MỚI */ - Thêm biến ${featuresHTML} vào template
-                const carCardHTML = `
-                    <div class="car-card ${activeClass}">
-                        <img class="car-image" src="${car.imageSrc}" alt="${car.title}">
-
-                        <div class="car-card-content">
-
-                            <div class = "car-card-content-header">
-                                <div class = "car-card-content-title">
-                                    <h3 class="car-title">${car.title}</h3>
-                                </div>
-
-                                <div class="car-location">
-                                    <img class="icon" src="${iconMap.default.location}" alt="Location">
-                                    <span>${car.location.city}</span>
-                                </div>
-                            </div>
-                            <div class="car-specs">${specsHTML}</div>
-                            ${featuresHTML}
-                        </div>
-                        <p class="car-price">${car.price}</p>
-                    </div>
-                `;
-                carGridContainer.innerHTML += carCardHTML;
-            });
-        }
-
-        let totalPages = 100;
-        let currentPage = 15;
-        const paginationContainer = document.querySelector('.pagination');
-
-        function renderPagination(totalPages, page) {
-             if (!paginationContainer) return;
-            let liTag = '';
-            let beforePages = page - 1;
-            let afterPages = page + 1;
-            
-            liTag += `<li class="control-prev"><a><svg class="arrow-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Previous</a></li>`;
-            
-            if (totalPages > 6) {
-                if (page > 2) {
-                    liTag += `<li><a>1</a></li>`;
-                    if (page > 3) liTag += `<li><a>...</a></li>`;
-                }
-                if (page === totalPages) beforePages -= 2;
-                else if (page === totalPages - 1) beforePages -= 1;
-                if (page === 1) afterPages += 2;
-                else if (page === 2) afterPages += 1;
-                for (let i = beforePages; i <= afterPages; i++) {
-                    if (i > totalPages || i < 1) continue;
-                    const activeClass = (page === i) ? 'active' : '';
-                    liTag += `<li class="${activeClass}"><a>${i}</a></li>`;
-                }
-                if (page < totalPages - 1) {
-                    if (page < totalPages - 2) liTag += `<li><a>...</a></li>`;
-                    liTag += `<li><a>${totalPages}</a></li>`;
-                }
-            } else {
-                for (let i = 1; i <= totalPages; i++) {
-                    const activeClass = (i === page) ? 'active' : '';
-                    liTag += `<li class="${activeClass}"><a>${i}</a></li>`;
-                }
-            }
-            
-            liTag += `<li class="control-next"><a>Next<svg class="arrow-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg></a></li>`;
-            paginationContainer.innerHTML = liTag;
-        }
-        
-        if (paginationContainer) {
-            paginationContainer.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = e.target.closest('a');
-                if (!target) return;
-                let newPage = currentPage;
-                const linkText = target.textContent.trim();
-                if (linkText.includes('Next')) newPage = Math.min(totalPages, currentPage + 1);
-                else if (linkText.includes('Previous')) newPage = Math.max(1, currentPage - 1);
-                else if (linkText !== '...') newPage = parseInt(linkText);
-                if (newPage !== currentPage) {
-                    currentPage = newPage;
-                    renderPagination(totalPages, currentPage);
-                    renderCarGrid(currentPage);
-                }
-            });
-        }
-
-        // Render lần đầu
-        renderPagination(totalPages, currentPage);
-        renderCarGrid(currentPage);
-
-        
-        // /* MỚI */ - Thêm bộ lắng nghe sự kiện cho nút "see more"
-        if (carGridContainer) {
-            carGridContainer.addEventListener('click', function(event) {
-                const target = event.target;
-                
-                // Kiểm tra xem có phải đã bấm vào nút "see more" không
-                if (target.classList.contains('car-tag-more')) {
-                    event.preventDefault(); // Ngăn hành vi mặc định của thẻ <button> hoặc <a>
-                    
-                    const carId = target.getAttribute('data-car-id');
-                    const tagsContainer = document.getElementById('tags-for-car-' + carId);
-                    
-                    // Tìm lại dữ liệu của xe đó
-                    const carDataEntry = carData.find(car => car.title.replace(/[^a-zA-Z0-9]/g, '-') === carId);
-                    
-                    if (carDataEntry && tagsContainer) {
-                        // Tạo lại HTML với TẤT CẢ các feature, không có nút "see more"
-                        let allFeaturesHTML = '';
-                        carDataEntry.features.forEach(feature => {
-                            allFeaturesHTML += `<span class="car-tag">${feature}</span>`;
-                        });
-                        
-                        // Thay thế nội dung của container
-                        tagsContainer.innerHTML = allFeaturesHTML;
-                    }
-                }
-            });
-        }
-
-    }); // Đóng sự kiện DOMContentLoaded
-    </script>
 </body>
 </html>

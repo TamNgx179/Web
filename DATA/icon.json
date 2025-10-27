@@ -1,0 +1,22 @@
+{
+  "transmission": {
+    "Manual": "../Image_icon/transmission_manual.png",
+    "Automatic": "../Image_icon/transmission_auto.png"
+  },
+  "fuel": {
+    "Gasoline": "../Image_icon/fuel_gas.png",
+    "Electric": "../Image_icon/fuel_electric.png",
+    "Diesel": "../Image_icon/fuel_diesel.png"
+  },
+  "drivetrain": {
+    "4x4": "../Image_icon/drivetrain_4x4.png",
+    "AWD": "../Image_icon/drivetrain_awd.png",
+    "RWD": "../Image_icon/drivetrain_rwd.png"
+  },
+  "default": {
+    "power": "../Image_icon/power.png",
+    "mileage": "../Image_icon/mileage.png",
+    "year": "../Image_icon/date.png",
+    "location": "../Image_icon/location.png"
+  }
+}

@@ -99,7 +99,7 @@ body {
 
 .form-group label {
     display: block;
-    font-size: 11px;
+    font-size: 14px;
     font-weight: 600;
     color: #8a8a8e;
     margin-bottom: 8px;
@@ -148,15 +148,15 @@ input[type="text"]::placeholder {
 
 /* Feature Checkbox Group */
 .feature-group > label {
-    font-size: 16px;
-    color: #1c1c1e;
+    font-size: 15px;
+    color: #909095;
     text-transform: none;
     font-weight: 600;
 }
 
 .feature-list {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 15px;
 }
 
@@ -166,8 +166,8 @@ input[type="text"]::placeholder {
 }
 
 .checkbox-item input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     margin-right: 10px;
     border: 1px solid #c7c7cc;
     border-radius: 4px;
@@ -188,11 +188,27 @@ input[type="text"]::placeholder {
 }
 
 .checkbox-item label {
-    font-size: 15px;
+    font-size: 14px;
     color: #1c1c1e;
     font-weight: normal;
     margin-bottom: 0;
 }
+
+
+.feature-search-input {
+    position: relative; 
+    margin-bottom: 15px; 
+}
+
+
+.more-feature
+{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    margin-top: 20px;
+}
+
 
 /* Separator Line */
 .separator {
@@ -426,23 +442,27 @@ input[type="text"]::placeholder {
 
 /* ======================================================================== Car display ===========================================================-- */
 .available-cars-container{
+    position: relative;
     width: 100%;
     max-width: 1000px;
-    margin-top: 100px;
+    margin-top: 70px;
     z-index: 1;
 }
 
 .section-header{
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
+    margin-top: 0;
     margin-bottom: 30px;
     flex-wrap: wrap;
     gap: 20px;
 }
 
 .pagination-nav
-{
+{   
+    margin-right: 0;
     margin-bottom: 0;
 }
 .section-title{
@@ -452,11 +472,12 @@ input[type="text"]::placeholder {
 }
 
 .pagination{
+    /* position: absolute; */
     list-style: none;
     display: flex;
     align-items: center;
     padding: 4px;
-    margin: 0;
+    margin-right: 0;
     gap: 0;
     border-radius: 12px;
     box-shadow:0 2px 8px rgba(0,0,0,0.06) ;
@@ -509,7 +530,27 @@ input[type="text"]::placeholder {
     height: 18px;
 }
 
+.pagination-nav[aria-label='Page navigation 1'] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+}
 
+/* ================================================================================================================ */
+
+.back-to-top {
+    color: #1b1b1b; /* Màu chữ xanh tím */
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    margin-left: 0; 
+}
+.back-to-top:hover {
+    text-decoration: underline;
+}
 /* <!-- ======================================================================== Car display ===========================================================--> */
 
 
@@ -541,7 +582,7 @@ input[type="text"]::placeholder {
     height: 200px;
     object-fit: cover;
     display: block;
-    flex-basis: 40%;
+    flex-basis: 35%;
     flex-shrink: 0;
 }
 
@@ -570,12 +611,14 @@ input[type="text"]::placeholder {
 }
 
 .car-price {
-    position: absolute; 
-    bottom: -12px;       
+    /* position: absolute; 
+    bottom: -12px;        */
+    align-self: flex-end;
     right: 10px;        
-
     font-size: 22px;
     font-weight: 700;
+    margin-top: 15px; 
+    margin-bottom: 0;
     color: #000000;    
 }
 
@@ -699,22 +742,21 @@ input[type="text"]::placeholder {
 }
 
 .car-tag-more {
-    font-size: 12px; /* SỬA: 5px quá nhỏ, tăng lên 12px */
+    font-size: 12px; 
     font-weight: 800;
-    color: #495057; /* Màu chữ xám (hơi đậm) */
+    color: #495057; 
     text-decoration: none;
     cursor: pointer;
     padding: 5px 4px; 
     margin-left: 4px; 
     background: transparent;
-    border: 2px solid transparent; /* SỬA: Thêm border trong suốt để không bị giật layout khi hover */
+    border: 2px solid transparent; /* Thêm border trong suốt để không bị giật layout khi hover */
     z-index: 20;
     transition: border-color 0.2s; /* Thêm hiệu ứng chuyển động mượt */
 }
 
-/* SỬA: GỘP 2 BLOCK HOVER LẠI VÀ SỬA LỖI SELECTOR (bỏ dấu cách) */
-.car-tag-more:hover { /* Giữ lại gạch chân */
-    /* Thêm style viền đen */
+.car-tag-more:hover { 
+
     border: 2px solid;
     border-color: #1a1a1a;
     border-radius: 8px;

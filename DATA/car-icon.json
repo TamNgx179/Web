@@ -1,0 +1,70 @@
+{
+    "mostSearchedBrands": [
+        { 
+            "name": "Audi", 
+            "imgSrc": "../Image_icon/audi.png" 
+        },
+        { 
+            "name": "BMW", 
+            "imgSrc": "../Image_icon/bmw.png" 
+        },
+        { 
+            "name": "Ford", 
+            "imgSrc": "../Image_icon/ford.png" 
+        },
+        { 
+            "name": "Hyundai", 
+            "imgSrc": "../Image_icon/hyndai.png" 
+        },
+        { 
+            "name": "Mercedes", 
+            "imgSrc": "../Image_icon/mec.png" 
+        },
+        { 
+            "name": "Honda", 
+            "imgSrc": "../Image_icon/honda.png" 
+        },
+        { 
+            "name": "Toyota", 
+            "imgSrc": "../Image_icon/toyota.png" 
+        },
+        { 
+            "name": "Vinfast", 
+            "imgSrc": "../Image_icon/vinfast.png"
+        }
+    ],
+    "allBrands": [
+        { 
+            "name": "Audi", 
+            "imgSrc": "../Image_icon/audi.png" 
+        },
+        { 
+            "name": "BMW", 
+            "imgSrc": "../Image_icon/bmw.png" 
+        },
+        { 
+            "name": "Ford", 
+            "imgSrc": "../Image_icon/ford.png" 
+        },
+        { 
+            "name": "Hyundai", 
+            "imgSrc": "../Image_icon/hyndai.png" 
+        },
+        { 
+            "name": "Mercedes", 
+            "imgSrc": "../Image_icon/mec.png" 
+        },
+        { 
+            "name": "Honda", 
+            "imgSrc": "../Image_icon/honda.png" 
+        },
+        { 
+            "name": "Toyota", 
+            "imgSrc": "../Image_icon/toyota.png" 
+        },
+        { 
+            "name": "Vinfast", 
+            "imgSrc": "../Image_icon/vinfast.png"
+        }
+    ]
+}
