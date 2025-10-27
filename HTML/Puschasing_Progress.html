@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Purchase Process</title>
     <link rel="stylesheet" href="../CSS/nav_bar.css">
     <link rel="stylesheet" href="../CSS/Purchasing_Progress.css">
+    <link rel="icon" href="../images/LogoWeb-removebg-preview.png" type="image/png">
     <script src="../JavaScript/Purchasing_progress.js" defer></script>
 </head>
 <body>
     <nav>
-        <div id="LOGO">LOGO</div> 
+        <a id="Logo" href="../HTML/Home.html">
+            <img src="../images/LogoWeb-removebg-preview.png" alt="LogoWeb">
+        </a>
 
         <ul id="nav_block2">
             <li><a href="../HTML/Home.html">Home</a></li>
@@ -18,13 +21,16 @@
             <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
             <li><a href="../HTML/contact_us.html">Contact</a></li>
         </ul>
-        
-        <a id="Trolley" href="../HTML/Puschasing_Progress.html"><img src="../Image_icon/trolley.png" alt="Trolley icon"></a>
-        <span id="counter">0</span>
-        <div id="popup-login">
-            <img src="../Image_icon/Signin.png" alt="Popup image">
+
+        <div class="nav-right">
+            <a id="Trolley" href="../HTML/Puschasing_Progress.html">
+                <img src="../Image_icon/trolley.png" alt="Trolley icon">
+                <span id="counter">0</span>
+            </a>
+            <div id="popup-login">
+                <img src="../Image_icon/Signin.png" alt="Popup image">
+            </div>
         </div>
-         
     </nav>
 
 
@@ -87,14 +93,35 @@
                 </div>
 
                 <div id="confirmation">
-                    <label>Item</label>
-                    <label id="item-label"></label>
+                    <div class="car-selected">  
+                        <label>Item</label>
+                        <ol class="list-car-selected">
+                            
+                        </ol>
+                    </div>
 
                     <label>Payment</label>
-                    <label id="payment-label"></label>
+                    <div id="payment-method">
+                        <label id="payment-label"></label>
+                        <div class="check-info">
+                            <div id="info-confirm-paymentmethod1"></div>
+                            <div id="confirm-paymentmethod1"></div>
+                        </div>
+
+                        <div class="check-info">
+                            <div id="info-confirm-paymentmethod2"></div>
+                            <div id="confirm-paymentmethod2"></div>
+                        </div>
+                    </div>
+                        
+                    
 
                     <label>Delivery</label>
-                    <label id="delivery-label"></label>
+                    <div id="delivery-method">
+                        <div id="delivery-label"></div>
+                        <div id="time-get"></div>
+                    </div>
+                    
                 </div>
             </div>
             
@@ -111,10 +138,12 @@
             <div id="summary">
                 <div class="car-selected">  
                     <label>Item</label>
-                    <ol id="list-car-selected">
+                    <ol class="list-car-selected">
                         
                     </ol>
                 </div>
+                
+       
 
                 <label>Payment</label>
                 <label id="payment-label-sum"></label>

@@ -1,162 +1,169 @@
+
 html, body {
     width: 100%;
     overflow-x: hidden;
     scroll-behavior: smooth;
     box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
 }
 
 footer {
     display: flex;
     flex-direction: column;
-    margin-bottom: 0;
     margin-top: 80px;
-    height: fit-content;
-    background-color: wheat;
+    background: linear-gradient(180deg, #e9ebee 0%, #d8dadd 100%);
+    color: #222;
+    padding: 40px 6vw 25px 6vw;
+    box-shadow: 0 -3px 8px rgba(0,0,0,0.1);
 }
+
 
 .container {
     display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-
-.footer-section {
-    display: flex;
-    flex-direction: row;
-    margin-right: 15px;
-
-    width: 100%;
-
+    align-items: flex-start;
     justify-content: space-between;
-
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
-#under {
-    align-self: center;
-}
 
 .avata {
     display: flex;
-    justify-content: center; /* căn giữa theo chiều ngang */
-    align-items: center;     /* căn giữa theo chiều dọc */
-    width: 30%;            
-    height: 100%;           
+    justify-content: center;
+    align-items: center;
+    width: 200px;
 }
 
 .circle {
     width: 100px;
     height: 100px;
-    border-radius: 50%;     
-    overflow: hidden;
-    border: 3px solid #333;
+    border-radius: 50%;
+    border: 2px solid #bbb;
     background-color: white;
-    object-fit: cover; 
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-.circle img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;      /* ảnh tự co để lấp đầy */
+
+.footer-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+    flex: 1;
 }
 
-hr {
-    border: none;             /* bỏ viền mặc định */
-    border-top: 2px solid #333; /* kẻ 1 đường ngang màu đen */
-    margin-top: 20px;           /* khoảng cách trên dưới */
-    margin-bottom: 0;
-    width: 100%;               /* độ dài */
+.footer-section div {
+    min-width: 180px;
 }
 
-.footer-section ul li {
-    padding-left: 40px; 
-    padding-top: 10px;
-    list-style: none;
-
-    margin-right: 10px;
-}
-
-.social-icons {
-    display: flex;      
-    gap: 10px;          
-    margin-top: 10px;
-
-    margin-left: 38px;
-}
-
-.social-icons img {
-    width: 24px;   
-    height: 24px;
-    object-fit: contain; /* giữ nguyên tỉ lệ icon */
+.footer-toggle {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    position: relative;
 }
 
 .span {
     display: none;
-    margin-right: 0;
+    margin-left: 5px;
+    font-size: 0.9rem;
 }
+
 
 .footer-list {
-    display: block;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.footer-toggle {
-    margin-bottom: 5px;
-    margin-left: 38px;
+.footer-list li {
+    margin: 8px 0;
 }
 
-.footer-list {
-    margin-top: 5px;
-    margin-left: 0px;
-}
-
-a {
+.footer-list a {
     text-decoration: none;
-    color: black;
+    color: #555;
+    transition: color 0.25s ease, transform 0.2s ease;
 }
 
-a:hover {
-    text-decoration: none;
-    color: blue;
+.footer-list a:hover {
+    color: #0077cc;
+    transform: translateX(3px);
+}
+
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.social-icons img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(0.4);
+    transition: all 0.25s ease;
+}
+
+.social-icons img:hover {
+    filter: brightness(1) saturate(1.5);
+    transform: scale(1.15);
+}
+
+
+hr {
+    border: none;
+    border-top: 1px solid #aaa;
+    margin: 25px 0 10px;
+    width: 100%;
+}
+
+
+#under {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
 }
 
 
 @media (max-width: 600px) {
-
-
-    .span {
-        display: inline; /* hiển thị mũi tên */
-    }
-
-    .container {
-        flex-direction: column;
-    }
-
     .avata {
         display: none;
     }
 
-    .footer-section ul {
-        display: none;
-    }
-
-    .footer-section{
+    .footer-section {
         flex-direction: column;
-        margin-left: 20px;
+        gap: 5px;
     }
 
     .footer-toggle {
-        margin-right: 10px;
-    }
-
-    .footer-section h2 {
         display: flex;
         justify-content: space-between;
-        margin-left: 10px;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px;
+        border-radius: 6px;
     }
 
-    .footer-section .social-icons {
+    .span {
+        display: inline;
+    }
+
+    .footer-list {
+        display: none;
+        padding-left: 15px;
+    }
+
+    .footer-section div.active .footer-list {
+        display: block;
+    }
+
+    .social-icons {
         margin-left: 10px;
     }
 }
-
-

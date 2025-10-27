@@ -10,7 +10,7 @@ body{
 .main-info {
   position: relative;
   background: #ececec;
-  height: 250px;
+  height: 550px;
   padding: 60px 48px 180px; /* chừa không gian cho ảnh hero “lấn” xuống */
   overflow: visible;
 }
@@ -28,6 +28,8 @@ body{
   margin: 0;
   font-weight: 800;
   padding-left: 150px;
+  padding-bottom: 15px;
+  margin-top: 50px;
 }
 
 #change-brand {
@@ -40,6 +42,7 @@ body{
   font-weight: 600;
   transition: opacity 0.25s ease;
   margin-right: 150px;
+  margin-top: 50px;
 }
 
 #change-brand:hover {
@@ -155,23 +158,24 @@ body{
 }
 
 .image img {
-  width: 85%;             
+  width: 85%;
   max-width: 1300px;
-  max-height: 370px;
+  height: 470px;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   object-fit: cover;
+  display: block;
 }
 
 /* ===== CONTEXT SECTION (nền trắng) ===== */
 .context {
   position: relative;
   background: #fff;
-  padding: 180px 48px 60px 190px; /* padding trên lớn để tránh đè ảnh */
+  padding: 275px 190px 30px 190px; /* padding trên lớn để tránh đè ảnh */
 }
 
 #main-paragraph {
-  font-size: 18px;
+  font-size: 22px;
   line-height: 1.7;
   color: #333;
   margin-bottom: 20px;
@@ -196,7 +200,7 @@ body{
 /* ===== LINEUP ===== */
 .brand-lineup{
   background:#fff;
-  padding:56px 64px 60px 190px;
+  padding:56px 64px 160px 190px;
 }
 .brand-lineup h2{
   font-size:56px;
@@ -204,7 +208,10 @@ body{
   margin:0 0 22px 0;
   text-transform:uppercase;
 }
-.lineup-buttons{ margin-bottom:32px; }
+.lineup-buttons{ 
+  margin-bottom:32px; 
+}
+
 .category{
   background-color: white;
   border: none;
@@ -244,7 +251,9 @@ body{
   transition: transform .2s ease;
 }
 .lineup-card:hover{ 
-  transform: translateY(-4px); 
+  border: 1px solid blue;
+  transform: translateY(-4px);
+  scale: 1.1; 
 }
 
 .lineup-thumb img{
@@ -289,39 +298,344 @@ body{
   font-style:italic; 
 }
 
+/* ==== Pagination styles ==== */
+.pager-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.pager-btn {
+  border: 1px solid #ccc;
+  background: white;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.pager-btn:hover:not(:disabled) {
+  background: #f2f2f2;
+}
+.pager-btn:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+.pager-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.pager-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  outline: 1px solid #999;
+  cursor: pointer;
+  background: #fff;
+}
+.pager-dot.active {
+  background: #111;
+}
+
 /* ===== COMPETITORS ===== */
 .competitors{
-  background:#f7f7f7;
+  background:#f1f4f3;      /* nền xám nhạt như ảnh */
   padding:48px 64px;
-  text-align:center;
+  text-align:left;
 }
 .competitors h3{
-  font-size:28px; margin:0 0 20px 0;
+  font-size:32px;
+  font-weight:800;
+  text-align: center;
+  margin:0 0 24px 0;
 }
+
 .competitor-list{
-  display:flex; flex-wrap:wrap; gap:22px; justify-content:center;
+  display:grid;
+  grid-template-columns: repeat( auto-fit, minmax(240px, 1fr) );
+  gap:28px;
 }
+
 .competitor-card{
-  background:#fff; width:180px; height:100px; border-radius:10px;
-  display:flex; align-items:center; justify-content:center;
-  box-shadow:0 2px 10px rgba(0,0,0,.08);
-  transition:transform .25s; cursor:pointer;
+  background:#141918;              /* đen xám như hình */
+  color:#e9efee;
+  border-radius:18px;
+  height:160px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.14);
+  transition: transform .2s ease, box-shadow .2s ease;
+  cursor:pointer;
+  text-decoration:none;            /* nếu là <a> */
+  outline: none;
 }
-.competitor-card:hover{ transform:scale(1.05); }
-.competitor-card img{ max-width:100px; object-fit:contain; }
-
-
-
-/* ===== Responsive ===== */
-@media (max-width:1024px){
-  .brand-toolbar h1{ font-size:44px; }
-  .image img{ width:96%; }
+.competitor-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.18);
 }
-@media (max-width:640px){
-  .main-info{ padding:24px 20px 28px; }
-  .context{ padding:22px 20px 32px; }
-  .brand-toolbar h1{ font-size:34px; }
-  #change-brand{ padding:10px 16px; }
+.competitor-card:focus-visible{
+  box-shadow: 0 0 0 3px #cde4df, 0 6px 18px rgba(0,0,0,.14);
 }
 
+.competitor-logo{
+  width:64px;
+  height:64px;
+  object-fit:contain;
+  opacity:.9;
+}
+.competitor-name{
+  margin:0;
+  font-size:20px;
+  font-weight:700;
+}
 
+/* ==== REVEAL EFFECT ==== */
+.reveal {
+  opacity: 0;
+  transition: all 0.8s linear;
+}
+.reveal.active {
+  opacity: 1;
+}
+
+/* =======================
+   RESPONSIVE BREAKPOINTS
+   ======================= */
+
+/* ====== ≤ 1024px (tablet ngang, laptop nhỏ) ====== */
+@media (max-width: 1024px) {
+  /* Thanh tiêu đề + nút */
+  .brand-toolbar h1 {
+    font-size: 44px;
+    padding-left: 80px;
+    margin-top: 36px;
+  }
+  #change-brand {
+    font-size: 16px;
+    margin-right: 55px;
+    margin-top: 36px;
+    padding: 10px 20px;
+  }
+
+  #change-brand::after{
+    right: 5px;
+  }
+  /* Hero */
+  .main-info {
+    height: 520px;                /* thấp hơn một chút để vừa vặn */
+    padding: 48px 32px 160px;
+  }
+  .image{
+    padding-left: 50px;
+    padding-right: 25px;
+  }
+  .image img {
+    height: 420px;                /* giảm nhẹ chiều cao ảnh */
+    width: 88%;
+    max-width: 1100px;
+  }
+
+  /* Mô tả (context) */
+  .context {
+    padding: 240px 120px 28px 120px; /* vẫn chừa khoảng cho ảnh lấn xuống */
+  }
+  #main-paragraph { font-size: 20px; }
+
+  /* Lineup */
+  .brand-lineup {
+    padding: 48px 80px 128px 120px;
+  }
+  .brand-lineup h2 { font-size: 44px; }
+  .lineup-list {
+    /* từ 4 cột cố định 305px -> 3 cột tự co */
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Competitors */
+  .competitors {
+    padding: 40px 48px;
+  }
+}
+
+/* ====== ≤ 768px (tablet dọc) ====== */
+@media (max-width: 768px) {
+  /* Toolbar xếp dọc, canh giữa */
+  .brand-toolbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-toolbar h1 {
+    font-size: 36px;
+    padding-right: 560px;
+    padding-top: 80px;
+    margin-top: 16px;
+  }
+  #change-brand {
+    right: -43%;
+    transform: translateY(-250%);
+  }
+  #change-brand::after{
+    right: 5px;
+  }
+  /* Hero */
+  .main-info {
+    height: 480px;
+    padding: 55px 20px 140px;
+  }
+  .image { top: 48%; }
+  .image img {
+    height: 360px;
+    width: 92%;
+    max-width: 900px;
+  }
+
+  /* Mô tả (context) */
+  .context {
+    padding: 210px 28px 24px 28px;
+  }
+  #main-paragraph { font-size: 18px; }
+
+  /* Lineup: 2 cột */
+  .brand-lineup {
+    padding: 40px 28px 96px 28px;
+  }
+  .brand-lineup h2 { 
+    font-size: 36px; 
+    text-align: center;
+  }
+  .lineup-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  .category {
+    font-size: 15px;
+    padding: 8px 16px;
+  }
+  .lineup-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  /* Card hover bớt “nhảy” để không vỡ layout */
+  .lineup-card:hover {
+    transform: translateY(-3px);
+    scale: 1.03;
+  }
+
+  /* Competitors: auto-fit thu hẹp hơn */
+  .competitor-list {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+/* ====== ≤ 576px (mobile) ====== */
+@media (max-width: 576px) {
+  body { font-size: 14px; }
+
+  /* Hero */
+  .main-info {
+    height: 400px;
+    padding: 50px 16px 120px;
+  }
+  .brand-toolbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .brand-toolbar h1 {
+    font-size: 36px;
+    padding-left: 0;
+    margin-top: 16px;
+    text-align: center;
+  }
+  .image { top: 50%; }
+  .image img {
+    height: 260px;
+    width: 94%;
+    max-width: 540px;
+    border-radius: 12px;;
+  }
+  #change-brand::after{
+    right: 1px;
+  }
+  /* Mô tả (context) */
+  .context {
+    padding: 190px 16px 20px 16px;
+  }
+  #main-paragraph { 
+    font-size: 16px; 
+    line-height: 1.6;
+  }
+  #shop { 
+    padding: 10px 20px; 
+    font-weight: 700;
+  }
+
+  /* Lineup: 1 cột toàn phần */
+  .brand-lineup { 
+    padding: 32px 16px 72px 16px; 
+  }
+  .brand-lineup h2 { 
+    font-size: 28px; 
+    text-align: center; 
+  }
+  .lineup-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .lineup-thumb img {
+    height: 160px; /* giữ tỷ lệ đẹp trên mobile */
+  }
+  .lineup-card:hover {
+    transform: none;
+    scale: 1;          /* tắt scale để không tràn lưới */
+    border-color: #e5e5e5;
+  }
+
+  /* Nút phân trang */
+  .pager-container {
+    gap: 8px;
+  }
+  .pager-btn {
+    width: 32px; height: 32px; font-size: 16px;
+  }
+
+  /* Modal chọn brand: gần full màn hình cho dễ chạm */
+  .brand-modal {
+    width: 96vw;
+    max-height: 86vh;
+    border-radius: 12px;
+  }
+  .brand-modal-header { padding: 14px 16px; }
+  .brand-row { padding: 12px 16px; }
+
+  /* Competitors */
+  .competitors {
+    padding: 28px 16px;
+    text-align: center;
+  }
+  .competitors h3 {
+    font-size: 22px;
+  }
+  .competitor-card {
+    height: 140px;
+    border-radius: 14px;
+  }
+  .competitor-logo {
+    width: 56px; height: 56px;
+  }
+  .competitor-name { font-size: 18px; }
+}

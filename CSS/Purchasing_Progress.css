@@ -8,6 +8,8 @@ body, html {
     width: 100%;
     overflow-x: hidden; /* chặn dư ngang */
     font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    overflow-y: auto;
+    height: auto;
 }
 
 #main-content {
@@ -18,15 +20,14 @@ body, html {
     margin-top: 20px;
 
     align-items: flex-start; /* cho order summary top */
-
-    min-height: 100vh;
+    overflow: visible;
 }
 
 #purchasing-progress {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 7vh;
+  margin-top: 13vh;
   margin-bottom: 40px;
   margin-right: 30%;
 }
@@ -138,35 +139,62 @@ body, html {
 
 }
 
+#method {
+    display: flex;
+    flex-direction: row; /* desktop: 2 option ngang */
+    gap: 20px;
+    width: 100%;
+    justify-content: center; /* căn giữa các option */
+}
+
 .Option {
-    flex: 1;
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 30px;
+    gap: 35px;
+    padding: 18px 22px;
+    border: 1px solid #e0e0e0; /* border nhẹ hơn */
+    border-radius: 16px;
+    background-color: #fafafa; /* nền nhạt hơn */
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 
-    padding: 10px;
-    margin: 10px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
+    width: 100%;
 }
 
 .Option div {
     width: auto;
 }
 
-.Option img {
-    width: 40px;
-    height: 40px;
-    object-fit: contain;
-    margin-left: 30px;
+.Option h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
 }
 
-#method {
-    display: flex;
-    flex-direction: row;
-    gap: 10px
+.Option:hover {
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+    border-color: #624BFF; /* viền nổi khi hover */
 }
+
+.Option img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.Option p {
+    margin: 3px 0 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+
 
 #choosing1, #choosing2, #content1, #content2 {
     font-size: 10px;
@@ -175,7 +203,7 @@ body, html {
 .infomation {
     display: flex;
     flex-direction: column;  
-    gap: 15px;               
+    gap: 35px;               
     margin-top: 20px;
 }
 
@@ -219,15 +247,13 @@ body, html {
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    width: 95%;
+    width: 100%;
 }
 
 #confirmation label#item-label,
 #confirmation label#payment-label,
 #confirmation label#delivery-label {
     font-weight: 400;
-    color: #555;
-    margin-left: 10px;
 }
 
 /* Dùng flex row cho từng dòng item để label và giá trị nằm cạnh nhau */
@@ -238,6 +264,8 @@ body, html {
 }
 
 #Order-summary {
+    position: sticky;
+    top: 10px;
     width: 30%;
     height: fit-content;
     padding: 20px;
@@ -301,20 +329,27 @@ body, html {
 .carform {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
-
-    background-color: white;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    border: 1px solid #ddd; /* nhẹ hơn */
+    border-radius: 12px;
+    padding: 15px 20px;
+    gap: 20px;
     cursor: pointer;
-    border: 1px solid black;
-    border-radius: 10px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.carform:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
 }
 
 
 .line {
     width: 1px;
-    height: 100px;
-    background: gray;
+    height: 70px;
+    background-color: #ccc;
     border: none;
 }
 
@@ -326,21 +361,35 @@ body, html {
 }
 
 
-.img-car {
-    width: 150px;
-    height: auto;   /* giữ đúng tỷ lệ */
-    object-fit: cover; /* cắt vừa khung nếu cần */
-    margin-left: 15px;
+.img-car { 
+    width: 150px; 
+    height: auto; /* giữ đúng tỷ lệ */ 
+    object-fit: cover; /* cắt vừa khung nếu cần */ 
+    margin-left: 15px; 
+}
+
+.car-quantity {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 10px 0;
+}
+
+.qty-btn {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.qty-input {
+    width: 40px;
+    text-align: center;
 }
 
 .car-and-close {
     display: flex;
-    flex-direction: row;
-
     justify-content: space-between;
     align-items: center;
-
-    margin-right: 20px;
 }
 
 .info-line {
@@ -364,14 +413,21 @@ body, html {
 .car-infomation {
     display: flex;
     flex-direction: column;
-
-    width: 70%;
+    justify-content: space-between;
+    flex: 1; /* chiếm hết khoảng trống còn lại */
+    gap: 10px;
 }
 
-#list-car-selected li {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.list-car-selected li {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* 3 cột: tên - số lượng - giá */
+    gap: 10px;
+    align-items: center;
+    margin-left: 10%;
+}
+
+.list-car-selected li .car-price{
+    justify-self: end; /* canh phải giá */
 }
 
 #delivery-label-sum,
@@ -384,95 +440,212 @@ body, html {
     margin-left: 9%;
 }
 
+.Option.selected {
+    border-color: #624BFF;
+    background-color: #f0ebff;
+}
+
+
+#info input {
+    margin-bottom: 25px;
+}
+
+#payment-method {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-left: 10%;
+}
+
+.check-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+#delivery-method{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    margin-left: 10%;
+}
+
 /* ---------- Mobile: max-width 600px ---------- */
 @media (max-width: 600px) {
+    /* Main content */
     #main-content {
         flex-direction: column;
         width: 100%;
-        gap: 20px;
+        gap: 15px;
         align-items: center;
         padding: 10px;
     }
 
+    /* Choosing method & order summary */
     #Choosing-method, #Order-summary {
         width: 95%;
+        padding: 15px 20px;
         margin: 0;
-        padding: 20px;
     }
 
-    #method {
-        flex-direction: column;
-        gap: 10px;
-    }
+    
 
+    /* Car form */
     .carform {
         flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
+        align-items: center;
+        padding: 12px;
+        gap: 10px;
+        cursor: pointer;
+        border-radius: 10px;
+    }
+
+    .img-car {
+        width: 150px;       
+        height: auto;       
+        object-fit: contain; 
+        margin-left: 15px;
+        border-radius: 8px; 
+    }
+
+    .car-infomation {
+        width: 100%;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .car-infomation h4.car-name {
+        font-size: 14px;
+    }
+
+    .car-infomation h3.car-price {
+        font-size: 13px;
+    }
+
+    .info-line {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: space-between;
+        margin: 0;
+    }
+
+    .info-line div {
+        font-size: 12px;
+    }
+
+    .car-weight .icon,
+    .car-power .icon,
+    .car-speed .icon {
+        width: 18px;
+        height: 18px;
+    }
+
+    .car-and-close {
+        width: 100%;
+        justify-content: space-between;
     }
 
     .line {
         width: 100%;
         height: 1px;
+        margin: 8px 0;
     }
 
-    .img-car,
-    .car-infomation {
-        width: 100%;
-        margin: 0;
-    }
-
+    /* Purchasing steps */
     #step-purchasing {
         display: flex;
-        gap: 10px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
         justify-content: center;
+        margin-bottom: 10px;
     }
 
     .step {
-        flex-direction: column; /* số trên chữ dưới */
+        flex-direction: column;
         align-items: center;
-        font-size: 8px;
-        position: relative;
+        font-size: 10px;
+        gap: 3px;
     }
 
     .dot {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         font-size: 12px;
     }
 
-    /* Bỏ thanh ngang */
     .step:not(:last-child)::after {
         content: none;
     }
 
     #purchasing-progress {
-        margin-top: 7vh;
-        flex-direction: row;
+        margin-top: 13vh;
         margin-right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
     }
 
-    #purchasing-progress span{
-        font-size: 8px;
+    #purchasing-progress span {
+        font-size: 10px;
     }
 
     #paragraph {
         display: none;
     }
 
-    .info-line {
-        display: flex;
-        flex-direction: row;
-
-        gap: 5px;
-        justify-content: space-between;
-        margin-right: 5px;
-    }
+    /* Payment / Delivery labels */
     #payment-label-sum,
     #delivery-label-sum {
-        margin-left: 13%;
+        margin-left: 10%;
+    }
+
+    /* Method selection */
+    #method {
+        flex-direction: column;
+    }
+
+    .Option {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+        gap: 10px;
+    }
+
+    .Option h4 {
+        font-size: 14px;
+        line-height: 16px;
+        margin: 0;
+    }
+
+    .Option p {
+        font-size: 12px;
+        line-height: 14px;
+        margin: 0;
+    }
+
+    .list-car-selected li {
+        font-size: 12px;
+    }
+
+    .check-info{
+        font-size: 12px;
+    }
+    #delivery-method{
+        font-size: 12px;
+    }
+    #payment-label{
+        font-size: 12px;
     }
 }
+
+
 
 /* ---------- Tablet: 601px - 1024px ---------- */
 @media (min-width: 601px) and (max-width: 1024px) {
@@ -537,12 +710,8 @@ body, html {
     }
 
     #purchasing-progress {
-        margin-top: 7vh;
+        margin-top: 10vh;
         font-size: 12px;
         margin-right: 0;
     }
 }
-
-
-
-
