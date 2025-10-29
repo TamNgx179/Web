@@ -106,8 +106,12 @@ nav a:hover {
 
 #Signin{
     padding-left: 5px;
-    text-decoration: underline;
+    text-decoration: none;
     cursor: pointer;
+}
+
+#Signin:hover{
+    text-decoration: underline;
 }
 
 /* Tablet */
