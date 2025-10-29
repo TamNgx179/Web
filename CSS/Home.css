@@ -11,6 +11,131 @@ html, body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
+/* ================= AUTH POPUP ================= */
+.auth-modal{
+  position:fixed; 
+  inset:0;
+  background:rgba(0,0,0,.55);
+  display:none; align-items:center; justify-content:center;
+  z-index:10000;
+  backdrop-filter: blur(4px);
+}
+
+.auth-modal.active{ 
+  display:flex;
+}
+
+.auth-card{
+  width: 420px; 
+  max-width: 92vw;
+  background:#fff; 
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  padding:28px 26px 22px;
+  position:relative;
+}
+
+
+.auth-close{
+  position:absolute; 
+  top:8px;
+  right:12px;
+  width:32px; 
+  height:32px; 
+  border:0; 
+  border-radius:50%;
+  background:#f3f4f6; 
+  color:#444; 
+  font-size:20px; 
+  cursor:pointer;
+}
+
+.auth-close:hover{ 
+  background:#e7e8ea; 
+}
+
+.auth-view{ 
+  display:none; 
+}
+
+.auth-view.active{ 
+  display:block; 
+}
+
+.auth-card h2{
+  font-size:28px; 
+  line-height:1.2;
+  margin:6px 0 4px; 
+  text-align:center;
+}
+
+.auth-sub{
+  color:#6b7280; 
+  text-align:center;
+  margin:0 0 18px; 
+  font-size:14.5px;
+}
+
+.auth-form{ 
+  display:flex; 
+  flex-direction:column; 
+  gap:14px; 
+}
+
+.field{ 
+  display:flex; 
+  flex-direction:column; 
+  gap:6px; 
+}
+
+.field label{ font-size:14px; color:#374151; }
+.field input{
+  width:100%; height:44px; padding:10px 12px;
+  border:1px solid #d1d5db; border-radius:8px; font-size:15px;
+  outline:none; transition:border-color .2s, box-shadow .2s;
+  background:#fff;
+}
+.field input:focus{
+  border-color:#3b82f6;
+  box-shadow:0 0 0 3px rgba(59,130,246,.15);
+}
+
+.auth-btn{
+  height:44px; 
+  border:0;
+  border-radius:8px; 
+  cursor:pointer;
+  background:#0b73ff; 
+  color:#fff; 
+  font-weight:700; 
+  font-size:15px;
+}
+
+.auth-btn:hover{ 
+  background:#0663da; 
+}
+
+.auth-btn:active{ 
+  transform: translateY(1px); 
+}
+
+.auth-switch{
+  text-align:center; 
+  margin-top:12px; 
+  font-size:14px; 
+  color:#4b5563;
+}
+
+.auth-switch a{
+  color:#0b73ff; 
+  font-weight:600; 
+  text-decoration:none;
+}
+
+.auth-switch a:hover{ 
+  text-decoration:underline; 
+}
+
 .hero {
   position: relative;
   overflow: hidden;
@@ -18,7 +143,7 @@ html, body {
 
 .hero-overlay {
   position: absolute;
-  top: 20%;
+  top: 10%;
   left: 6%;
   color: #fff;
   max-width: 500px;
@@ -62,15 +187,24 @@ html, body {
   background-color: #0078ff;
   border: none;
   color: #fff;
+  text-decoration: none;
+}
+
+.btn-primary:hover{
+  background-color: rgb(24, 137, 198)
 }
 
 .btn-outline {
   background-color: transparent;
   border: 2px solid #fff;
   color: #fff;
+  text-decoration: none;
 }
 
-.btn-outline:hover { background-color: #fff; color: #000; }
+.btn-outline:hover { 
+  background-color: #fff; 
+  color: #000; 
+}
 
 .slideshow {
   position: relative;
@@ -426,6 +560,30 @@ p {
 
 /* <= 992px (Tablet landscape) */
 @media (max-width: 1024px) {
+  .hero-overlay{
+    top: 5%;
+    left: 3%;
+    max-width: 420px;
+    z-index: 3;
+  }
+  .hero-overlay h1{
+    font-size: 28px;
+    margin-left: 0;
+    margin-bottom: 16px;
+    transform: translateX(-5%);            
+  }
+  .hero-overlay p{
+    font-size: 18px;
+    margin-bottom: 14px;
+    padding-left: 0;
+    transform: none;            
+  }
+  .hero-buttons{
+    transform: none;            
+    padding-left: 0;
+    gap: 10px;
+  }
+
   .slideshow {
     height: 480px;
   }
@@ -515,6 +673,28 @@ p {
 
 /* <= 768px (Tablet portrait) */
 @media (max-width: 768px) {
+  .hero-overlay{
+    top: 5%;
+    left: 3%;
+    max-width: 320px;
+    text-align: left;           /* có thể đổi thành center nếu bạn thích */
+  }
+  .hero-overlay h1{
+    font-size: 26px;
+    margin-bottom: 12px;
+  }
+  .hero-overlay p{
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  .hero-buttons{
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .btn-primary, .btn-outline{
+    padding: 9px 18px;
+  }
+
   .slideshow {
     height: 360px;
   }
@@ -594,6 +774,28 @@ p {
 
 /* <= 576px (Mobile) */
 @media (max-width: 576px) {
+  .hero-overlay{
+    top: 6%;
+    left: 4%;
+    max-width: 200px;
+  }
+  .hero-overlay h1{
+    font-size: 15px;
+    margin-bottom: 10px;
+    transform: translateX(-8%);
+  }
+  .hero-overlay p{
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  .hero-buttons{
+    gap: 8px;
+  }
+  .btn-primary, .btn-outline{
+    font-size: 10px;
+    padding: 8px 14px;
+    font-weight: 600;
+  }
   .slideshow {
     height: 240px;
   }
