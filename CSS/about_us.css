@@ -386,8 +386,6 @@ body {
   z-index: -1;       /* cho nằm dưới card nhưng trên nền */
 }
 
-
-
 .services-container {
   display: flex;
   justify-content: center;
@@ -455,6 +453,8 @@ body {
   background: #333;
   transform: translateY(-2px);
 }
+
+
 
 /* About us section */
 .about-us {
@@ -540,7 +540,9 @@ body {
 
 
 
-/* Map section for the project  */
+/* ====================================================
+Map section for the project 
+=======================================================  */
 .network {
   padding: 3rem 2rem;
   text-align: center;

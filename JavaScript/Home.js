@@ -238,6 +238,7 @@ function renderPage() {
 
   const start = PAGE * PAGE_SIZE;
   const end = start + PAGE_SIZE;
+  
   const view = FILTERED.slice(start, end);
 
   for (let i = 0; i < view.length; i++) {

@@ -14,7 +14,7 @@
                         { "label": "Model", "value": "BMW X4" },
                         { "label": "Mileage", "value": "22,000 km" },
                         { "label": "Year", "value": "2023" },
-                        { "label": "Transmission", "value": "Automatic" },
+                        { "label": "Transmission", "value": "Manual" },
                         { "label": "Fuel", "value": "Gasoline" },
                         { "label": "Drivetrain", "value": "AWD" },
                         { "label": "Engine", "value": "3.0 L TwinPower Turbo inline-6 mild hybrid" },
@@ -283,7 +283,7 @@
 
                 {
                     "id": "BMW-i5-EV",
-                    "name": "BMW i5",
+                    "name": "BMW-i5",
                     "type": "EV",
                     "display": "../images/bmw/bmw-i5/i5-display.webp",
                     "priceUSD": 68000,
@@ -323,7 +323,7 @@
                 
                 {
                     "id": "BMW-i7-EV",
-                    "name": "BMW i7",
+                    "name": "BMW-i7",
                     "type": "EV",
                     "display": "../images/bmw/bmw-i7/i7-display.webp",
                     "priceUSD": 106000,
@@ -970,9 +970,9 @@
                     "id": "Toyota-Vios",
                     "name": "Toyota Vios",
                     "type": "Sedan",
-                    "display": "../images/toyota/vios/vios-display.png",
+                    "display": "../images/toyota/camry/camry-display.webp",
                     "priceUSD": 13000,
-                    "hero": "../images/toyota/vios/vios-trans.png",
+                    "hero": "../images/toyota/camry/camry-display.webp",
                     "specs": [
                         { "label": "Model", "value": "Toyota Vios" },
                         { "label": "Mileage", "value": "55,000 km" },

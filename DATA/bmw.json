@@ -110,7 +110,7 @@
     },
 
     {
-        "id": "BMW-i5",
+        "id": "BMW-i5-Sedan",
         "name": "BMW i5",
         "type": "Sedan",
         "display": "../images/bmw/bmw-i5/i5-display.webp",
@@ -256,7 +256,7 @@
     },
 
     {
-        "id": "BMW-i5",
+        "id": "BMW-i5-EV",
         "name": "BMW i5",
         "type": "EV",
         "display": "../images/bmw/bmw-i5/i5-display.webp",

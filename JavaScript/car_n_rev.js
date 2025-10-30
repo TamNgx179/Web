@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function() {
 
-    //  code mở rộng ra thêm feature để tìm kiếm 
     const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting",
     "Air suspension","Air-conditioned glove box","Alloy wheels","Ambient lighting","Android Auto","Anti-lock Braking System","Apple CarPlay","Armrest front","Armrest rear","Assisted driving","Automated Emergency Braking with Pedestrian Detection",
     "Automatic activation of warning lights","Automatic lights",
@@ -24,51 +23,22 @@ document.addEventListener('DOMContentLoaded', async function() {
     "WLAN/Wifi hotspot","Wood trim"
     ];
 
-// feature is already defined as:
-/*
-const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting",
-    "Air suspension","Air-conditioned glove box","Alloy wheels","Ambient lighting","Android Auto","Anti-lock Braking System","Apple CarPlay","Armrest front","Armrest rear","Assisted driving","Automated Emergency Braking with Pedestrian Detection",
-    "Automatic activation of warning lights","Automatic lights",
-    "Automatic parking brake","Auxiliary heating","Blind spot assist","Bluetooth",
-    "BMW Curved Display","CRUISE CONTROL","Central locking with remote","Daytime running lights",
-    "Digital cockpit","Driver's seat with massage","Electric adjustable front seats",
-    "Electric adjustable rear seats","Electric tailgate","Emergency call","Emergency braking assist (EBA, BAS)",
-    "Fatigue warning system","Front collision warning system","Front Fog lights",
-    "Front seats with memory","Gesture control","Head-up display",
-    "Heated front seats","Heated rear seats","Heated steering wheel","Heated windshield","Height adjustable suspension","High beam assist",
-    "Hill descent assist","Hill-start assist","Induction charging for smartphones","Lane assist",
-    "Leather steering wheel","Monitors in headrests","Multiple airbags","Multi-zone automatic climate control",
-    "Multifunctional steering wheel","Navigation system","Night vision assist","Paddle shifters",
-    "Panoramic roof","Parking assist system self-steering",
-    "Predictive emergency braking system (PEBS)","Rain sensor",
-    "Rear cross traffic alert (RCTA)","Rear seats ISOFIX points","Rear seats with massage function",
-    "Rear wiper","Seat belts with pretensioners and reminders","Smart key",
-    "Sport front seats","Sport-exhaust system","Sport-suspension system",
-    "Start-stop system","Sunroof","Touch screen","Traction control (TC, ASR)","Traffic sign recognition","Trailer coupling","Tyre pressure monitoring","USB",
-    "Variable stiffness suspension","Ventilated front seats","Ventilated rear seats","Voice control",
-    "WLAN/Wifi hotspot","Wood trim"
-    ];
-*/
-
     const intialVisibleCount = 7;
     const cardPerPage = 7;
     let currentCarPage = intialVisibleCount;
 
     const featureListContainer = document.querySelector(".feature-list");
     const moreFeatureButton = document.querySelector(".more-feature");
-    const featureSearchInput = document.querySelector(".feature-search-input"); // Get the search input
+    const featureSearchInput = document.querySelector(".feature-search-input");
 
     featureListContainer.innerHTML = '';
-
     const featureItems = [];
 
-    // --- ============================================================Initial Feature Rendering =======================================================================================---
+    // Render feature checkboxes
     feature.forEach((featureName, index) => {
         const safeId = 'feature' + (index + 1);
-
         const itemDiv = document.createElement('div');
         itemDiv.className = 'checkbox-item';
-        // Store the original feature name on the itemDiv for easier searching
         itemDiv.dataset.featureName = featureName.toLowerCase(); 
 
         const checkbox = document.createElement('input');
@@ -84,95 +54,70 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
         itemDiv.appendChild(checkbox);
         itemDiv.appendChild(lableName);
 
-        // Hide initially if beyond the visible count
-        if(index >= currentCarPage)
-        {
+        if(index >= currentCarPage) {
             itemDiv.style.display = "none";
         } else {
-             itemDiv.style.display = "flex"; // Ensure initially visible items are displayed
+             itemDiv.style.display = "flex";
         }
 
         featureListContainer.appendChild(itemDiv);
         featureItems.push(itemDiv);
+        
+        // ========= THÊM SỰ KIỆN LỌC KHI CHECKBOX THAY ĐỔI =========
+        checkbox.addEventListener('change', filterCars);
     });
     
-    // Hide 'More feature' button if all features are initially visible
     if (featureItems.length <= intialVisibleCount) {
         moreFeatureButton.style.display = 'none';
     }
 
-
-    // --- ================================================="More Feature" Button Click Handler=============================================================================== ---
+    // More feature button
     moreFeatureButton.addEventListener('click', function(event){
         event.preventDefault();
         
-        // Only load more if currently not searching
         if (featureSearchInput.value.trim() === '') {
             const cardTotalNumber = featureItems.length;
-            const newCardPage = currentCarPage + cardPerPage;
-
-            let visibleCount = 0;
             let lastVisibleIndex = -1;
 
-            // Find the last currently visible index in the original list order
             for (let i = 0; i < cardTotalNumber; i++) {
                 if (featureItems[i].style.display !== 'none') {
                     lastVisibleIndex = i;
-                    visibleCount++;
                 }
             }
             
-            // Start showing from the index after the last visible one
             let startIndex = lastVisibleIndex + 1;
             let itemsShown = 0;
 
-            for( let i = startIndex; i < cardTotalNumber && itemsShown < cardPerPage; i++)
-            {
-                // Only show if the item is not currently hidden by the search filter (which it shouldn't be 
-                // if the search input is empty, but good practice)
+            for( let i = startIndex; i < cardTotalNumber && itemsShown < cardPerPage; i++) {
                 if (featureItems[i].dataset.featureName.includes(featureSearchInput.value.trim().toLowerCase())) {
                      featureItems[i].style.display = 'flex';
                      itemsShown++;
                 }
-               
             }
 
-             // Recalculate currentCarPage based on the total number of items now visible
-             // (This logic needs to be simplified for the 'More' button to work reliably 
-             // without recalculating the original index after filtering. 
-             // A simpler approach for *non-filtered* display is better)
-             
-            // Revert to original simple logic for demonstration assuming *no search* is active when clicked:
-            currentCarPage = newCardPage;
+            currentCarPage += cardPerPage;
 
-
-            // Hide 'More feature' if all features are now visible
-            if (currentCarPage >= cardTotalNumber)
-            {
+            if (currentCarPage >= cardTotalNumber) {
                 moreFeatureButton.style.display = 'none';
             }
         }
     });
 
-    // --- ===========================================================Feature Search Functionality ================================================================================---
+    // Feature search
     featureSearchInput.addEventListener('input', function() {
         const searchTerm = this.value.trim().toLowerCase();
-        let visibleCount = 0;
 
         featureItems.forEach(item => {
             const featureName = item.dataset.featureName;
             
             if (featureName.includes(searchTerm)) {
                 item.style.display = 'flex';
-                visibleCount++;
             } else {
                 item.style.display = 'none';
             }
         });
 
-        // Toggle the 'More feature' button visibility
         if (searchTerm === '') {
-            // If the search is cleared, revert to the initial display logic
             let totalItems = featureItems.length;
             
             for (let i = 0; i < totalItems; i++) {
@@ -184,19 +129,16 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
             }
             
             if (currentCarPage < totalItems) {
-                moreFeatureButton.style.display = 'block'; // Show if more features exist
+                moreFeatureButton.style.display = 'block';
             } else {
-                moreFeatureButton.style.display = 'none'; // Hide if all features are visible
+                moreFeatureButton.style.display = 'none';
             }
-
         } else {
-            // When searching, all matching items are shown, so hide the 'More feature' button
             moreFeatureButton.style.display = 'none';
         }
     });
 
-    //  ===============================================Phần pop up khi bấm vào search for brand của từng hãng xe============================================================================
-    // ... (Phần LOGIC CHO MODAL giữ nguyên không thay đổi) ...
+    // Brand modal setup
     let mostSearchedBrands = [];
     let allBrands = [];
 
@@ -218,6 +160,8 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
         mostSearchedBrands.forEach(brand => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'brand-grid-item';
+            // THÊM data-brand-name vào đây để đảm bảo khớp với car.brand
+            itemDiv.setAttribute('data-brand-name', brand.name); 
             const img = document.createElement('img');
             img.src = brand.imgSrc;
             img.alt = brand.name;
@@ -230,6 +174,8 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
         allBrands.forEach(brand => {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'brand-list-item';
+            // THÊM data-brand-name vào đây để đảm bảo khớp với car.brand
+            itemDiv.setAttribute('data-brand-name', brand.name);
             const img = document.createElement('img');
             img.className = 'brand-logo';
             img.src = brand.imgSrc;
@@ -264,39 +210,192 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
         });
     }
 
-    // ================================================= Bấm vào 1 brand xe sẽ hiện ra các model của hãng xe đó
-    const carIconClicking = document.querySelector(".brand-logo")
+    // Selected brands container
+    const makeAndModelSelection = document.querySelector('.form-group');
+    let selectedBrandsContainer = document.querySelector('.selected-brands-container');
 
-    carIconClicking.addEventListener("click", function(){
+    if(!selectedBrandsContainer && makeAndModelSelection){
+        selectedBrandsContainer = document.createElement('div');
+        selectedBrandsContainer.className = 'selected-brands-container';
+        const carModelLabel = makeAndModelSelection.querySelector('label');
 
+        if (carModelLabel && carModelLabel.nextSibling) {
+            makeAndModelSelection.insertBefore(selectedBrandsContainer, carModelLabel.nextSibling);
+        } else {
+           makeAndModelSelection.appendChild(selectedBrandsContainer);
+        }
+    }
 
-    })
+    // Brand selection
+    if(modalOverlay){
+        modalOverlay.addEventListener('click', function(event){
+            const brandItem = event.target.closest('.brand-grid-item, .brand-list-item');
+            if(brandItem){
+                const brandImg = brandItem.querySelector('img');
+                // Lấy brandName từ element hoặc từ data-brand-name
+                const brandName = brandItem.querySelector('.brand-name')?.textContent||brandImg.alt||brandItem.dataset.brandName; 
+                const brandImgSrc = brandImg.src;
 
-    // ==========================================================
-    // LOGIC TẢI DỮ LIỆU VÀ CHUẨN HÓA (ĐÃ SỬA DỤNG ID)
-    // ==========================================================
-    
+                const existingBrand = selectedBrandsContainer.querySelector(`[data-brand-name="${brandName}"]`);
+                if(existingBrand){
+                    return;
+                }
+
+                const carTagDisplay = document.createElement('div');
+                carTagDisplay.className = 'car-tag-display';
+                carTagDisplay.setAttribute('data-brand-name', brandName);
+
+                const carTagIcon = document.createElement('img');
+                carTagIcon.src = brandImgSrc;
+                carTagIcon.alt = brandName;
+                carTagIcon.className = 'car-tag-icon';
+
+                const carTagText = document.createElement('span');
+                carTagText.className = 'car-tag-text';
+                carTagText.textContent = brandName;
+
+                const carTagRemove = document.createElement('button');
+                carTagRemove.className = 'car-tag-remove';
+                carTagRemove.innerHTML = '&times;';
+                carTagRemove.setAttribute('aria-label', 'Remove ' + brandName);
+
+                carTagRemove.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    carTagDisplay.remove();
+                    // ========= GỌI LỌC KHI XÓA BRAND =========
+                    filterCars();
+                });
+
+                const carTagContent = document.createElement('div');
+                carTagContent.className = 'car-tag-content';
+                carTagContent.appendChild(carTagText);
+                
+                carTagDisplay.appendChild(carTagIcon);
+                carTagDisplay.appendChild(carTagContent);
+                carTagDisplay.appendChild(carTagRemove);
+                selectedBrandsContainer.appendChild(carTagDisplay);
+                
+                // ========= GỌI LỌC KHI THÊM BRAND =========
+                filterCars();
+            }
+        });
+    }
+
+    // ========= BIẾN LƯU GIÁ TRỊ BAN ĐẦU CỦA SLIDER =========
+    let initialSliderValues = {
+        priceMin: 0,
+        priceMax: 0,
+        mileageMin: 0,
+        mileageMax: 0,
+        powerMin: 0,
+        powerMax: 0
+    };
+
+    // Range slider initialization
+    function initRangeSlider(minId, maxId, displayMinId, displayMaxId, unit = '') {
+        const minSlider = document.getElementById(minId);
+        const maxSlider = document.getElementById(maxId);
+        const minDisplay = document.getElementById(displayMinId);
+        const maxDisplay = document.getElementById(displayMaxId);
+        
+        if (!minSlider || !maxSlider) return;
+        
+        // ========= LƯU GIÁ TRỊ BAN ĐẦU =========
+        if (minId === 'price-min') {
+            initialSliderValues.priceMin = parseInt(minSlider.min);
+            initialSliderValues.priceMax = parseInt(maxSlider.max);
+            minSlider.value = minSlider.min;
+            maxSlider.value = maxSlider.max;
+        } else if (minId === 'mileage-min') {
+            initialSliderValues.mileageMin = parseInt(minSlider.min);
+            initialSliderValues.mileageMax = parseInt(maxSlider.max);
+            minSlider.value = minSlider.min;
+            maxSlider.value = maxSlider.max;
+        } else if (minId === 'power-min') {
+            initialSliderValues.powerMin = parseInt(minSlider.min);
+            initialSliderValues.powerMax = parseInt(maxSlider.max);
+            minSlider.value = minSlider.min;
+            maxSlider.value = maxSlider.max;
+        }
+        
+        function updateDisplay() {
+            let minVal = Math.max(0, parseInt(minSlider.value));
+            let maxVal = parseInt(maxSlider.value);
+            
+            if (minVal > maxVal) {
+                minVal = maxVal;
+                minSlider.value = minVal;
+            }
+            
+            if (maxVal < minVal) {
+                maxVal = minVal;
+                maxSlider.value = maxVal;
+            }
+            
+            if (unit === '$') {
+                minDisplay.textContent = `$${minVal.toLocaleString('en-US')}`;
+                maxDisplay.textContent = `$${maxVal.toLocaleString('en-US')}`;
+            } else if (unit === 'km') {
+                minDisplay.textContent = `${minVal.toLocaleString('en-US')} km`;
+                maxDisplay.textContent = `${maxVal.toLocaleString('en-US')} km`;
+            } else if (unit === 'HP') {
+                minDisplay.textContent = `${minVal} HP`;
+                maxDisplay.textContent = `${maxVal} HP`;
+            }
+            
+            updateTrack(minSlider, maxSlider);
+        }
+        
+        function updateTrack(minSlider, maxSlider) {
+            const container = minSlider.closest('.range-slider-container');
+            const track = container.querySelector('.range-track');
+            if (!track) return;
+            
+            const min = parseInt(minSlider.min);
+            const max = parseInt(minSlider.max);
+            const minVal = parseInt(minSlider.value);
+            const maxVal = parseInt(maxSlider.value);
+            
+            const minPercent = ((minVal - min) / (max - min)) * 100;
+            const maxPercent = ((maxVal - min) / (max - min)) * 100; 
+            
+            track.style.left = minPercent + '%';
+            track.style.width = (maxPercent - minPercent) + '%';
+        }
+        
+        // ========= GỌI LỌC KHI SLIDER THAY ĐỔI =========
+        minSlider.addEventListener('input', updateDisplay);
+        maxSlider.addEventListener('input', updateDisplay);
+        minSlider.addEventListener('change', filterCars);
+        maxSlider.addEventListener('change', filterCars);
+        
+        updateDisplay();
+    }
+
+    initRangeSlider('price-min', 'price-max', 'price-min-display', 'price-max-display', '$');
+    initRangeSlider('mileage-min', 'mileage-max', 'mileage-min-display', 'mileage-max-display', 'km');
+    initRangeSlider('power-min', 'power-max', 'power-min-display', 'power-max-display', 'HP');
+
+    // Car data processing
     let iconMap = {}; 
     let carData = []; 
     const REQUIRED_SPECS = ['Mileage', 'Year', 'Transmission', 'Fuel', 'Drivetrain', 'Power'];
     
-    // Hàm chuyển đổi cấu trúc JSON lồng thành mảng phẳng
     function flattenCarData(nestedData) {
         const flatArray = [];
         if (nestedData && nestedData.brands) {
             for (const brandKey in nestedData.brands) {
                 const brand = nestedData.brands[brandKey];
                 brand.models.forEach(model => {
-                    
-                    // LỌC VÀ SẮP XẾP CÁC SPECS THEO THỨ TỰ CỐ ĐỊNH
                     const filteredSpecs = REQUIRED_SPECS.map(requiredLabel => {
                         const spec = model.specs.find(s => s.label === requiredLabel);
                         return spec || { label: requiredLabel, value: 'N/A' }; 
                     }).filter(spec => spec.value !== 'N/A');
 
                     flatArray.push({
+                        brand: brand.name, // Giữ nguyên theo logic của bạn
                         title: model.name,
-                        id: model.id, // <<< THÊM ID DUY NHẤT VÀO DỮ LIỆU
+                        id: model.id,
                         price: '$' + model.priceUSD.toLocaleString('en-US'), 
                         imageSrc: model.hero, 
                         isActive: false, 
@@ -309,6 +408,7 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
         }
         return flatArray;
     }
+
 
     try {
         const res1 = await fetch("../DATA/icon.json");
@@ -325,18 +425,12 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
         console.error('Lỗi khi đọc file JSON:', error);
     }
 
-
-    // ==========================================================
-    // LOGIC HIỂN THỊ XE VÀ PHÂN TRANG (ĐÃ SỬA DỤNG ID)
-    // ==========================================================
-    
     const carGridContainer = document.getElementById('car-grid-container');
     const itemsPerPage = 8; 
-
+    
     function getIconForSpec(spec) {
         const labelKey = spec.label.toLowerCase().trim().replace(' ', ''); 
 
-        // Ưu tiên kiểm tra các nhóm cố định
         if (iconMap.transmission && iconMap.transmission[spec.value]) {
             return iconMap.transmission[spec.value];
         }
@@ -347,39 +441,176 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
             return iconMap.drivetrain[spec.value];
         }
 
-        // Kiểm tra trong default map
         if (iconMap.default && iconMap.default[labelKey]) {
             return iconMap.default[labelKey];
         }
         
         return 'YOUR_DEFAULT_FALLBACK_ICON.png';
     }
+    
+    // ========= HÀM LỌC MỚI - CHỈ LỌC KHI CÓ THAY ĐỔI =========
+    let filteredCarData = [];
+    
+    function getFilterState() {
+        const selectedBrands = Array.from(selectedBrandsContainer.querySelectorAll('.car-tag-display'))
+            .map(tag => tag.dataset.brandName);
 
-    function renderCarGrid(page) {
-        if (!carGridContainer || carData.length === 0) {
-            carGridContainer.innerHTML = '<p>Không tìm thấy dữ liệu xe.</p>';
+        const priceMin = parseInt(document.getElementById('price-min').value);
+        const priceMax = parseInt(document.getElementById('price-max').value);
+        
+        const carPriceToNumber = (priceString) => parseInt(priceString.replace('$', '').replace(/,/g, ''));
+
+        const mileageMin = parseInt(document.getElementById('mileage-min').value);
+        const mileageMax = parseInt(document.getElementById('mileage-max').value);
+
+        const powerMin = parseInt(document.getElementById('power-min').value);
+        const powerMax = parseInt(document.getElementById('power-max').value);
+        
+        // Sử dụng document.getElementById() để truy cập trực tiếp bằng ID
+        const transmissionSelect = document.getElementById('transmission-select');
+        const fuelSelect = document.getElementById('fuel-select');
+
+        // Lấy giá trị được chọn (áp dụng cho đoạn code nằm trong hàm filterCars hoặc getFilterState)
+        const selectedTransmission = transmissionSelect ? transmissionSelect.value : 'All';
+        const selectedFuel = fuelSelect ? fuelSelect.value : 'All';
+        
+        const selectedFeatures = Array.from(featureListContainer.querySelectorAll('input[type="checkbox"]:checked'))
+            .map(checkbox => checkbox.value.toLowerCase().trim());
+
+        return {
+            brands: selectedBrands,
+            priceMin: priceMin,
+            priceMax: priceMax,
+            mileageMin: mileageMin,
+            mileageMax: mileageMax,
+            powerMin: powerMin,
+            powerMax: powerMax,
+            transmission: selectedTransmission,
+            fuel: selectedFuel,
+            features: selectedFeatures,
+            carPriceToNumber: carPriceToNumber
+        };
+    }
+    // ========= HÀM LỌC CHÍNH - CHỈ LỌC KHI CÓ ĐIỀU KIỆN =========
+    function filterCars() {
+        const filters = getFilterState();
+        
+        filteredCarData = carData.filter(car => {
+            const carBrand = car.location.city; 
+            const carPrice = filters.carPriceToNumber(car.price);
+            
+            // 1. Lọc theo Brand - CHỈ LỌC NẾU CÓ BRAND ĐƯỢC CHỌN
+            if (filters.brands.length > 0) {
+                const brandMatch = filters.brands.includes(carBrand);
+                if (!brandMatch) return false;
+            }
+
+            // 2. Lọc theo Price - CHỈ LỌC NẾU SLIDER THAY ĐỔI
+            const priceChanged = filters.priceMin !== initialSliderValues.priceMin || 
+                                 filters.priceMax !== initialSliderValues.priceMax;
+            if (priceChanged) {
+                const priceMatch = carPrice >= filters.priceMin && carPrice <= filters.priceMax;
+                if (!priceMatch) return false;
+            }
+            
+            const getSpecValue = (label) => {
+                const spec = car.specs.find(s => s.label === label);
+                return spec ? spec.value : 'N/A';
+            };
+            
+            // 3. Lọc theo Mileage - CHỈ LỌC NẾU SLIDER THAY ĐỔI
+            const mileageChanged = filters.mileageMin !== initialSliderValues.mileageMin || 
+                                   filters.mileageMax !== initialSliderValues.mileageMax;
+            if (mileageChanged) {
+                const carMileageStr = getSpecValue('Mileage').replace(' km', '').replace(/,/g, '');
+                const carMileage = parseInt(carMileageStr) || 0;
+                const mileageMatch = carMileage >= filters.mileageMin && carMileage <= filters.mileageMax;
+                if (!mileageMatch) return false;
+            }
+            
+            // 4. Lọc theo Power - CHỈ LỌC NẾU SLIDER THAY ĐỔI
+            const powerChanged = filters.powerMin !== initialSliderValues.powerMin || 
+                                 filters.powerMax !== initialSliderValues.powerMax;
+            if (powerChanged) {
+                const carPowerStr = getSpecValue('Power').replace(' HP', '');
+                const carPower = parseInt(carPowerStr) || 0;
+                const powerMatch = carPower >= filters.powerMin && carPower <= filters.powerMax;
+                if (!powerMatch) return false;
+            }
+
+            // 5. Lọc theo Transmission - CHỈ LỌC NẾU KHÔNG PHẢI "All"
+            if (filters.transmission !== 'All') {
+                const carTransmission = getSpecValue('Transmission');
+                const transmissionMatch = carTransmission === filters.transmission;
+                if (!transmissionMatch) return false;
+            }
+            
+            // 6. Lọc theo Fuel - CHỈ LỌC NẾU KHÔNG PHẢI "All"
+            if (filters.fuel !== 'All') {
+                const carFuel = getSpecValue('Fuel');
+                const fuelMatch = carFuel === filters.fuel;
+                if (!fuelMatch) return false;
+            }
+
+            // 7. Lọc theo Features - CHỈ LỌC NẾU CÓ FEATURE ĐƯỢC CHỌN
+            if (filters.features.length > 0) {
+                const featureMatch = filters.features.every(requiredFeature => 
+                    car.features.map(f => f.toLowerCase().trim()).includes(requiredFeature)
+                );
+                if (!featureMatch) return false;
+            }
+            
+            return true;
+        });
+
+        currentPage = 1;
+        updatePagination(filteredCarData.length);
+        renderCarGrid(currentPage, filteredCarData);
+    }
+
+
+
+
+
+
+    // ========= THÊM SỰ KIỆN CHO TRANSMISSION VÀ FUEL SELECT =========
+    const transmissionSelect = document.getElementById('transmission-select');
+    const fuelSelect = document.getElementById('fuel-select');
+    
+    if (transmissionSelect) {
+        transmissionSelect.addEventListener('change', filterCars);
+    }
+    if (fuelSelect) {
+        fuelSelect.addEventListener('change', filterCars);
+    }
+
+
+
+
+    // ========= RENDER CAR GRID - SỬ DỤNG filteredCarData NẾU CÓ, KHÔNG THÌ DÙNG carData =========
+    function renderCarGrid(page, dataToRender = null) {
+        const displayData = dataToRender || carData;
+        
+        if (!carGridContainer || displayData.length === 0) {
+            carGridContainer.innerHTML = '<p>Không tìm thấy xe phù hợp với bộ lọc.</p>';
             return;
         }
 
         carGridContainer.innerHTML = '';
         const startIndex = (page - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
-        const pageData = carData.slice(startIndex, endIndex);
+        const pageData = displayData.slice(startIndex, endIndex);
 
         pageData.forEach(car => {
             let specsHTML = '';
             
-            // Lấy TẤT CẢ specs đã được lọc trong hàm flattenCarData (tối đa 6)
             car.specs.forEach(spec => {
                 const iconSrc = getIconForSpec(spec);
                 specsHTML += `<div class="spec-item"><img class="icon" src="${iconSrc}" alt="${spec.label}"><span>${spec.value}</span></div>`;
             });
 
-            // Logic features và nút "see more"
             let featuresHTML = '';
             const maxVisibleFeatures = 4; 
-            
-            // <<< THAY ĐỔI QUAN TRỌNG: DÙNG car.id CÓ SẴN >>>
             const carId = car.id; 
 
             if (car.features && car.features.length > 0) {
@@ -399,17 +630,15 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
 
             const activeClass = car.isActive ? 'active' : '';
 
+            // CẬP NHẬT: Thêm data-id và data-brand vào car-card để truy xuất dễ dàng
             const carCardHTML = `
-                <div class="car-card ${activeClass}">
+                <div class="car-card ${activeClass}" data-id="${car.id}" data-brand="${car.brand}">
                     <img class="car-image" src="${car.imageSrc}" alt="${car.title}">
-
                     <div class="car-card-content">
-
                         <div class = "car-card-content-header">
                             <div class = "car-card-content-title">
                                 <h3 class="car-title">${car.title}</h3>
                             </div>
-
                             <div class="car-location">
                                 <img class="icon" src="${iconMap.default.location}" alt="Location">  
                                 <span>${car.location.city}</span>
@@ -425,15 +654,16 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
         });
     }
 
+    // Pagination
     let totalPages = 1;
     let currentPage = 1;
     const paginationContainer = document.querySelectorAll('.pagination');
 
-    function updatePagination() {
-        totalPages = Math.ceil(carData.length / itemsPerPage);
+    function updatePagination(totalItems = null) {
+        const itemCount = totalItems !== null ? totalItems : carData.length;
+        totalPages = Math.ceil(itemCount / itemsPerPage);
         renderPagination(totalPages, currentPage);
     }
-
 
     function renderPagination(totalPages, page) {
         if (!paginationContainer || totalPages <= 1) {
@@ -441,7 +671,7 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
                 container.innerHTML = '';
             });
             return;
-        };
+        }
         
         let liTag = '';
         const prevDisabled = page === 1 ? 'disabled' : '';
@@ -458,7 +688,6 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
 
             if (page === 1) endPage = Math.min(totalPages, 3);
             if (page === totalPages) startPage = Math.max(1, totalPages - 2);
-
 
             for (let i = startPage; i <= endPage; i++) {
                 if (i > totalPages || i < 1) continue;
@@ -486,61 +715,65 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
         })
         
         paginationContainer.forEach(container => {
-             const prev = container.querySelector('.control-prev');
-             const next = container.querySelector('.control-next');
-             if (prev) prev.classList.toggle('disabled', page === 1);
-             if (next) next.classList.toggle('disabled', page === totalPages);
+              const prev = container.querySelector('.control-prev');
+              const next = container.querySelector('.control-next');
+              if (prev) prev.classList.toggle('disabled', page === 1);
+              if (next) next.classList.toggle('disabled', page === totalPages);
         });
     }
     
     if (paginationContainer.length > 0) {
         paginationContainer.forEach(paginationContainers => {
-        paginationContainers.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetLi = e.target.closest('li');
-            if (!targetLi || targetLi.classList.contains('disabled')) return;
-            
-            let newPage = currentPage;
-            const targetPage = targetLi.getAttribute('data-page');
+            paginationContainers.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetLi = e.target.closest('li');
+                if (!targetLi || targetLi.classList.contains('disabled')) return;
+                
+                let newPage = currentPage;
+                const targetPage = targetLi.getAttribute('data-page');
 
-            if (targetPage) {
-                newPage = parseInt(targetPage);
-            } else {
-                 const linkText = targetLi.textContent.trim();
-                 if (!isNaN(parseInt(linkText))) {
-                    newPage = parseInt(linkText);
-                 } else {
-                    return; 
-                 }
-            }
+                if (targetPage) {
+                    newPage = parseInt(targetPage);
+                } else {
+                     const linkText = targetLi.textContent.trim();
+                     if (!isNaN(parseInt(linkText))) {
+                         newPage = parseInt(linkText);
+                     } else {
+                         return; 
+                     }
+                }
 
-            if (newPage !== currentPage && !isNaN(newPage) && newPage >= 1 && newPage <= totalPages) {
-                currentPage = newPage;
-                renderPagination(totalPages, currentPage);
-                renderCarGrid(currentPage);
-                if (carGridContainer) carGridContainer.scrollIntoView({ behavior: 'smooth' }); 
-            }
-        });
+                if (newPage !== currentPage && !isNaN(newPage) && newPage >= 1 && newPage <= totalPages) {
+                    currentPage = newPage;
+                    renderPagination(totalPages, currentPage);
+                    // ========= SỬ DỤNG filteredCarData NẾU CÓ LỌC =========
+                    const dataToDisplay = filteredCarData.length > 0 ? filteredCarData : carData;
+                    renderCarGrid(currentPage, dataToDisplay);
+                    if (carGridContainer) carGridContainer.scrollIntoView({ behavior: 'smooth' }); 
+                }
+            });
         });
     }
 
+    // ========= HIỂN THỊ BAN ĐẦU - TẤT CẢ XE =========
     updatePagination();
     renderCarGrid(currentPage);
 
-    
-    // <<< THAY ĐỔI QUAN TRỌNG: LOGIC NÚT "SEE MORE" ĐÃ SỬA DỤNG ID >>>
+    // Feature expansion on car cards
     if (carGridContainer) {
+        // CẬP NHẬT: Tích hợp logic chuyển trang vào lắng nghe sự kiện trên carGridContainer
         carGridContainer.addEventListener('click', function(event) {
             const target = event.target;
             
+            // Logic mở rộng tính năng (giữ nguyên)
             if (target.classList.contains('car-tag-more')) {
                 event.preventDefault(); 
                 
                 const carId = target.getAttribute('data-car-id');
                 const tagsContainer = document.getElementById('tags-for-car-' + carId);
                 
-                // TÌM KIẾM DỮ LIỆU BẰNG ID ĐÃ LƯU (car.id)
-                const carDataEntry = carData.find(car => car.id === carId); 
+                const currentData = filteredCarData.length > 0 ? filteredCarData : carData;
+                const carDataEntry = currentData.find(car => car.id === carId); 
                 
                 if (carDataEntry && tagsContainer) {
                     let allFeaturesHTML = '';
@@ -551,9 +784,20 @@ const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting
                     tagsContainer.innerHTML = allFeaturesHTML;
                 }
             }
+            
+            // Logic chuyển trang (ĐÃ SỬA CHỮA)
+            const carCard = target.closest('.car-card');
+            if (carCard && !target.classList.contains('car-tag-more')) {
+                const carId = carCard.getAttribute('data-id');
+                const carBrand = carCard.getAttribute('data-brand'); // Lấy brand từ data-attribute
+
+                if (carId && carBrand) {
+                    const targetUrl = `car.html?brand=${encodeURIComponent(carBrand.toLowerCase())}&id=${encodeURIComponent(carId)}`;
+                    // CHỈ điều hướng MỘT LẦN đến URL của chiếc xe đã click
+                    window.location.href = targetUrl;
+                }
+            }
         });
     }
 
-    // ============================================================ Search xe theo các feature,mileage,price,year, 
-
-}); // Đóng sự kiện DOMContentLoaded
+});

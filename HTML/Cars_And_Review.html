@@ -19,23 +19,24 @@
                 <img src="../images/LogoWeb-removebg-preview.png" alt="LogoWeb">
             </a>
 
-            <ul id="nav_block2">
-                <li><a href="../HTML/Home.html">Home</a></li>
-                <li><a href="../HTML/About_us.html">About us</a></li>
-                <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
-                <li><a href="../HTML/contact_us.html">Contact</a></li>
-            </ul>
-
+        <ul id="nav_block2">
+            <li><a href="../HTML/Home.html">Home</a></li>
+            <li><a href="../HTML/About_us.html">About us</a></li>
+            <li><a href="../HTML/Cars_And_Review.html">Cars and reviews</a></li>
+            <li><a href="../HTML/contact_us.html">Contact</a></li>
+        </ul>
+        
             <div class="nav-right">
-                <a id="Trolley" href="../HTML/Puschasing_Progress.html">
-                    <img src="../Image_icon/trolley.png" alt="Trolley icon">
+        <a id="Trolley" href="../HTML/Puschasing_Progress.html">
+            <img src="../Image_icon/trolley.png" alt="Trolley icon">
                     <span id="counter">0</span>
-                </a>
-                <div id="popup-login">
-                    <img src="../Image_icon/Signin.png" alt="Popup image">
+        </a>
+
+        <div id="popup-login">
+            <img src="../Image_icon/Signin.png" alt="Popup image">
                 </div>
-            </div>
-        </nav>
+        </div>
+    </nav>
 
 
     <section>
@@ -64,53 +65,82 @@
                         <img src="../Image_icon/arrow_bl.png" alt="Select" class="icon icon-right"> </button>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group-1">
                     <label>PRICE</label>
-                    <div class="form-row">
-                        <div class="select-wrapper">
-                            <select><option>From</option></select>
+                    <div class="range-slider-container">
+                        <div class="range-values">
+                            <span id="price-min-display">$0</span>
+                            <span id="price-max-display">$200,000</span>
                         </div>
-                        <div class="select-wrapper">
-                            <select><option>To</option></select>
+
+                        <div class="range-slider-wrapper">
+                            <input type="range" id="price-min" class="range-slider" min="10000" max="200000" value="10000" step="5000">
+                            <input type="range" id="price-max" class="range-slider" min="10000" max="200000" value="200000" step="5000">
                         </div>
+                        <div class="range-track"></div>
+
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>MILEAGE</label>
-                    <div class="form-row">
-                        <div class="select-wrapper">
-                            <select><option>From</option></select>
+               <div class="form-group-1">
+                    <label>MILEAGE (km)</label>
+                    <div class="range-slider-container">
+                        <div class="range-values">
+                            <span id="mileage-min-display">0 km</span>
+                            <span id="mileage-max-display">200,000 km</span>
                         </div>
-                        <div class="select-wrapper">
-                            <select><option>To</option></select>
+
+                        <div class="range-slider-wrapper">
+                            <input type="range" id="mileage-min" class="range-slider" min="0" max="200000" value="0" step="5000">
+                            <input type="range" id="mileage-max" class="range-slider" min="0" max="200000" value="200000" step="5000">
                         </div>
+                        <div class="range-track"></div>
+
                     </div>
                 </div>
+
+
 
                 <div class="form-group">
                     <label>TRANSMISSION</label>
                     <div class="select-wrapper">
-                        <select><option>Manual</option></select>
+
+                        <select id="transmission-select">
+                            <option value="All">All</option>
+                            <option>Manual</option>
+                            <option>Automatic</option>
+                        </select>
+
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label>FUEL</label>
                     <div class="select-wrapper">
-                        <select><option>Diesel</option></select>
+
+                        <select id="fuel-select">
+                            <option value="All">All</option>
+                            <option>Gasoline</option>
+                            <option>Diesel</option>
+                            <option>Electric</option>
+                        </select>
+                        
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>POWER</label>
-                    <div class="form-row">
-                        <div class="select-wrapper">
-                            <select><option>From</option></select>
+               <div class="form-group-1">
+                    <label>POWER (HP)</label>
+                    <div class="range-slider-container">
+                        <div class="range-values">
+                            <span id="power-min-display">0 HP</span>
+                            <span id="power-max-display">1000 HP</span>
                         </div>
-                        <div class="select-wrapper">
-                            <select><option>To</option></select>
+
+                        <div class="range-slider-wrapper">
+                            <input type="range" id="power-min" class="range-slider" min="20" max="1000" value="0" step="10">
+                            <input type="range" id="power-max" class="range-slider" min="20" max="1000" value="1000" step="10">
                         </div>
+                        <div class="range-track"></div>
                     </div>
                 </div>
                 
@@ -201,8 +231,8 @@
 
 </section>
 
-<<<<<<< HEAD
-=======
+<!-- <<<<<<< HEAD
+======= -->
 <div class="review-container">
         <h2>Review from our clients</h2>
         <div id="droplist-sort">
@@ -248,11 +278,11 @@
     </div>
 
 
->>>>>>> 3d73e477afc5fbbe2ca0891597bcfcd2f577dec1
+<!-- >>>>>>> 3d73e477afc5fbbe2ca0891597bcfcd2f577dec1 -->
     <footer>
         <div class="container">
             <div class="avata">
-                <img class="circle" src="../images/LogoWeb-removebg-preview.png">
+                <img class="circle" src="none">
             </div>
             
             <div class="footer-section">

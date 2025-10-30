@@ -1,3 +1,8 @@
+// Location search trả về phần sau dấu ? của 
+// 1 URL. Khi ta bấm vào shop now bên trang hoem hay 
+// 1 thẻ xe trong phần car nó sẽ chuyển ta đến URL này rồi phần
+//  code phía dưới sẽ xử lí để render ra car detail thẻ thông tin chi tiết của 1 loại xe
+
 const params = new URLSearchParams(location.search);
 const brandId = params.get("brand"); 
 const carId = params.get("id");      
