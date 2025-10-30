@@ -104,6 +104,15 @@ nav a:hover {
     font-weight: 700;
 }
 
+#Signin{
+    padding-left: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#Signin:hover{
+    text-decoration: underline;
+}
 
 /* Tablet */
 @media (max-width: 900px) {
