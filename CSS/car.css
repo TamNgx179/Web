@@ -690,3 +690,39 @@ body.is-loading { overflow: hidden; }
   }
 }
 
+/* --- Counter bump animation --- */
+#counter.bump { 
+  animation: counter-bump 450ms ease; 
+  transform-origin: center; 
+}
+
+@keyframes counter-bump {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+/* --- Purchase button success state --- */
+.btn.added { background: #10b981; }      
+
+/* --- Snackbar (mini toast) --- */
+#cart-toast{
+  position: fixed; 
+  bottom: 18px; 
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  opacity: 0; 
+  pointer-events: none;
+  background: #111; 
+  color: #fff;
+  padding: 10px 14px; 
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25);
+  transition: opacity .25s, transform .25s;
+  z-index: 10001; 
+  font-weight: 600;
+}
+#cart-toast.show{
+  opacity: 1; 
+  transform: translateX(-50%) translateY(0);
+}
