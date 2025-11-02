@@ -311,7 +311,7 @@ async function init() {
     if (!btn) return;
 
     const oldText = "Purchase";
-    const okText  = alreadyInCart ? "Đã có trong giỏ" : "Đã thêm ";
+    const okText  = alreadyInCart ? "Already in cart" : "Added ";
 
     btn.disabled = true;
     if (!alreadyInCart) btn.classList.add("added");
@@ -388,7 +388,7 @@ async function init() {
     // ==== FEEDBACK UI ====
     flashCounter();
     flipPurchaseButton({ alreadyInCart });
-    showToast(alreadyInCart ? "Xe đã có trong giỏ hàng" : "Đã thêm vào giỏ hàng");
+    showToast(alreadyInCart ? "Car is already in cart" : "Added to cart");
   }
 
   // ====== KHI TRANG TẢI XONG ======
