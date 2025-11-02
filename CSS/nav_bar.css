@@ -118,20 +118,20 @@ nav a:hover {
 }
 
 /* Tablet */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     nav ul {
         gap: 24px;
     }
     nav a {
-        font-size: 14px;
+        font-size: 20px;
     }
     #Logo img {
-        width: 55px;
+        width: 70px;
     }
 }
 
 /* Mobile */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     nav {
         padding: 8px 3vw;
     }
@@ -139,26 +139,27 @@ nav a:hover {
         gap: 14px;
     }
     nav ul li a {
-        font-size: 10px; 
+        font-size: 20px; 
     }
     #Logo img {
-        width: 30px;
+        width: 70px;
     }
     #Trolley img,
     #popup-login img {
-        width: 18px;
-        height: 18px;
+        width: 30px;
+        height: 30px;
     }
 }
 
 
 /* Siêu nhỏ (Fold, iPhone SE) */
-@media (max-width: 400px) {
+@media (max-width: 576px) {
     nav ul {
         gap: 10px;
     }
-    nav a {
-        font-size: 12px;
+    nav ul li a {
+        font-size: 10px;
+        padding-bottom: 10px;
     }
     #Logo img {
         width: 45px;
