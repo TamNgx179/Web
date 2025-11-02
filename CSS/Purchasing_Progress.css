@@ -227,7 +227,7 @@ body.is-loading { overflow: hidden; }
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 13vh;
+  margin-top: 15vh;
   margin-bottom: 40px;
   margin-right: 30%;
 }
@@ -910,7 +910,7 @@ body.is-loading { overflow: hidden; }
     }
 
     #purchasing-progress {
-        margin-top: 10vh;
+        margin-top: 20vh;
         font-size: 12px;
         margin-right: 0;
     }

@@ -13,9 +13,6 @@ body {
   color: #000;
 }
 /* about_us.css */
-#counter {
-  right: 440px;
-}
 /* Hero section chiếm chiều cao toàn màn hình */
 .hero-container {
     position: relative;
@@ -360,13 +357,13 @@ body {
 }
 
 .services h2 {
-  color: #ffffff;
+  color: black;
   font-size: 4em;
   font-weight: 800;
   margin-bottom: 40px;
 }
 .services p {
-  color: #ffffff;
+  color: black;
   font-size: 2em;
   font-weight: 400;
   margin-bottom: 40px;
@@ -538,6 +535,9 @@ body {
   gap: 2rem;    
 }
 
+footer {
+  margin-top: 25%;
+}
 
 
 /* ====================================================
@@ -613,6 +613,7 @@ select {
     /* ======= Thanh tìm kiếm và bộ lọc ======= */
     .search-bar {
       display: flex;
+      flex-direction: row;
       justify-content: center;
       gap: 1rem;
       margin-bottom: 2rem;
@@ -627,6 +628,7 @@ select {
       font-size: 1rem;
       outline: none;
     }
+    
 
     .filters button {
       padding: 0.6rem 1rem;
@@ -903,12 +905,269 @@ select {
         }
 
         /* Responsive Design */
-        @media (max-width: 992px) {
-            .locator-wrapper {
-                flex-direction: column;
-                height: auto;
-            }
-            .sidebar {
-                height: 50vh; /* Adjust height for smaller screens */
-            }
-        }
+/* ===================== Responsive ===================== */
+
+/* Mobile: max-width 600px */
+@media (max-width: 600px) {
+  /* Hero */
+  .hero-container {
+    margin-top: 10%;
+    padding: 0 5%;
+    justify-content: center;
+    text-align: center;
+    min-height: 40vh;
+  }
+
+  .hero-content {
+    position: relative;
+    left: 0;
+    top: 20px;
+
+    padding: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+  }
+
+  .about-us {
+    padding: 50px 15px;
+  }
+  .about-us h2 {
+    font-size: 2.2rem;
+  }
+  .about-us p {
+    font-size: 1rem;
+    max-width: 90%;
+    margin-bottom: 30px;
+  }
+  /* Timeline */
+  .timeline {
+    margin: 50px 10px;
+  }
+
+
+  .timeline-container,
+  .timeline-image {
+    width: 100% !important;
+    padding: 10px 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .timeline-container img {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    right: 0 !important;
+    left: 0 !important;
+    margin: 0 auto 10px auto;
+    top: 0 !important;
+  }
+
+  .img-time {
+    margin-top: 95px !important;
+  }
+
+  .timeline-textbox {
+    margin-top: 50px;
+    width: 80%;
+    text-align: center;
+    padding: 15px;
+    margin-right: 0 !important;
+  }
+
+  .timeline-image img {
+    width: 80%;
+    height: auto;
+    margin-right: 0;
+    top: 0 !important;
+  }
+
+  .timeline::after {
+    left: 5px;
+    margin-left: 0;
+  }
+
+  /* Services */
+  .services-container {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+  }
+
+  .services h2 {
+    font-size: 20px !important;
+  }
+
+  .services p {
+      font-size: 15px;
+  }
+
+  .service-card {
+    width: 100% !important;
+    padding: 20px;
+  }
+
+  /* About Us / Stats */
+  .stats {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .stat-item {
+    width: 80%;
+    height: auto;
+    padding: 20px;
+  }
+
+  /* Map & Network */
+  .map-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .network h2{
+    font-size: 20px !important;
+  }
+  .network p{
+    font-size: 15px !important;
+  }
+
+  .search-bar{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .search-bar input,
+  .search-bar select{
+    width: 100%;
+  }
+  .vietnam-map,
+  .map-container {
+    max-width: 100%;
+    transform: translateX(0);
+  }
+
+  .map-svg{
+    width: 50%;
+  }
+
+  .map-section{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .info-card {
+    left: 0;
+    margin-top: 20px;
+    width: 90%;
+  }
+
+  .network img {
+    width: 100%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Sidebar / Store List */
+  .sidebar {
+    flex-basis: 100%;
+    height: auto;
+    margin-top: 30px;
+  }
+
+  #store-list {
+    max-height: 400px;
+  }
+
+  .store-card {
+    margin-bottom: 20px;
+    transform: none;
+  }
+
+  .store-card .services {
+    transform: none;
+    margin-top: 10px;
+  }
+}
+
+/* Tablet: max-width 900px */
+@media (max-width: 900px) {
+  .hero-container {
+    margin-top: 10%;
+    padding: 0 8%;
+    min-height: 40vh;
+  }
+
+  .hero-content {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 90%;
+    left: 20px;
+    top: 50px;
+  }
+
+  .hero-content h1 {
+    font-size: 25px;
+  }
+
+  .hero-content p {
+    font-size: 15px;
+  }
+  .container h2{
+    font-size: 20px;
+  }
+  .container p{
+    font-size: 15px;
+  }
+  .services-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .service-card {
+
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .stat-item {
+    width: 40%;
+  }
+
+  .map-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vietnam-map,
+  .map-container {
+    max-width: 90%;
+  }
+
+  .info-card {
+    width: 90%;
+    left: 0;
+    margin-top: 20px;
+  }
+
+  .sidebar {
+    flex-basis: 100%;
+    margin-top: 30px;
+  }
+}
