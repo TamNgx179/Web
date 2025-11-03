@@ -16,11 +16,11 @@
 
 ## 👥 Thành viên nhóm
 
-| STT | Họ và tên       | MSSV      | Vai trò                                           |
-|-----|-----------------|-----------|---------------------------------------------------|
-| 1   | Phan Đình Phúc  | 23521216  | Trưởng nhóm – Code các trang About, Cars n Reviews|
-| 2   | Nguyễn Minh Tâm | 23521390  | Code các trang Home, Car, Brand                   |
-| 3   | Nguyễn Văn Thanh| 23521456  | Code các trang Giỏ hàng, Contact, Footer và Navbar|
+| STT | Họ và tên       | MSSV      | Vai trò                                               |
+|-----|-----------------|-----------|-------------------------------------------------------|
+| 1   | Phan Đình Phúc  | 23521216  | **Trưởng nhóm** – Code các trang About, Cars n Reviews|
+| 2   | Nguyễn Minh Tâm | 23521390  | Code các trang Home, Car, Brand, Data xe              |
+| 3   | Nguyễn Văn Thanh| 23521456  | Code các trang Giỏ hàng, Contact, Footer và Navbar    |
 
 ---
 
