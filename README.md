@@ -1,10 +1,10 @@
 <div align="center">
 
-# 🧑‍💻 Internet & Công Nghệ Web
+# Internet & Công Nghệ Web
 
 </div>
 
-## 📘 Giới thiệu môn học
+## Giới thiệu môn học
 
 - **Tên học phần:** Internet & Công nghệ Web  
 - **Mã học phần:** IE104  
@@ -14,29 +14,29 @@
 
 ---
 
-## 👥 Thành viên nhóm
+## Thành viên nhóm
 
-| STT | Họ và tên       | MSSV      | Vai trò                                               |
-|-----|-----------------|-----------|-------------------------------------------------------|
-| 1   | Phan Đình Phúc  | 23521216  | **Trưởng nhóm** – Code các trang About, Cars n Reviews|
-| 2   | Nguyễn Minh Tâm | 23521390  | Code các trang Home, Car, Brand, Data xe              |
-| 3   | Nguyễn Văn Thanh| 23521456  | Code các trang Giỏ hàng, Contact, Footer và Navbar    |
+| STT | Họ và tên       | MSSV      | Vai trò                                                 |
+|-----|-----------------|-----------|---------------------------------------------------------|
+| 1   | Phan Đình Phúc  | 23521216  | **Trưởng nhóm** – Code các trang About, Cars and Reviews|
+| 2   | Nguyễn Minh Tâm | 23521390  | Code các trang Home, Car, Brand, Data xe                |
+| 3   | Nguyễn Văn Thanh| 23521456  | Code các trang Giỏ hàng, Contact, Footer và Navbar      |
 
 ---
 
-## 🚗 Website Giới Thiệu & Bán Xe
+## Website Giới Thiệu & Bán Xe
 
-### 💡 Tính năng chính
+### Tính năng chính
 
-- ✅ Giao diện trang chủ hiển thị các dòng xe nổi bật  
-- ✅ Bộ lọc và danh mục xe theo thương hiệu  
-- ✅ Trang chi tiết xe (tên, giá, mô tả, hình ảnh, thông số)  
-- ✅ Thêm xe vào giỏ hàng có các quy trình để thanh toán
-- ✅ Responsive UI – tương thích điện thoại và máy tính  
-- ✅ Quản lý dữ liệu xe bằng file JSON  
-- ✅ Hiệu ứng động, smooth scroll và animation khi chuyển trang  
+- Giao diện trang chủ hiển thị các dòng xe nổi bật  
+- Bộ lọc và danh mục xe theo thương hiệu  
+- Trang chi tiết xe (tên, giá, mô tả, hình ảnh, thông số)  
+- Thêm xe vào giỏ hàng có các quy trình để thanh toán
+- Responsive UI – tương thích điện thoại và máy tính  
+- Quản lý dữ liệu xe bằng file JSON  
+- Hiệu ứng động, smooth scroll và animation khi chuyển trang  
 
-### 🏗️ Kiến trúc và công nghệ sử dụng
+### Kiến trúc và công nghệ sử dụng
 
 Front-end:
 -  HTML5, CSS3, JavaScript
@@ -67,7 +67,7 @@ Web/
 
 ---
 
-## 🚀 Cách chạy dự án
+## Cách khởi động dự án
 
 1. Clone dự án về máy:
    ```bash
@@ -79,11 +79,11 @@ Web/
    cd Web
    ```
 
-3. Chạy trực tiếp bằng **VSCode Live Server** hoặc mở file `Home.html` trên trình duyệt.
+3. Khởi động trực tiếp bằng **VSCode Live Server** hoặc mở file `Home.html` trên trình duyệt.
 
 ---
 
-## 🔍 Hướng phát triển tương lai
+## Hướng phát triển tương lai
 
 - Ghi nhận lại đơn hàng mua xe sau khi người dùng hoàn thành các bước thanh toán.  
 - Tạo hệ thống đăng nhập, quản lý người dùng.  
@@ -94,7 +94,7 @@ Web/
 
 ---
 
-## 🧾 Giấy phép
+## Giấy phép
 
 Dự án được phát triển **phục vụ mục đích học tập** trong khuôn khổ môn **IE104 - UIT**.  
 Vui lòng **không sử dụng thương mại hoặc tái phân phối** nếu chưa được sự cho phép của nhóm tác giả.
