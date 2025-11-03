@@ -1,3 +1,16 @@
+// ================ PRELOADER ================
+(function () {
+  const preloader = document.getElementById('preloader');
+  document.body.classList.add('is-loading');
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      preloader?.classList.add('hide');
+      document.body.classList.remove('is-loading');
+      setTimeout(() => preloader?.remove(), 500);
+    }, 1400);
+  });
+})();
+
 // ================ AUTH POPUP CONTROL ================
 (function () {
   const trigger = document.getElementById("popup-login"); 
@@ -247,7 +260,7 @@ async function init() {
     if (e.key === "ArrowRight") changeImage(1);
   });
 }
-/* ========= APPEND-ONLY: CART PUSH + COUNTER + EMPTY POPUP ========= */
+//* ========= APPEND-ONLY: CART PUSH + COUNTER + EMPTY POPUP (Enhanced) ========= */
 (function () {
   // ====== KHÓA DỮ LIỆU TRONG LOCAL STORAGE ======
   const CART_KEY = "selectedcar";
@@ -256,12 +269,9 @@ async function init() {
   function getCart() {
     try {
       const saved = localStorage.getItem(CART_KEY);
-      if (saved) {
-        return JSON.parse(saved);
-      } else {
-        return [];
-      }
-    } catch (error) {
+      if (saved) return JSON.parse(saved);
+      return [];
+    } catch {
       return [];
     }
   }
@@ -275,37 +285,64 @@ async function init() {
   // ====== CẬP NHẬT SỐ XE HIỂN THỊ TRÊN ICON GIỎ HÀNG ======
   function updateCounter() {
     const counter = document.getElementById("counter");
-    if (counter) {
-      counter.textContent = String(getCart().length);
-    }
+    if (!counter) return;
+    counter.textContent = String(getCart().length);
   }
 
+  // ====== FEEDBACK UI ======
+  function flashCounter() {
+    const c = document.getElementById("counter");
+    if (!c) return;
+    c.classList.remove("bump");
+    void c.offsetWidth;          // force reflow để reset animation
+    c.classList.add("bump");
+  }
+
+  function showToast(message) {
+    const t = document.getElementById("cart-toast");
+    if (!t) return;
+    t.textContent = message;
+    t.classList.add("show");
+    setTimeout(() => t.classList.remove("show"), 1400);
+  }
+
+  function flipPurchaseButton({ alreadyInCart }) {
+    const btn = document.getElementById("purchaseBtn");
+    if (!btn) return;
+
+    const oldText = "Purchase";
+    const okText  = alreadyInCart ? "Already in cart" : "Added ";
+
+    btn.disabled = true;
+    if (!alreadyInCart) btn.classList.add("added");
+    btn.textContent = okText;
+
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.classList.remove("added");
+      btn.textContent = oldText;
+    }, 1200);
+  }
 
   // ====== LẤY DỮ LIỆU XE THEO brandId VÀ carId ======
   async function fetchCarByParams() {
     try {
-      if (!brandId || !carId || !BRAND_SOURCES[brandId]) {
-        return null;
-      }
+      if (!brandId || !carId || !BRAND_SOURCES[brandId]) return null;
 
       const response = await fetch(BRAND_SOURCES[brandId]);
       const data = await response.json();
 
       // Lấy danh sách xe trong JSON
       let cars = [];
-      if (Array.isArray(data.cars)) {
-        cars = data.cars;
-      } else if (Array.isArray(data)) {
-        cars = data;
-      }
+      if (Array.isArray(data?.cars))      cars = data.cars;
+      else if (Array.isArray(data))       cars = data;
 
       // Tìm xe có id khớp
-      const found = cars.find(function (car) {
-        return String(car.id) === String(carId);
-      });
-
-      return found || null;
-    } catch (error) {
+      const car = cars.find(c =>
+        String(c.id ?? c.name ?? "").toLowerCase() === String(carId).toLowerCase()
+      );
+      return car || null;
+    } catch {
       return null;
     }
   }
@@ -319,25 +356,17 @@ async function init() {
 
   // ====== TẠO ĐỐI TƯỢNG XE DÙNG ĐỂ LƯU VÀO GIỎ ======
   function buildCartItem(car) {
-    const name = car.name || "Unknown car";
-    const img = car.display || car.hero || car.image || "";
+    const name  = car.name || "Unknown car";
+    const img   = car.display || car.hero || car.image || "";
     const specs = car.specs || {};
-
     const weight = specs["Weight"] || specs["weight"] || "N/A";
-    const power = specs["Power"] || specs["Horsepower"] || "N/A";
-    const speed =
-      specs["Top Speed"] || specs["Top speed"] || specs["Max speed"] || "N/A";
-
-    const price = formatUSD(car.priceUSD || car.price || 0);
+    const power  = specs["Power"]  || specs["Horsepower"] || "N/A";
+    const speed  = specs["Top Speed"] || specs["Top speed"] || specs["Max speed"] || "N/A";
+    const price  = formatUSD(car.priceUSD || car.price || 0);
 
     return {
       id: (brandId + ":" + (car.id || name)).toLowerCase(),
-      name: name,
-      img: img,
-      weight: weight,
-      power: power,
-      speed: speed,
-      price: price
+      name, img, weight, power, speed, price
     };
   }
 
@@ -349,27 +378,24 @@ async function init() {
     const item = buildCartItem(car);
     const cart = getCart();
 
-    // Kiểm tra xem xe đã có trong giỏ chưa
-    const alreadyInCart = cart.some(function (x) {
-      return x.id === item.id;
-    });
-
-    if (!alreadyInCart) {
-      cart.push(item);
-    }
+    // Kiểm tra xe đã có trong giỏ chưa
+    const alreadyInCart = cart.some(x => x.id === item.id);
+    if (!alreadyInCart) cart.push(item);
 
     setCart(cart);
     updateCounter();
+
+    // ==== FEEDBACK UI ====
+    flashCounter();
+    flipPurchaseButton({ alreadyInCart });
+    showToast(alreadyInCart ? "Car is already in cart" : "Added to cart");
   }
 
   // ====== KHI TRANG TẢI XONG ======
   document.addEventListener("DOMContentLoaded", function () {
-    updateCounter();      // Cập nhật số xe
-
+    updateCounter();                    // Cập nhật số xe ngay khi vào trang
     const btn = document.getElementById("purchaseBtn");
-    if (btn) {
-      btn.addEventListener("click", addCarToCart);
-    }
+    if (btn) btn.addEventListener("click", addCarToCart);
   });
 })();
 

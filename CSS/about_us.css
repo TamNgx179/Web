@@ -394,7 +394,6 @@ body {
   z-index: 3;
 }
 .services p {
-  position: relative;
   color: #ffffff;
   font-size: 2em;
   font-weight: 400;
@@ -572,6 +571,9 @@ body {
   gap: 2rem;    
 }
 
+footer {
+  margin-top: 25%;
+}
 
 
 /* ====================================================

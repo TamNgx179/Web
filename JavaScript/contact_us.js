@@ -1,3 +1,16 @@
+// ================ PRELOADER ================
+(function () {
+  const preloader = document.getElementById('preloader');
+  document.body.classList.add('is-loading');
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      preloader?.classList.add('hide');
+      document.body.classList.remove('is-loading');
+      setTimeout(() => preloader?.remove(), 500);
+    }, 1400);
+  });
+})();
+
 // ================ AUTH POPUP CONTROL ================
 (function () {
   const trigger = document.getElementById("popup-login"); 

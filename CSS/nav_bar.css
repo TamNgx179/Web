@@ -16,6 +16,7 @@ html, body {
 
 nav {
     width: 100%;
+    height: 10%;
     max-width: 100vw;
     background-color: white;
     display: flex;
@@ -34,7 +35,7 @@ nav {
 
 
 #Logo img {
-    width: 60px;
+    width: 90px;
     height: auto;
     object-fit: contain;
     flex-shrink: 0; /* không bị co */
@@ -42,6 +43,7 @@ nav {
 
 
 nav ul {
+    font-size: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -83,8 +85,8 @@ nav a:hover {
 
 #Trolley img,
 #popup-login img {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
     object-fit: contain;
 }
 
@@ -105,6 +107,7 @@ nav a:hover {
 }
 
 #Signin{
+    font-size: 20px;
     padding-left: 5px;
     text-decoration: none;
     cursor: pointer;
@@ -115,20 +118,31 @@ nav a:hover {
 }
 
 /* Tablet */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
     nav ul {
         gap: 24px;
     }
     nav a {
-        font-size: 14px;
+        font-size: 20px;
     }
     #Logo img {
-        width: 55px;
+        width: 70px;
     }
+    .nav-right img{
+        width: 40px !important;
+        height: 40px !important;
+    }
+    #Signin{
+        font-size: 15px !important;
+    }
+    nav{
+        height: 12%;
+    }
+    
 }
 
 /* Mobile */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     nav {
         padding: 8px 3vw;
     }
@@ -136,28 +150,54 @@ nav a:hover {
         gap: 14px;
     }
     nav ul li a {
-        font-size: 10px; 
+        font-size: 20px; 
     }
     #Logo img {
-        width: 30px;
+        width: 70px;
     }
     #Trolley img,
     #popup-login img {
-        width: 18px;
-        height: 18px;
+        width: 30px;
+        height: 30px;
+    }
+    #Signin{
+        font-size: 10px;
+    }
+    .nav-right img{
+        width: 20px !important;
+        height: 20px !important;
     }
 }
 
 
 /* Siêu nhỏ (Fold, iPhone SE) */
-@media (max-width: 400px) {
+@media (max-width: 576px) {
     nav ul {
         gap: 10px;
     }
-    nav a {
-        font-size: 12px;
+    nav ul li a {
+        font-size: 10px;
+        padding-bottom: 10px;
     }
     #Logo img {
         width: 45px;
+    }
+    #Signin{
+        font-size: 8px !important;
+    }
+    .nav-right img{
+        width: 15px !important;
+        height: 15px !important;
+    }
+    .nav-right{
+        gap: 10px;
+    }
+    #counter {
+        font-size: 8px;
+        height: 15px;
+        min-width: 15px; /* tránh bị co nếu số > 9 */
+        line-height: 15px; /* căn giữa số */
+        top: -3px;
+        right: -6px;
     }
 }
