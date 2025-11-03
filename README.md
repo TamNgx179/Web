@@ -1,11 +1,14 @@
-# Internet & Công Nghệ Web
+<div align="center">
 
+# 🧑‍💻 Internet & Công Nghệ Web
+
+</div>
 ## Giới thiệu môn học
 
 - **Tên học phần:** Internet & Công nghệ Web  
 - **Mã học phần:** IE104  
 - **Lớp học phần:** IE104.Q11 
-- **Năm học:** Học kỳ 2 (2024–2025)  
+- **Năm học:** Học kỳ 1 (2025–2026)  
 - **Giảng viên hướng dẫn:** ThS. Võ Tấn Khoa
 
 ---
