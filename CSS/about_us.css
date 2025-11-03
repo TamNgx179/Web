@@ -1,6 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
 
 /* Reset cơ bản */
+
+.goldensand {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 3;
+  object-fit: contain;
+  bottom: 10px;       /* cách đáy 10px */
+  right: 150px;       /* lệch phải 150px để tránh đè lên longsand */
+}
+
+.longsand {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  z-index: 3;
+  object-fit: contain;
+  bottom: 50px;       /* cao hơn goldensand */
+  right: 50px;
+}
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -9,13 +32,10 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #fff;
   color: #000;
 }
 /* about_us.css */
-#counter {
-  right: 440px;
-}
+
 /* Hero section chiếm chiều cao toàn màn hình */
 .hero-container {
     position: relative;
@@ -29,14 +49,19 @@ body {
 }
 
 /* Hero background - giữ nguyên, đảm bảo ảnh và overlay phủ đúng vị trí */
-.hero-bg img {
+.hero-bg {
     position: absolute;
+    background-image: url('../images/about_us_page.png');
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    background-attachment: fixed; /* hiệu ứng parallax */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     object-fit: cover;
-    z-index: -1;
+    z-index: 0;
 }
 
 /* Gradient Overlay - Điều chỉnh để hiệu ứng mờ dần từ trái sang phải rõ ràng hơn */
@@ -247,11 +272,11 @@ body {
 
 .timeline-container img{
   position: absolute;
-  width: 40px;
+  width: 70px;
   border-radius:50%;
-  right: -20px;
+  right: -35px;
   top: 32px;
-  z-index : 2;
+  z-index : 3;
 }
 
 .timeline-container:nth-child(1){
@@ -275,7 +300,7 @@ body {
 
 
 .right-container img{
-  left: -20px;
+  left: -33px;
 }
 
 .timeline::after{
@@ -283,7 +308,7 @@ body {
   position: absolute;
   width: 6px;
   height: 100%;
-  background: #000000;
+  background: #ffffff;
   top: 0;
   left: 50%;
   margin-left: -3px;
@@ -308,8 +333,8 @@ body {
 }
 
 .timeline-image img{
-  height: 40%;
-  width: 45%;
+  height: 300px;
+  width: 600px;
   border-radius: 12px;
 }
 
@@ -353,6 +378,7 @@ body {
 .services {
   position: relative;
   text-align: center;
+  height: 100vh;     /* giữ tỉ lệ ảnh */
   padding: 60px 10%;
   /* opacity: 0.5;
   background: #c7c5c5; */
@@ -360,36 +386,43 @@ body {
 }
 
 .services h2 {
+  position: relative;
   color: #ffffff;
   font-size: 4em;
   font-weight: 800;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+  z-index: 3;
 }
 .services p {
+  position: relative;
   color: #ffffff;
   font-size: 2em;
   font-weight: 400;
   margin-bottom: 40px;
+  z-index: 3;
 }
-.services-bg img {
+
+.services-bg{
+  background-image: url('../images/testing.png');
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* canh giữa */
+  top: 0%;
+  left: 0%;
   width: 100%;       /* vừa đủ rộng để che 3 card */
-  height: auto;     /* giữ tỉ lệ ảnh */
-  object-fit: cover;
-  margin-top: 12px;
+  height: 100vh;     /* giữ tỉ lệ ảnh */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin-bottom: 12px;
   opacity: 1.0;     /* làm mờ */
   filter: brightness(60%);
-  z-index: -1;       /* cho nằm dưới card nhưng trên nền */
+  z-index: 0;       /* cho nằm dưới card nhưng trên nền */
 }
 
 .services-container {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 100px;
   /* flex-wrap:wrap; flex wrap làm các phần tử xuống dòng */
   
   margin-top: 100px
@@ -405,10 +438,11 @@ body {
   background: rgba(255, 255, 255, 0.8); /*chỉ nền mờ, chữ rõ */
   border-radius: 16px;
   padding: 30px 30px;
-  width:600px;
+  width:800px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
   transition: all 0.3s ease;
+  z-index: 1;
 }
 
 /* Hiệu ứng hover */
@@ -527,7 +561,7 @@ body {
   color: #000000;
   margin-top: 8px;
 }
-.container{
+.scontainer{
   display: flex;
   flex-direction: column;
   justify-content: space-between;  /* đẩy hai phần ra hai bên */
@@ -544,10 +578,11 @@ body {
 Map section for the project 
 =======================================================  */
 .network {
+  position: relative;
   padding: 3rem 2rem;
   text-align: center;
   transform: translateY(220px);
-  margin-bottom: 200px;
+  margin-bottom: 300px;
 }
 
 .network h2 {
@@ -593,322 +628,337 @@ select {
 }
 
 /* ----- Map & Info card layout ----- */
-  .network {
-      padding: 3rem 2rem;
-      text-align: center;
-    }
-
-    .network h2 {
-      font-size: 4rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .network p.subtitle {
-      color: #000000;
-      margin-bottom: 2rem;
-      font-size: 1.2rem;
-    }
-
-    /* ======= Thanh tìm kiếm và bộ lọc ======= */
-    .search-bar {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    input,
-    select {
-      padding: 0.7rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 1rem;
-      outline: none;
-    }
-
-    .filters button {
-      padding: 0.6rem 1rem;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: white;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-
-    .filters button:hover {
-      background: #f0f0f0;
-    }
-
-    /* ======= Map ======= */
-    /* .map {
-      background: white;
-      border-radius: 12px;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    } */
-
-    .network img{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%); /* canh giữa */
-      width: 100%;       /* vừa đủ rộng để che 3 card */
-      height: auto;     /* giữ tỉ lệ ảnh */
-      object-fit: cover;
-      margin-top: 12px;
-      margin-bottom: 12px;
-      opacity: 1.0;     /* làm mờ */
-      filter: brightness(100%);
-      z-index: -2;       /* cho nằm dưới card nhưng trên nền */
-    }
-
-    .map-section{
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center; /* có thể là space-between nếu muốn giãn đều */
-    }
-
-    .vietnam-map{
-      /* display: grid;
-      grid-template-columns: 1fr 420px; 
-      gap: var(--gap);
-      align-items: start; */
-
-        flex: 1;
-        max-width: 60%; /* map chiếm 60% chiều rộng */
-        display: flex;
-        justify-content: flex-end; /* đẩy sát trái */
-    }
-
-    .vietnam-map-container{
-      transform: translateX(-200px);
-      padding: 1rem;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      min-height: 320px;
-      /* Code này coi lại */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    svg path {
-      fill: #ffffff;
-      stroke: #848484;
-      stroke-width: 1;
-      cursor: pointer;
-    }
-
-    svg path:hover {
-      fill: #696767;
-      transform: scale(1.05);
-    }
-
-    svg path.active {
-      fill: #000;
-      transform: scale(1.08);
-    }
-
-  .map-container {
-    /* position: relative;
-    min-height: 200px;
-    pointer-events: none;  */
-    transform: translateY(100px);
-    flex: 1;
-    max-width: 35%; /* chiếm 35% còn lại */
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    background: white;
-    
-  
+.network {
+  padding: 3rem 2rem;
+  text-align: center;
 }
 
-    /* ======= Info Card ======= */
-  .info-card {
-      background: rgb(242, 242, 242);
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-      text-align: left;
-      left: 60%;
+.network h2 {
+  font-size: 4rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.network p.subtitle {
+  color: #000000;
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+}
+
+/* ======= Thanh tìm kiếm và bộ lọc ======= */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+input,
+select {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.filters button {
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.filters button:hover {
+  background: #f0f0f0;
+}
+
+/* ======= Map ======= */
+/* .map {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+} */
+
+.network img{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* canh giữa */
+  width: 100%;       /* vừa đủ rộng để che 3 card */
+  height: auto;     /* giữ tỉ lệ ảnh */
+  object-fit: cover;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  opacity: 1.0;     /* làm mờ */
+  filter: brightness(100%);
+  z-index: -2;       /* cho nằm dưới card nhưng trên nền */
+}
+
+.map-section{
+    /* background-image: url('../images/gas-station.png');  */
+    background-size: cover; /* Đảm bảo hình ảnh phủ kín khu vực */
+    background-position: center; /* Căn giữa hình ảnh */
+    background-repeat: no-repeat; /* Không lặp lại hình ảnh */
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center; /* có thể là space-between nếu muốn giãn đều */
+    z-index: 0;
+}
+
+.vietnam-map{
+  /* display: grid;
+  grid-template-columns: 1fr 420px; 
+  gap: var(--gap);
+  align-items: start; */
+
+    flex: 1;
+    max-width: 60%; /* map chiếm 60% chiều rộng */
+    display: flex;
+    justify-content: flex-end; /* đẩy sát trái */
+}
+
+.vietnam-map-container{
+  transform: translateX(-200px);
+  padding: 1rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  min-height: 320px;
+  /* Code này coi lại */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+svg path {
+  fill: #ffffff;
+  stroke: #848484;
+  stroke-width: 1;
+  cursor: pointer;
+}
+
+svg path:hover {
+  fill: #696767;
+  transform: scale(1.05);
+}
+
+svg path.active {
+  fill: #000;
+  transform: scale(1.08);
+}
+
+.island path {
+    fill: #000000 !important; /* Buộc màu nền là đen */
+    stroke: #000000;
+    stroke-width: .5; /* Tăng độ dày đường viền (tùy chỉnh) */
+}
+
+
+.map-container {
+/* position: relative;
+min-height: 200px;
+pointer-events: none;  */
+transform: translateY(100px);
+flex: 1;
+max-width: 35%; /* chiếm 35% còn lại */
+border-radius: 12px;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+background: white;
+
+
+}
+
+/* ======= Info Card ======= */
+.info-card {
+  background: rgb(242, 242, 242);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  left: 60%;
+}
+
+.info-card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.info-card .tag {
+  font-size: 0.8rem;
+  background: #f5f5f5;
+  border-radius: 5px;
+  padding: 3px 8px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.info-card .details {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.info-card .details div {
+  margin-bottom: 0.5rem;
+}
+
+.info-card .actions {
+  margin-top: 1rem;
+}
+
+.info-card .actions button {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.6rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.info-card .actions button:hover {
+  background: #f9f9f9;
+}
+
+
+
+/* Side bar code ================================================================ */
+/* Sidebar */
+.sidebar {
+  transform: translateY(100px);
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 24px;
+    height: 120vh; /* Fixed height to contain the scrollable list */
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+.sidebar-header p {
+    margin: 4px 0 16px 0;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+/* Store List - The scrollable part */
+#store-list {
+    overflow-y: auto; /* This makes the div scrollable */
+    flex-grow: 1; /* Allows it to take up available space */
+    padding-right: 10px; /* Space for the scrollbar */
+}
+
+#store-list .initial-message {
+    color: #6c757d;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Custom Scrollbar */
+#store-list::-webkit-scrollbar {
+    width: 6px;
+}
+#store-list::-webkit-scrollbar-track {
+    background: #e9ecef;
+    border-radius: 10px;
+}
+#store-list::-webkit-scrollbar-thumb {
+    background: #adb5bd;
+    border-radius: 10px;
+}
+#store-list::-webkit-scrollbar-thumb:hover {
+    background: #868e96;
+}
+
+/* Store Card Styling */
+.store-card {
+    background: #ffffff;
+    border-radius: 8px;
+    height: 30%;
+    padding: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.store-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.store-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+.store-card h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #212529;
+}
+.store-card .rating {
+    background: #ffc107;
+    color: #333;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.store-card .details p {
+    margin: 4px 0;
+    color: #495057;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.store-card hr {
+    border: 0;
+    border-top: 1px solid #e9ecef;
+    /* sát .services */
+}
+.store-card .tservices {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-self: flex-start;
+    margin-left: 50px;
+    margin-bottom: 0;    
+    padding-bottom: 0;   
+    transform: translateX(-50px);
+}
+.store-card .tservices span {
+    background-color: #e9ecef;
+    color: #495057;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .locator-wrapper {
+        flex-direction: column;
+        height: auto;
     }
-
-    .info-card h3 {
-      margin-top: 0;
-      font-size: 1.5rem;
+    .sidebar {
+        height: 50vh; /* Adjust height for smaller screens */
     }
+}
 
-    .info-card .tag {
-      font-size: 0.8rem;
-      background: #f5f5f5;
-      border-radius: 5px;
-      padding: 3px 8px;
-      display: inline-block;
-      margin-bottom: 0.5rem;
-    }
-
-    .info-card .details {
-      font-size: 0.9rem;
-      color: #333;
-    }
-
-    .info-card .details div {
-      margin-bottom: 0.5rem;
-    }
-
-    .info-card .actions {
-      margin-top: 1rem;
-    }
-
-    .info-card .actions button {
-      width: 100%;
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 0.6rem;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
-    .info-card .actions button:hover {
-      background: #f9f9f9;
-    }
-
-
-
-    /* Side bar code ================================================================ */
-    /* Sidebar */
-        .sidebar {
-          transform: translateY(100px);
-            flex-basis: 40%;
-            display: flex;
-            flex-direction: column;
-            background-color: #f8f9fa;
-            border-radius: 12px;
-            padding: 24px;
-            height: 120vh; /* Fixed height to contain the scrollable list */
-        }
-
-        .sidebar-header h2 {
-            margin: 0;
-            font-size: 24px;
-            color: #333;
-        }
-
-        .sidebar-header p {
-            margin: 4px 0 16px 0;
-            color: #6c757d;
-            font-size: 14px;
-        }
-
-        /* Store List - The scrollable part */
-        #store-list {
-            overflow-y: auto; /* This makes the div scrollable */
-            flex-grow: 1; /* Allows it to take up available space */
-            padding-right: 10px; /* Space for the scrollbar */
-        }
-        
-        #store-list .initial-message {
-            color: #6c757d;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        /* Custom Scrollbar */
-        #store-list::-webkit-scrollbar {
-            width: 6px;
-        }
-        #store-list::-webkit-scrollbar-track {
-            background: #e9ecef;
-            border-radius: 10px;
-        }
-        #store-list::-webkit-scrollbar-thumb {
-            background: #adb5bd;
-            border-radius: 10px;
-        }
-        #store-list::-webkit-scrollbar-thumb:hover {
-            background: #868e96;
-        }
-
-        /* Store Card Styling */
-        .store-card {
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 16px;
-            margin-bottom: 16px;
-            border: 1px solid #dee2e6;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        
-        .store-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .store-card .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-        .store-card h3 {
-            margin: 0;
-            font-size: 18px;
-            color: #212529;
-        }
-        .store-card .rating {
-            background: #ffc107;
-            color: #333;
-            padding: 4px 8px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-        .store-card .details p {
-            margin: 4px 0;
-            color: #495057;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .store-card hr {
-            border: 0;
-            border-top: 1px solid #e9ecef;
-           /* sát .services */
-        }
-        .store-card .services {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: -50px;      /* cho phần tử dịch lên phía trên */
-            margin-bottom: 0;     /* sát đáy card */
-            padding-bottom: 0;   
-            transform: translateX(-50px);
-        }
-        .store-card .services span {
-            background-color: #e9ecef;
-            color: #495057;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .locator-wrapper {
-                flex-direction: column;
-                height: auto;
-            }
-            .sidebar {
-                height: 50vh; /* Adjust height for smaller screens */
-            }
-        }
