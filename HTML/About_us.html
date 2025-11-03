@@ -11,6 +11,13 @@
 </head>
 
 <body>
+    <div id="preloader" aria-hidden="true">
+            <div class="preloader-inner">
+                <img src="../images/LogoWeb-removebg-preview.png" alt="Loading..." class="preloader-logo" width="140"height="140"/>
+                <div class="preloader-ring" aria-hidden="true"></div>
+                <p class="preloader-text">Loading...</p>
+            </div>
+        </div>
     <!-- Navbar -->
     <nav>
         <a id="Logo" href="../HTML/Home.html">
@@ -1474,11 +1481,23 @@
                 updateSidebar(regionId);
             });
         });
+        (function () {
+            const preloader = document.getElementById('preloader');
+            document.body.classList.add('is-loading');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                preloader?.classList.add('hide');
+                document.body.classList.remove('is-loading');
+                setTimeout(() => preloader?.remove(), 500);
+                }, 1400);
+            });
+        })();
 
             
 
     </script>
     <!-- Footer -->
+
     <footer>
         <div class="container">
             <div class="avata">

@@ -1,3 +1,15 @@
+(function () {
+  const preloader = document.getElementById('preloader');
+  document.body.classList.add('is-loading');
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      preloader?.classList.add('hide');
+      document.body.classList.remove('is-loading');
+      setTimeout(() => preloader?.remove(), 500);
+    }, 1400);
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', async function() {
 
     const feature = ["ABS + EBD + Brake Assist","Active steering","Adaptive lighting",
