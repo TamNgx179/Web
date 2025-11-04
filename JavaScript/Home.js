@@ -135,7 +135,7 @@ let PAGE = 0;
 let FILTERED = [];
 
 
-// ----- Pager (Prev / Dots / Next) -----
+// ======== Pager (Prev / Dots / Next) ========
 const pager = document.createElement("div");
 pager.className = "pager-controls";
 
@@ -160,7 +160,7 @@ if (gridEl) {
   gridEl.insertAdjacentElement('afterend', pager);
 }
 
-// ---- Load dữ liệu ----
+// ======= Load dữ liệu =======
 async function loadBrand(src) {
   const res = await fetch(src.url);
   const data = await res.json();
@@ -200,7 +200,7 @@ async function loadAllBrands() {
   return cars;
 }
 
-// ---- Lọc + Render ----
+// ======= Lọc + Render =======
 function applyFilter(type) {
   CURRENT_TYPE = type;
   PAGE = 0;
@@ -325,7 +325,7 @@ function renderPage() {
   if (window.__reveal) { window.__reveal.observeAll(); }
 }
 
-// ---- Sự kiện tab loại xe ----
+// ======== Sự kiện tab loại xe ========
 buttons.forEach(btn => {
   btn.addEventListener("click", () => {
     buttons.forEach(b => b.classList.remove("active"));
@@ -343,7 +343,7 @@ buttons.forEach(btn => {
   });
 });
 
-// ---- Sự kiện phân trang ----
+// ======= Sự kiện phân trang =========
 prevBtn.addEventListener("click", () => {
   if (PAGE > 0) {
     PAGE = PAGE - 1;
@@ -359,7 +359,7 @@ nextBtn.addEventListener("click", () => {
   }
 });
 
-// ---- Khởi động ----
+// ======= Khởi động ========
 (async function initBrowse() {
   ALL_CARS = await loadAllBrands();
 

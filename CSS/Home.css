@@ -486,7 +486,7 @@ h1{
   position: absolute;
   height: 700px;
   right: -250px; /* đẩy xe lấn sang phần hồng */
-  top: 60%;
+  top: 40%;
   transform: translateY(-30%);
 }
 
