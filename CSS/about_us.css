@@ -394,6 +394,7 @@ body {
   z-index: 3;
 }
 .services p {
+  position: relative;
   color: #ffffff;
   font-size: 2em;
   font-weight: 400;
@@ -488,8 +489,229 @@ body {
 }
 
 
+/* Service pops up section  */
+.service-popups {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation: fadeIn 0.3s ease;
+}
 
-/* About us section */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.service-popups-content {
+    background-color: #fefefe;
+    margin: 3% auto;
+    margin-top: 100px;
+    padding: 0;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 700px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.3s ease;
+    max-height: 70vh;
+    overflow-y: auto;
+
+}
+
+/* --- Thanh cuộn tổng thể --- */
+.service-popups-content::-webkit-scrollbar {
+  width: 10px; 
+  display: none;            
+}
+
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.service-popups-header {
+  padding: 25px 30px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+}
+
+.service-popups-icon {
+    width: 60px;
+    height: 60px;
+    color: #000000;
+}
+
+.service-popups-header h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.service-popups-close {
+    position: relative;
+    right: 20px;
+    top: 20px;
+    color: #aaa;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    line-height: 1;
+}
+
+.service-popups-close:hover,
+.service-popups-close:focus {
+    color: #333;
+}
+
+.service-popups-body {
+    padding: 30px;
+}
+
+.service-popups-description {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.service-popups-image {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.service-popups-section {
+    margin-bottom: 25px;
+}
+
+.service-popups-section h3 {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.service-popups-section-icon {
+    width: 28px;
+    height: 28px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.checkmark {
+    color: #000000;
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.feature-item p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.benefits-section {
+    background: linear-gradient(135deg, #9d9d9d 0%, #474747 100%);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.benefits-section h3 {
+    color: white;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.star {
+    color: #ffd700;
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.benefit-item p {
+    color: white;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.cta-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #8c8c8c;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cta-button:hover {
+    background-color: #000000;
+}
+
+/*  */
+
+/* =================================================
+  About us section
+===================================================*/
 .about-us {
   text-align: center;
   padding: 80px 20px;
@@ -745,23 +967,24 @@ svg path {
   fill: #ffffff;
   stroke: #848484;
   stroke-width: 1;
-  cursor: pointer;
+  transition: all 0.2s ease-out
 }
 
 svg path:hover {
   fill: #696767;
-  transform: scale(1.05);
 }
+/* Khi phần tử phóng to, chuột của bạn có thể vô tình trượt ra khỏi ranh giới của phần tử gốc (trước khi phóng to).
 
+  Khi chuột rời khỏi ranh giới, trạng thái :hover bị mất. Phần tử ngay lập tức thu nhỏ lại về kích thước ban đầu. */
 svg path.active {
   fill: #000;
   transform: scale(1.08);
 }
 
 .island path {
-    fill: #000000 !important; /* Buộc màu nền là đen */
+    fill: #ffffff !important; /* Buộc màu nền là đen */
     stroke: #000000;
-    stroke-width: .5; /* Tăng độ dày đường viền (tùy chỉnh) */
+    stroke-width: 7; /* Tăng độ dày đường viền (tùy chỉnh) */
 }
 
 

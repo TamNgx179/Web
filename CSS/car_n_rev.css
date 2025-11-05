@@ -39,7 +39,7 @@ body {
     font-size: clamp(2.5rem, 6vw, 4rem); 
     font-weight: 700;
     line-height: 1.1;
-    margin: 0;
+    margin-top: 120px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
