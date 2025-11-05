@@ -36,6 +36,80 @@ body {
 }
 /* about_us.css */
 
+/* ================= PRELOADER ================= */
+#preloader {
+  position: fixed; /* Cố định toàn màn hình */
+  inset: 0; /* Phủ kín từ trên xuống dưới */
+  background: radial-gradient(1200px 600px at 50% 40%, #1f2937 0%, #0b1220 60%, #060b16 100%);
+  display: grid;
+  place-items: center; /* Căn giữa nội dung */
+  z-index: 99999; /* Nằm trên mọi phần tử */
+  transition: opacity .5s ease, visibility .5s ease; /* Hiệu ứng mờ khi ẩn */
+}
+
+/* Khi thêm class .hide → preloader biến mất */
+#preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+#preloader .preloader-inner {
+  display: grid;
+  place-items: center;
+  gap: 18px;
+}
+
+/* Logo: bật lên + nhịp thở nhẹ */
+.preloader-logo {
+  width: 160px;
+  height: auto;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.55));
+  animation: logo-pop 1s ease-out both, logo-breathe 2s ease-in-out 1s infinite;
+}
+
+/* Vòng xoay loading */
+.preloader-ring {
+  width: 64px;
+  height: 64px;
+  border: 3px solid rgba(255,255,255,.16);
+  border-top-color: #ffffff; /* Phần sáng để thấy xoay */
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+/* Dòng chữ "Loading..." */
+.preloader-text {
+  color: #d1d5db;
+  font: 600 14px/1.2 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .9;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes spin { to { transform: rotate(360deg); } } /* Vòng xoay 360° */
+
+@keyframes logo-pop {
+  0% { transform: scale(.8); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); }
+}
+
+@keyframes logo-breathe {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.03); } /* Phồng nhẹ giữa nhịp */
+}
+
+/* Giảm chuyển động nếu người dùng chọn "Reduce Motion" */
+@media (prefers-reduced-motion: reduce) {
+  .preloader-logo,
+  .preloader-ring { animation: none !important; }
+}
+
+/* Khi preloader hiện → khoá cuộn */
+body.is-loading { overflow: hidden; }
+
+
 /* Hero section chiếm chiều cao toàn màn hình */
 .hero-container {
     position: relative;
@@ -308,7 +382,7 @@ body {
   position: absolute;
   width: 6px;
   height: 100%;
-  background: #ffffff;
+  background: black;
   top: 0;
   left: 50%;
   margin-left: -3px;
@@ -1177,13 +1251,291 @@ background: white;
 }
 
 /* Responsive Design */
-@media (max-width: 992px) {
-    .locator-wrapper {
-        flex-direction: column;
-        height: auto;
-    }
-    .sidebar {
-        height: 50vh; /* Adjust height for smaller screens */
-    }
+/* =================== RESPONSIVE =================== */
+
+/* Tablet (màn hình ≤ 992px) */
+@media (max-width: 1024px) {
+  /* Hero Section */
+  .hero-container{
+    min-height: 0vh !important;
+    margin-top: 10vh;
+  }
+
+  .hero-bg{
+    height: 70vh;
+  }
+  .hero-content {
+    max-width: 90%;
+    left: 5%;
+    top: 100px;
+    padding: 20px;
+  }
+  .hero-content h1 {
+    font-size: 40px;
+  }
+  .about-us{
+    margin-top: 100%;
+  }
+  .about-text {
+    font-size: 18px;
+  }
+
+  /* Timeline */
+  .timeline {
+    margin: 50px 10px;
+  }
+
+
+  .timeline-container,
+  .timeline-image {
+    width: 100% !important;
+    padding: 10px 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .timeline-container img {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    right: 0 !important;
+    left: 0 !important;
+    margin: 0 auto 10px auto;
+    top: 0 !important;
+  }
+
+  .time-img {
+    margin-top: 70px !important;
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .timeline-textbox {
+    margin-top: 50px;
+    width: 80%;
+    text-align: center;
+    padding: 15px;
+    margin-right: 0 !important;
+  }
+
+  .timeline-image img {
+    width: 80%;
+    height: auto;
+    margin-right: 0;
+    top: 0 !important;
+  }
+
+  .timeline::after {
+    left: 5px;
+    margin-left: 0;
+  }
+
+  /* Services */
+  .services-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+  .service-card {
+    width: 90%;
+  }
+  .services-bg{
+    height: 130vh;
+  }
+
+  /* About Us */
+  .stats {
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+  .stat-item {
+    width: 45%;
+  }
+
+  .network {
+    margin-top: 50vh !important;
+    padding: 2rem 1rem;
+    transform: none;
+  }
+  /* Map + Sidebar */
+  .map-section {
+    flex-direction: column;
+    align-items: center;
+  }
+  .vietnam-map {
+    max-width: 100%;
+    justify-content: center;
+  }
+  .vietnam-map-container {
+    transform: none;
+  }
+  .map-container {
+    max-width: 90%;
+    transform: none;
+    margin-top: 40px;
+  }
+  .sidebar {
+    transform: none;
+    width: 90%;
+    height: auto;
+    margin-top: 50px;
+  }
 }
+
+
+
+/* Mobile (màn hình ≤ 576px) */
+@media (max-width: 576px) {
+  /* Hero */
+  .hero-bg{
+    height: 80vh;
+  }
+  .hero-content {
+    max-width: 95%;
+    left: 2.5%;
+    top: 60px;
+    padding: 15px;
+  }
+  .hero-content h1 {
+    font-size: 28px;
+  }
+  .about-text {
+    font-size: 16px;
+  }
+  .btn {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .about-us {
+    margin-top: 90vh !important;
+  }
+  /* Timeline */
+  .timeline {
+    margin: 50px 10px;
+  }
+
+
+  .timeline-container,
+  .timeline-image {
+    width: 100% !important;
+    padding: 10px 0 !important;
+    left: 0 !important;
+    top: 0 !important;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .timeline-container img {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    right: 0 !important;
+    left: 0 !important;
+    margin: 0 auto 10px auto;
+    top: 0 !important;
+  }
+
+  .time-img {
+    margin-top: 95px !important;
+  }
+
+  .timeline-textbox {
+    margin-top: 50px;
+    width: 80%;
+    text-align: center;
+    padding: 15px;
+    margin-right: 0 !important;
+  }
+
+  .timeline-image img {
+    width: 80%;
+    height: auto;
+    margin-right: 0;
+    top: 0 !important;
+  }
+
+  .timeline::after {
+    left: 5px;
+    margin-left: 0;
+  }
+
+  /* Services */
+  .services {
+    padding: 60px 5%;
+  }
+  .services h2 {
+    font-size: 2rem;
+  }
+  .services p {
+    font-size: 1rem;
+  }
+  .service-card {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .services-bg{
+    height: 190vh;
+  }
+
+  .services-container{
+    margin-top: 30px;
+  }
+
+  /* About Us */
+  .about-us h2 {
+    font-size: 2rem;
+  }
+  .about-us{
+    margin-top: 130%;
+  }
+  .stat-item {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+  }
+
+  /* Map */
+  .network {
+    margin-top: 90vh !important;
+    padding: 2rem 1rem;
+    transform: none;
+  }
+  .network h2 {
+    font-size: 2rem;
+  }
+  .search-bar {
+    position: relative;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .map-svg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+  /* Sidebar */
+  .sidebar {
+    width: 100%;
+    padding: 16px;
+  }
+  .store-card {
+    padding: 12px;
+  }
+  .store-card h3 {
+    font-size: 16px;
+  }
+  .store-card .details p {
+    font-size: 13px;
+  }
+
+  footer {
+    margin-top: 100px;
+  }
+}
+
 
