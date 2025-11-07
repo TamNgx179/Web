@@ -164,6 +164,18 @@ document.addEventListener('DOMContentLoaded', async function() {
     } catch (error) {
         console.error('Lỗi khi đọc file JSON:', error);
     }
+    // === Restrict brands to allowed set ===
+    const ALLOWED_BRANDS = [
+      { name: 'BMW',      imgSrc: '../images/logos/bmw-logo.png' },
+      { name: 'Honda',    imgSrc: '../images/logos/honda-logo.png' },
+      { name: 'Mercedes', imgSrc: '../images/logos/mercedes-logo.png' },
+      { name: 'Porsche',  imgSrc: '../images/logos/porsche-logo.png' },
+      { name: 'Toyota',   imgSrc: '../images/logos/toyota-logo.png' },
+      { name: 'Vinfast',  imgSrc: '../images/logos/vinfast-logo.png' },
+    ];
+    mostSearchedBrands = ALLOWED_BRANDS;
+    allBrands = ALLOWED_BRANDS;
+
 
     const gridContainer = document.getElementById('brand-grid-container');
     const listContainer = document.getElementById('brand-list-container');
@@ -431,8 +443,61 @@ document.addEventListener('DOMContentLoaded', async function() {
         if (!res2.ok) throw new Error('Không thể tải car.json');
         const nestedCarData = await res2.json(); 
 
-        carData = flattenCarData(nestedCarData);
+        
+        // === Inject Porsche into nestedCarData before flattening ===
+        try {
+          const resP = await fetch("../DATA/porsche.json");
+          if (resP.ok) {
+            const porscheJSON = await resP.json();
+            const brandKey = (porscheJSON.brand && (porscheJSON.brand.id || porscheJSON.brand.name)) || 'porsche';
+            const models = (porscheJSON.cars || []).map(c => {
+              const rnd = Math.floor(Math.random() * 121) * 100;
+              const mileage = rnd.toLocaleString('en-US') + ' km';
+              const year = '2024';
+              let transmission = 'Automatic';
+              if (c.specs && c.specs.Gear) {
+                const g = String(c.specs.Gear).toLowerCase();
+                transmission = (g.includes('pdk') || g.includes('tiptronic') || g.includes('automatic') || g.includes('1-speed'))
+                  ? 'Automatic' : 'Manual';
+              }
+              let fuel = 'Gasoline';
+              if (c.type === 'EV' || /BEV|Electric/i.test(c.specs?.Engine || '') || /Taycan|Electric/i.test(c.name || '')) {
+                fuel = 'Electric';
+              }
+              const nameL = String(c.name || '').toLowerCase();
+              const drivetrain = (nameL.includes('macan') || nameL.includes('cayenne')) ? 'AWD' : 'RWD';
+              const power = c.specs && c.specs.Power ? c.specs.Power : 'N/A';
+              
+              const specs = [
+                { label: 'Mileage', value: mileage },
+                { label: 'Year', value: year },
+                { label: 'Transmission', value: transmission },
+                { label: 'Fuel', value: fuel },
+                { label: 'Drivetrain', value: drivetrain },
+                { label: 'Power', value: power },
+              ];
+              
+              return {
+                id: c.id,
+                name: c.name,
+                priceUSD: Number(c.priceUSD || 0),
+                hero: c.hero || c.display,
+                specs,
+                features: [...(c.safety || []), ...(c.convenience || [])]
+              };
+            });
+            
+            if (!nestedCarData.brands) nestedCarData.brands = {};
+            nestedCarData.brands[brandKey] = { name: 'Porsche', models };
+          } else {
+            console.warn('porsche.json not found or cannot be loaded');
+          }
+        } catch (e) {
+          console.error('Cannot load Porsche data', e);
+        }
 
+        carData = flattenCarData(nestedCarData);
+        
     } catch(error) {
         console.error('Lỗi khi đọc file JSON:', error);
     }
@@ -513,7 +578,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             
             // 1. Lọc theo Brand - CHỈ LỌC NẾU CÓ BRAND ĐƯỢC CHỌN
             if (filters.brands.length > 0) {
-                const brandMatch = filters.brands.includes(carBrand);
+                const brandMatch = filters.brands.map(b => (b || '').toLowerCase()).includes((carBrand || '').toLowerCase());
                 if (!brandMatch) return false;
             }
 
@@ -580,11 +645,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         renderCarGrid(currentPage, filteredCarData);
     }
 
-
-
-
-
-
     // ========= THÊM SỰ KIỆN CHO TRANSMISSION VÀ FUEL SELECT =========
     const transmissionSelect = document.getElementById('transmission-select');
     const fuelSelect = document.getElementById('fuel-select');
@@ -595,9 +655,6 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (fuelSelect) {
         fuelSelect.addEventListener('change', filterCars);
     }
-
-
-
 
     // ========= RENDER CAR GRID - SỬ DỤNG filteredCarData NẾU CÓ, KHÔNG THÌ DÙNG carData =========
     function renderCarGrid(page, dataToRender = null) {

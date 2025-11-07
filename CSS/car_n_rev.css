@@ -84,7 +84,7 @@ body.is-loading { overflow: hidden; }
     display: flex;
     align-items: center;
     width: 100%;
-    min-height: 100vh; /* Chỉnh chiều cao theo ý muốn */
+    min-height: 500px; /* Chỉnh chiều cao theo ý muốn */
     /* Tạo nền 2 màu: màu tím chiếm 60%, màu trắng chiếm 40% */
     background: linear-gradient( #9B89A4 60%);
     position: relative;
@@ -113,6 +113,7 @@ body.is-loading { overflow: hidden; }
     font-weight: 700;
     line-height: 1.1;
     margin-top: 120px;
+    padding-bottom: 170px;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -129,8 +130,8 @@ body.is-loading { overflow: hidden; }
 .hero-image img {
     max-width: 120%; /* Cho phép ảnh to hơn một chút để tràn ra đẹp mắt */
     height: auto;
-    position: relative;
-    bottom: -120px; /* Đẩy ảnh xuống một chút để tạo hiệu ứng bóng đổ */
+    position:absolute;
+    bottom: -300px;
     /* Tạo bóng đổ thực tế cho xe */
     transform: translateX(100px);
     filter: drop-shadow(0 20px 15px rgba(0, 0, 0, 0.3));
