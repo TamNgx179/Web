@@ -502,7 +502,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                         isActive: false, 
                         location: { city: brand.name }, 
                         specs: filteredSpecs, 
-                        features: model.features
+                        features: model.features,
+                        vehicleType: model.type || model.vehicleType || model.bodyType || model.category || model.segment || model.body || model.kind || ''
                     });
                 });
             }
@@ -560,7 +561,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                 priceUSD: Number(c.priceUSD || 0),
                 hero: c.hero || c.display,
                 specs,
-                features: [...(c.safety || []), ...(c.convenience || [])]
+                features: [...(c.safety || []), ...(c.convenience || [])],
+                type: c.type
               };
             });
             
@@ -574,6 +576,20 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
 
         carData = flattenCarData(nestedCarData);
+
+        // Populate VEHICLE TYPE select based on carData
+        (function populateVehicleTypeOptionsFromCarData() {
+            const sel = document.getElementById('vehicle-type-select');
+            if (!sel) return;
+            const types = Array.from(new Set((carData || []).map(c => (c.vehicleType || '').trim()).filter(Boolean))).sort();
+            sel.innerHTML = '<option value="All">All</option>' + types.map(t => `<option value="${t}">${t}</option>`).join('');
+        })();
+        // Event listener to trigger filtering when type changes
+        (function attachVehicleTypeChange() {
+            const sel = document.getElementById('vehicle-type-select');
+            if (sel) sel.addEventListener('change', filterCars);
+        })();
+
         
     } catch(error) {
         console.error('Lỗi khi đọc file JSON:', error);
@@ -648,6 +664,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     // ========= HÀM LỌC CHÍNH - CHỈ LỌC KHI CÓ ĐIỀU KIỆN =========
     function filterCars() {
         const filters = getFilterState();
+        // Read vehicle type selection (kept separate to avoid changing getFilterState)
+        const vehicleTypeSelect = document.getElementById('vehicle-type-select');
+        const selectedVehicleType = vehicleTypeSelect ? vehicleTypeSelect.value : 'All';
+
         
         filteredCarData = carData.filter(car => {
             const carBrand = car.location.city; 
@@ -704,6 +724,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 const carFuel = getSpecValue('Fuel');
                 const fuelMatch = carFuel === filters.fuel;
                 if (!fuelMatch) return false;
+            }
+
+            // 6b. Lọc theo Vehicle Type (nếu khác "All")
+            if (selectedVehicleType !== 'All') {
+                const carType = (car.vehicleType || '').toLowerCase();
+                if (carType !== selectedVehicleType.toLowerCase()) return false;
             }
 
             // 7. Lọc theo Features - CHỈ LỌC NẾU CÓ FEATURE ĐƯỢC CHỌN

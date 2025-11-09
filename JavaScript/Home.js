@@ -383,6 +383,70 @@ nextBtn.addEventListener("click", () => {
   applyFilter(type);
 })();
 
+// ==== Brand Popup ====
+(function(){
+  const seeAllBtn = document.querySelector('.see-all');
+  const popup     = document.getElementById('brand-popup');
+  const box       = popup?.querySelector('.popup-box');
+  const closeBtn  = document.getElementById('close-popup');
+  const listEl    = document.getElementById('brand-items');
+
+  if (!seeAllBtn || !popup || !listEl) return;
+
+  const brands = [
+    { id: 'bmw',      name: 'BMW',      logo: "../images/logos/bmw-logo.png" },
+    { id: 'honda',    name: 'Honda',    logo: "../images/logos/honda-logo.png" },
+    { id: 'mercedes', name: 'Mercedes', logo: "../images/logos/mercedes-logo.png" },
+    { id: 'porsche',  name: 'Porsche',  logo: "../images/logos/porsche-logo.png" },
+    { id: 'toyota',   name: 'Toyota',   logo: "../images/logos/toyota-logo.png" },
+    { id: 'vinfast',  name: 'VinFast',  logo: "../images/logos/vinfast-logo.png" },
+  ];
+
+  let built = false;
+
+  function buildList(){
+    if (built) return;
+    listEl.innerHTML = '';
+    brands.forEach(b => {
+      const li = document.createElement('li');
+      const a  = document.createElement('a');
+      a.href   = `../HTML/Brand.html?brand=${encodeURIComponent(b.id)}`;
+
+      const img = document.createElement('img');
+      img.src = b.logo;
+      img.alt = b.name;
+
+      const span = document.createElement('span');
+      span.textContent = b.name;
+
+      a.appendChild(img);
+      a.appendChild(span);
+      li.appendChild(a);
+      listEl.appendChild(li);
+    });
+    built = true;
+  }
+
+  function openPopup(){
+    buildList();
+    popup.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePopup(){
+    popup.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  seeAllBtn.addEventListener('click', openPopup);
+  closeBtn.addEventListener('click', closePopup);
+  popup.addEventListener('click', e => {
+    if (e.target === popup) closePopup(); // click nền để đóng
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && popup.classList.contains('show')) closePopup();
+  });
+})();
 
 // ================== Scroll Reveal (IntersectionObserver) ==================
 window.addEventListener("scroll", function() {
