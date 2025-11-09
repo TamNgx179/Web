@@ -81,6 +81,8 @@ Web/
 
 3. Khởi động trực tiếp bằng **VSCode Live Server** hoặc mở file `Home.html` trên trình duyệt.
 
+4. Xem ngay bản triển khai (Netlify): **[sgspeed.netlify.app](https://sgspeed.netlify.app)**
+
 ---
 
 ## Hướng phát triển tương lai
