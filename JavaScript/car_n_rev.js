@@ -327,6 +327,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     }
 
+    // Add thẻ xe vào trên thanh search khi click vào 1 xe trong phần pops up 
     // Brand selection
     if(modalOverlay){
         modalOverlay.addEventListener('click', function(event){
@@ -497,6 +498,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                         brand: brand.name, // Giữ nguyên theo logic của bạn
                         title: model.name,
                         id: model.id,
+                        type: model.type,
                         price: '$' + model.priceUSD.toLocaleString('en-US'), 
                         imageSrc: model.hero, 
                         isActive: false, 
@@ -527,7 +529,8 @@ document.addEventListener('DOMContentLoaded', async function() {
           if (resP.ok) {
             const porscheJSON = await resP.json();
             const brandKey = (porscheJSON.brand && (porscheJSON.brand.id || porscheJSON.brand.name)) || 'porsche';
-            const models = (porscheJSON.cars || []).map(c => {
+            const models = (porscheJSON.cars || []).map
+            (c => {
               const rnd = Math.floor(Math.random() * 121) * 100;
               const mileage = rnd.toLocaleString('en-US') + ' km';
               const year = '2024';
@@ -557,6 +560,7 @@ document.addEventListener('DOMContentLoaded', async function() {
               return {
                 id: c.id,
                 name: c.name,
+                type: c.type,
                 priceUSD: Number(c.priceUSD || 0),
                 hero: c.hero || c.display,
                 specs,
@@ -604,7 +608,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     
     // ========= HÀM LỌC MỚI - CHỈ LỌC KHI CÓ THAY ĐỔI =========
     let filteredCarData = [];
-    
+    // Lấy tất cả dữ liệu trên thanh filter và trả về những giữ liệu ấy
     function getFilterState() {
         const selectedBrands = Array.from(selectedBrandsContainer.querySelectorAll('.car-tag-display'))
             .map(tag => tag.dataset.brandName);
@@ -623,10 +627,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         // Sử dụng document.getElementById() để truy cập trực tiếp bằng ID
         const transmissionSelect = document.getElementById('transmission-select');
         const fuelSelect = document.getElementById('fuel-select');
+        const typeSelect = document.getElementById('type-select');
 
         // Lấy giá trị được chọn (áp dụng cho đoạn code nằm trong hàm filterCars hoặc getFilterState)
         const selectedTransmission = transmissionSelect ? transmissionSelect.value : 'All';
         const selectedFuel = fuelSelect ? fuelSelect.value : 'All';
+        const selectedType = typeSelect ? typeSelect.value : 'All';
         
         const selectedFeatures = Array.from(featureListContainer.querySelectorAll('input[type="checkbox"]:checked'))
             .map(checkbox => checkbox.value.toLowerCase().trim());
@@ -641,14 +647,16 @@ document.addEventListener('DOMContentLoaded', async function() {
             powerMax: powerMax,
             transmission: selectedTransmission,
             fuel: selectedFuel,
+            type: selectedType,
             features: selectedFeatures,
             carPriceToNumber: carPriceToNumber
         };
     }
     // ========= HÀM LỌC CHÍNH - CHỈ LỌC KHI CÓ ĐIỀU KIỆN =========
     function filterCars() {
+        // Lấy dữ liệu hiện tại trên thanh lọc
         const filters = getFilterState();
-        
+        // Lấy dữ liệu từ trong carData đê so sánh với các giá trị trên thanh filter
         filteredCarData = carData.filter(car => {
             const carBrand = car.location.city; 
             const carPrice = filters.carPriceToNumber(car.price);
@@ -706,6 +714,12 @@ document.addEventListener('DOMContentLoaded', async function() {
                 if (!fuelMatch) return false;
             }
 
+            if (filters.type !== 'All') {
+            const mycarType = car.type;
+            const typeMatch = (mycarType || '').toLowerCase() === (filters.type || '').toLowerCase();
+            if (!typeMatch) return false;
+        }
+            
             // 7. Lọc theo Features - CHỈ LỌC NẾU CÓ FEATURE ĐƯỢC CHỌN
             if (filters.features.length > 0) {
                 const featureMatch = filters.features.every(requiredFeature => 
@@ -725,6 +739,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // ========= THÊM SỰ KIỆN CHO TRANSMISSION VÀ FUEL SELECT =========
     const transmissionSelect = document.getElementById('transmission-select');
     const fuelSelect = document.getElementById('fuel-select');
+    const typeSelect = document.getElementById('type-select')
     
     if (transmissionSelect) {
         transmissionSelect.addEventListener('change', filterCars);
@@ -732,6 +747,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (fuelSelect) {
         fuelSelect.addEventListener('change', filterCars);
     }
+    if(typeSelect) // Thêm lắng nghe sự kiện cho typeSelect
+    {
+        typeSelect.addEventListener('change', filterCars);
+    }
 
     // ========= RENDER CAR GRID - SỬ DỤNG filteredCarData NẾU CÓ, KHÔNG THÌ DÙNG carData =========
     function renderCarGrid(page, dataToRender = null) {
