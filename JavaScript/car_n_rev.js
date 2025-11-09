@@ -504,7 +504,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                         isActive: false, 
                         location: { city: brand.name }, 
                         specs: filteredSpecs, 
-                        features: model.features
+                        features: model.features,
+                        vehicleType: model.type || model.vehicleType || model.bodyType || model.category || model.segment || model.body || model.kind || ''
                     });
                 });
             }
@@ -564,7 +565,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                 priceUSD: Number(c.priceUSD || 0),
                 hero: c.hero || c.display,
                 specs,
-                features: [...(c.safety || []), ...(c.convenience || [])]
+                features: [...(c.safety || []), ...(c.convenience || [])],
+                type: c.type
               };
             });
             
@@ -578,6 +580,20 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
 
         carData = flattenCarData(nestedCarData);
+
+        // Populate VEHICLE TYPE select based on carData
+        (function populateVehicleTypeOptionsFromCarData() {
+            const sel = document.getElementById('vehicle-type-select');
+            if (!sel) return;
+            const types = Array.from(new Set((carData || []).map(c => (c.vehicleType || '').trim()).filter(Boolean))).sort();
+            sel.innerHTML = '<option value="All">All</option>' + types.map(t => `<option value="${t}">${t}</option>`).join('');
+        })();
+        // Event listener to trigger filtering when type changes
+        (function attachVehicleTypeChange() {
+            const sel = document.getElementById('vehicle-type-select');
+            if (sel) sel.addEventListener('change', filterCars);
+        })();
+
         
     } catch(error) {
         console.error('Lỗi khi đọc file JSON:', error);

@@ -551,6 +551,89 @@ p {
   background: #b30000;
 }
 
+/* ==== Simple Brand Popup ==== */
+.popup {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+.popup.show { 
+  display: flex; 
+}
+
+.popup-box {
+  background: #fff;
+  width: 420px;
+  max-width: 90vw;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  padding: 20px 20px 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: #f3f4f6;
+  font-size: 20px;
+  cursor: pointer;
+}
+.close-btn:hover { 
+  background: #e7e8ea; 
+}
+
+.brand-items {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.brand-items li a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: #111;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+  transition: all 0.15s ease;
+}
+
+.brand-items li a:hover {
+  background: #f4f6f8;
+  transform: translateY(-1px);
+}
+
+.brand-items img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.brand-items span {
+  font-weight: 600;
+  font-size: 15px;
+}
+
 /* =============== Best offer ================*/
 .best-offer {
   background: #f6eee9;             
