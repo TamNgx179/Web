@@ -1,0 +1,289 @@
+/* === Root & Base Styles === */
+:root {
+  --green: #4CAF50;
+  --gray: #f5f6f8;
+  --text: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--gray);
+  color: var(--text);
+  padding: 20px;
+}
+
+/* === Container === */
+.container {
+  position: relative;
+  width: 950px;
+  max-width: 95%;
+  min-height: 600px;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-wrap: wrap;
+  transition: all 0.8s ease;
+}
+
+/* === Forms === */
+.form-wrapper {
+  position: relative;
+  width: 50%;
+  min-width: 300px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.form {
+  width: 100%;
+  padding: 60px 50px;
+  transition: all 0.6s ease;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateX(40px);
+}
+
+.form.active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+  position: relative;
+}
+
+/* === Typography === */
+h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+p {
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* === Inputs & Buttons === */
+input {
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 6px rgba(76, 175, 80, 0.3);
+  outline: none;
+}
+
+button {
+  padding: 14px;
+  background: linear-gradient(135deg, #4CAF50, #43a047);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+/* === Forgot & Social === */
+.forgot {
+  text-align: right;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.forgot a {
+  color: var(--green);
+  text-decoration: none;
+}
+
+.social-login {
+  margin: 25px 0 10px;
+  text-align: center;
+}
+
+.social-login span {
+  display: block;
+  margin-bottom: 12px;
+  color: #777;
+  position: relative;
+}
+
+.social-login span::before,
+.social-login span::after {
+  content: "";
+  height: 1px;
+  width: 30%;
+  background: #ccc;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.social-login span::before { left: 0; }
+.social-login span::after { right: 0; }
+
+.social-icons img {
+  width: 36px;
+  margin: 0 10px;
+  cursor: pointer;
+  filter: grayscale(100%);
+  transition: 0.3s;
+}
+
+.social-icons img:hover {
+  filter: none;
+  transform: scale(1.1);
+}
+
+.toggle-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.toggle-link a {
+  color: var(--green);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* === Right Side === */
+.right {
+  width: 50%;
+  min-width: 300px;
+  background: linear-gradient(135deg, #e9ebee, #f8f9fa);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 40px;
+  transition: transform 0.8s ease;
+}
+
+.right img {
+  width: 200px;
+  margin-bottom: 25px;
+  transition: transform 0.8s ease;
+}
+
+.info h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.info p {
+  color: #777;
+}
+
+/* === Animation for switching === */
+.register-mode .form-wrapper {
+  transform: translateX(100%);
+}
+
+.register-mode .right {
+  transform: translateX(-100%);
+}
+
+/* === Responsive === */
+/* === Responsive === */
+/* === Responsive === */
+@media (max-width: 992px) {
+  .container {
+    flex-direction: column;
+    width: 90%;
+    min-height: auto;
+  }
+
+  /* Right luôn ở trên */
+  .right {
+    order: -1;
+    width: 100%;
+    height: auto;
+    padding: 30px 20px;
+    transform: none !important; /* bỏ transform khi chuyển chế độ register */
+  }
+
+  .right img {
+    width: 150px;
+  }
+
+  /* Form nằm dưới, luôn hiện trên mobile */
+  .form-wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    transform: none !important; /* bỏ translate của register-mode */
+  }
+
+  .form-wrapper .form {
+    position: relative;
+    transform: none !important;
+    opacity: 1 !important;
+    pointer-events: all !important;
+    display: none; /* mặc định ẩn */
+  }
+
+  .form-wrapper .form.active {
+    display: block !important; /* hiện form active */
+  }
+
+  h2 { font-size: 26px; }
+  p { font-size: 15px; }
+  button { font-size: 15px; padding: 12px; }
+}
+
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .container {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+
+  .right {
+    padding: 20px 15px;
+  }
+
+  .right img { width: 120px; margin-bottom: 15px; }
+  .info h3 { font-size: 18px; }
+  .info p { font-size: 14px; }
+  input { font-size: 14px; padding: 12px; }
+  button { font-size: 14px; padding: 12px; }
+  .social-icons img { width: 30px; margin: 0 6px; }
+  .toggle-link { font-size: 14px; }
+}
+
+
