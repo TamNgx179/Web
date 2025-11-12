@@ -12,12 +12,12 @@ body {
   color: #333;
 }
 
-/* === Main Content (Hero Section) === */
+/* === Main Content === */
 .main-content {
   display: flex;
   flex-direction: column;
-  align-items: center; /* canh giữa tất cả nội dung */
-  text-align: center; /* canh chữ */
+  align-items: center;
+  text-align: center;
   padding: 80px 40px;
   color: #111;
   background: linear-gradient(
@@ -40,7 +40,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* === Contact Button === */
 .main-content button {
   background: linear-gradient(90deg, #4CAF50, #45a049);
   border: none;
@@ -57,13 +56,14 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* === Service Options Section === */
+/* === Service Options === */
 #service-option {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 30px;
   margin-top: 60px;
+  position: relative; /* vẫn giữ để z-index hover */
 }
 
 /* === Each Card === */
@@ -73,30 +73,17 @@ body {
   border-radius: 14px;
   padding: 25px 20px;
   width: 300px;
-  text-align: left;
-  transition: all 0.3s ease;
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 1s ease forwards;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.option:nth-child(1) { animation-delay: 0s; }
-.option:nth-child(2) { animation-delay: 0.2s; }
-.option:nth-child(3) { animation-delay: 0.4s; }
-
-.option:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.7s ease-in, box-shadow 0.4s ease, z-index 0.4s, opacity 0.4s ease;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 .option img {
   width: 100%;
   height: 180px;
-  object-fit: contain; /* ảnh lấp đầy khung */
+  object-fit: contain;
   border-radius: 10px;
   margin-bottom: 15px;
 }
@@ -105,12 +92,25 @@ body {
   font-size: 1.3rem;
   margin-bottom: 10px;
   color: #4CAF50;
-  text-align: center;
 }
 
 .option p {
   font-size: 0.95rem;
   color: #555;
+}
+
+/* === Hover Effect: Zoom Card === */
+.option:hover {
+  transform: scale(1.7); 
+  z-index: 10;           /* nằm trên các card khác */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+/* === Mờ các card còn lại khi hover === */
+#service-option:hover .option:not(:hover) {
+  opacity: 0.2;
+  transform: scale(1); /* giữ nguyên kích thước */
+  transition: opacity 0.4s ease;
 }
 
 /* === Quote Section === */
@@ -177,5 +177,11 @@ body {
 
   .option {
     width: 90%;
+    transform: none !important;
+    z-index: 1 !important;
+  }
+
+  #service-option:hover .option:not(:hover) {
+    opacity: 1; /* không mờ trên mobile */
   }
 }

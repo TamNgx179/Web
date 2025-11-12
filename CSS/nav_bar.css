@@ -194,7 +194,7 @@ nav a:hover {
     }
     #counter {
         font-size: 8px;
-        height: 15px;
+        height: 15px !important;
         min-width: 15px; /* tránh bị co nếu số > 9 */
         line-height: 15px; /* căn giữa số */
         top: -3px;
