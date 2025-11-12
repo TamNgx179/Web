@@ -1,22 +1,15 @@
-<!doctype html>
-<html lang="vi">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Car Detail</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
     <link rel="icon" href="../images/LogoWeb-removebg-preview.png" type="image/png">
-    <link rel="stylesheet" href="../CSS/car.css">
     <link rel="stylesheet" href="../CSS/nav_bar.css">
     <link rel="stylesheet" href="../CSS/footer.css">
+    <link rel="stylesheet" href="../CSS/services.css">
 </head>
 <body>
-    <div id="preloader" aria-hidden="true">
-      <div class="preloader-inner">
-        <img src="../images/LogoWeb-removebg-preview.png" alt="Loading..." class="preloader-logo" width="140"height="140"/>
-        <div class="preloader-ring" aria-hidden="true"></div>
-        <p class="preloader-text">Loading...</p>
-      </div>
-    </div>
     <nav>
         <a id="Logo" href="../HTML/Home.html">
             <img src="../images/LogoWeb-removebg-preview.png" alt="LogoWeb">
@@ -43,46 +36,42 @@
         </div>
     </nav>
 
-  <main class="info_container">
-    <section class="hero">
-        <div class="hero-info">
-            <h1 id="title" class="car-name">Loading…</h1>
-            <p class="price-label">Starts at:</p>
-            <div id="price" class="price"></div>
-            <button id="purchaseBtn" class="btn">Purchase</button>
+    <div class="main-content">
+        <h1>Our Service</h1>
+        <p>Professional car services to keep your vehicle running and looking its best.</p>
+
+        <button id="" onclick="location.href='../HTML/contact_us.html'">Contact Us</button>
+
+
+        <div id="service-option">
+            <div class="option">
+                <img src="../Image_icon/car_maintain2.png" alt="Car Maintenance">
+                <h2>Vehicle Maintenance</h2>
+                <p>Keep your car performing at its best with regular inspections, oil changes, and tire care by certified technicians.</p>
+            </div>
+
+            <div class="option">
+                <img src="../Image_icon/car_repair.png" alt="Car Repair">
+                <h2>Auto Repair</h2>
+                <p>From engine diagnostics to brake and transmission repairs — we handle it all with precision and care.</p>
+            </div>
+
+            <div class="option">
+                <img src="../Image_icon/car_detailing.png" alt="Car Detailing">
+                <h2>Car Detailing & Care</h2>
+                <p>Enhance your vehicle’s look and feel with premium interior cleaning, exterior polishing, and full detailing services.</p>
+            </div>
         </div>
-        <div class="hero-media">
-            <img id="hero" alt="" width="1024" height="676" />
+
+        <div class="quote-section">
+            <h2>Need a custom service?</h2>
+            <p>Contact our experts today and get a personalized quote for your vehicle’s needs.</p>
+            <button onclick="location.href='../HTML/contact_us.html'">Get a Quote</button>
         </div>
-    </section>
 
-    <h1 class="section-title">Photo gallery</h1>
-    <section class="gallery-section">
-        <div id="gallery" class="gallery"></div>
-    </section>
+    </div>
 
-    <h2 class="section-title">Technical detail</h2>
-    <section class="specs-card">
-        <table id="specsTable" class="specs-table"></table>
-        <div class="specs-col">
-            <h3>Safety &amp; Driving Assistance</h3>
-            <ul id="safety" class="bullet"></ul>
-
-            <h3>Convenience</h3>
-            <ul id="convenience" class="bullet"></ul>
-        </div>
-    </section>
-  </main>
-
-  <div id="lightbox" class="lightbox hidden" aria-hidden="true">
-        <div class="lb-counter" id="lbCounter">1 of 1</div>
-        <button class="lb-arrow left" id="lbPrev" aria-label="Previous">❮</button>
-        <img id="lbImg" alt="" />
-        <button class="lb-arrow right" id="lbNext" aria-label="Next">❯</button>
-        <button class="lb-close" id="lbClose" aria-label="Close">✕</button>
-  </div>
-
-  <footer>
+    <footer>
         <div class="container">
             <div class="avata">
                 <img class="circle" src="../images/LogoWeb-removebg-preview.png">
@@ -131,8 +120,5 @@
             <p>&copy; 2025 SAIGON SPEED | All Rights Reserved</p>
         </div>
     </footer>
-
-  <script src="../JavaScript/car.js" type="module"></script>
-  <script src="../JavaScript/Footer.js"></script>
 </body>
 </html>
