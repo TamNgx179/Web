@@ -87,6 +87,7 @@ nav a:hover {
 #popup-login img {
     width: 30px;
     height: 30px;
+    transform: translateY(15%);
     object-fit: contain;
 }
 
@@ -194,7 +195,7 @@ nav a:hover {
     }
     #counter {
         font-size: 8px;
-        height: 15px !important;
+        height: 15px;
         min-width: 15px; /* tránh bị co nếu số > 9 */
         line-height: 15px; /* căn giữa số */
         top: -3px;
