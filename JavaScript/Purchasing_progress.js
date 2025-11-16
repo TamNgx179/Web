@@ -550,31 +550,32 @@ function setstep3() {
 function checkinputinfomation(stepindex){
     if (stepindex == 0) {
         const l = document.querySelector('.list-car-selected');
-        if (!l || l.querySelectorAll('li').length === 0) {
+        return l && l.querySelectorAll('li').length > 0;
+    }
+    else if(stepindex == 1){
+        const paymentLabel = document.getElementById('payment-label-sum')?.textContent.trim() || '';
+        const confirm1 = document.getElementById('confirm-paymentmethod1')?.textContent.trim() || '';
+        const confirm2 = document.getElementById('confirm-paymentmethod2')?.textContent.trim() || '';
+        return paymentLabel !== '' && confirm1 !== '' && confirm2 !== '';
+    }
+    else if (stepindex == 2){
+        const deliveryFee = document.getElementById('delivery-fee')?.textContent.trim() || '';
+        const timeGet = document.getElementById('time-get')?.textContent.trim() || '';
+        if(deliveryFee === '' || timeGet === '') return false;
+
+        const deliveryType = document.getElementById('delivery-label-sum')?.textContent.trim() || '';
+        if(deliveryType === 'Showroom') return true;
+
+        const addressEl = document.getElementById('address');
+        if(deliveryType === 'Home' && (!addressEl || addressEl.textContent.trim() === "No address provided")) {
             return false;
         }
+
         return true;
     }
-
-    else if(stepindex == 1){
-        //chưa chọn phương thức thanh toán (sumary trống)
-        if(document.getElementById('payment-label-sum').textContent == '' || document.getElementById('confirm-paymentmethod1').textContent == '' || document.getElementById('confirm-paymentmethod2').textContent == ''){
-            return false
-        }
-        else return true
-    }
-
-    else if (stepindex == 2){
-        //chưa chọn phương thức vận chuyển (sumary trống)
-        if(document.getElementById('delivery-fee').textContent == '' || document.getElementById('time-get').textContent == ''){
-            return false
-        }
-        else return true
-    }
-
-    //step cuối luôn đúng
-    else return true
+    else return true; // step cuối
 }
+
 
 
 function totalinfomation() {
