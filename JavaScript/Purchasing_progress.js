@@ -578,37 +578,40 @@ function checkinputinfomation(stepindex){
 
 
 function totalinfomation() {
-    let delivery = document.getElementById('delivery-label-sum').innerHTML.trim(); // loại bỏ khoảng trắng
+    let delivery = document.getElementById('delivery-label-sum')?.innerHTML.trim() || "";
 
-    //phí vẫn chuyển
+    // Phí vận chuyển
     let deliveryFee = 0;
 
-    //Tổng thành tiền
+    // Tổng thành tiền
     let totalitemcost = 0;
 
-    //chuyển về tận nhà thì giá ship $499
+    // Nếu chọn giao hàng tại nhà thì phí $499
     if(delivery === "Home") {
         deliveryFee = 499;
     }
 
+    // Lấy tất cả xe đã chọn từ .list-car-selected li
+    const selectedItems = document.querySelectorAll('.list-car-selected li');
 
-    const addressText = gettingaddress(2);
-    const feeDiv = document.querySelector('.fee');
-    const itemcost = document.querySelectorAll('.carform')
+    selectedItems.forEach(item => {
+        let priceText = item.querySelector('.car-price')?.textContent || "0"; 
+        let qtyText = item.querySelector('.car-qty')?.textContent || "Count: 1";
 
-    itemcost.forEach(item => {
-        let priceText = item.querySelector('.car-price').textContent; 
-        let cost = parseInt(priceText.replace(/[^0-9]/g, '')); // giá 1 chiếc
-        let qty = parseInt(item.querySelector('.qty-input').value) || 1; // số lượng
+        // Lấy số lượng
+        let qty = parseInt(qtyText.replace(/[^0-9]/g, '')) || 1;
 
-        totalitemcost += cost * qty; // nhân với số lượng
+        // Lấy giá
+        let cost = parseInt(priceText.replace(/[^0-9]/g, '')) || 0;
+
+        totalitemcost += cost * qty;
     });
 
-    // Hiển thị giá delivery
+    // Hiển thị phí vận chuyển
     document.getElementById('delivery-fee').innerHTML = "$" + deliveryFee;
 
-    // Tổng = deliveryFee
-    document.getElementById('total-fee').innerHTML = "$" + (deliveryFee + totalitemcost).toLocaleString(); //thêm dấu , khi hiện số
+    // Hiển thị tổng
+    document.getElementById('total-fee').innerHTML = "$" + (deliveryFee + totalitemcost/2).toLocaleString();
 }
 
 function insertAddress(addressText) {
