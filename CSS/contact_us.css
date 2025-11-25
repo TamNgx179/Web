@@ -219,6 +219,40 @@ button#send_message:hover {
     box-shadow: 0 5px 14px rgba(10, 132, 255, 0.4);
 }
 
+.error {
+    color: red;
+    font-size: 14px;
+    margin-top: 3px;
+}
+input.error-border, textarea.error-border {
+    border: 1px solid red !important;
+}
+
+.toast {
+    visibility: hidden; /* Hidden by default */
+    min-width: 250px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+}
+
+
 
 
 /* Tablet & Mobile chung (< 1024px) */

@@ -87,8 +87,13 @@ nav a:hover {
 #popup-login img {
     width: 30px;
     height: 30px;
-    transform: translateY(15%);
     object-fit: contain;
+}
+
+/* căn icon + text vào giữa */
+#popup-login a {
+    display: flex;
+    align-items: center;
 }
 
 #counter {
@@ -206,5 +211,14 @@ nav a.active {
         line-height: 15px; /* căn giữa số */
         top: -3px;
         right: -6px;
+    }
+}
+
+@media (max-width: 361px) {
+    nav ul {
+        gap: 5px;
+    }
+    .nav-right{
+        gap: 5px;
     }
 }
