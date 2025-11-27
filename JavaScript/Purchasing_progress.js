@@ -7,21 +7,15 @@
       preloader?.classList.add('hide');
       document.body.classList.remove('is-loading');
       setTimeout(() => preloader?.remove(), 500);
-    }, 1400);
+    }, 600);
   });
 })();
 
 
-let currentStep = 0; // current step index, start from 0
+let currentStep = 0; // bước chỉ số hiện tại, bắt đầu từ 0
 let carlist = [];
 let trolley = [];
 
-// let tmp = createCarForm("a", "a", "a", "a", "a", "a")
-// let tmp2 = createCarForm("b", "b", "b", "b", "b", "b")
-// let tmp3 = createCarForm("c", "c", "c", "c", "c", "c")
-// trolley.push(tmp)
-// trolley.push(tmp2)
-// trolley.push(tmp3)
 
 let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
 
@@ -40,12 +34,12 @@ function initEvent() {
         });
     }
 
-    // first load, callupdate steps to highlight step 0
+    // lần tải đầu tiên, gọi các bước cập nhật để làm nổi bật bước 0
     updateSteps();
 
-    //event next button
+    //Nút sự kiện tiếp theo
     nextbtn.onclick = (event) => {
-        event.preventDefault(); // prevent form submit
+        event.preventDefault(); // ngăn submit
         
         if (currentStep < steps.length - 1) {
             process_infomation_input(currentStep);
@@ -68,7 +62,7 @@ function initEvent() {
 
     // event prev button
     prevbtn.onclick = (event) => {
-        event.preventDefault(); // prevent form submit
+        event.preventDefault(); // ngăn submit
         if (currentStep > 0) {
             currentStep--;
             updateSteps();
@@ -80,32 +74,32 @@ function setprocessbar(idx) {
     const steps = document.querySelectorAll("#step-purchasing li");
 
     steps.forEach((step, index) => {
-        // reset class
+        // reset lại lớp
         step.classList.remove("active", "completed");
 
-        // active current step
+        // kích hoạt bước hiện tại
         if (index === currentStep) {
             step.classList.add("active");
         }
-        //complete previous step
+        // hoàn thành bước trước
         else if (index < currentStep) {
             step.classList.add("completed");
         }
-        // future steps remain unchanged (default)
+        // các bước tiếp theo giữ nguyên không đổi
     });
 }
 
-//set content for each step
+//tạo content cho từng bước
 function setStepContent({ header, paragraph, options}) {
     document.getElementById("header").innerHTML = header;
     document.getElementById("paragraph").innerHTML = paragraph;
 
-    // option 1
+    // lựa chọn 1
     document.getElementById("icon1").src = options[0].img;
     document.getElementById("chososing1").innerHTML = options[0].title;
     document.getElementById("content1").innerHTML = options[0].content;
 
-    // option 2
+    // lựa chọn 2
     document.getElementById("icon2").src = options[1].img;
     document.getElementById("chososing2").innerHTML = options[1].title;
     document.getElementById("content2").innerHTML = options[1].content;
@@ -120,7 +114,7 @@ function settingdisplay_before_Step(method_status, info_status, confirmation_sta
     const nextBtn = document.getElementById('next-step');
     const display = document.querySelector('.display-carform')
 
-    // set display property if provided
+    // đặt thuộc tính hiển thị nếu được cung cấp
     if (method_status) method.style.display = method_status
     if (info_status) info.style.display = info_status
     if (confirmation_status) confirmation.style.display = confirmation_status
@@ -219,28 +213,28 @@ function purchasingstep(index) {
 
 
 
-//function create car form
+//hàm tạo form của xe
 function createCarForm(imgSrc, name, weight, power, speed, price) {
-    // main form
+    // form chính
     const carForm = document.createElement("div");
     carForm.className = "carform";
 
-    // car image
+    // ảnh xe
     const imgCar = document.createElement("img");
     imgCar.className = "img-car";
     imgCar.src = imgSrc;
     carForm.appendChild(imgCar);
 
-    // vertical line
+    // đường kẻ dọc
     const line = document.createElement("hr");
     line.className = "line";
     carForm.appendChild(line);
 
-    // car infomation
+    // thông tin xe
     const carInfo = document.createElement("div");
     carInfo.className = "car-infomation";
 
-    // car name and close icon (trash can)
+    // tên xe và icon xóa
     const carAndClose = document.createElement("div");
     carAndClose.className = "car-and-close";
 
@@ -256,7 +250,7 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
     carAndClose.appendChild(carName);
     carAndClose.appendChild(closeIcon);
 
-    // info line (weight, power, speed)
+    // dòng thông tin (weight, power, speed)
     const infoLine = document.createElement("div");
     infoLine.className = "info-line";
 
@@ -297,7 +291,7 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
     infoLine.appendChild(carPower);
     infoLine.appendChild(carSpeed);
 
-    // quantity selector
+    // chọn số lượng
     const quantityDiv = document.createElement("div");
     quantityDiv.className = "car-quantity";
 
@@ -319,12 +313,12 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
     quantityDiv.appendChild(qtyInput);
     quantityDiv.appendChild(plusBtn);
 
-    // car price
+    // giá xe
     const carPrice = document.createElement("h3");
     carPrice.className = "car-price";
     carPrice.textContent = price;
 
-    // append all to carInfo
+    // thêm vào carInfo
     carInfo.appendChild(carAndClose);
     carInfo.appendChild(infoLine);
     carInfo.appendChild(quantityDiv);
@@ -332,7 +326,7 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
 
     carForm.appendChild(carInfo);
 
-    // ==== Setup event for form ==== 
+    // Đặt sự kiện cho form
     setupCarEvents(carForm);
 
     return carForm;
@@ -340,25 +334,25 @@ function createCarForm(imgSrc, name, weight, power, speed, price) {
 
 
 function setupCarEvents(carForm) {
-    const plusBtn = carForm.querySelector('.qty-btn:last-child');   //get button +
-    const minusBtn = carForm.querySelector('.qty-btn:first-child'); //button -
-    const qtyInput = carForm.querySelector('.qty-input');           // directly
-    const closeIcon = carForm.querySelector('.car-and-close .icon'); //trash can
+    const plusBtn = carForm.querySelector('.qty-btn:last-child');   //lấy nút dấu +
+    const minusBtn = carForm.querySelector('.qty-btn:first-child'); //nút dấu -
+    const qtyInput = carForm.querySelector('.qty-input');           
+    const closeIcon = carForm.querySelector('.car-and-close .icon'); //thùng rác
 
-    // button -
+    // nút dấu -
     minusBtn.onclick = (e) => {
         e.stopPropagation();
         e.preventDefault();
 
-        //min value is 1
+        //giá trị nhỏ nhất là 1
         qtyInput.value = Math.max(1, parseInt(qtyInput.value) - 1);
 
-        // trigger change event
+        // trigger thay đổi sự kiện
         qtyInput.dispatchEvent(new Event('change', { bubbles: true }));
 
     };
 
-    // button +
+    // nút dấu +
     plusBtn.onclick = (e) => {
         e.stopPropagation();
         e.preventDefault();
@@ -367,19 +361,19 @@ function setupCarEvents(carForm) {
 
     };
 
-    // input directly
+    // input trực tiếp
     qtyInput.onchange = (e) => {
         e.stopPropagation();
         e.preventDefault();
         if (parseInt(qtyInput.value) < 1) qtyInput.value = 1;
     };
 
-    // clear form
+    // xóa form
     closeIcon.onclick = (e) => {
         e.stopPropagation();
         carForm.remove();
 
-        // clear from trolley array
+        // xóa khỏi mảng giỏ hàng
         const index = trolley.indexOf(carForm);
         if (index > -1) trolley.splice(index, 1);
 
@@ -387,21 +381,21 @@ function setupCarEvents(carForm) {
         if (carNameText) {
             const newCart = JSON.parse(localStorage.getItem("selectedcar")) || [];
 
-            //filter new array, remove item with name same as carNameText
+            //lọc mảng mới, xóa mục có tên giống với carNameText
             const updatedCart = newCart.filter(item => (item.name || "").trim() !== carNameText);
 
-            // save new list back to localStorage
+            // lưu danh sách mới ở localStorage
             localStorage.setItem("selectedcar", JSON.stringify(updatedCart));
             totalinfomation();
         }
 
-        // update counter
+        // cập nhật số lượng hàng ở giỏ
         const counter = document.getElementById("counter");
         if (counter) {
             counter.textContent = String(JSON.parse(localStorage.getItem("selectedcar") || "[]").length);
         }
 
-        //remove from summary
+        //xóa khỏi summary
         inputcarintosumary(carForm, false);
     };
 }
@@ -409,11 +403,11 @@ function setupCarEvents(carForm) {
 
 
 
-// Click to select car
+// Nhấn để chọn xe
 function selected_car_on_trolley(car_on_trolley_list){
     car_on_trolley_list.forEach((item, index) => {
         item.onclick = (e) => {
-            // If the event comes from + / - / input / trash icon => ignore
+            // Nếu sự kiện đến từ biểu tượng + / - / đầu vào / thùng rác => bỏ qua
             if(e.target.closest('.qty-btn') || e.target.closest('.qty-input') || e.target.closest('.icon')) return;
 
             if(item.style.border.includes('green')){
@@ -428,59 +422,59 @@ function selected_car_on_trolley(car_on_trolley_list){
 }
 
 function inputcarintosumary(item, selected) {
-    // Get all lists with class .list-car-selected
-    // (there may be multiple display areas, such as confirmation and summary)
+    // Lấy tất cả các danh sách có lớp .list-car-selected
+    // (có thể có nhiều vùng hiển thị, chẳng hạn như xác nhận và tóm tắt)
     const l = document.querySelectorAll('.list-car-selected');
 
-    // Iterate through each list
+    // Lặp lại qua từng danh sách
     l.forEach(list => {
 
         if (selected) {
-            // If the item is selected, add it to the list
+            // Nếu item được chọn, thêm nó vào danh sách
 
-            // Create a <li> element to hold car information
+            // Tạo phần tử <li> để chứa thông tin về xe
             const li = document.createElement('li');
 
-            // Create span to display car name
+            // Tạo span để hiển thị tên xe
             const name = document.createElement('span');
             name.classList.add('car-name');
             name.textContent = item.querySelector('.car-name')?.textContent || '';
 
-            // Create span to display car price
+            // Tạo span để hiển thị giá xe
             const price = document.createElement('span');
             price.classList.add('car-price');
             price.textContent = item.querySelector('.car-price')?.textContent || '';
 
-            // Create span to display car quantity
+            // Tạo span để hiển thị số lượng xe
             const qty = document.createElement('span');
             qty.classList.add('car-qty');
             qty.textContent = " Count: " + (item.querySelector('.qty-input')?.value || 1);
 
-            // Append spans to <li>
+            // Đẩy span vào <li>
             li.appendChild(name);
             li.appendChild(qty);
             li.appendChild(price);
 
-            // Append <li> to the current list
+            // Đẩy <li> vào danh sách hiện tại
             list.appendChild(li);
 
-            // Attach onchange event for quantity input of the item
+            // Đính kèm sự kiện onchange để nhập số lượng của mặt hàng
             const qtyInput = item.querySelectorAll('.qty-input');
 
             qtyInput.forEach(input => {
                 input.onchange = () => {
                     const newQty = input.value;
 
-                    // Update quantity in all .list-car-selected lists
+                    // Cập nhật số lượng trong tất cả các danh sách .list-car-selected
                     document.querySelectorAll('.list-car-selected').forEach(list => {
 
-                        // Find <li> with the same car name
+                        // Tìm <li> với cùng tên xe
                         const liMatch = Array.from(list.querySelectorAll('li')).find(li =>
                             li.querySelector('.car-name')?.textContent.trim() === 
                             item.querySelector('.car-name')?.textContent.trim()
                         );
 
-                        // If found, update the displayed quantity
+                        // Nếu tìm thấy, update số lượng
                         if (liMatch) {
                             const qtySpan = liMatch.querySelector('.car-qty');
                             if (qtySpan) qtySpan.textContent = " Count: " + newQty;
@@ -490,7 +484,7 @@ function inputcarintosumary(item, selected) {
             });
         } 
         else {
-            // If the item is deselected, remove it from all lists
+            // Nếu mục đó bị bỏ chọn, hãy xóa nó khỏi tất cả các danh sách
 
             const allLi = list.querySelectorAll('li');
 
@@ -498,7 +492,7 @@ function inputcarintosumary(item, selected) {
                 const carName = li.querySelector('.car-name')?.textContent.trim();
                 const itemName = item.querySelector('.car-name')?.textContent.trim();
 
-                // If car names match, remove the <li>
+                // Nếu tên xe trùng khớp, hãy xóa <li>
                 if (carName === itemName) {
                     li.remove();
                 }
@@ -514,7 +508,7 @@ function setstep0() {
     const display = document.querySelector('.display-carform');
     const addAnother = document.getElementById('addanother');
 
-    // clear all existing car forms
+    // xóa tất cả các mẫu xe hiện có
     display.querySelectorAll('.carform').forEach(el => el.remove());
 
     // Tạo 1 form trống mới test
@@ -942,12 +936,12 @@ function gettingcar() {
     });
 
 }
-/* ========= APPEND-ONLY: COUNTER + EMPTY POPUP + TRASH REMOVAL ========= */
+// APPEND-ONLY: COUNTER + EMPTY POPUP + TRASH REMOVAL
 (function () {
-  // ====== TÊN KHÓA LƯU DỮ LIỆU TRONG LOCAL STORAGE ======
+  // TÊN KHÓA LƯU DỮ LIỆU TRONG LOCAL STORAGE 
   const CART_KEY = "selectedcar";
 
-  // ====== HÀM LẤY DỮ LIỆU GIỎ HÀNG ======
+  // HÀM LẤY DỮ LIỆU GIỎ HÀNG 
   function getCart() {
     try {
       const saved = localStorage.getItem(CART_KEY);
@@ -961,13 +955,13 @@ function gettingcar() {
     }
   }
 
-  // ====== HÀM LƯU DỮ LIỆU GIỎ HÀNG ======
+  // HÀM LƯU DỮ LIỆU GIỎ HÀNG 
   function setCart(cartArray) {
     localStorage.setItem(CART_KEY, JSON.stringify(cartArray));
     updateCounter(); // cập nhật số lượng hiển thị
   }
 
-  // ====== CẬP NHẬT SỐ XE TRÊN ICON GIỎ HÀNG ======
+  // CẬP NHẬT SỐ XE TRÊN ICON GIỎ HÀNG 
   function updateCounter() {
     const counter = document.getElementById("counter");
     if (counter) {
@@ -977,7 +971,7 @@ function gettingcar() {
 
   
 
-  // ====== KHI TRANG ĐÃ TẢI XONG ======
+  // KHI TRANG ĐÃ TẢI XONG 
   document.addEventListener("DOMContentLoaded", function () {
     updateCounter();          // Cập nhật số lượng giỏ hàng
   });
