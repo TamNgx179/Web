@@ -7,7 +7,7 @@
       preloader?.classList.add('hide');
       document.body.classList.remove('is-loading');
       setTimeout(() => preloader?.remove(), 500);
-    }, 1400);
+    }, 600);
   });
 })();
 

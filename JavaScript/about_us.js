@@ -6,7 +6,7 @@
       preloader?.classList.add('hide');
       document.body.classList.remove('is-loading');
       setTimeout(() => preloader?.remove(), 500);
-    }, 1400);
+    }, 600);
   });
 })();
 
@@ -99,8 +99,8 @@ let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
 
 
             
-            // Store Data: A JavaScript object containing dealership information.
-        // It's easily expandable. Just add a new key for a new region.
+        // Lưu trữ dữ liệu: Một đối tượng JavaScript chứa thông tin đại lý.
+        // Có thể mở rộng dễ dàng. Chỉ cần thêm khóa mới cho vùng mới.
         const storeData = {
     hcm: {
         name: 'TP.HCM',
@@ -729,27 +729,27 @@ let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
 };
 
 
-        // DOM Element References
+        // Tham chiếu phần tử DOM
         const mapPaths = document.querySelectorAll('.map-svg path');
         const regionNameEl = document.getElementById('region-name');
         const locationCountEl = document.getElementById('location-count');
         const storeListEl = document.getElementById('store-list');
 
-        // Function to update the sidebar with store information
+        // Chức năng cập nhật sidebar với thông tin cửa hàng
         function updateSidebar(regionId) {
             const regionData = storeData[regionId];
 
-            // Clear previous results
+            // Xóa những kết quả phía trước
             storeListEl.innerHTML = '';
 
             if (regionData && regionData.locations.length > 0) {
-                // Update header text
+                // Cập nhật nội dung header
                 regionNameEl.textContent = regionData.name;
                 locationCountEl.textContent = `${regionData.region} ・ Showing ${regionData.locations.length} locations`;
 
-                // Generate and append store cards
+                // Tạo và thêm thẻ cửa hàng
                 regionData.locations.forEach(store => {
-                    // Create a comma-separated list of services
+                    // Tạo danh sách các dịch vụ được phân tách bằng dấu phẩy
                     const servicesHTML = store.services.map(service => `<span>${service}</span>`).join('');
                     
                     const storeCardHTML = `
@@ -777,15 +777,15 @@ let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
                 });
 
             } else {
-                // Handle case where no data is available
+                // Xử lý trường hợp không có dữ liệu
                 regionNameEl.textContent = 'No Data Available';
                 locationCountEl.textContent = 'Please select another region.';
                 storeListEl.innerHTML = '<p class="initial-message">Sorry, no dealerships found here.</p>';
             }
         }
 
-        // Add click event listeners to each map path
-         // Ensure no dragging moves the shapes
+// Thêm trình lắng nghe sự kiện nhấp chuột vào từng đường dẫn bản đồ
+// Đảm bảo không kéo di chuyển các hình dạng
 mapPaths.forEach(p => {
   if (p && p.style) p.style.userSelect = 'none';
   p.addEventListener('dragstart', e => e.preventDefault());

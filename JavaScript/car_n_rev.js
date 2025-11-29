@@ -6,7 +6,7 @@
       preloader?.classList.add('hide');
       document.body.classList.remove('is-loading');
       setTimeout(() => preloader?.remove(), 500);
-    }, 1400);
+    }, 600);
   });
 })();
 
@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     featureListContainer.innerHTML = '';
     const featureItems = [];
 
-    // Render feature checkboxes
+    // Hiển thị hộp kiểm tính năng
     feature.forEach((featureName, index) => {
         const safeId = 'feature' + (index + 1);
         const itemDiv = document.createElement('div');
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         moreFeatureButton.style.display = 'none';
     }
 
-    // More feature button
+    // Nút tính năng khác
     moreFeatureButton.addEventListener('click', function(event){
         event.preventDefault();
         
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     });
 
-    // Feature search
+    // Tìm kiếm tính năng
     featureSearchInput.addEventListener('input', function() {
         const searchTerm = this.value.trim().toLowerCase();
 
@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     });
 
-    // Brand modal setup
+    // Thiết lập phương thức thương hiệu
     let mostSearchedBrands = [];
     let allBrands = [];
 
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     } catch (error) {
         console.error('Lỗi khi đọc file JSON:', error);
     }
-    // === Restrict brands to allowed set ===
+    // Hạn chế các thương hiệu được phép thiết lập
     const ALLOWED_BRANDS = [
       { name: 'BMW',      imgSrc: '../images/logos/bmw-logo.png' },
       { name: 'Honda',    imgSrc: '../images/logos/honda-logo.png' },
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const nestedCarData = await res2.json(); 
 
         
-        // === Inject Porsche into nestedCarData before flattening ===
+        // Đưa Porsche vào nestedCarData trước khi làm phẳng
         try {
           const resP = await fetch("../DATA/porsche.json");
           if (resP.ok) {
@@ -538,14 +538,14 @@ document.addEventListener('DOMContentLoaded', async function() {
 
         carData = flattenCarData(nestedCarData);
 
-        // Populate VEHICLE TYPE select based on carData
+        // Điền LOẠI XE được chọn dựa trên carData
         (function populateVehicleTypeOptionsFromCarData() {
             const sel = document.getElementById('vehicle-type-select');
             if (!sel) return;
             const types = Array.from(new Set((carData || []).map(c => (c.vehicleType || '').trim()).filter(Boolean))).sort();
             sel.innerHTML = '<option value="All">All</option>' + types.map(t => `<option value="${t}">${t}</option>`).join('');
         })();
-        // Event listener to trigger filtering when type changes
+        // Trình lắng nghe sự kiện để kích hoạt lọc khi loại thay đổi
         (function attachVehicleTypeChange() {
             const sel = document.getElementById('vehicle-type-select');
             if (sel) sel.addEventListener('change', filterCars);
