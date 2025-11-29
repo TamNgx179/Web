@@ -952,6 +952,67 @@ select {
   flex-wrap: wrap;
 }
 
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-btn {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-btn:hover {
+  background: #f5f5f5;
+}
+
+/* Dropdown gợi ý */
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 0 0 8px 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 20;
+  display: none; /* mặc định ẩn */
+}
+
+.suggestions-list li {
+  padding: 8px 12px;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background-color: #f2f2f2;
+}
+
+/* Tô màu các tỉnh đã có showroom trên map */
+.map-svg path.has-store {
+  fill: #e0f2e5;
+}
+
+/* Khi active vẫn ưu tiên màu đen */
+.map-svg path.active {
+  fill: #000000 !important;
+}
+
 input,
 select {
   padding: 0.7rem 1rem;
@@ -994,6 +1055,22 @@ select {
   fill: #000000 !important;
   transform: none !important;
 }
+
+/* Tỉnh/thành đã có showroom */
+.map-svg path.has-store {
+  fill: #f3c15f;         /* màu vàng nhạt hoặc màu bạn thích */
+}
+
+/* Hover trên tỉnh có showroom (optional) */
+.map-svg path.has-store:hover {
+  fill: #e0a83f;
+}
+
+/* Tỉnh đang được chọn (click) vẫn ưu tiên màu active */
+.map-svg path.active {
+  fill: #000000 !important;
+}
+
 /* === End Map styles === */
 .network img{
   position: absolute;

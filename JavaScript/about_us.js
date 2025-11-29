@@ -10,6 +10,25 @@
   });
 })();
 
+//Hàm scroll tới phần about saigonspeed
+function scrollToAbout() {
+    const aboutSection = document.getElementById("about-section");
+    if (aboutSection) {
+        aboutSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const learnMoreBtn = document.querySelector(".button-review .btn");
+
+    if (learnMoreBtn) {
+        learnMoreBtn.addEventListener("click", scrollToAbout);
+    }
+});
 
 // ================== Cart counter ======================
 let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
@@ -735,6 +754,41 @@ let selectedcar = JSON.parse(localStorage.getItem('selectedcar')) || [];
         const locationCountEl = document.getElementById('location-count');
         const storeListEl = document.getElementById('store-list');
 
+        // Chuẩn hoá chuỗi (bỏ dấu, lower case) để tìm kiếm dễ hơn
+        function normalizeText(str) {
+            return str
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLowerCase()
+                .trim();
+        }
+
+        // Danh sách tỉnh/thành có showroom (từ storeData)
+        const provincesWithStore = Object.entries(storeData).map(([id, region]) => ({
+            id,
+            name: region.name
+        }));
+
+        // Tô màu nhẹ cho các tỉnh có showroom
+        mapPaths.forEach(path => {
+            const regionId = path.getAttribute('name');
+            if (!regionId) return;
+
+            if (storeData[regionId]) {
+                path.classList.add('has-store');
+                return;
+            }
+
+            // Trường hợp name trên SVG khác key storeData (dùng normalize để so)
+            const normalizedName = normalizeText(regionId);
+            const match = provincesWithStore.some(p => normalizeText(p.name) === normalizedName);
+            if (match) {
+                path.classList.add('has-store');
+            }
+        });
+
+
+
         // Chức năng cập nhật sidebar với thông tin cửa hàng
         function updateSidebar(regionId) {
             const regionData = storeData[regionId];
@@ -807,6 +861,150 @@ mapPaths.forEach(path => {
                 updateSidebar(regionId);
             });
         });
+// ====== SEARCH PROVINCES ======
+
+const searchInput = document.getElementById('province-search');
+const searchButton = document.getElementById('province-search-btn');
+const suggestionsList = document.getElementById('province-suggestions');
+
+// Chọn tỉnh từ search (dùng key của storeData)
+function selectRegion(regionKey) {
+    if (!regionKey) return;
+
+    // Tìm path tương ứng trên map
+    let targetPath = null;
+
+    mapPaths.forEach(p => {
+        const nameAttr = p.getAttribute('name');
+        if (nameAttr === regionKey) {
+            targetPath = p;
+        }
+    });
+
+    // Nếu chưa thấy, thử so theo normalize tên
+    if (!targetPath) {
+        const normalizedKey = normalizeText(regionKey);
+        mapPaths.forEach(p => {
+            const nameAttr = p.getAttribute('name') || '';
+            if (normalizeText(nameAttr) === normalizedKey) {
+                targetPath = p;
+            }
+        });
+    }
+
+    // Active trên map
+    if (targetPath) {
+        mapPaths.forEach(p => p.classList.remove('active'));
+        targetPath.classList.add('active');
+    }
+
+    // Cập nhật sidebar
+    updateSidebar(regionKey);
+}
+
+// Render gợi ý khi người dùng gõ
+function renderSuggestions() {
+    if (!searchInput || !suggestionsList) return;
+
+    const value = searchInput.value;
+    const normalizedQuery = normalizeText(value);
+
+    if (!normalizedQuery) {
+        suggestionsList.innerHTML = '';
+        suggestionsList.style.display = 'none';
+        return;
+    }
+
+    const matches = provincesWithStore.filter(p => {
+        const byName = normalizeText(p.name).includes(normalizedQuery);
+        const byId = normalizeText(p.id).includes(normalizedQuery);
+        return byName || byId;
+    });
+
+    if (!matches.length) {
+        suggestionsList.innerHTML = '';
+        suggestionsList.style.display = 'none';
+        return;
+    }
+
+    suggestionsList.innerHTML = matches
+        .slice(0, 6)
+        .map(p => `<li data-region-id="${p.id}">${p.name}</li>`)
+        .join('');
+
+    suggestionsList.style.display = 'block';
+}
+
+// Xử lý khi bấm nút 🔍 hoặc nhấn Enter
+function handleSearch() {
+    if (!searchInput) return;
+    const query = normalizeText(searchInput.value);
+    if (!query) return;
+
+    const match = provincesWithStore.find(p => {
+        const byName = normalizeText(p.name).includes(query);
+        const byId = normalizeText(p.id).includes(query);
+        return byName || byId;
+    });
+
+    if (match) {
+        // Ẩn gợi ý, fill lại full name
+        if (suggestionsList) {
+            suggestionsList.innerHTML = '';
+            suggestionsList.style.display = 'none';
+        }
+        searchInput.value = match.name;
+        selectRegion(match.id);
+    } else {
+        regionNameEl.textContent = 'No Result';
+        locationCountEl.textContent = '';
+        storeListEl.innerHTML = '<p class="initial-message">Không tìm thấy showroom cho tỉnh/thành này.</p>';
+    }
+}
+
+// Gắn event
+if (searchInput && suggestionsList) {
+    // Gõ là hiện gợi ý
+    searchInput.addEventListener('input', renderSuggestions);
+
+    // Nhấn Enter để search
+    searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            handleSearch();
+        }
+    });
+
+    // Click vào gợi ý
+    suggestionsList.addEventListener('click', (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLElement)) return;
+
+        const regionId = target.getAttribute('data-region-id');
+        const regionItem = provincesWithStore.find(p => p.id === regionId);
+
+        if (regionId && regionItem) {
+            searchInput.value = regionItem.name;
+            suggestionsList.innerHTML = '';
+            suggestionsList.style.display = 'none';
+            selectRegion(regionId);
+        }
+    });
+
+    // Click ra ngoài thì ẩn gợi ý
+    document.addEventListener('click', (event) => {
+        const el = event.target;
+        if (!(el instanceof Element)) return;
+        if (!el.closest('.search-input-wrapper')) {
+            suggestionsList.style.display = 'none';
+        }
+    });
+}
+
+// Nút kính lúp
+if (searchButton) {
+    searchButton.addEventListener('click', handleSearch);
+}
 
         // =======================
         // Logic phần pops up 

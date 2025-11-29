@@ -82,7 +82,7 @@
 
     <!-- Section about us  -->
 
-    <section class="about-us">
+    <section class="about-us" id="about-section">
         <div class="scontainer">
             <div class="scontainer">
                 <div class="about-us-content">
@@ -568,14 +568,22 @@
         <p class="subtitle">Interactive map showing our dealership locations across Vietnam's 63 provinces</p>
 
         <div class="search-bar">
-            <input type="text" placeholder="Search provinces..." />
-            <select>
-                <option>All Regions</option>
-                <option>North</option>
-                <option>Central</option>
-                <option>South</option>
-            </select>
+            <div class="search-input-wrapper">
+                <input
+                    id="province-search"
+                    type="text"
+                    placeholder="Search provinces (e.g. 'Hà Nội', 'Nghệ')"
+                    autocomplete="off"
+                />
+                <button type="button" id="province-search-btn" class="search-btn">
+                    🔍
+                </button>
+
+                <!-- Gợi ý khi gõ chữ -->
+                <ul id="province-suggestions" class="suggestions-list"></ul>
+            </div>
         </div>
+
 
         <div class = "map-section">   
             <div class = "vietnam-map">
