@@ -577,13 +577,15 @@ function showToast(msg) {
 ;
 
 function checkinputinfomation(stepindex) {
+
+    // ===== STEP 0 – chọn xe =====
     if (stepindex === 0) {
-        // Step 0: phải chọn ít nhất 1 xe
         const l = document.querySelector('.list-car-selected');
         return l && l.querySelectorAll('li').length > 0;
     }
-    else if (stepindex === 1) {
-        // Step 1: Payment method
+
+    // ===== STEP 1 – payment =====
+    if (stepindex === 1) {
         const paymentLabel = document.getElementById('payment-label-sum')?.textContent.trim() || '';
         if (!paymentLabel) return false;
 
@@ -594,46 +596,44 @@ function checkinputinfomation(stepindex) {
             const cardNumberValid = /^\d{10}$/.test(info2);
             return info1 !== '' && cardNumberValid;
         }
-        else if (paymentLabel === "Cash") {
+
+        if (paymentLabel === "Cash") {
             const phoneValid = /^\d{10,15}$/.test(info2);
             return info1 !== '' && phoneValid;
         }
+
         return false;
     }
-    else if (stepindex === 2) {
+
+    // ===== STEP 2 – delivery =====
+    if (stepindex === 2) {
         const deliveryType = document.getElementById('delivery-label-sum')?.textContent.trim() || '';
         if (!deliveryType) return false;
 
+        const timeText = document.getElementById('time-get')?.textContent.trim() || '';
+        const timeValid = timeText !== "" && timeText !== "time not set";
+
         if (deliveryType === "Showroom") {
-            const timeText = document.getElementById('time-get')?.textContent.trim() || '';
-            const timeValid = timeText !== "" && timeText !== "time not set";
-            return timeValid; // Showroom không cần địa chỉ
-        } 
-        else if (stepindex === 2) {
-            const deliveryType = document.getElementById('delivery-label-sum')?.textContent.trim() || '';
-            if (!deliveryType) return false;
-
-            const timeText = document.getElementById('time-get')?.textContent.trim() || '';
-            const timeValid = timeText !== "" && timeText !== "time not set";
-
-            if (deliveryType === "Home") {
-                const addressText = document.getElementById('address')?.textContent.trim() || '';
-                const addressValid = addressText !== "" && addressText !== "No address provided";
-                return addressValid && timeValid;
-            } 
-            else if (deliveryType === "Showroom") {
-                return timeValid; // Showroom cần thời gian nhưng không cần địa chỉ
-            }
-
-            return false;
+            return timeValid; // Chỉ cần thời gian
         }
+
+        if (deliveryType === "Home") {
+            const addressText = document.getElementById('address')?.textContent.trim() || '';
+            const addressValid = addressText !== "" && addressText !== "No address provided";
+            return addressValid && timeValid; // Cần cả thời gian + địa chỉ
+        }
+
         return false;
     }
-    else if (stepindex === 3) {
-        return true; // step cuối: luôn cho next
+
+    // ===== STEP 3 – luôn next =====
+    if (stepindex === 3) {
+        return true;
     }
+
     return false;
 }
+
 
 
 function totalinfomation() {
@@ -835,11 +835,11 @@ function setinfomation(stepindex) {
     const infodata = [
         [
             { label: "Name on card", placeholder: "Name on card (Not include digit)" },
-            { label: "Card number", placeholder: "Card number" }
+            { label: "Card number", placeholder: "Card number (10 digit" }
         ],
         [
             { label: "Full Name", placeholder: "Full name" },
-            { label: "Phone number", placeholder: "Phone number (include 10 digit)" }
+            { label: "Phone number", placeholder: "Phone number (include 10-15 digit)" }
         ],
         [
             { label: "Adress", placeholder: "Adress" },
