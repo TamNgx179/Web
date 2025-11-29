@@ -546,6 +546,54 @@ body.is-loading { overflow: hidden; }
     margin-left: 10%;
 }
 
+#error-box {
+    display: none;
+    color: #b00020;
+    background: #ffe6e6;
+    padding: 10px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-size: 14px;
+    transition: 0.2s ease;
+}
+
+.toast {
+    visibility: hidden; /* Hidden by default */
+    min-width: 250px;
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    padding: 12px;
+    position: fixed;
+    z-index: 9999;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.5s, bottom 0.5s;
+}
+
+.toast.show {
+    visibility: visible;
+    opacity: 1;
+    bottom: 50px;
+}
+
+#Purchase{
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: none;
+    background-color: #624BFF;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    align-self: center;
+    transition: background-color 0.3s ease;
+    width: 70%;
+}
+
 /* ---------- Mobile: max-width 600px ---------- */
 @media (max-width: 600px) {
     /* Main content */

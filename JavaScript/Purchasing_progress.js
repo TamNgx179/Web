@@ -111,7 +111,7 @@ function setStepContent({ header, paragraph, options}) {
     document.getElementById("content2").innerHTML = options[1].content;
 }
 
-function settingdisplay_before_Step(method_status, info_status, confirmation_status, carforms_status, back_status, next_status, displaycarform) {
+function settingdisplay_before_Step(method_status, info_status, confirmation_status, carforms_status, back_status, next_status, displaycarform, purchase) {
     const method = document.getElementById('method');
     const info = document.getElementById('info');
     const confirmation = document.getElementById('confirmation');
@@ -119,6 +119,7 @@ function settingdisplay_before_Step(method_status, info_status, confirmation_sta
     const backBtn = document.getElementById('back');
     const nextBtn = document.getElementById('next-step');
     const display = document.querySelector('.display-carform')
+    const purchaseBtn = document.getElementById('Purchase');
 
     // set display property if provided
     if (method_status) method.style.display = method_status
@@ -127,6 +128,7 @@ function settingdisplay_before_Step(method_status, info_status, confirmation_sta
     if (back_status) backBtn.style.display = back_status
     if (next_status) nextBtn.style.display = next_status
     if (displaycarform) display.style.display = displaycarform
+    if (purchase) purchaseBtn.style.display = purchase;
     
     if (carforms_status) {
         carforms.forEach(item => item.style.display = carforms_status);
@@ -138,7 +140,7 @@ function purchasingstep(index) {
     switch(index) {
         
         case 0:{
-            settingdisplay_before_Step('none', 'none', 'none', 'flex', 'none', 'flex', 'flex');
+            settingdisplay_before_Step('none', 'none', 'none', 'flex', 'none', 'flex', 'flex', 'none');
             setstep0();
 
             setStepContent({
@@ -161,7 +163,7 @@ function purchasingstep(index) {
             break;
         }
         case 1:{
-            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex', 'none');
+            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex', 'none', 'none');
             
             setinfomation(index);
 
@@ -186,7 +188,7 @@ function purchasingstep(index) {
             break;
         }
         case 2:{
-            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex', 'none');
+            settingdisplay_before_Step('flex', 'none', 'none', 'none', 'block', 'flex', 'none', 'none');
             setinfomation(index);
 
             setStepContent({
@@ -209,7 +211,7 @@ function purchasingstep(index) {
             break;
         }
         case 3: {
-            settingdisplay_before_Step('none', 'none', 'flex', 'none', 'block', 'block', 'none');
+            settingdisplay_before_Step('none', 'none', 'flex', 'none', 'block', 'none', 'none', 'block');
             setstep3();
             break;
         }
@@ -556,7 +558,29 @@ function setstep3() {
 
     const backEl = document.getElementById('back');
     if (backEl) backEl.style.display = 'block';
+
+    // gán sự kiện cho nút Purchase
+    const purchaseBtn = document.getElementById('Purchase').onclick = (e) => {
+        e.preventDefault();
+        showToast("Your purchase has been completed successfully!");
+    }
+
 }
+
+function showToast(msg) {
+    const toast = document.getElementById("toast");
+    toast.innerText = msg;
+    toast.classList.add("show");
+
+    // 3 giây sau ẩn toast và chuyển về trang Home
+    setTimeout(() => {
+        toast.classList.remove("show");
+        window.location.href = "../HTML/Home.html";
+    }, 3000);
+
+
+}
+;
 
 function checkinputinfomation(stepindex) {
     if (stepindex === 0) {
@@ -743,7 +767,6 @@ function addtime(idx, index) {
     }
 }
 
-
 function gettingaddress() {
 
         const addressInput = document.getElementById('info1');
@@ -817,20 +840,20 @@ function setinfomation(stepindex) {
 
     const infodata = [
         [
-            { label: "Name on card", placeholder: "Name on card" },
+            { label: "Name on card", placeholder: "Name on card (Not include digit)" },
             { label: "Card number", placeholder: "Card number" }
         ],
         [
             { label: "Full Name", placeholder: "Full name" },
-            { label: "Phone number", placeholder: "Phone number" }
+            { label: "Phone number", placeholder: "Phone number (include 10 digit)" }
         ],
         [
             { label: "Adress", placeholder: "Adress" },
             { label: "Street number", placeholder: "Street number" }
         ],
         [
-            { label: "Phone number", placeholder: "Phone number" },
-            { label: "Reciever", placeholder: "name" }
+            { label: "Phone number", placeholder: "Phone number (include 10 digit)" },
+            { label: "Reciever", placeholder: "Name" }
         ]
     ];
 
