@@ -422,3 +422,23 @@ window.addEventListener("scroll", function() {
     }
   }
 });
+
+// ====== Lazy loading tối ưu cho ảnh trang Home ======
+document.addEventListener("DOMContentLoaded", () => {
+  const heroSlides = document.querySelectorAll(".slideshow .slide");
+
+  // Ảnh slideshow: ảnh đầu load sớm, còn lại lazy
+  heroSlides.forEach((img, index) => {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", index === 0 ? "eager" : "lazy");
+    }
+  });
+
+  // Các ảnh khác ngoài slideshow: mặc định lazy
+  const otherImages = document.querySelectorAll("img:not(.slideshow .slide)");
+  otherImages.forEach((img) => {
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", "lazy");
+    }
+  });
+});

@@ -380,6 +380,19 @@ function renderCompetitors(id) {
   });
 }
 
+// ====== Lazy loading cho tất cả ảnh trên trang ======
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll('img');
+
+  images.forEach((img) => {
+    // Nếu ảnh chưa được set loading trong HTML thì cho lazy
+    if (!img.hasAttribute("loading")) {
+      img.setAttribute("loading", "lazy");
+    }
+  });
+});
+
+
 /* --------- Main Init --------- */
 (function init() {
   CURRENT_BRAND_ID = getBrandFromURL();
