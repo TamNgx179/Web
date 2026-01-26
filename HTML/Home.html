@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="icon" href="../images/LogoWeb-removebg-preview.png" type="image/png">
+    <link rel="icon" href="../images/LogoWeb-removebg-preview.webp" type="image/webp">
+    <link rel="preload" as="image" href="../images/porsche/cayenne/cayenne-img2.avif" type="image/avif" fetchpriority="high">
     <link rel="stylesheet" href="../CSS/nav_bar.css">
     <link rel="stylesheet" href="../CSS/Home.css">
     <link rel="stylesheet" href="../CSS/footer.css">
@@ -12,14 +13,14 @@
 <body>
     <div id="preloader" aria-hidden="true">
       <div class="preloader-inner">
-        <img src="../images/LogoWeb-removebg-preview.png" alt="Loading..." class="preloader-logo" width="140"height="140"/>
+        <img src="../images/LogoWeb-removebg-preview.webp" alt="Loading..." class="preloader-logo" width="140"height="140"/>
         <div class="preloader-ring" aria-hidden="true"></div>
         <p class="preloader-text">Loading...</p>
       </div>
     </div>
     <nav>
         <a id="Logo" href="../HTML/Home.html">
-            <img src="../images/LogoWeb-removebg-preview.png" alt="LogoWeb">
+            <img src="../images/LogoWeb-removebg-preview.webp" alt="LogoWeb">
         </a>
 
         <ul id="nav_block2">
@@ -52,9 +53,66 @@
     </div>
 
     <div class="slideshow">
-        <img src="../images/porsche/cayenne/cayenne-img2.avif" class="slide active">
-        <img src="../images/mercedes/MaybachS680/S680-img3.avif" class="slide">
-        <img src="../images/test.avif" class="slide">
+      <picture>
+        <source
+          type="image/avif"
+          srcset="
+            ../images/mercedes/MaybachS680/S680-img3-640.avif 640w,
+            ../images/mercedes/MaybachS680/S680-img3-1024.avif 1024w,
+            ../images/mercedes/MaybachS680/S680-img3-1600.avif 1600w
+          "
+          sizes="(max-width: 768px) 100vw, 1200px"
+        />
+        <img
+          src="../images/mercedes/MaybachS680/S680-img3-1024.avif"
+          class="slide active"
+          alt="Mercedes Maybach S680"
+          decoding="async"
+          fetchpriority="high"
+          width="1200"
+          height="600"
+        />
+      </picture>
+      <picture>
+        <source
+          type="image/avif"
+          srcset="
+            ../images/porsche/cayenne/cayenne-img2-640.avif 640w,
+            ../images/porsche/cayenne/cayenne-img2-1024.avif 1024w,
+            ../images/porsche/cayenne/cayenne-img2-1600.avif 1600w
+          "
+          sizes="(max-width: 768px) 100vw, 1200px"
+        />
+        <img
+          src="../images/porsche/cayenne/cayenne-img2-1024.avif"
+          class="slide"
+          alt="Porsche Cayenne"
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="600"
+        />
+      </picture>
+      <picture>
+        <source
+          type="image/avif"
+          srcset="
+            ../images/test-640.avif 640w,
+            ../images/test-1024.avif 1024w,
+            ../images/test-1600.avif 1600w
+          "
+          sizes="(max-width: 768px) 100vw, 1200px"
+        />
+        <img
+          src="../images/test-1024.avif"
+          class="slide"
+          alt="Featured car"
+          loading="lazy"
+          decoding="async"
+          width="1200"
+          height="600"
+        />
+      </picture>
     </div>
   <!-- Popular Car -->
   <h1>Popular Categories</h1>
@@ -71,7 +129,7 @@
   <div class="car-list"></div>
   <div class = "browse">
         <div class ="blackbox reveal">
-            <img src="../images/Porsche-Image.png"> 
+            <img src="../images/Porsche-Image.webp" loading="lazy" decoding="async" alt="Porsche image"> 
         </div>
 
         <div class ="content reveal">
@@ -122,7 +180,7 @@
         </div>
 
         <div class="car-box">
-          <img src="../images/car.png" alt="Top view car" class="car" />
+          <img src="../images/car.webp" alt="Top view car" class="car" loading="lazy" decoding="async"/>
         </div>
 
         <div class="right-features">
@@ -148,7 +206,7 @@
   <footer>
         <div class="container">
             <div class="avata">
-                <img class="circle" src="../images/LogoWeb-removebg-preview.png">
+                <img class="circle" src="../images/LogoWeb-removebg-preview.webp" alt="LogoWeb">
             </div>
             
             <div class="footer-section">

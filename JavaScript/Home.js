@@ -215,8 +215,18 @@ function renderCard(car) {
     img.className = "thumb-img";
     img.src = imgSrc;
     img.alt = name;
+
+    // Tối ưu list ảnh
+    img.loading = "lazy";
+    img.decoding = "async";
+    img.fetchPriority = "low";
+
+    // Giảm CLS: đặt kích thước gần đúng theo CSS (thumb-img đang height 230)
+    img.width = 400;
+    img.height = 230;
+
     card.appendChild(img);
-  } 
+  }
 
   const body = document.createElement("div");
   body.className = "body";

@@ -5,7 +5,7 @@
         "id": "Vinfast-VF3",
         "name": "Vinfast VF3",
         "type": "EV",
-        "display": "../images/vinfast/VF3/VF3-display.png",
+        "display": "../images/vinfast/VF3/VF3-display.webp",
         "priceUSD": 13000,
         "hero": "../images/vinfast/VF3/VF3-trans.webp",
         "gallery": [
