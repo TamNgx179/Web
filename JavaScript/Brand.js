@@ -73,12 +73,12 @@ const BRAND_INTRO = {
 };
 
 const BRAND_LOGOS = {
-  bmw: "../images/logos/bmw-logo.png",
-  honda: "../images/logos/honda-logo.png",
-  mercedes: "../images/logos/mercedes-logo.png",
-  porsche: "../images/logos/porsche-logo.png",
-  toyota: "../images/logos/toyota-logo.png",
-  vinfast: "../images/logos/vinfast-logo.png",
+  bmw: "../images/logos/bmw-logo.webp",
+  honda: "../images/logos/honda-logo.webp",
+  mercedes: "../images/logos/mercedes-logo.webp",
+  porsche: "../images/logos/porsche-logo.webp",
+  toyota: "../images/logos/toyota-logo.webp",
+  vinfast: "../images/logos/vinfast-logo.webp",
 };
 
 const COMPETITOR_MAP = {
@@ -237,7 +237,7 @@ function renderPage() {
     card.className = "lineup-card";
     card.innerHTML = `
       <div class="lineup-thumb">
-        <img src="${car.display}" alt="${car.name}">
+        <img src="${car.display}" alt="${car.name}" loading="lazy" decoding="async" fetchpriority="low" width="305" height="">
       </div>
       <div class="lineup-info">
         <h4>${car.name}</h4>
